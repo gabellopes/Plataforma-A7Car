@@ -1,0 +1,89 @@
+@font-face {
+    font-family: Barlow;
+    src: url(../fonte/BarlowSemiCondensed-Regular.ttf);
+}
+@font-face {
+    font-family: Barlow-Bold;
+    src: url(../fonte/BarlowSemiCondensed-Bold.ttf);
+}
+a{
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-weight: normal;
+}
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.655);
+    height: 6vh;
+}
+footer{
+    margin-top: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    gap: 2vh;
+    border-top: 1px solid rgba(128, 128, 128, 0.655);
+}
+.fo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 95vw;
+}
+.nav{
+    display: flex;
+    flex-direction: column;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+    background-color: black;
+    color: white;
+    font-family: Barlow;
+}
+#adm{
+    background-color: rgba(237, 35, 35, 0.247);
+    border: 2px solid rgba(99, 2, 2, 0.99);
+    border-radius: 3px;
+    font-size: 1rem;
+}
+#divadm{
+    height: 10vh;
+    padding-top: 10vh;
+}
+.btn{
+    border: 4px solid  rgb(223, 25, 25);
+    background-color: rgb(223, 25, 25);
+    color: white;
+    font-family: Barlow-Bold;
+    font-size: 1.5rem;
+}
+#btnEntrar{
+    border: 4px solid  rgba(0, 0, 0, 0.616);
+    background-color:  rgba(0, 0, 0, 0.616);
+}
+#buscar{
+    background-color: rgba(51, 51, 51, 0.425);
+    border: 0;
+    height: 3.5vh;
+    width: 20vw;
+}
