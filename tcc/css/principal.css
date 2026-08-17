@@ -10,12 +10,21 @@ a{
     text-decoration: none;
     color: white;
     font-size: 1.2rem;
+    color: rgb(150, 150, 150);
+}
+header a{
+    font-size: 1.5rem;
+    margin: 0 1vw;
+    font-family: Barlow-Bold;
 }
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-weight: normal;
+}
+header .btn {
+    margin-right: 2vw;
 }
 header{
     position: fixed;
@@ -25,9 +34,9 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px;
     border-bottom: 1px solid rgba(128, 128, 128, 0.655);
-    height: 6vh;
+    height: 9vh;
+    background-color: black;
 }
 footer{
     margin-top: auto;
@@ -39,6 +48,7 @@ footer{
     text-align: center;
     gap: 2vh;
     border-top: 1px solid rgba(128, 128, 128, 0.655);
+    background-color: rgb(19, 19, 19);
 }
 .fo{
     display: flex;
@@ -56,7 +66,7 @@ body{
     min-height: 100vh;
     width: 100vw;
     overflow-x: hidden;
-    background-color: black;
+    background-color: rgb(9, 9, 9);
     color: white;
     font-family: Barlow;
 }
@@ -65,6 +75,7 @@ body{
     border: 2px solid rgba(99, 2, 2, 0.99);
     border-radius: 3px;
     font-size: 1rem;
+    color: white;
 }
 #divadm{
     height: 10vh;
@@ -78,12 +89,39 @@ body{
     font-size: 1.5rem;
 }
 #btnEntrar{
-    border: 4px solid  rgba(0, 0, 0, 0.616);
-    background-color:  rgba(0, 0, 0, 0.616);
+    border: 4px solid  rgb(0, 0, 0);
+    background-color:  rgb(0, 0, 0);
+    color: rgb(150, 150, 150);
+    margin-left: 17.5vw;
 }
 #buscar{
     background-color: rgba(51, 51, 51, 0.425);
+    color: white;
     border: 0;
     height: 3.5vh;
     width: 20vw;
+    font-family: Barlow;
 }
+.btn:hover{
+    background-color: rgb(255, 25, 25);
+    border: 4px solid  rgb(255, 25, 25);
+    transform: scale(1.05);
+}  
+#btnEntrar:hover{
+    border: 4px solid  rgb(20, 20, 20);
+    background-color:  rgb(20, 20, 20);
+    color:  white;
+}
+a:hover{
+    text-decoration: underline;
+}
+#logo{
+    height: 8vh;
+    width: 13vh;
+    margin-left: 2vw;
+    margin-right: auto;
+}
+header a:hover{
+    color: white;
+}
+
