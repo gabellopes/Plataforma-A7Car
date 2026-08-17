@@ -14,7 +14,7 @@ a{
 }
 header a{
     font-size: 1.5rem;
-    margin: 0 1vw;
+    margin: 0 2.5vw;
     font-family: Barlow-Bold;
 }
 *{
@@ -40,6 +40,7 @@ header{
 }
 footer{
     margin-top: auto;
+    height: 30vh;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -115,7 +116,7 @@ body{
 a:hover{
     text-decoration: underline;
 }
-#logo{
+.logo{
     height: 8vh;
     width: 13vh;
     margin-left: 2vw;
@@ -123,5 +124,14 @@ a:hover{
 }
 header a:hover{
     color: white;
+}
+#ter{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+footer #logo{
+    height: 8vh;
+    width: 13vh;
 }
 
