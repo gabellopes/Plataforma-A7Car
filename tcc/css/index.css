@@ -30,6 +30,12 @@ body{
     border: 4px solid  rgb(255, 25, 25);
     transform: scale(1.05);
 }
+#meio h1{
+    font-size: 3rem;
+}
+#meio h2{
+    font-size: 1.5rem;
+}
 
 
 

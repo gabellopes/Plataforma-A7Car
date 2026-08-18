@@ -131,7 +131,13 @@ header a:hover{
     flex-direction: column;
 }
 footer #logo{
+    margin-top: 0;
     height: 8vh;
     width: 13vh;
+}
+h3{
+    color: rgb(150, 150, 150);
+    font-size: 1.2rem;
+    font-family: Barlow;
 }
 
