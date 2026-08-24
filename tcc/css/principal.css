@@ -120,6 +120,7 @@ a:hover{
     width: 13vh;
     margin-left: 2vw;
     margin-right: auto;
+    cursor: pointer;
 }
 header a:hover{
     color: white;
@@ -140,7 +141,7 @@ h3{
     font-family: Barlow;
 }
 #link{
-    width: 100%;
+    width: 50%;
     display: flex;
     flex-direction: row;
     align-items: center;
