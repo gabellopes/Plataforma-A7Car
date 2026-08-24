@@ -1,0 +1,47 @@
+#meio{
+    margin-top: 9vh;
+    background-color: rgb(19, 19, 19);
+    height: 20vh;
+    width: 100%;
+    color: white;
+    padding: 4vh 1vw 1vh 4vw;   
+}
+#meio h3{
+    color:  rgb(208, 0, 0);
+    background-color: rgba(237, 35, 35, 0.247);
+    width:fit-content;
+}
+#meio h1{
+    font-size: 3rem;
+}
+#info{
+    height: 45vh;
+    width: 50vw;
+}
+#info h3{
+ margin-left: 10vw;
+ margin-top: 3vh;
+}
+#info h2{
+ margin-left: 10vw;
+}
+#atend{
+    background-color: aqua;
+    height: 45vh;
+    width: 50vw;
+}
+.mei{
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    width: 100%;
+}
+#exclusi{
+    background-color: rgba(237, 35, 35, 0.247);
+    height: 7vh;
+    width: 25vw;
+    margin-left: 10vw;
+    margin-top: 3vh;
+    border: 1px solid  rgb(202, 24, 24);
+    
+}
