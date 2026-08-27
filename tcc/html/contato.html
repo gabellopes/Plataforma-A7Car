@@ -49,8 +49,41 @@
     </div>
 
     <div id="atend">
-</div>
-  
+
+        <h2>Iniciar Atendimento</h2>
+        <h5>Preencha os campos abaixo. Você será redirecionado ao WhatsApp com uma mensagem pronta.</h5>
+        <br>
+        <h3>Nome</h3>
+
+    <form  method="POST">
+
+        <input id="nome" placeholder="Digite o nome completo*" required>
+        <br>
+        <h3>Tipo de atendimento</h3>
+        
+    <label>
+        <input type="radio"  id="opcao" name="atend" value="proposta">
+        Fazer uma proposta
+    </label>
+    <br>
+    <label>
+        <input type="radio" id="opcao" name="atend" value="simulacao">
+        Solicitar uma simulação
+    </label>
+    <br>
+    <label>
+        <input type="radio"  id="opcao" name="atend" value="venda">
+        Vender meu carro
+    </label>
+    <br>
+    <br>
+    <button id="botao">Enviar pelo WhatsApp</button>
+
+
+    </form>
+        
+    </div>
+
     
     </div>
 
