@@ -4,40 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catalogo</title>
-    <link rel="stylesheet" href="../css/principal.css">
-    <link rel="stylesheet" href="../css/catalogo.css">
+    <link rel="stylesheet" href="../../css/principal.css">
+    <link rel="stylesheet" href="../../css/colaboradores.css">
 </head>
 <body>
 
     <header id="cabecalho">
         
-        <img src="../img/logo.png" alt="" class="logo" onclick="window.location.href='index.html'">
+        <img src="../../img/logo.png" alt="" class="logo" onclick="window.location.href='../../index.php'">
         <div id="link">
-            <a href="catalogo.html">CATÁLOGO</a>
-            <a href="colaboradores.html">COLABORADORES</a>
-            <a href="">CONTATO</a>
+            <a href="catalogo.php">CATÁLOGO</a>
+            <a href="colaboradores.php">COLABORADORES</a>
+            <a href="contato.php">CONTATO</a>
         </div>
         <div id="linksAuth">
-            <button id="btnEntrar" class="btn">ENTRAR</button>
-            <button class="btn">CADASTRAR </button>
+            <button id="btnEntrar" class="btn" type="button" onclick="window.location.href='Login.php'">ENTRAR</button>
+            <button class="btn" type="button" onclick="window.location.href='Cadastro.php'">CADASTRAR </button>
         </div>
 
     </header>
 
     <div id="titulo">
-        <h3>Estoque Completo</h3>
-        <h1>CATÁLOGO DE VEÍCULOS</h1>
-        <input type="text">
+        <h3>Nossa equipe</h3>
+        <h1>COLABORADORES</h1>
     </div>
 
 
-
-    <div class="catalogo">
-
-
-
-
-    </div>
 
 
 
@@ -50,16 +42,16 @@
         
         <div class="fo">
         <div id="ter">
-            <img src="../img/logo.png" alt="" id="logo">
+            <img src="../../img/logo.png" alt="" id="logo">
             <h3>Multimarcas premium especializada em venda </h3>
             <h3>e compra de veículos.Transparência, qualidade </h3>
             <h3>e atendimento diferenciado.</h3>
         </div>
         <div class="nav">
             <h1>NAVEGAÇÃO</h1>
-            <a href="">CATÁLOGO</a>
-            <a href="">COLABORADORES</a>
-            <a href="">CONTATO</a>
+            <a href="catalogo.php">CATÁLOGO</a>
+            <a href="colaboradores.php">COLABORADORES</a>
+            <a href="contato.php">CONTATO</a>
         </div>
         <div>
             <h1>CONTATO</h1>
@@ -71,7 +63,7 @@
             </h3>
         </div>
         <div id="divadm">
-            <a href="" id="adm">ÁREA ADMINISTRATIVA</a>
+            <a href="../admin/Clientes.php" id="adm">ÁREA ADMINISTRATIVA</a>
         </div>
     </div>
 </footer>
