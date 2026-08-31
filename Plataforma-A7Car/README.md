@@ -1,3 +1,0 @@
-# Plataforma-A7Car
-TCC...
-.
