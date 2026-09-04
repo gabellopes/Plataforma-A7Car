@@ -6,7 +6,8 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cadastro de Usuario</title>
+    <link rel="icon" type="image/svg" href="../../img/teste.svg">
 </head>
 <body>
     <?php if (isset($_SESSION['erro_cadastro'])): ?>
@@ -19,14 +20,19 @@ session_start();
     <?php endif; ?>
 
     <form action="../salvar/S_User.php" method="post">
-        <fieldset><label for="nome">Nome Completo</label><input type="text" name="Nome" id="Nome" maxlength="255" required><div id="Mensagem"></div></fieldset>
+      
+        <fieldset><label for="nome">Nome Completo</label><input type="text" name="Nome" id="Nome" maxlength="255" required></fieldset>
         <fieldset><label for="email">E-mail</label><input type="email" name="Email" id="Email" maxlength="255" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" required></fieldset>
         <fieldset><label for="telefone">Telefone</label><input type="tel" name="Telefone" id="Telefone" maxlength="15" pattern="\([0-9]{2}\)\s?[0-9]{4,5}-[0-9]{4}"  required></fieldset>
-        <fieldset><label for="senha">Senha</label> <input type="password" name="Senha" id="Senha" maxlength="20" required> <?php echo "Teste"?></fieldset>
+        <fieldset><label for="senha">Senha</label> <input type="password" name="Senha" id="Senha" maxlength="20" required></fieldset>
         <fieldset><label for="confirmar-senha">Confirmar Senha</label> <input type="password" name="Confirmar_Senha" id="Confirmar-senha" maxlength="20" required></fieldset>
-        <fieldset><input type="submit" value="Cadastrar"></fieldset>
+        <div id="Mensagem"></div>
+        <fieldset><input  onclick="validarCadastro()" type="button" value="Cadastrar" id="Cadastrar"></fieldset>
+        <fieldset><input type="button" value="Preencher" onclick="preencher()"></fieldset>
     </form>
    <a href="Login.php">Já tem cadastro? Logar</a>
+   <script src="../../js/verificacadastro.js"></script>
+
 </body>
 
     <!-- let Mensagem = document.getElementById("Mensagem");
@@ -105,37 +111,4 @@ if(Nome){
         Confirmar_Senha.value     = data.Confirmar_Senha || "";
        }          
         });    -->
-<script>
-const Nome = document.getElementById("Nome");
-const Email = document.getElementById("Email");
-const Telefone = document.getElementById("Telefone");
-const Senha = document.getElementById("Senha");
-const Confirmar = document.getElementById("Confirmar-senha");
-
-document.addEventListener('DOMContentLoaded', () => {
-
-fetch(`S_User.php`)
-        .then(function (data) {
-            // Se o CEP foi encontrado, preenche os campos
-            if (data.sucesso) {
-                  Nome.value = data.Nome || "";
-                  Email.value     = data.Email || "";
-                  Telefone.value     = data.Telefone || "";
-                  Senha.value     = data.Senha || "";
-                  Confirmar_Senha.value     = data.Confirmar_Senha || "";
-
-                
-            });
-
-
-
-
-
-
-
-
-
-
-});//Fim do DOM    
-    </script>
 </html>
