@@ -1,3 +1,9 @@
+<?php SESSION_START(); 
+
+if(!isset($_SESSION['user_email']) and !isset($_SESSION['user_senha'])){
+    header("Location: Login.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -16,10 +22,18 @@
             <a href="catalogo.php">CATÁLOGO</a>
             <a href="colaboradores.php">COLABORADORES</a>
             <a href="contato.php">CONTATO</a>
+            <?php if(isset($_SESSION['user_email'])): ?>
+                <a href="#">FAVORITOS</a>
+            <?php endif; ?>
         </div>
         <div id="linksAuth">
+            <?php if(!isset($_SESSION['user_email'])): ?>
             <button id="btnEntrar" class="btn" type="button" onclick="window.location.href='Login.php'">ENTRAR</button>
-            <button class="btn" type="button" onclick="window.location.href='Cadastro.php'">CADASTRAR </button>
+            <button id="btnCadastrar" class="btn" type="button" onclick="window.location.href='Cadastro.php'">CADASTRAR </button>
+            <?php else: ?>
+            <p>Bem-vindo, <?php echo $_SESSION['user_nome']; ?>!</p>
+            <button class="btn" type="button" onclick="window.location.href='../salvar/Sair.php'">SAIR </button>
+            <?php endif; ?>
         </div>
 
     </header>

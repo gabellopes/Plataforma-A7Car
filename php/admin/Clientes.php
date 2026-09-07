@@ -1,3 +1,11 @@
+<?php
+    SESSION_START();
+    
+    if($_SESSION['user_email'] !== 'admin@gmail.com'){
+            header("Location: ../admin/Login.php");
+            exit;
+        }
+?>
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -11,7 +19,7 @@
         <div id="CSM">
             <div id="CT">
                 <h1>CLIENTE</h1>
-                <button>NOVO CLIENTE</button>
+                <button onclick="window.location.href='Cadastrar/NovoCliente.php'">NOVO CLIENTE</button>
             </div> <!-- Final VT-->
 
             <div id="CE">

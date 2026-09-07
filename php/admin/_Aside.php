@@ -20,6 +20,7 @@
            <a href="Veiculos.php"><img src="" alt="">VEÍCULOS</a>
            <a href="Vendidos.php"><img src="" alt="">VENDIDOS</a>
            <a href="Simulacoes.php"><img src="" alt="">SIMULAÇÕES </a>
+           <a href="../salvar/Sair.php"><img src="" alt="">SAIR </a>
         </div>
 
         <div><button><!-- Inicio do Butão-->

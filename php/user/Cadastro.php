@@ -28,87 +28,12 @@ session_start();
         <fieldset><label for="confirmar-senha">Confirmar Senha</label> <input type="password" name="Confirmar_Senha" id="Confirmar-senha" maxlength="20" required></fieldset>
         <div id="Mensagem"></div>
         <fieldset><input  onclick="validarCadastro()" type="button" value="Cadastrar" id="Cadastrar"></fieldset>
-        <fieldset><input type="button" value="Preencher" onclick="preencher()"></fieldset>
+        <!--<fieldset><input type="button" value="Preencher" onclick="preencher()"></fieldset>-->
     </form>
    <a href="Login.php">Já tem cadastro? Logar</a>
    <script src="../../js/verificacadastro.js"></script>
-
+<script src="../../js/telefone.js"></script>
 </body>
 
-    <!-- let Mensagem = document.getElementById("Mensagem");
-
-document.addEventListener('DOMContentLoaded', () => {
-
-
-if (Telefone) {
-
-Telefone.addEventListener('input', (e) => {
-let value = e.target.value.replace(/\D/g, '');
-
-if (value.length > 10) {
-    value = value.replace(/^(\d{2})(\d{5})(\d{4}).*/, '($1) $2-$3');
-        } else if (value.length > 6) {
-                        value = value.replace(/^(\d{2})(\d{4})(\d{0,4}).*/, '($1) $2-$3');
-                        
-        } else if (value.length > 2) {
-                        value = value.replace(/^(\d{2})(\d{0,5})/, '($1) $2');
-        } else if (value.length > 0) {
-                        value = value.replace(/^(\d*)/, '($1');
-        }
-
-        e.target.value = value;
-         });//Fim do Telefone.addEventListener
-
-}//Fim do telefone      
-// Elementos da lista de requisitos
-const reqLength = document.getElementById('length');
-const reqUppercase = document.getElementById('uppercase');
-const reqLowercase = document.getElementById('lowercase');
-const reqNumber = document.getElementById('number');
-const reqSpecial = document.getElementById('special');
-
-// Regras com Expressões Regulares (Regex)
-const regras = {
-  length: (val) => val.length >= 8,
-  uppercase: (val) => /[A-Z]/.test(val),
-  lowercase: (val) => /[a-z]/.test(val),
-  number: (val) => /[0-9]/.test(val),
-  special: (val) => /[@$!%*?&]/.test(val)
-};
-
-// Evento escutado a cada tecla digitada
-inputSenha.addEventListener('input', function () {
-  const senha = this.value;
-
-  // Atualiza a classe 'valido' para cada requisito
-  atualizarStatus(reqLength, regras.length(senha));
-  atualizarStatus(reqUppercase, regras.uppercase(senha));
-  atualizarStatus(reqLowercase, regras.lowercase(senha));
-  atualizarStatus(reqNumber, regras.number(senha));
-  atualizarStatus(reqSpecial, regras.special(senha));
-});
-
-function atualizarStatus(elemento, ehValido) {
-  if (ehValido) {
-    elemento.classList.add('valido');
-  } else {
-    elemento.classList.remove('valido');
-  }
-}
-
-// Função auxiliar caso precise validar antes de submeter o formulário
-function validarSenhaCompleta(senha) {
-  return Object.values(regras).every(regra => regra(senha));
-}       
-///////////////////////////////////////////////q
-
-if(Nome){
-        
-        Nome.value = data.Nome || "";
-        Email.value     = data.Email || "";
-        Telefone.value     = data.Telefone || "";
-        Senha.value     = data.Senha || "";
-        Confirmar_Senha.value     = data.Confirmar_Senha || "";
-       }          
-        });    -->
+   
 </html>

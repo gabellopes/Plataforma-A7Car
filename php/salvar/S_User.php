@@ -100,9 +100,10 @@ $stmt->execute();
 
 $_SESSION['sucesso_cadastro'] = 'Cadastro realizado com sucesso!';
 $_SESSION['erro'] = false;
-Formulario();
 header("Location: ../user/Login.php");
 exit;
+
+/* 
 function responderJson(array $dados, int $statusCode = 200): void
 {
     // Define o código HTTP da resposta
@@ -131,5 +132,5 @@ function Formulario(){
 
     ]);
 }
-
+*/
 ?>

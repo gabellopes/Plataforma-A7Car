@@ -11,7 +11,7 @@
         <div id="VSM">
             <div id="VT">
                 <h1>VEÍCULOS</h1>
-                <button>NOVO VEÍCULO</button>
+                <button onclick="location.href='Cadastrar/NovoVeiculo.php'">NOVO VEÍCULO</button>
             </div> <!-- Final VT-->
 
             <div id="VT2"><h1>CLIENTES CADASTRADOS</h1></div>
