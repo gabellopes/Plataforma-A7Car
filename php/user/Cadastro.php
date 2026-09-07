@@ -32,7 +32,7 @@ session_start();
     </form>
    <a href="Login.php">Já tem cadastro? Logar</a>
    <script src="../../js/verificacadastro.js"></script>
-<script src="../../js/telefone.js"></script>
+c
 </body>
 
    

@@ -17,25 +17,27 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $Nome = trim($_POST['Nome'] ?? '');
 $Email = trim($_POST['Email'] ?? '');
 $Telefone = trim($_POST['Telefone'] ?? '');
-$Cpf = trim($_POST['Cpf'] ?? '');
-$Cnh = trim($_POST['Cnh'] ?? '');
+$Servico = trim($_POST['Servico'] ?? '');
+$Descricao = trim($_POST['Descricao'] ?? '');
+$Imagem = "semfoto";
+
 
 
 
 // 2. Valida campos vazios e confirmação da senha
-if (empty($Nome) || empty($Email) || empty($Telefone) || empty($Cpf) || empty($Cnh)) {
+if (empty($Nome) || empty($Email) || empty($Telefone) || empty($Servico) || empty($Descricao)) {
     $_SESSION['erro_cadastro'] = 'Preencha todos os campos.';
     $_SESSION['erro'] = true;
-    header("Location: ../admin/Salvar/Cadastro/NovoCliente.php");
+    header("Location: ../admin/Salvar/Cadastro/NovoColaborador.php");
     exit;
 }
 
     
-$stmt = $sql->prepare("INSERT INTO cliente (nome_cli, email_cli, telefone_cli, cpf_cli, cnh_cli) VALUES (?, ?, ?, ?, ?)");
-$stmt->bind_param("sssii", $Nome, $Email, $Telefone, $Cpf, $Cnh);
+$stmt = $sql->prepare("INSERT INTO colaborador (nome_col, email_col, telefone_col, servico_col, descricao_col, foto_col) VALUES (?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("ssssss", $Nome, $Email, $Telefone, $Servico, $Descricao, $Imagem);
 $stmt->execute();
 
-header("Location: ../admin/Cadastrar/NovoCliente.php");
+header("Location: ../admin/Cadastrar/NovoColaborador.php");
 exit;
 
 

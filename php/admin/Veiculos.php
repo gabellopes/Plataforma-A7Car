@@ -27,6 +27,31 @@
                     <td>FORMA DE PAGAMENTO</td>
                     <td>BUTÕES</td>
                 </tr>
+                <?php
+                include_once "../salvar/Conexao.php";
+
+                $stmt = $sql->prepare("SELECT * FROM carro ");
+                $stmt->execute();
+                $result = $stmt->get_result();
+                while($row = $result->fetch_assoc()){
+                    
+                    echo "
+                    <tr>
+                        <td>".$row['foto_car']."</td>
+                        <td>".$row['modelo_car']."</td>
+                        <td>".$row['ano_car']."</td>
+                        <td>".$row['quilometragem_car']."</td>
+                        <td>".$row['combustivel_car']."</td>
+                        <td>".$row['preco_car']."</td>
+                        <td>"."07/09/26"."</td>
+                        <td>
+                            <button onclick=\"location.href='Editar/EditarVeiculo.php?id=".$row['id_car']."'\">⚙</button>
+                            <button onclick=\"location.href='Editar/EditarVeiculo.php?id=".$row['id_car']."'\">🛒</button>
+                            <button onclick=\"location.href='Excluir/ExcluirVeiculo.php?id=".$row['id_car']."'\">🧨</button>
+                        </td>
+                    </tr>";
+                }
+                ?>
                 </table>
             </div><!-- Final da tabela-->
 
