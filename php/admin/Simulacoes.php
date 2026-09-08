@@ -2,7 +2,7 @@
     SESSION_START();
     
     if($_SESSION['user_email'] !== 'admin@gmail.com'){
-            header("Location: ../admin/Login.php");
+             header("Location: ../user/Login.php");
             exit;
         }
 ?>
@@ -14,6 +14,7 @@
     <title>Simulações</title>
 </head>
 <body>
-    
+      <?php include __DIR__ . "/_Aside.php"; ?>
+      <h1>SIMULAÇÕES</h1>
 </body>
 </html>

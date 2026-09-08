@@ -14,15 +14,24 @@ session_start();
 
 
     <header id="cabecalho">
+        
         <img src="../../img/logo.png" alt="" class="logo" onclick="window.location.href='../../index.php'">
         <div id="link">
             <a href="catalogo.php">CATÁLOGO</a>
             <a href="colaboradores.php">COLABORADORES</a>
             <a href="contato.php">CONTATO</a>
+            <?php if(isset($_SESSION['user_email'])): ?>
+                <a href="#">FAVORITOS</a>
+            <?php endif; ?>
         </div>
         <div id="linksAuth">
+            <?php if(!isset($_SESSION['user_email'])): ?>
             <button id="btnEntrar" class="btn" type="button" onclick="window.location.href='Login.php'">ENTRAR</button>
-            <button class="btn" type="button" onclick="window.location.href='Cadastro.php'">CADASTRAR </button>
+            <button id="btnCadastrar" class="btn" type="button" onclick="window.location.href='Cadastro.php'">CADASTRAR </button>
+            <?php else: ?>
+            <p>Bem-vindo, <?php echo $_SESSION['user_nome']; ?>!</p>
+            <button class="btn" type="button" onclick="window.location.href='../salvar/Sair.php'">SAIR </button>
+            <?php endif; ?>
         </div>
 
     </header>
@@ -46,10 +55,15 @@ session_start();
     <?php endif; ?>
 
     <form action="../salvar/Testelogin.php" method="post">
-        <fieldset><label for="email">E-mail</label><input type="email" name="Email" id="Email"  maxlength="20" required></fieldset>
-        <fieldset><label for="senha">Senha</label> <input type="password" name="Senha" id="Senha"  maxlength="20" required></fieldset>
-        <fieldset><input type="submit" value="Entrar"></fieldset>
-        <fieldset><input type="button" value="User" onclick="PreencherUser()"><input type="button" value="Admin" onclick="PreencherAdmin()"></fieldset>
+        <label for="email">E-mail</label>
+        <input type="email" name="Email" id="Email" maxlength="20" required>
+
+        <label for="senha">Senha</label>
+        <input type="password" name="Senha" id="Senha" maxlength="20" required>
+
+        <button type="submit" class="btn">ENTRAR</button>
+        <input type="button" value="User" onclick="PreencherUser()">
+        <input type="button" value="Admin" onclick="PreencherAdmin()">
     </form>
     <a href="Cadastro.php">Não tem cadastro? Cadastrar</a>
 
