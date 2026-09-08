@@ -22,12 +22,52 @@ if (empty($Nome) || empty($Email) || empty($Telefone) || empty($Senha) || empty(
     exit;
 }
 
+
 if ($Senha !== $Confirmar_Senha) {
     $_SESSION['erro_cadastro'] = 'As senhas não conferem.';
     header("Location: ../user/Cadastro.php");
     exit;
 }
 
+if (strlen($Senha) < 8) {
+    $_SESSION['erro_cadastro'] = "A senha deve ter pelo menos 8 caracteres.";
+    header("Location: ../user/Cadastro.php");
+    exit;
+}
+
+// 2. Verifica se tem letra maiúscula
+if (!preg_match('/[A-Z]/', $Senha)) {
+    $_SESSION['erro_cadastro'] = "A senha deve conter pelo menos uma letra maiúscula.";
+    header("Location: ../user/Cadastro.php");
+    exit;
+}
+
+// 3. Verifica se tem letra minúscula
+if (!preg_match('/[a-z]/', $Senha)) {
+    $_SESSION['erro_cadastro'] = "A senha deve conter pelo menos uma letra minúscula.";
+    header("Location: ../user/Cadastro.php");
+    exit;
+}
+
+// 4. Verifica se tem número
+if (!preg_match('/[0-9]/', $Senha)) {
+    $_SESSION['erro_cadastro'] = "A senha deve conter pelo menos um número.";
+    header("Location: ../user/Cadastro.php");
+    exit;
+}
+
+// 5. Verifica se tem caractere especial (@, #, $, etc.)
+if (!preg_match('/[\W_]/', $Senha)) {
+    $_SESSION['erro_cadastro'] = "A senha deve conter pelo menos um caractere especial (ex: @, #, $, !).";
+    header("Location: ../user/Cadastro.php");
+    exit;
+}
+$dominio = substr(strrchr($Email, "@"), 1);
+
+if (!checkdnsrr($dominio, "MX")) {
+    header("O domínio do e-mail não existe.");
+    exit;
+}
 $verificaEmail = $sql->prepare("SELECT id_usu FROM usuario WHERE email_usu = ?");
 $verificaEmail->bind_param("s", $Email);
 $verificaEmail->execute();
@@ -50,4 +90,36 @@ $stmt->execute();
 $_SESSION['sucesso_cadastro'] = 'Cadastro realizado com sucesso!';
 header("Location: ../user/Login.php");
 exit;
+
+function responderJson(array $dados, int $statusCode = 200): void
+{
+    // Define o código HTTP da resposta
+    http_response_code($statusCode);
+
+    // Converte o array PHP para JSON
+    echo json_encode(
+        $dados,
+        JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
+    );
+
+    // Encerra o script para evitar qualquer conteúdo depois do JSON
+    exit;
+}
+function Formulario(){
+    responderJson([
+        'sucesso' => true,
+    
+
+        'Nome' => $Nome ?? '',
+        'Email' => $Email ?? '',
+        'Telefone' => $Telefone ?? '',
+        'Senha' => $Senha ?? '',
+        'Confirmar_Senha' => $Confirmar_Senha ?? '',
+        
+    ]);
+    
+  
+
+    
+}
 ?>
