@@ -48,12 +48,23 @@ session_start();
 
 
     <form action="../salvar/S_User.php" method="post">
-        <fieldset><label for="nome">Nome Completo</label><input type="text" name="Nome" id="Nome" maxlength="255" required><div id="Mensagem"></div></fieldset>
-        <fieldset><label for="email">E-mail</label><input type="email" name="Email" id="Email" maxlength="255" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" required></fieldset>
-        <fieldset><label for="telefone">Telefone</label><input type="tel" name="Telefone" id="Telefone" maxlength="15" pattern="\([0-9]{2}\)\s?[0-9]{4,5}-[0-9]{4}"  required></fieldset>
-        <fieldset><label for="senha">Senha</label> <input type="password" name="Senha" id="Senha" maxlength="20" required></fieldset>
-        <fieldset><label for="confirmar-senha">Confirmar Senha</label> <input type="password" name="Confirmar_Senha" id="Confirmar-senha" maxlength="20" required></fieldset>
-        <fieldset><input type="submit" value="Cadastrar"></fieldset>
+        <label for="nome">Nome Completo</label>
+        <input type="text" name="Nome" id="Nome" maxlength="255" required>
+        <div id="Mensagem"></div>
+
+        <label for="email">E-mail</label>
+        <input type="email" name="Email" id="Email" maxlength="255" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" required>
+
+        <label for="telefone">Telefone</label>
+        <input type="tel" name="Telefone" id="Telefone" maxlength="15" pattern="\([0-9]{2}\)\s?[0-9]{4,5}-[0-9]{4}" required>
+
+        <label for="senha">Senha</label>
+        <input type="password" name="Senha" id="Senha" maxlength="20" required>
+
+        <label for="confirmar-senha">Confirmar Senha</label>
+        <input type="password" name="Confirmar_Senha" id="Confirmar-senha" maxlength="20" required>
+
+        <button type="submit">Cadastrar</button>
     </form>
 <br>
    <a href="Login.php">Já tem cadastro? Logar</a>

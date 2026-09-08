@@ -46,9 +46,13 @@ session_start();
     <?php endif; ?>
 
     <form action="../salvar/Testelogin.php" method="post">
-        <fieldset><label for="email">E-mail</label><input type="email" name="Email" id="email" required></fieldset>
-        <fieldset><label for="senha">Senha</label> <input type="password" name="Senha" id="senha" required></fieldset>
-        <fieldset><button type="submit">Entrar</button></fieldset>
+        <label for="email">E-mail</label>
+        <input type="email" name="Email" id="email" required>
+
+        <label for="senha">Senha</label>
+        <input type="password" name="Senha" id="senha" required>
+
+        <button type="submit">Entrar</button>
     </form>
     <a href="Cadastro.php">Não tem cadastro? Cadastrar</a>
 
