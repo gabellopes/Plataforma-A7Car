@@ -89,7 +89,7 @@ session_start();
                 </h3>
             </div>
             <div id="divadm">
-                <a href="../admin/Clientes.php" id="adm">ÁREA ADMINISTRATIVA</a>
+                <a href="../admin/admin.php" id="adm">ÁREA ADMINISTRATIVA</a>
             </div>
         </div>
     </footer>
