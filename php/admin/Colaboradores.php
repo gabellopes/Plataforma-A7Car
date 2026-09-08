@@ -1,3 +1,11 @@
+<?php
+    SESSION_START();
+    
+    if($_SESSION['user_email'] !== 'admin@gmail.com'){
+            header("Location: ../admin/Login.php");
+            exit;
+        }
+?>
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -11,7 +19,7 @@
         <div id="CSM">
             <div id="CT">
                 <h1>COLABORADORES</h1>
-                <button>NOVO COLABORADOR</button>
+                <button onclick="window.location.href='Cadastrar/NovoColaborador.php'">NOVO COLABORADOR</button>
             </div>
 
             <div id="CE">
@@ -21,8 +29,31 @@
                     <td>SERVIÇO</td>
                     <td>TELEFONE</td>
                     <td>E-MAIL</td>
-                    <td>BUTÕES</td>
+                    <td></td>
+                    <td></td>
                 </tr>
+
+                 <?php
+                include_once "../salvar/Conexao.php";
+
+                $stmt = $sql->prepare("SELECT * FROM colaborador ");
+                $stmt->execute();
+                $result = $stmt->get_result();
+                while($row = $result->fetch_assoc()){
+                    
+                    echo "
+                    <tr>
+                        <td>".$row['nome_col']."</td>
+                        <td>".$row['servico_col']."</td>
+                        <td>".$row['telefone_col']."</td>
+                        <td>".$row['email_col']."</td>
+                        <td>
+                            <button onclick=\"location.href='Editar/EditarCliente.php?id=".$row['id_col']."'\">⚙</button>
+                            <button onclick=\"location.href='Excluir/ExcluirCliente.php?id=".$row['id_col']."'\">🧨</button>
+                        </td>
+                    </tr>";
+                }
+                ?>
                 </table>
             </div>
 

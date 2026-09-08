@@ -1,3 +1,5 @@
+<?php SESSION_START(); 
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -16,10 +18,18 @@
             <a href="php/user/catalogo.php">CATÁLOGO</a>
             <a href="php/user/colaboradores.php">COLABORADORES</a>
             <a href="php/user/contato.php">CONTATO</a>
+            <?php if(isset($_SESSION['user_email'])): ?>
+                <a href="php/user/favoritos.php">FAVORITOS</a>
+            <?php endif; ?>
         </div>
         <div id="linksAuth">
-            <button id="btnEntrar" class="btn" onclick="window.location.href='php/user/Login.php'">ENTRAR</button>
-            <button class="btn" onclick="window.location.href='php/user/Cadastro.php'">CADASTRAR </button>
+             <?php if(!isset($_SESSION['user_email'])): ?>
+            <button id="btnEntrar" class="btn" type="button" onclick="window.location.href='Login.php'">ENTRAR</button>
+            <button id="btnCadastrar" class="btn" type="button" onclick="window.location.href='Cadastro.php'">CADASTRAR </button>
+            <?php else: ?>
+            <p>Bem-vindo, <?php echo $_SESSION['user_nome']; ?>!</p>
+            <button class="btn" type="button" onclick="window.location.href='php/salvar/Sair.php'">SAIR </button>
+            <?php endif; ?>
         </div>
 
     </header>
@@ -83,6 +93,7 @@
             </div>
             <div id="divadm">
                 <a href="php/admin/admin.php" id="adm">ÁREA ADMINISTRATIVA</a>
+                <a href="php/admin/Clientes.php" id="adm">ÁREA ADMINISTRATIVA</a>
             </div>
         </div>
     </footer>

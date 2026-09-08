@@ -37,12 +37,21 @@ if ($resultado->num_rows === 1) {
 
     // 5. Compara a senha digitada com a senha criptografada
     if (password_verify($senha, $usuario['senha_usu'])) {
-        $_SESSION['usuario_id'] = $usuario['id_usu'];
-        $_SESSION['usuario_nome'] = $usuario['nome_usu'];
-        $_SESSION['usuario_email'] = $usuario['email_usu'];
+        $_SESSION['user_id'] = $usuario['id_usu'];
+        $_SESSION['user_nome'] = $usuario['nome_usu'];
+        $_SESSION['user_email'] = $usuario['email_usu'];
+        
 
-        header("Location: ../user/catalogo.php");
-        exit;
+        if($_SESSION['user_email'] === 'admin@gmail.com'){
+            header("Location: ../admin/Clientes.php");
+            exit;
+        }else{
+            header("Location: ../user/catalogo.php");
+            exit;
+        }
+        
+
+        
     }
 }
 

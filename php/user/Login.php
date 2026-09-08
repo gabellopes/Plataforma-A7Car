@@ -46,85 +46,30 @@ session_start();
     <?php endif; ?>
 
     <form action="../salvar/Testelogin.php" method="post">
-        <label for="email">E-mail</label>
-        <input type="email" name="Email" id="email" required>
-
-        <label for="senha">Senha</label>
-        <input type="password" name="Senha" id="senha" required>
-
-        <button type="submit">Entrar</button>
+        <fieldset><label for="email">E-mail</label><input type="email" name="Email" id="Email"  maxlength="20" required></fieldset>
+        <fieldset><label for="senha">Senha</label> <input type="password" name="Senha" id="Senha"  maxlength="20" required></fieldset>
+        <fieldset><input type="submit" value="Entrar"></fieldset>
+        <fieldset><input type="button" value="User" onclick="PreencherUser()"><input type="button" value="Admin" onclick="PreencherAdmin()"></fieldset>
     </form>
     <a href="Cadastro.php">Não tem cadastro? Cadastrar</a>
 
-    </div>
-    </div>
+    <script>
+        const Email = document.getElementById("Email");
+        const Senha = document.getElementById("Senha");
 
+        function PreencherUser(){
 
+        Email.value = "gabriel.alves33@gmail.com";
+        Senha.value = "G@br13l4lv3s33";
+        }
 
-        <footer>
+        function PreencherAdmin(){
 
-        <div class="fo">
-            <div id="ter">
-                <img src="../../img/logo.png" alt="" id="logo">
-                <h3>Multimarcas premium especializada em venda </h3>
-                <h3>e compra de veículos.Transparência, qualidade </h3>
-                <h3>e atendimento diferenciado.</h3>
-            </div>
-            <div class="nav">
-                <h1>NAVEGAÇÃO</h1>
-                <a href="catalogo.php">CATÁLOGO</a>
-                <a href="colaboradores.php">COLABORADORES</a>
-                <a href="contato.php">CONTATO</a>
-            </div>
-            <div>
-                <h1>CONTATO</h1>
-                <h3>numero telefone
-                    <br>
-                    email
-                    <br>
-                    endereço
-                </h3>
-            </div>
-            <div id="divadm">
-               <a href="../admin/admin.php" id="adm">ÁREA ADMINISTRATIVA</a>
-            </div>
-        </div>
-    </footer>
+        Email.value = "admin@gmail.com";
+        Senha.value = "Admin123!";
+        }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
+    </script>
 </body>
 </html>
