@@ -59,16 +59,11 @@ session_start();
 
         <label for="confirmar-senha">Confirmar Senha</label>
         <input type="password" name="Confirmar_Senha" id="Confirmar-senha" maxlength="20" required>
-        <div id="Mensagem_senha"><?php if (isset($_SESSION['erro_cadastro'])): ?>
-       
-            <?php
-                echo $_SESSION['erro_cadastro'];
-                unset($_SESSION['erro_cadastro']);
-            ?>
-       
-    <?php endif; ?></div>
+        <div id="Mensagem_senha"></div>
+        <div style="color: red;"><?php if (isset($_SESSION['erro_cadastro'])){echo $_SESSION['erro_cadastro'];unset($_SESSION['erro_cadastro']);} ?></div>
 
-        <button type="button" id="Cadastrar" onclick="validarCadastro()">Cadastrar</button>
+
+        <button type="button" id="Cadastrar" onclick="validarUser()">Cadastrar</button>
         <input type="button" value="User" onclick="PreencherUser()">
     </form>
 <br>
@@ -109,7 +104,7 @@ session_start();
         </div>
     </footer>
     <script src="../../js/mascaras.js"></script>
-    <script src="../../js/verificacadastro.js"></script>
+    <script src="../../js/validarformulario.js"></script>
 
 </body>
 </html>

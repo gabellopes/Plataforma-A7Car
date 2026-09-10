@@ -48,8 +48,8 @@
                         <td>".$row['telefone_col']."</td>
                         <td>".$row['email_col']."</td>
                         <td>
-                            <button onclick=\"location.href='Editar/EditarCliente.php?id=".$row['id_col']."'\">⚙</button>
-                            <button onclick=\"return confirm('Tem certeza que deseja excluir este colaborador?') ? location.href='Excluir/ExcluirCliente.php?id=".$row['id_col']."' : false;\">🧨</button>
+                            <button onclick=\"location.href='../salvar/Editar/EditarColaborador.php?id=".$row['id_col']."'\">⚙</button>
+                            <button onclick=\"return confirm('Tem certeza que deseja excluir este colaborador?') ? location.href='../salvar/Excluir/ExcluirColaborador.php?id=".$row['id_col']."' : false;\">🧨</button>
                         </td>
                     </tr>";
                 }

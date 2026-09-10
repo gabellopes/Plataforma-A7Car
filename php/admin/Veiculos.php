@@ -53,9 +53,8 @@
                         <td>".$row['preco_car']."</td>
                         <td>"."07/09/26"."</td>
                         <td>
-                            <button onclick=\"location.href='Editar/EditarVeiculo.php?id=".$row['id_car']."'\">⚙</button>
-                            <button onclick=\"location.href='Editar/EditarVeiculo.php?id=".$row['id_car']."'\">🛒</button>
-                            <button onclick=\"return confirm('Tem certeza que deseja excluir este veículo?') ? location.href='Excluir/ExcluirVeiculo.php?id=".$row['id_car']."' : false;\">🧨</button>
+                            <button onclick=\"location.href='../salvar/Editar/EditarVeiculo.php?id=".$row['id_car']."'\">⚙</button>
+                            <button onclick=\"return confirm('Tem certeza que deseja excluir este veículo?') ? location.href='../salvar/Excluir/ExcluirVeiculo.php?id=".$row['id_car']."' : false;\">🧨</button>
                         </td>
                     </tr>";
                 }

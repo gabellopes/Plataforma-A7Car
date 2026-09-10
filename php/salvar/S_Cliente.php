@@ -13,7 +13,6 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-// 1. Recebe os dados do formulário
 $Nome = trim($_POST['Nome'] ?? '');
 $Email = trim($_POST['Email'] ?? '');
 $Telefone = trim($_POST['Telefone'] ?? '');
@@ -22,7 +21,6 @@ $Cnh = trim($_POST['Cnh'] ?? '');
 
 
 
-// 2. Valida campos vazios e confirmação da senha
 if (empty($Nome) || empty($Email) || empty($Telefone) || empty($Cpf) || empty($Cnh)) {
     $_SESSION['erro_cadastro'] = 'Preencha todos os campos.';
     $_SESSION['erro'] = true;

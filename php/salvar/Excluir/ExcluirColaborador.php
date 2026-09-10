@@ -9,15 +9,19 @@ include __DIR__ . "../../Conexao.php";
 
 
 
-
 $id = trim($_GET['id'] ?? '');
 
 
-$stmt = $sql->prepare("DELETE FROM cliente WHERE id_cli = ?");
+
+
+
+
+    
+$stmt = $sql->prepare("DELETE FROM colaborador WHERE id_col = ?");
 $stmt->bind_param("i", $id);
 $stmt->execute();
 
-header("Location: ../../admin/Clientes.php");
+header("Location: ../../admin/Colaboradores.php");
 exit;
 
 

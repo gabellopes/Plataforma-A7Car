@@ -6,10 +6,8 @@ const botaoCadastrar = document.getElementById("Cadastrar");
 let MensagemEmail = document.getElementById("Mensagem_email");
 let MensagemSenha = document.getElementById("Mensagem_senha");
 let MensagemTelefone = document.getElementById("Mensagem_telefone");
-MensagemEmail.style.color = "red";
-MensagemSenha.style.color = "red";
-MensagemTelefone.style.color = "red";
-
+console.log(MensagemEmail);
+console.log(MensagemTelefone);
 
 function PreencherUser(){
     Nome.value = "Fulano";
@@ -18,13 +16,36 @@ function PreencherUser(){
     ConfirmarSenha.value = "Senha123@"
 
 }
-function validarCadastro() {
+function validarUser() {
+    validarCadastro();
     validarEmail();
     validarSenha();
     validarTelefone();
+   
 }
 
+function validarCadastro(){
+    if(validarEmail() === true && validarSenha() === true && validarTelefone() === true ){
+    botaoCadastrar.type = "submit";
+    }
+}
+
+function validarColaborador(){
+    validarTelefone();
+    validarEmail()
+    if(validarEmail() === true && validarTelefone() === true ){
+    botaoCadastrar.type = "submit";
+    }
+}
+function validarCliente(){
+    validarTelefone();
+    validarEmail();
+    if(validarEmail() === true && validarTelefone() === true){
+    botaoCadastrar.type = "submit";
+    }
+}
 function validarSenha() {
+MensagemSenha.style.color = "red";
 const regexCaracteresEspeciais = /[@$!%*?&]/;
 
    if(Senha.value !== ConfirmarSenha.value) {
@@ -51,12 +72,12 @@ const regexCaracteresEspeciais = /[@$!%*?&]/;
         
     }else{
         MensagemSenha.textContent = "";
-        botaoCadastrar.type = "submit"; 
         return true;
     }
 }
 
 function validarEmail(){
+MensagemEmail.style.color = "red";
     if (!Email.value.match(/^[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$/)) {
         MensagemEmail.textContent = "Formato de e-mail inválido!";
         return false;
@@ -67,6 +88,7 @@ function validarEmail(){
 
 }
 function validarTelefone(){
+    MensagemTelefone.style.color = "red";
     if(Telefone.value.length <= 13 || Telefone.value.length > 15) {
         MensagemTelefone.textContent = "Formato de telefone inválido!";
         return false;

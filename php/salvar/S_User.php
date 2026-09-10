@@ -84,7 +84,7 @@ $verificaEmail->execute();
 $resultadoEmail = $verificaEmail->get_result();
 
 if ($resultadoEmail->num_rows > 0) {
-    $_SESSION['erro_cadastro'] = 'Este e-mail já está cadastrado.';
+    $_SESSION['erro_cadastro'] = "Este e-mail já está cadastrado.";
     $_SESSION['erro'] = true;
     header("Location: ../user/Cadastro.php");
     exit;

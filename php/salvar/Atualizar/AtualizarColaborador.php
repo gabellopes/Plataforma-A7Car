@@ -5,7 +5,7 @@ SESSION_START();
             exit;
         }
 
-include __DIR__ . "/Conexao.php";
+include __DIR__ . "../../Conexao.php";
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     $_SESSION['erro_cadastro'] = 'Método inválido.';
@@ -19,6 +19,7 @@ $Telefone = trim($_POST['Telefone'] ?? '');
 $Servico = trim($_POST['Servico'] ?? '');
 $Descricao = trim($_POST['Descricao'] ?? '');
 $Imagem = "semfoto";
+$id = trim($_POST['id'] ?? '');
 
 
 
@@ -31,11 +32,11 @@ if (empty($Nome) || empty($Email) || empty($Telefone) || empty($Servico) || empt
 }
 
     
-$stmt = $sql->prepare("INSERT INTO colaborador (nome_col, email_col, telefone_col, servico_col, descricao_col, foto_col) VALUES (?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("ssssss", $Nome, $Email, $Telefone, $Servico, $Descricao, $Imagem);
+$stmt = $sql->prepare("UPDATE colaborador SET nome_col = ?, email_col = ?, telefone_col = ?, servico_col = ?, descricao_col = ?, foto_col = ? WHERE id_col = ?");
+$stmt->bind_param("ssssssi", $Nome, $Email, $Telefone, $Servico, $Descricao, $Imagem, $id);
 $stmt->execute();
 
-header("Location: ../admin/Cadastrar/NovoColaborador.php");
+header("Location: ../../admin/Colaboradores.php");
 exit;
 
 
