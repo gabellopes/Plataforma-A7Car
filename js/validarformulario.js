@@ -3,11 +3,14 @@ const Email = document.getElementById("Email");
 const Senha = document.getElementById("Senha");
 const ConfirmarSenha = document.getElementById("Confirmar-senha");
 const botaoCadastrar = document.getElementById("Cadastrar");
+
+
 let MensagemEmail = document.getElementById("Mensagem_email");
 let MensagemSenha = document.getElementById("Mensagem_senha");
 let MensagemTelefone = document.getElementById("Mensagem_telefone");
-console.log(MensagemEmail);
-console.log(MensagemTelefone);
+let MensagemCpf = document.getElementById("Mensagem_cpf");
+let MensagemCnh = document.getElementById("Mensagem_cnh");
+
 
 function PreencherUser(){
     Nome.value = "Fulano";
@@ -38,9 +41,11 @@ function validarColaborador(){
     }
 }
 function validarCliente(){
+    validarCpf();
+    validarCnh();
     validarTelefone();
     validarEmail();
-    if(validarEmail() === true && validarTelefone() === true){
+    if(validarEmail() === true && validarTelefone() === true && validarCpf() === true && validarCnh() === true){
     botaoCadastrar.type = "submit";
     }
 }
@@ -94,6 +99,27 @@ function validarTelefone(){
         return false;
     }else{
         MensagemTelefone.textContent = "";
+        return true;
+    }
+}
+
+function validarCpf(){
+    MensagemCpf.style.color = "red";
+    if(Cpf.value.length != 14){
+        MensagemCpf.textContent = "Formato de cpf inválido!"
+        return false;
+    }else{
+        MensagemCpf.textContent = "";
+        return true;
+    }
+}
+function validarCnh(){
+    MensagemCnh.style.color = "red";
+    if(Cnh.value.length != 9){
+        MensagemCnh.textContent = "Formato de cnh inválido!"
+        return false;
+    }else{
+        MensagemCnh.textContent = ""
         return true;
     }
 }

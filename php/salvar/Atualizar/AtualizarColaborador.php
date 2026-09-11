@@ -36,6 +36,9 @@ $stmt = $sql->prepare("UPDATE colaborador SET nome_col = ?, email_col = ?, telef
 $stmt->bind_param("ssssssi", $Nome, $Email, $Telefone, $Servico, $Descricao, $Imagem, $id);
 $stmt->execute();
 
+$_SESSION['sucesso_cadastro'] = 'Colaborador atualizado com sucesso!';
+$_SESSION['erro'] = false;
+
 header("Location: ../../admin/Colaboradores.php");
 exit;
 

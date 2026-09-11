@@ -33,6 +33,9 @@ $stmt = $sql->prepare("INSERT INTO cliente (nome_cli, email_cli, telefone_cli, c
 $stmt->bind_param("sssii", $Nome, $Email, $Telefone, $Cpf, $Cnh);
 $stmt->execute();
 
+$_SESSION['sucesso_cadastro'] = 'Cliente cadastrado com sucesso!';
+$_SESSION['erro'] = false;
+
 header("Location: ../admin/Cadastrar/NovoCliente.php");
 exit;
 

@@ -16,6 +16,11 @@
 <body>
       <h1>Editar Colaborador</h1>
        <?php 
+        if(isset($_SESSION['sucesso_cadastro'])){
+            $Mensagem = $_SESSION['sucesso_cadastro'];
+            echo "<script>alert('$Mensagem');</script>"; 
+            $_SESSION['sucesso_cadastro'] = null;
+        }
     if(isset($_GET['id'])){
         
         require_once "../../salvar/Conexao.php";

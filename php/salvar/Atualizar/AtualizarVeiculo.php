@@ -38,6 +38,9 @@ $stmt = $sql->prepare("UPDATE carro SET marca_car = ?, modelo_car = ?, ano_car =
 $stmt->bind_param("ssiisisssi", $Marca, $Modelo, $Ano, $Preco, $Cor, $Quilometragem, $Combustivel, $Descricao, $Imagem, $id);
 $stmt->execute();
 
+$_SESSION['sucesso_cadastro'] = 'Veiculo atualizado com sucesso!';
+$_SESSION['erro'] = false;
+
 header("Location: ../../admin/Veiculos.php");
 exit;
 

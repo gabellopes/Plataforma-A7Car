@@ -35,6 +35,9 @@ $stmt = $sql->prepare("UPDATE cliente SET nome_cli = ?, email_cli = ?, telefone_
 $stmt->bind_param("sssiii", $Nome, $Email, $Telefone, $Cpf, $Cnh, $id);
 $stmt->execute();
 
+$_SESSION['sucesso_cadastro'] = 'Cliente atualizado com sucesso!';
+$_SESSION['erro'] = false;
+
 header("Location: ../../admin/Clientes.php");
 exit;
 

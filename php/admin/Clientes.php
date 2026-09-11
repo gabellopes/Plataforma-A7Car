@@ -14,7 +14,15 @@
     <title>Admin Clientes</title>
 </head>
 <body>
-    <?php include __DIR__ . "/_Aside.php"; ?>
+    <?php include __DIR__ . "/_Aside.php"; 
+        if(isset($_SESSION['sucesso_cadastro'])){
+            $Mensagem = $_SESSION['sucesso_cadastro'];
+            echo "<script>alert('$Mensagem');</script>"; 
+            $_SESSION['sucesso_cadastro'] = null;
+        }
+    
+    ?>
+    
     <div id="CM">
         <div id="CSM">
             <div id="CT">

@@ -35,6 +35,9 @@ $stmt = $sql->prepare("INSERT INTO colaborador (nome_col, email_col, telefone_co
 $stmt->bind_param("ssssss", $Nome, $Email, $Telefone, $Servico, $Descricao, $Imagem);
 $stmt->execute();
 
+$_SESSION['sucesso_cadastro'] = 'Colaborador cadastrado com sucesso!';
+$_SESSION['erro'] = false;
+
 header("Location: ../admin/Cadastrar/NovoColaborador.php");
 exit;
 

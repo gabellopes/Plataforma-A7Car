@@ -37,6 +37,9 @@ $stmt = $sql->prepare("INSERT INTO carro (marca_car, modelo_car, ano_car, preco_
 $stmt->bind_param("ssiisisss", $Marca, $Modelo, $Ano, $Preco, $Cor, $Quilometragem, $Combustivel, $Descricao, $Imagem);
 $stmt->execute();
 
+$_SESSION['sucesso_cadastro'] = 'Veículo cadastrado com sucesso!';
+$_SESSION['erro'] = false;
+
 header("Location: ../admin/Cadastrar/NovoVeiculo.php");
 exit;
 

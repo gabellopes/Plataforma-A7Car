@@ -16,6 +16,11 @@
 <body>
     <h1>Editar Cliente</h1>
     <?php 
+     if(isset($_SESSION['sucesso_cadastro'])){
+        $Mensagem = $_SESSION['sucesso_cadastro'];
+        echo "<script>alert('$Mensagem');</script>"; 
+        $_SESSION['sucesso_cadastro'] = null;
+    }
     if(isset($_GET['id'])){
         
         require_once "../../salvar/Conexao.php";
@@ -34,7 +39,9 @@
         <fieldset><label for="Telefone">Telefone</label><input type="text" name="Telefone" id="Telefone" id="Telefone" value="<?php echo $cliente['telefone_cli']; ?>" maxlength="15" required></fieldset>
         <div id="Mensagem_telefone"></div>
         <fieldset><label for="Cpf">CPF</label><input type="text" name="Cpf" id="Cpf" maxlength="14" value="<?php echo $cliente['cpf_cli']; ?>" required></fieldset>
+        <div id="Mensagem_cpf"></div>
         <fieldset><label for="Cnh">CNH</label><input type="text" name="Cnh" id="Cnh" maxlength="11"  value="<?php echo $cliente['cnh_cli']; ?>" required></fieldset>
+        <div id="Mensagem_cnh"></div>
         <fieldset><input type="button" id="Cadastrar" value="Salvar" onclick="return confirm('Tem certeza que deseja atualizar este cliente?') ? validarCliente() : true;"></fieldset>
         <fieldset><button type="button" onclick="window.location.href='../../admin/Clientes.php'">Voltar</button></fieldset>
     </form>

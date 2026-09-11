@@ -14,6 +14,13 @@
     <title>Adicionar Veículo</title>
 </head>
 <body>
+    <?php
+         if(isset($_SESSION['sucesso_cadastro'])){
+            $Mensagem = $_SESSION['sucesso_cadastro'];
+            echo "<script>alert('$Mensagem');</script>"; 
+            $_SESSION['sucesso_cadastro'] = null;
+        }
+    ?>
       <h1>Adicionar Veículo</h1>
     <form method="POST" action="../../salvar/S_Veiculo.php">
         <fieldset><label for="Marca">Marca</label><input type="text" name="Marca" id="Marca"  maxlength="20" required></fieldset>
