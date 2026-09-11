@@ -1,0 +1,84 @@
+@font-face {
+    font-family: Barlow;
+    src: url(../fonte/BarlowSemiCondensed-Regular.ttf);
+}
+@font-face {
+    font-family: Barlow-Bold;
+    src: url(../fonte/BarlowSemiCondensed-Bold.ttf);
+}
+h1{
+    font-family: Barlow-Bold;
+}
+a{
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    font-family: Barlow-Bold;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-weight: normal;
+}
+body{
+    margin-top: 0vh;
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+    background-color: rgb(9, 9, 9);
+    color: white;
+    font-family: Barlow;
+}
+.logo{
+    height: 8vh;
+    width: 13vh;
+    margin-right: auto;
+}
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.655);
+    height: 8vh;
+    background-color: black;
+}
+header p{
+    font-family: Barlow-Bold;
+    font-size: 2rem;
+}
+#Menu{
+    margin-top: 6vh;
+    left: 0;
+    width: 13vw;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid rgba(128, 128, 128, 0.655);
+    height: 94vh;
+    background-color: black;
+    padding: 2vh 0vw 1vh 0vw;
+}
+table{
+    border-spacing: 2vw;
+    background-color:  rgba(128, 128, 128, 0.284);
+    border-collapse: collapse;
+    border: 1px solid rgba(128, 128, 128, 0.655);
+}
+th, td {
+    border: 1px solid rgba(128, 128, 128, 0.655);
+    border-right: 0px;
+    border-left: 0px;
+    padding: 8px;
+    color: rgb(150, 150, 150);
+    font-family: Barlow-Bold;
+}
+#MItens{
+    border-top: 1px solid rgba(128, 128, 128, 0.655);
+    width: 13vw;
+}

@@ -1,0 +1,150 @@
+@font-face {
+    font-family: Barlow;
+    src: url(../fonte/BarlowSemiCondensed-Regular.ttf);
+}
+@font-face {
+    font-family: Barlow-Bold;
+    src: url(../fonte/BarlowSemiCondensed-Bold.ttf);
+}
+h1{
+    font-family: Barlow-Bold;
+}
+a{
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    color: rgb(150, 150, 150);
+}
+header a{
+    font-size: 1.5rem;
+    margin: 0 2.5vw;
+    font-family: Barlow-Bold;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-weight: normal;
+}
+header .btn {
+    margin-right: 2vw;
+}
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.655);
+    height: 9vh;
+    background-color: black;
+}
+footer{
+    margin-top: auto;
+    height: 30vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    gap: 2vh;
+    border-top: 1px solid rgba(128, 128, 128, 0.655);
+    background-color: rgb(19, 19, 19);
+}
+.fo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 95vw;
+}
+.nav{
+    display: flex;
+    flex-direction: column;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+    background-color: rgb(9, 9, 9);
+    color: white;
+    font-family: Barlow;
+}
+#adm{
+    background-color: rgba(237, 35, 35, 0.247);
+    border: 2px solid rgba(99, 2, 2, 0.99);
+    border-radius: 3px;
+    font-size: 1rem;
+    color: white;
+}
+#divadm{
+    height: 10vh;
+    padding-top: 10vh;
+}
+.btn{
+    border: 4px solid  rgb(223, 25, 25);
+    background-color: rgb(223, 25, 25);
+    color: white;
+    font-family: Barlow-Bold;
+    font-size: 1.5rem;
+}
+#btnEntrar{
+    border: 4px solid  rgb(0, 0, 0);
+    background-color:  rgb(0, 0, 0);
+    color: rgb(150, 150, 150);
+}
+.btn:hover{
+    background-color: rgb(255, 25, 25);
+    border: 4px solid  rgb(255, 25, 25);
+    transform: scale(1.05);
+}  
+#btnEntrar:hover{
+    border: 4px solid  rgb(20, 20, 20);
+    background-color:  rgb(20, 20, 20);
+    color:  white;
+}
+a:hover{
+    text-decoration: underline;
+}
+.logo{
+    height: 8vh;
+    width: 13vh;
+    margin-left: 2vw;
+    margin-right: auto;
+    cursor: pointer;
+}
+header a:hover{
+    color: white;
+}
+#ter{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+footer #logo{
+    margin-top: 0;
+    height: 8vh;
+    width: 13vh;
+}
+h3{
+    color: rgb(150, 150, 150);
+    font-size: 1.2rem;
+    font-family: Barlow;
+}
+#link{
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    
+}
+#linksAuth{
+    display: flex;
+    flex-direction: row;
+}
