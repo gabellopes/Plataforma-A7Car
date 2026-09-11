@@ -12,16 +12,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Colaboradores</title>
+    <link rel="stylesheet" href="../../css/adimin.css">
+    <link rel="stylesheet" href="../../css/ADMcolaboradores.css">
 </head>
 <body>
     <?php include __DIR__ . "/_Aside.php"; ?>
-    <div id="CM">
-        <div id="CSM">
-            <div id="CT">
+        <div id="meio">
+            <div id="titulo">
                 <h1>COLABORADORES</h1>
-                <button onclick="window.location.href='Cadastrar/NovoColaborador.php'">NOVO COLABORADOR</button>
+                <button class="btn" onclick="window.location.href='Cadastrar/NovoColaborador.php'">NOVO COLABORADOR</button>
             </div>
-
             <div id="CE">
                 <table>
                 <tr>
@@ -29,11 +29,9 @@
                     <td>SERVIÇO</td>
                     <td>TELEFONE</td>
                     <td>E-MAIL</td>
-                    <td></td>
-                    <td></td>
+                    <td>BUTÕES</td>
                 </tr>
-
-                 <?php
+		<?php
                 include_once "../salvar/Conexao.php";
 
                 $stmt = $sql->prepare("SELECT * FROM colaborador ");
@@ -58,7 +56,5 @@
             </div>
 
         </div>
-
-    </div>
 </body>
 </html>
