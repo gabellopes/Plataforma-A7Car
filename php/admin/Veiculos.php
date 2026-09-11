@@ -62,8 +62,7 @@ if(isset($_SESSION['sucesso_cadastro'])){
                             <button onclick=\"return confirm('Tem certeza que deseja excluir este veículo?') ? location.href='../salvar/Excluir/ExcluirVeiculo.php?id=".$row['id_car']."' : false;\">🧨</button>
                         </td>
                     </tr>";
-                        </td>
-                    </tr>";
+                     
                 }
                 ?>
                 </table>
