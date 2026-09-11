@@ -5,7 +5,7 @@ SESSION_START();
             exit;
         }
 
-include __DIR__ . "/Conexao.php";
+include __DIR__ . "../../Conexao.php";
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     $_SESSION['erro_cadastro'] = 'Método inválido.';
@@ -22,6 +22,7 @@ $Quilometragem = trim($_POST['Quilometragem'] ?? '');
 $Combustivel = trim($_POST['Combustivel'] ?? '');
 $Descricao = trim($_POST['Descricao'] ?? '');
 $Imagem = "semfoto";
+$id = trim($_POST['id'] ?? '');
 
 
 
@@ -33,14 +34,14 @@ if (empty($Marca) || empty($Modelo) || empty($Ano) || empty($Preco) || empty($Co
 }
 
     
-$stmt = $sql->prepare("INSERT INTO carro (marca_car, modelo_car, ano_car, preco_car, cor_car, quilometragem_car, combustivel_car, descricao_car, foto_car) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("ssiisisss", $Marca, $Modelo, $Ano, $Preco, $Cor, $Quilometragem, $Combustivel, $Descricao, $Imagem);
+$stmt = $sql->prepare("UPDATE carro SET marca_car = ?, modelo_car = ?, ano_car = ?, preco_car = ?, cor_car = ?, quilometragem_car = ?, combustivel_car = ?, descricao_car = ?, foto_car = ? WHERE id_car = ?");
+$stmt->bind_param("ssiisisssi", $Marca, $Modelo, $Ano, $Preco, $Cor, $Quilometragem, $Combustivel, $Descricao, $Imagem, $id);
 $stmt->execute();
 
-$_SESSION['sucesso_cadastro'] = 'Veículo cadastrado com sucesso!';
+$_SESSION['sucesso_cadastro'] = 'Veiculo atualizado com sucesso!';
 $_SESSION['erro'] = false;
 
-header("Location: ../admin/Cadastrar/NovoVeiculo.php");
+header("Location: ../../admin/Veiculos.php");
 exit;
 
 

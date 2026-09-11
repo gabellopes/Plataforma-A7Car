@@ -45,14 +45,7 @@ session_start();
     <div class="mei">
     <div id="login">
         
-    <?php if (isset($_SESSION['erro_login'])): ?>
-        <p style="color: red;">
-            <?php
-                echo $_SESSION['erro_login'];
-                unset($_SESSION['erro_login']);
-            ?>
-        </p>
-    <?php endif; ?>
+    
 
     <form action="../salvar/Testelogin.php" method="post">
         <label for="email">E-mail</label>
@@ -60,6 +53,7 @@ session_start();
 
         <label for="senha">Senha</label>
         <input type="password" name="Senha" id="Senha" maxlength="20" required>
+        <div style="color: red;"><?php if (isset($_SESSION['erro_login'])){echo $_SESSION['erro_login'];unset($_SESSION['erro_login']);} ?></div>
 
         <button type="submit" class="btn">ENTRAR</button>
         <input type="button" value="User" onclick="PreencherUser()">

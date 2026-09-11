@@ -109,9 +109,18 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `telefone_usu` varchar(15) NOT NULL,
   `senha_usu` varchar(255) NOT NULL,
   PRIMARY KEY (`id_usu`)
+<<<<<<< HEAD
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Copiando dados para a tabela concessionaria.usuario: ~0 rows (aproximadamente)
+=======
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Copiando dados para a tabela concessionaria.usuario: ~2 rows (aproximadamente)
+INSERT INTO `usuario` (`id_usu`, `nome_usu`, `email_usu`, `telefone_usu`, `senha_usu`) VALUES
+	(1, 'asdasdasd', 'gabriel.alves33@gmail.com', '(11)98228-9155', '$2y$10$bYyUpxvzbYtZmLbDlcdgCuGeyGxYHCf5DfQG8jR8EM4vf3Id46riy'),
+	(2, 'admin', 'admin@gmail.com', '(11)98229-9155', '$2y$10$IStkVoe8X6t5PeNkhhj/P.vKMyNWIxlP9YW/KvevCKAUUHQJQtCx2');
+>>>>>>> avisos
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

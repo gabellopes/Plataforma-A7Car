@@ -5,7 +5,7 @@ SESSION_START();
             exit;
         }
 
-include __DIR__ . "/Conexao.php";
+include __DIR__ . "../../Conexao.php";
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     $_SESSION['erro_cadastro'] = 'Método inválido.';
@@ -13,14 +13,17 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
+// 1. Recebe os dados do formulário
 $Nome = trim($_POST['Nome'] ?? '');
 $Email = trim($_POST['Email'] ?? '');
 $Telefone = trim($_POST['Telefone'] ?? '');
 $Cpf = trim($_POST['Cpf'] ?? '');
 $Cnh = trim($_POST['Cnh'] ?? '');
+$id = trim($_POST['id'] ?? '');
 
 
 
+// 2. Valida campos vazios e confirmação da senha
 if (empty($Nome) || empty($Email) || empty($Telefone) || empty($Cpf) || empty($Cnh)) {
     $_SESSION['erro_cadastro'] = 'Preencha todos os campos.';
     $_SESSION['erro'] = true;
@@ -28,15 +31,14 @@ if (empty($Nome) || empty($Email) || empty($Telefone) || empty($Cpf) || empty($C
     exit;
 }
 
-    
-$stmt = $sql->prepare("INSERT INTO cliente (nome_cli, email_cli, telefone_cli, cpf_cli, cnh_cli) VALUES (?, ?, ?, ?, ?)");
-$stmt->bind_param("sssii", $Nome, $Email, $Telefone, $Cpf, $Cnh);
+$stmt = $sql->prepare("UPDATE cliente SET nome_cli = ?, email_cli = ?, telefone_cli = ?, cpf_cli = ?, cnh_cli = ? WHERE id_cli = ?");
+$stmt->bind_param("sssiii", $Nome, $Email, $Telefone, $Cpf, $Cnh, $id);
 $stmt->execute();
 
-$_SESSION['sucesso_cadastro'] = 'Cliente cadastrado com sucesso!';
+$_SESSION['sucesso_cadastro'] = 'Cliente atualizado com sucesso!';
 $_SESSION['erro'] = false;
 
-header("Location: ../admin/Cadastrar/NovoCliente.php");
+header("Location: ../../admin/Clientes.php");
 exit;
 
 

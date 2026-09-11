@@ -16,7 +16,14 @@
     <link rel="stylesheet" href="../../css/ADMveiculos.css">
 </head>
 <body>
-<?php include __DIR__ . "/_Aside.php"; ?>
+<?php include __DIR__ . "/_Aside.php"; 
+
+if(isset($_SESSION['sucesso_cadastro'])){
+    $Mensagem = $_SESSION['sucesso_cadastro'];
+    echo "<script>alert('$Mensagem');</script>"; 
+    $_SESSION['sucesso_cadastro'] = null;
+}
+?>
             <div id="meio">
                 <div id="titulo">
                 <h1>VEICULOS</h1>
@@ -51,9 +58,10 @@
                         <td>".$row['preco_car']."</td>
                         <td>"."07/09/26"."</td>
                         <td>
-                            <button onclick=\"location.href='Editar/EditarVeiculo.php?id=".$row['id_car']."'\">⚙</button>
-                            <button onclick=\"location.href='Editar/EditarVeiculo.php?id=".$row['id_car']."'\">🛒</button>
-                            <button onclick=\"location.href='Excluir/ExcluirVeiculo.php?id=".$row['id_car']."'\">🧨</button>
+                            <button onclick=\"location.href='../salvar/Editar/EditarVeiculo.php?id=".$row['id_car']."'\">⚙</button>
+                            <button onclick=\"return confirm('Tem certeza que deseja excluir este veículo?') ? location.href='../salvar/Excluir/ExcluirVeiculo.php?id=".$row['id_car']."' : false;\">🧨</button>
+                        </td>
+                    </tr>";
                         </td>
                     </tr>";
                 }
