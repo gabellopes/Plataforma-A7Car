@@ -1,0 +1,30 @@
+#CE{
+    width: fit-content;
+    height: 50vh;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 1vh 0vw 1vh 0vw;
+    font-size: 1.3rem;
+}
+#meio{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 3vw;
+    margin-top: 10vh;
+    width: 100vw;
+}
+.btn{
+    border: 2px solid  rgb(223, 25, 25);
+    background-color: rgb(223, 25, 25);
+    color: white;
+    font-family: Barlow-Bold;
+    font-size: 1.3rem;
+    margin-left: 65vw;
+    width: fit-content;
+}
+#titulo{
+    display: flex;
+    flex-direction: row;
+}
