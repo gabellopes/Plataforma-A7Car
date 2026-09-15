@@ -32,13 +32,17 @@ if(isset($_SESSION['sucesso_cadastro'])){
             <div id="CE">
                 <table>
                 <tr>
+                    <td>FOTO</td>
+                    <td>MARCA</td>
                     <td>NOME</td>
-                    <td>CPF</td>
-                    <td>TELEFONE</td>
-                    <td>E-MAIL</td>
-                    <td>CNH</td>
-                    <td>FORMA DE PAGAMENTO</td>
-                    <td>BUTÕES</td>
+                    <td>ANO</td>
+                    <td>KM</td>
+                    <td>COMBUSTIVEL</td>
+                    <td>VALOR</td>
+                    <td>ATUALIZADO</td>
+                    <td>EDITAR</td>
+                    <td>VENDER</td>
+                    <td>EXCLUIR</td>
                 </tr>
 		<?php
                 include_once "../salvar/Conexao.php";
@@ -51,6 +55,7 @@ if(isset($_SESSION['sucesso_cadastro'])){
                     echo "
                     <tr>
                         <td>".$row['foto_car']."</td>
+                        <td>".$row['marca_car']."</td>
                         <td>".$row['modelo_car']."</td>
                         <td>".$row['ano_car']."</td>
                         <td>".$row['quilometragem_car']."</td>
@@ -59,7 +64,12 @@ if(isset($_SESSION['sucesso_cadastro'])){
                         <td>"."07/09/26"."</td>
                         <td>
                             <button onclick=\"location.href='../salvar/Editar/EditarVeiculo.php?id=".$row['id_car']."'\">⚙</button>
-                            <button onclick=\"return confirm('Tem certeza que deseja excluir este veículo?') ? location.href='../salvar/Excluir/ExcluirVeiculo.php?id=".$row['id_car']."' : false;\">🧨</button>
+                        </td>
+                                                <td>
+                            <button>🟩</button>
+                        </td>
+                        <td>
+                        <button onclick=\"return confirm('Tem certeza que deseja excluir este veículo?') ? location.href='../salvar/Excluir/ExcluirVeiculo.php?id=".$row['id_car']."' : false;\">🧨</button>
                         </td>
                     </tr>";
                      

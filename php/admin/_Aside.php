@@ -15,8 +15,8 @@
 
         <div id="MItens"></div>
             <a href="Dashboard.php"><img src="" alt="">DASHBOARD</a>
-            <a href="Veiculos.php"><img src="" alt="">VEÍCULOS</a>
             <a href="Clientes.php"><img src="" alt="">CLIENTES</a>
+            <a href="Veiculos.php"><img src="" alt="">VEÍCULOS</a>
             <a href="Colaboradores.php"><img src="" alt="">COLABORADORES</a>
             <a href="Vendidos.php"><img src="" alt="">VENDIDOS</a>
             <a href="Simulacoes.php"><img src="" alt="">SIMULAÇÕES </a>

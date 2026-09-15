@@ -31,7 +31,7 @@
         <fieldset><label for="Imagem">Foto</label><input type="file" name="Foto" id="Foto"  maxlength="255"></fieldset>
         <fieldset><label for="Servico">Serviço</label><input type="text" name="Servico" id="Servico"  maxlength="255" required></fieldset>
         <fieldset><label for="Descricao">Descrição</label><input type="text" name="Descricao" id="Descricao"  maxlength="255" required></fieldset>
-
+        <div style="color: red;"><?php if (isset($_SESSION['erro_cadastro'])){echo $_SESSION['erro_cadastro'];unset($_SESSION['erro_cadastro']);} ?></div>
         <fieldset><input type="button" id="Cadastrar" onclick="validarColaborador()" value="Salvar"></fieldset>
         <fieldset><button type="button" onclick="window.location.href='../Colaboradores.php'">Voltar</button></fieldset>
     </form>

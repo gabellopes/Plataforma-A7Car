@@ -31,7 +31,7 @@ if (empty($Nome) || empty($Email) || empty($Telefone) || empty($Servico) || empt
     exit;
 }
 
-    
+
 $stmt = $sql->prepare("UPDATE colaborador SET nome_col = ?, email_col = ?, telefone_col = ?, servico_col = ?, descricao_col = ?, foto_col = ? WHERE id_col = ?");
 $stmt->bind_param("ssssssi", $Nome, $Email, $Telefone, $Servico, $Descricao, $Imagem, $id);
 $stmt->execute();

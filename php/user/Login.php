@@ -1,5 +1,10 @@
 <?php
 session_start();
+  if(isset($_SESSION['sucesso_cadastro'])){
+            $Mensagem = $_SESSION['sucesso_cadastro'];
+            echo "<script>alert('$Mensagem');</script>"; 
+            $_SESSION['sucesso_cadastro'] = null;
+        }
 ?>
 <!DOCTYPE html>
 <html lang="en">

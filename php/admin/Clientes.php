@@ -37,8 +37,9 @@
                     <td>TELEFONE</td>
                     <td>E-MAIL</td>
                     <td>CNH</td>
-                    <td>FORMA DE PAGAMENTO</td>
-                    <td>BUTÕES</td>
+                    <td>EDITAR</td>
+                    <td>EXCLUIR</td>
+
                 </tr>
                 <?php
                 include_once "../salvar/Conexao.php";
@@ -57,6 +58,8 @@
                         <td>".$row['cnh_cli']."</td>
                         <td>
                             <button onclick=\"location.href='../salvar/Editar/EditarCliente.php?id=".$row['id_cli']."'\">⚙</button>
+                        </td>
+                        <td>
                             <button onclick=\"return confirm('Tem certeza que deseja excluir este cliente?') ? location.href='../salvar/Excluir/ExcluirCliente.php?id=".$row['id_cli']."' : false;\">🧨</button>
                         </td>
                     </tr>";
