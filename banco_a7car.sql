@@ -1,8 +1,8 @@
 -- --------------------------------------------------------
 -- Servidor:                     127.0.0.1
--- Versão do servidor:           8.0.30 - MySQL Community Server - GPL
+-- Versão do servidor:           8.4.3 - MySQL Community Server - GPL
 -- OS do Servidor:               Win64
--- HeidiSQL Versão:              12.1.0.6537
+-- HeidiSQL Versão:              12.8.0.6908
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -41,9 +41,11 @@ CREATE TABLE IF NOT EXISTS `carro` (
   `descricao_car` varchar(700) NOT NULL,
   `foto_car` varchar(255) NOT NULL,
   PRIMARY KEY (`id_car`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Copiando dados para a tabela concessionaria.carro: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela concessionaria.carro: ~1 rows (aproximadamente)
+REPLACE INTO `carro` (`id_car`, `marca_car`, `modelo_car`, `ano_car`, `cor_car`, `preco_car`, `quilometragem_car`, `combustivel_car`, `descricao_car`, `foto_car`) VALUES
+	(12, 'Rosa', 'Rosa', '2019', '22', 22.00, 22, 'Gasolina', 'sssss', 'semfoto');
 
 -- Copiando estrutura para tabela concessionaria.cliente
 CREATE TABLE IF NOT EXISTS `cliente` (
@@ -51,12 +53,16 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   `nome_cli` varchar(255) NOT NULL,
   `email_cli` varchar(255) NOT NULL,
   `telefone_cli` varchar(15) NOT NULL,
-  `cpf_cli` varchar(14) NOT NULL,
+  `cpf_cli` varchar(14) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `cnh_cli` varchar(9) NOT NULL,
-  PRIMARY KEY (`id_cli`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`id_cli`) USING BTREE,
+  UNIQUE KEY `cpf_cli` (`cpf_cli`),
+  UNIQUE KEY `cnh_cli` (`cnh_cli`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Copiando dados para a tabela concessionaria.cliente: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela concessionaria.cliente: ~1 rows (aproximadamente)
+REPLACE INTO `cliente` (`id_cli`, `nome_cli`, `email_cli`, `telefone_cli`, `cpf_cli`, `cnh_cli`) VALUES
+	(21, 'Gabriel Lopes Alves', 'gabriellopesalves900@gmail.com', '(11) 987654321', '111.111.111-11', '222222222');
 
 -- Copiando estrutura para tabela concessionaria.colaborador
 CREATE TABLE IF NOT EXISTS `colaborador` (
@@ -68,9 +74,14 @@ CREATE TABLE IF NOT EXISTS `colaborador` (
   `email_col` varchar(255) NOT NULL,
   `servico_col` varchar(255) NOT NULL,
   PRIMARY KEY (`id_col`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Copiando dados para a tabela concessionaria.colaborador: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela concessionaria.colaborador: ~3 rows (aproximadamente)
+REPLACE INTO `colaborador` (`id_col`, `nome_col`, `foto_col`, `descricao_col`, `telefone_col`, `email_col`, `servico_col`) VALUES
+	(17, 'Ana julia', 'semfoto', 'sssss', '(11) 98765-4321', 'gabriellopesalves900@gmail.com', 'ssssssss'),
+	(31, 'Gabriel Lopes Alves', 'semfoto', 'asdasd', '(11) 987654321', 'gabriellopesalves900@gmail.com', 'ssssssss'),
+	(32, 'João', 'semfoto', '1111111111', '(23) 123123123', 'gabriellopesalves900@gmail.com', '11111111111'),
+	(33, 'sdasdasd', 'semfoto', '23123', '(22) 222222222', 'asdasd@gmail.com', '23123');
 
 -- Copiando estrutura para tabela concessionaria.favorito
 CREATE TABLE IF NOT EXISTS `favorito` (
@@ -89,12 +100,14 @@ CREATE TABLE IF NOT EXISTS `favorito` (
 -- Copiando estrutura para tabela concessionaria.simulacao
 CREATE TABLE IF NOT EXISTS `simulacao` (
   `id_simu` int NOT NULL AUTO_INCREMENT,
-  `cpf_simu` varchar(14) NOT NULL,
+  `cpf_simu` varchar(11) NOT NULL,
   `cnh_simu` varchar(9) NOT NULL,
   `data_nasci_simu` date NOT NULL,
   `nome_comple_simu` varchar(255) NOT NULL,
   `id_usu` int NOT NULL,
   PRIMARY KEY (`id_simu`),
+  UNIQUE KEY `cpf_simu` (`cpf_simu`),
+  UNIQUE KEY `cnh_simu` (`cnh_simu`),
   KEY `id_usu` (`id_usu`),
   CONSTRAINT `simulacao_ibfk_1` FOREIGN KEY (`id_usu`) REFERENCES `usuario` (`id_usu`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -109,12 +122,11 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `telefone_usu` varchar(15) NOT NULL,
   `senha_usu` varchar(255) NOT NULL,
   PRIMARY KEY (`id_usu`)
-=======
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Copiando dados para a tabela concessionaria.usuario: ~2 rows (aproximadamente)
-INSERT INTO `usuario` (`id_usu`, `nome_usu`, `email_usu`, `telefone_usu`, `senha_usu`) VALUES
-	(default, 'admin', 'admin@gmail.com', '(11)98229-9155', '$2y$10$IStkVoe8X6t5PeNkhhj/P.vKMyNWIxlP9YW/KvevCKAUUHQJQtCx2');
+-- Copiando dados para a tabela concessionaria.usuario: ~1 rows (aproximadamente)
+REPLACE INTO `usuario` (`id_usu`, `nome_usu`, `email_usu`, `telefone_usu`, `senha_usu`) VALUES
+	(0, 'admin', 'admin@gmail.com', '(11)98229-9155', '$2y$10$IStkVoe8X6t5PeNkhhj/P.vKMyNWIxlP9YW/KvevCKAUUHQJQtCx2');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
