@@ -60,13 +60,13 @@
             <a href="contato.php">CONTATO</a>
         </div>
         <div>
-            <h1>CONTATO</h1>
-            <h3>numero telefone
-                <br>
-                email
-                <br>
-                endereço
-            </h3>
+           <h1>CONTATO</h1>
+                <h3>📞 (11) 97332-0504
+                    <br>
+                    email
+                    <br>
+                    📍 Estr. de Itapecerica, 4660 - Capão Redondo, São Paulo - SP, 05849-440
+                </h3>
         </div>
         <div id="divadm">
            <a href="../admin/Clientes.php" id="adm">ÁREA ADMINISTRATIVA</a>
