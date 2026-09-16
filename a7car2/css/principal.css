@@ -148,3 +148,9 @@ h3{
     display: flex;
     flex-direction: row;
 }
+#linksAuth p{
+    font-family: Barlow-Bold;
+    font-size: 1.2rem;
+    margin-top: 1vh;
+    margin-right: 1vw;
+}

@@ -27,17 +27,17 @@ if(isset($_SESSION['sucesso_cadastro'])){
             <div id="meio">
                 <div id="titulo">
                 <h1>VEICULOS</h1>
-                <button class="btn" onclick="location.href='Cadastrar/NovoVeiculo.php'">NOVO VEICULO</button>
+                <button class="btn" onclick="location.href='Cadastrar/NovoVeiculo.php'"> + NOVO VEICULO</button>
                 </div>
             <div id="CE">
                 <table>
                 <tr>
-                    <td>NOME</td>
-                    <td>CPF</td>
-                    <td>TELEFONE</td>
-                    <td>E-MAIL</td>
-                    <td>CNH</td>
-                    <td>FORMA DE PAGAMENTO</td>
+                    <td>VEÍCULO</td>
+                    <td>ANO</td>
+                    <td>KM</td>
+                    <td>COMBUSTÍVEL</td>
+                    <td>VALOR</td>
+                    <td>ATUALIZADO</td>
                     <td>BUTÕES</td>
                 </tr>
 		<?php
