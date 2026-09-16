@@ -15,6 +15,13 @@ if ($resultado->num_rows > 0) {
     exit;
 }
 }
-
+function select($atributo, $coluna, $variavel){
+    include __DIR__ . "/Conexao.php";
+    $busca = $sql->prepare("SELECT * FROM $coluna WHERE $atributo = ?");
+    $busca->bind_param("s", $variavel);
+    $busca->execute();
+    $resultado = $busca->get_result();
+    return $resultado;
+}
 
 ?>

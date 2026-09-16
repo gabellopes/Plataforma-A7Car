@@ -1,10 +1,12 @@
 <?php
-    SESSION_START();
-    
+    include __DIR__ . "/../../salvar/funcoes.php";
+
+
     if($_SESSION['user_email'] !== 'admin@gmail.com'){
             header("Location: ../admin/Login.php");
             exit;
         }
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,16 +33,16 @@
         $result = $stmt->get_result();
         $cliente = $result->fetch_assoc();
      ?>
-    <form method="Post" action="../Atualizar/VenderVeiculo.php">
+    <form method="Post" action="../../salvar/S_VendaVeiculo.php">
         <input type="hidden" name="id" value="<?php echo $cliente['id_car']; ?>">
         
-        <fieldset><label for="Cpf">CPF</label><input type="text" name="Cpf" id="Cpf" maxlength="14"  required><button>Buscar</button></fieldset>
+        <fieldset><label for="Cpf">CPF</label><input type="text" name="Cpf" id="Cpf" maxlength="14"  required><button type="submit" value="BuscarCpf" name="BuscarCpf">Buscar</button></fieldset>
         <div id="Mensagem_cpf"></div>
         <fieldset><label for="Nome">Nome do Comprador</label><input type="text" name="Nome" id="Nome"  maxlength="20" required></fieldset>
         <fieldset><label for="Telefone">Telefone</label><input type="text" name="Telefone" id="Telefone" maxlength="15" required></fieldset>
         <div id="Mensagem_telefone"></div>
         <fieldset><label for="Preco">Valor da venda</label><input type="number" name="Preco" id="Preco"  maxlength="20" required></fieldset>
-        <fieldset><input type="button" id="Cadastrar" value="Salvar" onclick="return confirm('Tem certeza que deseja vender este veiculo?') ? validarCliente() : true;"></fieldset>
+        <fieldset><input type="button" id="Cadastrar" value="Salvar" onclick="return confirm('Tem certeza que deseja vender este veiculo?') ? validarCpf() : true;"></fieldset>
         <fieldset><button type="button" onclick="window.location.href='../../admin/Clientes.php'">Voltar</button></fieldset>
     </form>
     <?php }else{ ?>

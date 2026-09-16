@@ -66,7 +66,7 @@ if(isset($_SESSION['sucesso_cadastro'])){
                             <button onclick=\"location.href='../salvar/Editar/EditarVeiculo.php?id=".$row['id_car']."'\">⚙</button>
                         </td>
                                                 <td>
-                            <button onclick=\"return confirm('Tem certeza que deseja excluir este veículo?') ? location.href='../salvar/Editar/VenderVeiculo.php?id=".$row['id_car']."' : false;\">🟩</button>
+                            <button onclick=\"location.href='Cadastrar/VenderVeiculo.php?id=".$row['id_car']."'\">🟩</button>
                         </td>
                         <td>
                         <button onclick=\"return confirm('Tem certeza que deseja excluir este veículo?') ? location.href='../salvar/Excluir/ExcluirVeiculo.php?id=".$row['id_car']."' : false;\">🧨</button>
