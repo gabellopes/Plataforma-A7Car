@@ -44,14 +44,14 @@
 
     <div id="info">
     
-        <h3>Endereço</h3>
-        <h2>Rua dos bobos N 0</h2>
-        <h3>Endereço</h3>
-        <h2>Rua dos bobos N 0</h2>
-        <h3>Endereço</h3>
-        <h2>Rua dos bobos N 0</h2>
-        <h3>Endereço</h3>
-        <h2>Rua dos bobos N 0</h2>
+        <h3>📍 ENDEREÇO</h3>
+            <h2>Estr. de Itapecerica, 4660 - Capão Redondo, São Paulo - SP, 05849-440</h2>
+            <h3>📞 TELEFONE</h3>
+            <h2>(11) 97332-0504</h2>
+            <h3>📧 E-MAIL</h3>
+            <h2>Rua dos bobos N 0</h2>
+            <h3>⏰ HORÁRIO</h3>
+            <h2>Seg–Sex: 9h–18h · Sáb: 9h–15h</h2>
 
         <div id="exclusi"
         
