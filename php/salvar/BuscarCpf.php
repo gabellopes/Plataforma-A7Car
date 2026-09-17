@@ -1,16 +1,15 @@
 <?php
 include __DIR__ . "/Conexao.php";
-$cpf = isset($_GET['cpf']) ? $_GET['cpf'] : '';
 
-if (empty($cpf)) {
-    echo json_encode(['sucesso' => false, 'mensagem' => 'CPF não informado.']);
-    exit;
-}
+header('Content-Type: application/json; charset=utf-8');
+
+$cpf = isset($_GET['Cpf']) ? $_GET['Cpf'] : '';
+
 
 try {
    
     $stmt = $sql->prepare("SELECT nome_cli, telefone_cli FROM cliente WHERE cpf_cli = ?");
-    $stmt->bind_param("i", $cpf);
+    $stmt->bind_param("s", $cpf);
     $stmt->execute();
     $result = $stmt->get_result();
     $cliente = $result->fetch_assoc();
@@ -28,7 +27,7 @@ try {
         ]);
     }
 
-} catch (PDOException $e) {
+} catch (Exception $e) {
     echo json_encode([
         'sucesso' => false,
         'mensagem' => 'Erro no servidor: ' . $e->getMessage()

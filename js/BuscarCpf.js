@@ -1,23 +1,28 @@
 function buscarcpf(){
-const botaobuscar = documentos.getElementById("BuscarCpf");
+const Nome = document.getElementById("Nome");
+const Telefone = document.getElementById("Telefone");
+const Cpf = document.getElementById("Cpf");
+const botaobuscar = document.getElementById("BuscarCpf");
+
+
 validarCpf();
 
 botaobuscar.addEventListener('click', async () => {
 
     try {
 
-        const response = await fetch(`../php/salvar/BuscarCpf.php?Cpf=${Cpf.value}`);
+        const response = await fetch(`/a7car2/php/salvar/BuscarCpf.php?Cpf=${Cpf.value}`);
         const dados = await response.json();
 
         if (dados.sucesso) {
             // Preenche os inputs com os dados que vieram do PHP
             Nome.value = dados.nome;
-            document.getElementById('Telefone').value = dados.telefone;
+            Telefone.value = dados.telefone;
         } else {
             alert(dados.mensagem);
             // Limpa os campos se não encontrar
             Nome.value = '';
-            document.getElementById('Telefone').value = '';
+            Telefone.value = '';
         }
 
     } catch (error) {
