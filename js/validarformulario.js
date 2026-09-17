@@ -49,6 +49,14 @@ function validarCliente(){
     botaoCadastrar.type = "submit";
     }
 }
+
+function validarVenda(){
+     validarCpf();
+     validarTelefone();
+if(validarCpf() === true && validarTelefone() === true){
+    botaoCadastrar.type = "submit";
+    }
+}
 function validarSenha() {
 MensagemSenha.style.color = "red";
 const regexCaracteresEspeciais = /[@$!%*?&]/;

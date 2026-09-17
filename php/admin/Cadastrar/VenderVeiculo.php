@@ -31,10 +31,10 @@
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $result = $stmt->get_result();
-        $cliente = $result->fetch_assoc();
+        $carro = $result->fetch_assoc();
      ?>
     <form method="Post" action="../../salvar/S_VendaVeiculo.php">
-        <input type="hidden" name="id" value="<?php echo $cliente['id_car']; ?>">
+        <input type="hidden" name="id"  value="<?php echo intval($carro['id_car']); ?>">
         
         <fieldset><label for="Cpf">CPF</label><input type="text" name="Cpf" id="Cpf" maxlength="14"  required><button type="submit" value="BuscarCpf" name="BuscarCpf">Buscar</button></fieldset>
         <div id="Mensagem_cpf"></div>
@@ -42,8 +42,9 @@
         <fieldset><label for="Telefone">Telefone</label><input type="text" name="Telefone" id="Telefone" maxlength="15" required></fieldset>
         <div id="Mensagem_telefone"></div>
         <fieldset><label for="Preco">Valor da venda</label><input type="number" name="Preco" id="Preco"  maxlength="20" required></fieldset>
-        <fieldset><input type="button" id="Cadastrar" value="Salvar" onclick="return confirm('Tem certeza que deseja vender este veiculo?') ? validarCpf() : true;"></fieldset>
-        <fieldset><button type="button" onclick="window.location.href='../../admin/Clientes.php'">Voltar</button></fieldset>
+        <div style="color: red;"><?php if (isset($_SESSION['erro_cadastro'])){echo $_SESSION['erro_cadastro'];unset($_SESSION['erro_cadastro']);} ?></div>
+        <fieldset><input type="button" id="Cadastrar" value="Salvar" onclick="return confirm('Tem certeza que deseja vender este veiculo?') ? validarVenda() : true;"></fieldset>
+        <fieldset><button type="button" onclick="window.location.href='../../admin/Veiculos.php'">Voltar</button></fieldset>
     </form>
     <?php }else{ ?>
         <p>Cliente não encontrado.</p>

@@ -11,17 +11,15 @@ $resultado = $verifica->get_result();
 if ($resultado->num_rows > 0) {
     $_SESSION['erro_cadastro'] = "$mensagem";
     $_SESSION['erro'] = true;
+
+    if( $link != ""){
     header("$link");
-    exit;
-}
-}
-function select($atributo, $coluna, $variavel){
-    include __DIR__ . "/Conexao.php";
-    $busca = $sql->prepare("SELECT * FROM $coluna WHERE $atributo = ?");
-    $busca->bind_param("s", $variavel);
-    $busca->execute();
-    $resultado = $busca->get_result();
+    exit;}else{
     return $resultado;
+    }
+  
 }
+}
+
 
 ?>

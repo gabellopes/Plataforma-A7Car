@@ -32,7 +32,7 @@
         <div id="Mensagem_cpf"></div>
         <fieldset><label for="Cnh">CNH</label><input type="text" name="Cnh" id="Cnh" maxlength="9"  required></fieldset>
         <div id="Mensagem_cnh"></div>
-             <div style="color: red;"><?php if (isset($_SESSION['erro_cadastro'])){echo $_SESSION['erro_cadastro'];unset($_SESSION['erro_cadastro']);} ?></div>
+        <div style="color: red;"><?php if (isset($_SESSION['erro_cadastro'])){echo $_SESSION['erro_cadastro'];unset($_SESSION['erro_cadastro']);} ?></div>
         <fieldset><input type="button" id="Cadastrar" onclick="validarCliente()" value="Salvar"></fieldset>
         <fieldset><button type="button" onclick="window.location.href='../Clientes.php'">Voltar</button></fieldset>
     </form>
