@@ -36,7 +36,7 @@
     <form method="Post" action="../../salvar/S_VendaVeiculo.php">
         <input type="hidden" name="id"  value="<?php echo intval($carro['id_car']); ?>">
         
-        <fieldset><label for="Cpf">CPF</label><input type="text" name="Cpf" id="Cpf" maxlength="14"  required><button type="submit" value="BuscarCpf" name="BuscarCpf">Buscar</button></fieldset>
+        <fieldset><label for="Cpf">CPF</label><input type="text" name="Cpf" id="Cpf" maxlength="14"  required><button type="button" value="BuscarCpf" name="BuscarCpf" onclick="buscarcpf()">Buscar</button></fieldset>
         <div id="Mensagem_cpf"></div>
         <fieldset><label for="Nome">Nome do Comprador</label><input type="text" name="Nome" id="Nome"  maxlength="20" required></fieldset>
         <fieldset><label for="Telefone">Telefone</label><input type="text" name="Telefone" id="Telefone" maxlength="15" required></fieldset>
@@ -50,7 +50,8 @@
         <p>Cliente não encontrado.</p>
     <?php } ?>
     <script src="../../../js/mascaras.js"></script>
-        <script src="../../../js/validarformulario.js"></script>
+    <script src="../../../js/validarformulario.js"></script>
+    <script src="../../../js/BuscarCpf.js"></script>
 
 </body>
 </html>
