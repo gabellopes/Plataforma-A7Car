@@ -19,10 +19,7 @@ $Telefone = trim($_POST['Telefone'] ?? '');
 $Preco = trim($_POST['Preco'] ?? '');
 $id = $_POST['id'];
 
-$resultado = verifica("cpf_cli", "cliente", $Cpf, "Cpf encontrado", "");
-
-echo $resultado['id_cli'];
-
+verifica("cpf_cli", "cliente", $Cpf, "Cpf encontrado", "Location: ../admin/Cadastrar/VenderVeiculo.php?id=" . $id);
 
 
 
