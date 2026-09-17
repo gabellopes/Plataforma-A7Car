@@ -1,8 +1,8 @@
 function buscarcpf(){
-
+const botaobuscar = documentos.getElementById("BuscarCpf");
 validarCpf();
 
-Cpf.addEventListener('click', async () => {
+botaobuscar.addEventListener('click', async () => {
 
     try {
 
