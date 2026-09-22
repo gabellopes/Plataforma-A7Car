@@ -34,7 +34,7 @@ if(isset($_SESSION['sucesso_cadastro'])){
                 <tr>
                     <td>FOTO</td>
                     <td>MARCA</td>
-                    <td>NOME</td>
+                    <td>MODELO</td>
                     <td>ANO</td>
                     <td>KM</td>
                     <td>COMBUSTIVEL</td>

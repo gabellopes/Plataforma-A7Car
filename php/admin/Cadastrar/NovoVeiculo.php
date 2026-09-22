@@ -25,10 +25,10 @@
     <form method="POST" action="../../salvar/S_Veiculo.php">
         <fieldset><label for="Marca">Marca</label><input type="text" name="Marca" id="Marca"  maxlength="20" required></fieldset>
         <fieldset><label for="Modelo">Modelo</label><input type="text" name="Modelo" id="Modelo"  maxlength="20" required></fieldset>
-        <fieldset><label for="Ano">Ano</label><input type="number" name="Ano" id="Ano"  maxlength="4" required></fieldset>
-        <fieldset><label for="Preco">Preço</label><input type="number" name="Preco" id="Preco"  maxlength="20" required></fieldset>
+        <fieldset><label for="Ano">Ano</label><input type="text" name="Ano" id="Ano"  maxlength="4" minlength="4" required></fieldset>
+        <fieldset><label for="Preco">Preço</label><input type="text" name="Preco" id="Preco"  maxlength="20" required></fieldset>
         <fieldset><label for="Cor">Cor</label><input type="text" name="Cor" id="Cor"  maxlength="20" required></fieldset>
-        <fieldset><label for="Quilometragem">Quilometragem</label><input type="number" name="Quilometragem" id="Quilometragem"  maxlength="20" required></fieldset>
+        <fieldset><label for="Quilometragem">Quilometragem</label><input type="text" name="Quilometragem" id="Quilometragem"  maxlength="20" required></fieldset>
         <fieldset><label for="Combustivel">Combustível</label><select name="Combustivel" id="Combustivel" required>
             <option value="Gasolina" selected>Gasolina</option>
             <option value="Álcool">Álcool</option>
@@ -40,5 +40,6 @@
         <fieldset><input type="submit" value="Salvar"></fieldset>
         <fieldset><button type="button" onclick="window.location.href='../Veiculos.php'">Voltar</button></fieldset>
     </form>
+    <script src="../../../js/mascaras.js"></script>
 </body>
 </html>

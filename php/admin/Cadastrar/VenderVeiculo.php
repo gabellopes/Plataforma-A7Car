@@ -16,7 +16,7 @@
     <title>Vender Veiculo</title>
 </head>
 <body>
-    <h1>Vender Veiculo</h1>
+  
     <?php 
      if(isset($_SESSION['sucesso_cadastro'])){
         $Mensagem = $_SESSION['sucesso_cadastro'];
@@ -33,15 +33,26 @@
         $result = $stmt->get_result();
         $carro = $result->fetch_assoc();
      ?>
+       <h1>Registrar Venda - <?php echo $carro['marca_car'] , " ", $carro['modelo_car']; ?></h1>
+
+       <div>
+
+        <img src="../../../img/logo.png" alt="" style=" width: 100px;">
+       <p><?php echo $carro['marca_car']?></p>
+       <h1><?php echo $carro['modelo_car']?></h1>
+       <p><?php echo $carro['preco_car']?></p>
+    
+    </div>
+
     <form method="Post" action="../../salvar/S_VendaVeiculo.php">
         <input type="hidden" name="id"  value="<?php echo intval($carro['id_car']); ?>">
         
-        <fieldset><label for="Cpf">CPF</label><input type="text" name="Cpf" id="Cpf" maxlength="14"  required><button type="button" value="BuscarCpf" name="BuscarCpf" id="BuscarCpf" onclick="buscarcpf()">Buscar</button></fieldset>
+        <fieldset><label for="Cpf">CPF</label><input type="text" name="Cpf" id="Cpf" maxlength="14"  required><button type="button" value="BuscarCpf" name="BuscarCpf" id="BuscarCpf">Buscar</button></fieldset>
         <div id="Mensagem_cpf"></div>
         <fieldset><label for="Nome">Nome do Comprador</label><input type="text" name="Nome" id="Nome"  maxlength="20" required></fieldset>
         <fieldset><label for="Telefone">Telefone</label><input type="text" name="Telefone" id="Telefone" maxlength="15" required></fieldset>
         <div id="Mensagem_telefone"></div>
-        <fieldset><label for="Preco">Valor da venda</label><input type="number" name="Preco" id="Preco"  maxlength="20" required></fieldset>
+        <fieldset><label for="Preco">Valor da venda</label><input type="text" name="Preco" id="Preco" value="<?php echo intval($carro['preco_car']); ?>" required></fieldset>
         <div style="color: red;"><?php if (isset($_SESSION['erro_cadastro'])){echo $_SESSION['erro_cadastro'];unset($_SESSION['erro_cadastro']);} ?></div>
         <fieldset><input type="button" id="Cadastrar" value="Salvar" onclick="return confirm('Tem certeza que deseja vender este veiculo?') ? validarVenda() : true;"></fieldset>
         <fieldset><button type="button" onclick="window.location.href='../../admin/Veiculos.php'">Voltar</button></fieldset>
