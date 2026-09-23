@@ -33,23 +33,33 @@
                 </div>-->
 
                 <div id="VVEItens2">
-                    <img src="" alt="">
+                    <?php 
+                    include_once "../salvar/Conexao.php";
+
+                    $stmt = $sql->prepare("SELECT * FROM vendas v INNER JOIN carro c ON v.id_car = c.id_car INNER JOIN cliente cl ON v.id_cli = cl.id_cli;");
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    while($row = $result->fetch_assoc()){
+                    if($row['status_car'] === 1){
+                    echo"
+                    <img >
                     <div>
-                        <div>Marca</div>
+                        <div>".$row['marca_car']."</div>
                         <div>Vendido</div>
-                        <div class="VEEItem2">Modelo<span> Ano do modelo</span></div>
-                        <span><img src="" alt="">Quilometragem</span>
-                        <span><img src="" alt="">Cor</span>
-                        <span><img src="" alt="">Combustível</span>
+                        <div class='VEEItem2'><span> ".$row['modelo_car']."</span><span> ".$row['ano_car']."</span></div>
+                        <span><img src='' alt=''>".$row['quilometragem_car']."km</span>
+                        <span><img src='' alt=''>".$row['cor_car']."</span>
+                        <span><img src='' alt=''>".$row['combustivel_car']."</span>
 
                         <div>Valor da venda</div>
-                        <div>R$00000,00</div>
-                        <div><img src="" alt="">data da venda</div>
-                        <hr><button><img src="" alt="">CONTATAR</button>
+                        <div>R$".$row['preco_car']."</div>
+                        <div><img src='' alt=''>".$row['data_ven']."</div>
+                        <hr><button><img src='' alt=''>CONTATAR</button>
                         <div>Comprador</div>
-                        <div>Nome do comprador</div>
-                        <div><img src="" alt="">551199999-9999</div>
+                        <div>".$row['nome_cli']."</div>
+                        <div><img src='' alt=''>".$row['telefone_cli']."</div>
                     </div>
+                    ";}}?>
                 </div>
             </div><!-- Final dos elementos-->
             

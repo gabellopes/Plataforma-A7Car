@@ -1,6 +1,7 @@
 const Nome = document.getElementById("Nome");
 const Email = document.getElementById("Email");
 const Senha = document.getElementById("Senha");
+
 const ConfirmarSenha = document.getElementById("Confirmar-senha");
 const botaoCadastrar = document.getElementById("Cadastrar");
 

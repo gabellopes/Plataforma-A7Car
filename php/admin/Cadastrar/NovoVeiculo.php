@@ -35,7 +35,7 @@
             <option value="Diesel">Diesel</option>
             <option value="Elétrico">Elétrico</option>
         </select></fieldset>
-        <fieldset><label for="Descricao">Descrição</label><input type="text" name="Descricao" id="Descricao"  maxlength="20" required></fieldset>
+        <fieldset><label for="Descricao">Descrição</label><input type="text" name="Descricao" id="Descricao"  maxlength="255" required></fieldset>
         <fieldset><label for="Imagem">Imagem</label><input type="file" name="Imagem" id="Imagem"  maxlength="20"></fieldset>
         <fieldset><input type="submit" value="Salvar"></fieldset>
         <fieldset><button type="button" onclick="window.location.href='../Veiculos.php'">Voltar</button></fieldset>

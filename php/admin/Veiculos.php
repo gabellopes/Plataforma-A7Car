@@ -50,17 +50,20 @@ if(isset($_SESSION['sucesso_cadastro'])){
                 $stmt = $sql->prepare("SELECT * FROM carro ");
                 $stmt->execute();
                 $result = $stmt->get_result();
-                while($row = $result->fetch_assoc()){
+             
                     
+                while($row = $result->fetch_assoc()){
+                  
+                if($row['status_car'] === 0){
                     echo "
                     <tr>
                         <td>".$row['foto_car']."</td>
                         <td>".$row['marca_car']."</td>
                         <td>".$row['modelo_car']."</td>
                         <td>".$row['ano_car']."</td>
-                        <td>".$row['quilometragem_car']."</td>
+                        <td>".$row['quilometragem_car']." km</td>
                         <td>".$row['combustivel_car']."</td>
-                        <td>".$row['preco_car']."</td>
+                        <td>R$".$row['preco_car']."</td>
                         <td>"."07/09/26"."</td>
                         <td>
                             <button onclick=\"location.href='../salvar/Editar/EditarVeiculo.php?id=".$row['id_car']."'\">⚙</button>
@@ -71,7 +74,7 @@ if(isset($_SESSION['sucesso_cadastro'])){
                         <td>
                         <button onclick=\"return confirm('Tem certeza que deseja excluir este veículo?') ? location.href='../salvar/Excluir/ExcluirVeiculo.php?id=".$row['id_car']."' : false;\">🧨</button>
                         </td>
-                    </tr>";
+                    </tr>";}
                      
                 }
                 ?>

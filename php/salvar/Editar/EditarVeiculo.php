@@ -47,7 +47,7 @@ if(isset($_SESSION['sucesso_cadastro'])){
             <option value="Diesel">Diesel</option>
             <option value="Elétrico">Elétrico</option>
         </select></fieldset>
-        <fieldset><label for="Descricao">Descrição</label><input type="text" name="Descricao" id="Descricao"  value="<?php echo $carro['descricao_car']; ?>" maxlength="20" required></fieldset>
+        <fieldset><label for="Descricao">Descrição</label><input type="text" name="Descricao" id="Descricao"  value="<?php echo $carro['descricao_car']; ?>" maxlength="255" required></fieldset>
         <fieldset><label for="Imagem">Imagem</label><input type="file" name="Imagem" id="Imagem"  maxlength="20"></fieldset>
         <fieldset><input type="button" value="Salvar" onclick="return confirm('Tem certeza que deseja salvar as alterações?') ? document.forms[0].submit() : false;"></fieldset>
         <fieldset><button type="button" onclick="window.location.href='../../admin/Veiculos.php'">Voltar</button></fieldset>
