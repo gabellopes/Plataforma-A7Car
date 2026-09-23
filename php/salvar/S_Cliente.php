@@ -1,5 +1,4 @@
 <?php
-SESSION_START();
 include __DIR__ . "/funcoes.php";
 include __DIR__ . "/Conexao.php";
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {

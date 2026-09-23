@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (dados.sucesso) {
                 Nome.value = dados.nome;
                 Telefone.value = dados.telefone;
+                
             } else {
                 alert(dados.mensagem);
                 Nome.value = '';
