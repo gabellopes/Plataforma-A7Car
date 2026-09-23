@@ -45,7 +45,7 @@
     </div>
 
     <form method="Post" action="../../salvar/S_VendaVeiculo.php">
-        <input type="hidden" name="id"  value="<?php echo intval($carro['id_car']); ?>">
+        <input type="hidden" name="id_car"  value="<?php echo intval($carro['id_car']); ?>">
         
         <fieldset><label for="Cpf">CPF</label><input type="text" name="Cpf" id="Cpf" maxlength="14"  required><button type="button" value="BuscarCpf" name="BuscarCpf" id="BuscarCpf">Buscar</button></fieldset>
         <div id="Mensagem_cpf"></div>
