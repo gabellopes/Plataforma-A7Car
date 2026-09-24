@@ -59,6 +59,7 @@ session_start();
         <input type="button" value="User" onclick="PreencherUser()">
         <input type="button" value="Admin" onclick="PreencherAdmin()">
     </form>
+    <a href="#">Esqueci minha senha</a><br>
     <a href="Cadastro.php">Não tem cadastro? Cadastrar</a>
 
     <script>
