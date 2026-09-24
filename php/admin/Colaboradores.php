@@ -35,7 +35,8 @@
                     <td>SERVIÇO</td>
                     <td>TELEFONE</td>
                     <td>E-MAIL</td>
-                    <td>BUTÕES</td>
+                    <td>EDITAR</td>
+                    <td>EXCLUIR</td>
                 </tr>
 		<?php
                 include_once "../salvar/Conexao.php";
@@ -53,6 +54,8 @@
                         <td>".$row['email_col']."</td>
                         <td>
                             <button onclick=\"location.href='../salvar/Editar/EditarColaborador.php?id=".$row['id_col']."'\">⚙</button>
+                        </td>
+                        <td>
                             <button onclick=\"return confirm('Tem certeza que deseja excluir este colaborador?') ? location.href='../salvar/Excluir/ExcluirColaborador.php?id=".$row['id_col']."' : false;\">🧨</button>
                         </td>
                     </tr>";

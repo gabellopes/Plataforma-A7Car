@@ -1,6 +1,7 @@
 const Telefone = document.getElementById("Telefone");
 const Cpf = document.getElementById("Cpf");
 const Cnh = document.getElementById("Cnh");
+const Ano = document.getElementById("Ano");
 
 if (Telefone) {
 
@@ -41,6 +42,14 @@ if (Cpf) {
       e.target.value = value;
     });
   }
+
+  if (Ano) {
+
+  Ano.addEventListener('input', (e) => {
+          
+  });
+
+}
 
 
 

@@ -43,12 +43,12 @@ if(isset($_SESSION['sucesso_cadastro'])){
         <input type="hidden" name="id" value="<?php echo $carro['id_car']; ?>">
         <label for="Marca">Marca</label><input type="text" name="Marca" id="Marca"  value="<?php echo $carro['marca_car']; ?>" maxlength="20" required>
         <label for="Modelo">Modelo</label><input type="text" name="Modelo" id="Modelo"  value="<?php echo $carro['modelo_car']; ?>" maxlength="20" required>
-        <label for="Ano">Ano</label><input type="number" name="Ano" id="Ano"  value="<?php echo $carro['ano_car']; ?>" maxlength="4" required>
-        <label for="Preco">Preço</label><input type="number" name="Preco" id="Preco"  value="<?php echo $carro['preco_car']; ?>" maxlength="20" required>
+        <label for="Ano">Ano</label><input type="text" name="Ano" id="Ano"  value="<?php echo $carro['ano_car']; ?>" maxlength="4" required>
+        <label for="Preco">Preço</label><input type="text" name="Preco" id="Preco"  value="<?php echo $carro['preco_car']; ?>" maxlength="20" required>
         <label for="Cor">Cor</label><input type="text" name="Cor" id="Cor"  value="<?php echo $carro['cor_car']; ?>" maxlength="20" required>
         </div>
         <div>
-        <label for="Quilometragem">Quilometragem</label><input type="number" name="Quilometragem" id="Quilometragem"  value="<?php echo $carro['quilometragem_car']; ?>" maxlength="20" required>
+        <label for="Quilometragem">Quilometragem</label><input type="text" name="Quilometragem" id="Quilometragem"  value="<?php echo $carro['quilometragem_car']; ?>" maxlength="20" required>
         <label for="Combustivel">Combustível</label><select name="Combustivel" id="Combustivel" value="<?php echo $carro['combustivel_car']; ?>" required>
             <option value="<?php echo $carro['combustivel_car']; ?>" style="font-weight: bold; color: #ffffff; background-color: #ff0000;"><?php echo $carro['combustivel_car']; ?></option>
             <option value="Gasolina">Gasolina</option>

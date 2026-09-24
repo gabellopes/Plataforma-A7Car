@@ -1,6 +1,7 @@
 const Nome = document.getElementById("Nome");
 const Email = document.getElementById("Email");
 const Senha = document.getElementById("Senha");
+
 const ConfirmarSenha = document.getElementById("Confirmar-senha");
 const botaoCadastrar = document.getElementById("Cadastrar");
 
@@ -46,6 +47,14 @@ function validarCliente(){
     validarTelefone();
     validarEmail();
     if(validarEmail() === true && validarTelefone() === true && validarCpf() === true && validarCnh() === true){
+    botaoCadastrar.type = "submit";
+    }
+}
+
+function validarVenda(){
+     validarCpf();
+     validarTelefone();
+if(validarCpf() === true && validarTelefone() === true){
     botaoCadastrar.type = "submit";
     }
 }

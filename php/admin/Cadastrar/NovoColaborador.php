@@ -40,7 +40,8 @@
         <div><label for="Servico">Serviço</label><input type="text" name="Servico" id="Servico"  maxlength="255" required></div>
         <div><label for="Descricao">Descrição</label><input type="text" name="Descricao" id="Descricao"  maxlength="255" required></div>
         <div>
-        <input type="button" class="btn" onclick="validarColaborador()" value="Salvar">
+        <input type="button" id="Cadastrar" class="btn" onclick="validarColaborador()" value="Salvar">
+        <div style="color: red;"><?php if (isset($_SESSION['erro_cadastro'])){echo $_SESSION['erro_cadastro'];unset($_SESSION['erro_cadastro']);} ?></div>
         <button type="button" class="btn" onclick="window.location.href='../Colaboradores.php'">Voltar</button>
         </div>
         </div>

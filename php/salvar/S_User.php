@@ -1,5 +1,6 @@
 <?php
-session_start();
+SESSION_START();
+include __DIR__ . "/funcoes.php";
 include __DIR__ . "/Conexao.php";
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -72,18 +73,7 @@ if (!checkdnsrr($dominio, "MX")) {
     $_SESSION['erro'] = true;
     exit;
 }
-$verificaEmail = $sql->prepare("SELECT id_usu FROM usuario WHERE email_usu = ?");
-$verificaEmail->bind_param("s", $Email);
-$verificaEmail->execute();
-$resultadoEmail = $verificaEmail->get_result();
-
-if ($resultadoEmail->num_rows > 0) {
-    $_SESSION['erro_cadastro'] = "Este e-mail já está cadastrado.";
-    $_SESSION['erro'] = true;
-    header("Location: ../user/Cadastro.php");
-    exit;
-}
-
+verifica("email_usu", "usuario", $Email, "Email já cadastrado", "Location: ../user/Cadastro.php");
 $senhaHash = password_hash($Senha, PASSWORD_DEFAULT);
 
 $stmt = $sql->prepare("INSERT INTO usuario (nome_usu, email_usu, telefone_usu, senha_usu) VALUES (?, ?, ?, ?)");

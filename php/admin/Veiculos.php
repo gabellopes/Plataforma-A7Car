@@ -32,13 +32,17 @@ if(isset($_SESSION['sucesso_cadastro'])){
             <div id="CE">
                 <table>
                 <tr>
-                    <td>VEÍCULO</td>
+                    <td>FOTO</td>
+                    <td>MARCA</td>
+                    <td>MODELO</td>
                     <td>ANO</td>
                     <td>KM</td>
-                    <td>COMBUSTÍVEL</td>
+                    <td>COMBUSTIVEL</td>
                     <td>VALOR</td>
                     <td>ATUALIZADO</td>
-                    <td>BUTÕES</td>
+                    <td>EDITAR</td>
+                    <td>VENDER</td>
+                    <td>EXCLUIR</td>
                 </tr>
 		<?php
                 include_once "../salvar/Conexao.php";
@@ -46,22 +50,31 @@ if(isset($_SESSION['sucesso_cadastro'])){
                 $stmt = $sql->prepare("SELECT * FROM carro ");
                 $stmt->execute();
                 $result = $stmt->get_result();
-                while($row = $result->fetch_assoc()){
+             
                     
+                while($row = $result->fetch_assoc()){
+                  
+                if($row['status_car'] === 0){
                     echo "
                     <tr>
                         <td>".$row['foto_car']."</td>
+                        <td>".$row['marca_car']."</td>
                         <td>".$row['modelo_car']."</td>
                         <td>".$row['ano_car']."</td>
-                        <td>".$row['quilometragem_car']."</td>
+                        <td>".$row['quilometragem_car']." km</td>
                         <td>".$row['combustivel_car']."</td>
-                        <td>".$row['preco_car']."</td>
+                        <td>R$".$row['preco_car']."</td>
                         <td>"."07/09/26"."</td>
                         <td>
                             <button onclick=\"location.href='../salvar/Editar/EditarVeiculo.php?id=".$row['id_car']."'\">⚙</button>
-                            <button onclick=\"return confirm('Tem certeza que deseja excluir este veículo?') ? location.href='../salvar/Excluir/ExcluirVeiculo.php?id=".$row['id_car']."' : false;\">🧨</button>
                         </td>
-                    </tr>";
+                                                <td>
+                            <button onclick=\"location.href='Cadastrar/VenderVeiculo.php?id=".$row['id_car']."'\">🟩</button>
+                        </td>
+                        <td>
+                        <button onclick=\"return confirm('Tem certeza que deseja excluir este veículo?') ? location.href='../salvar/Excluir/ExcluirVeiculo.php?id=".$row['id_car']."' : false;\">🧨</button>
+                        </td>
+                    </tr>";}
                      
                 }
                 ?>

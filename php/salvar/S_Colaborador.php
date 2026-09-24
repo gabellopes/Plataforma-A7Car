@@ -1,5 +1,6 @@
 <?php
 SESSION_START();
+include __DIR__ . "/funcoes.php";
     if($_SESSION['user_email'] !== 'admin@gmail.com'){
             header("Location: ../../user/Login.php");
             exit;
@@ -30,7 +31,8 @@ if (empty($Nome) || empty($Email) || empty($Telefone) || empty($Servico) || empt
     exit;
 }
 
-    
+verifica("email_col", "colaborador", $Email, "Email já cadastrado", "Location: ../admin/Cadastrar/NovoColaborador.php");
+
 $stmt = $sql->prepare("INSERT INTO colaborador (nome_col, email_col, telefone_col, servico_col, descricao_col, foto_col) VALUES (?, ?, ?, ?, ?, ?)");
 $stmt->bind_param("ssssss", $Nome, $Email, $Telefone, $Servico, $Descricao, $Imagem);
 $stmt->execute();

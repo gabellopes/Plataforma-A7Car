@@ -56,6 +56,7 @@
         </div>
 
     </form>
+    <script src="../../../js/mascaras.js"></script>
 
 
     </div>
