@@ -27,7 +27,7 @@
             <div id="meio">
                 <div id="titulo">
                 <h1>CLIENTE</h1>
-                <button class="btn" onclick="window.location.href='Cadastrar/NovoCliente.php'">NOVO CLIENTE</button>
+                <button class="btn" onclick="window.location.href='Cadastrar/NovoCliente.php'"> + NOVO CLIENTE</button>
                 </div>
             <div id="CE">
                 <table>

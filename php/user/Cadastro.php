@@ -37,9 +37,6 @@ session_start();
     <div id="cadastro">
 
 
-    
-
-
     <form action="../salvar/S_User.php" method="post">
         <label for="nome">Nome Completo</label>
         <input type="text" name="Nome" id="Nome" maxlength="255" required>
@@ -72,37 +69,6 @@ session_start();
    </div>
    </div>
 
-
-
-    <footer>
-
-        <div class="fo">
-            <div id="ter">
-                <img src="../../img/logo.png" alt="" id="logo">
-                <h3>Multimarcas premium especializada em venda </h3>
-                <h3>e compra de veículos.Transparência, qualidade </h3>
-                <h3>e atendimento diferenciado.</h3>
-            </div>
-            <div class="nav">
-                <h1>NAVEGAÇÃO</h1>
-                <a href="catalogo.php">CATÁLOGO</a>
-                <a href="colaboradores.php">COLABORADORES</a>
-                <a href="contato.php">CONTATO</a>
-            </div>
-            <div>
-                <h1>CONTATO</h1>
-                <h3>numero telefone
-                    <br>
-                    email
-                    <br>
-                    endereço
-                </h3>
-            </div>
-            <div id="divadm">
-                <a href="../admin/Clientes.php" id="adm">ÁREA ADMINISTRATIVA</a>
-            </div>
-        </div>
-    </footer>
     <script src="../../js/mascaras.js"></script>
     <script src="../../js/validarformulario.js"></script>
 

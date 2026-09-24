@@ -15,6 +15,9 @@ a{
     font-size: 1.2rem;
     color: rgb(150, 150, 150);
 }
+label{
+    font-family: Barlow;
+}
 header a{
     font-size: 1.5rem;
     margin: 0 2.5vw;
@@ -147,4 +150,10 @@ h3{
 #linksAuth{
     display: flex;
     flex-direction: row;
+}
+#linksAuth p{
+    font-family: Barlow-Bold;
+    font-size: 1.2rem;
+    margin-top: 1vh;
+    margin-right: 1vw;
 }

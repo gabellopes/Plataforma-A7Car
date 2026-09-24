@@ -34,7 +34,7 @@
     </header>
 
 
-    <div id="meio">
+    <div id="titulo">
         <h3>Fale conosco</h3>
         <h1>CONTATO</h1>
     </div>
@@ -44,19 +44,17 @@
 
     <div id="info">
     
-        <h3>Endereço</h3>
-        <h2>Rua dos bobos N 0</h2>
-        <h3>Endereço</h3>
-        <h2>Rua dos bobos N 0</h2>
-        <h3>Endereço</h3>
-        <h2>Rua dos bobos N 0</h2>
-        <h3>Endereço</h3>
-        <h2>Rua dos bobos N 0</h2>
+    <h3>📍 ENDEREÇO</h3>
+            <h2>Estr. de Itapecerica, 4660 - Capão Redondo, São Paulo - SP, 05849-440</h2>
+            <h3>📞 TELEFONE</h3>
+            <h2>(11) 97332-0504</h2>
+            <h3>📧 E-MAIL</h3>
+            <h2>Rua dos bobos N 0</h2>
+            <h3>⏰ HORÁRIO</h3>
+            <h2>Seg–Sex: 9h–18h · Sáb: 9h–15h</h2>
 
-        <div id="exclusi"
-        
-        
-        ></div>
+
+        <div id="exclusi"></div>
 
 
     </div>
@@ -99,44 +97,36 @@
 
     
     </div>
-
-
-
-
-
-
-
-
+    
         <footer>
 
-        <div class="fo">
-            <div id="ter">
-                <img src="../../img/logo.png" alt="" id="logo">
-                <h3>Multimarcas premium especializada em venda </h3>
-                <h3>e compra de veículos.Transparência, qualidade </h3>
-                <h3>e atendimento diferenciado.</h3>
-            </div>
-            <div class="nav">
-                <h1>NAVEGAÇÃO</h1>
-                <a href="catalogo.php">CATÁLOGO</a>
-                <a href="colaboradores.php">COLABORADORES</a>
-                <a href="contato.php">CONTATO</a>
-            </div>
-            <div>
-                <h1>CONTATO</h1>
-                <h3>numero telefone
-                    <br>
-                    email
-                    <br>
-                    endereço
-                </h3>
-            </div>
-            <div id="divadm">
-               <<a href="../admin/Clientes.php" id="adm">ÁREA ADMINISTRATIVA</a>
-            </div>
-        </div>
-    </footer>
-
+<div class="fo">
+    <div id="ter">
+    <img src="../../img/logo.png" alt="" id="logo">
+        <h3>Multimarcas premium especializada em venda </h3>
+        <h3>e compra de veículos.Transparência, qualidade </h3>
+        <h3>e atendimento diferenciado.</h3>
+    </div>
+    <div class="nav">
+        <h1>NAVEGAÇÃO</h1>
+        <a href="">CATÁLOGO</a>
+        <a href="">COLABORADORES</a>
+        <a href="">CONTATO</a>
+    </div>
+    <div>
+      <h1>CONTATO</h1>
+        <h3>📞 (11) 97332-0504
+            <br>
+            email
+            <br>
+            📍 Estr. de Itapecerica, 4660 - Capão Redondo, São Paulo - SP, 05849-440
+        </h3>
+    </div>
+    <div id="divadm">
+        <a href="php/admin/Clientes.php" id="adm">ÁREA ADMINISTRATIVA</a>
+    </div>
+</div>
+</footer>
 
 </body>
 </html>

@@ -13,25 +13,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Veículos Vendidos</title>
     <link rel="stylesheet" href="../../css/adimin.css">
+    <link rel="stylesheet" href="../../css/ADMvendidos.css">
 </head>
 <body>
 <?php include __DIR__ . "/_Aside.php"; ?>
-      <div id="VVM">
+    <div id="VVM">
         <div id="VVSM">
+S
             <div id="VVT">
-                <h1>VEÍCULOS VENDIDOS</h1>
-                <p>Histórico de todas as vendas realizadas</p>
-                <div>R$0,00</div>
-                <div>Total em vendas</div>
-            </div> <!-- Final VT-->
-
+            <div>
+            <h1>VEÍCULOS VENDIDOS</h1>
+                <p id="cinza">Histórico de todas as vendas realizadas</p>
+            </div>
+                <div id="total">
+                <p id="verde">R$0,00</p>
+                <p id="cinza">Total em vendas</p>
+                </div>
             <div id="VVElementos">
+
                 <!--<div id="VVEItens">
                     <img src="" alt="">
                     <p>Nenhum veículo vendido ainda.</p>
                     <p>Ao aceitar uma proposta ou marcar um veículo como vendido, ele aparecerá aqui.</p>
-                </div>-->
-
+                </div>
                 <div id="VVEItens2">
                     <img src="" alt="">
                     <div>
@@ -51,7 +55,7 @@
                         <div><img src="" alt="">551199999-9999</div>
                     </div>
                 </div>
-            </div><!-- Final dos elementos-->
+            </div> Final dos elementos 1-->
             
         </div><!-- Final do SubMain-->
 

@@ -1,22 +1,26 @@
-#meio{
+#titulo{
     margin-top: 9vh;
     background-color: rgb(19, 19, 19);
     height: 20vh;
     width: 100%;
     color: white;
-    padding: 4vh 1vw 1vh 4vw;
-    border-bottom: 1px solid rgba(128, 128, 128, 0.655);
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+    text-align: left;
+    gap: 1vh;
+    padding: 2vh 1vw 1vh 4vw;
 }
-#meio h3{
-    color:  rgb(208, 0, 0);
-    background-color: rgba(237, 35, 35, 0.247);
-    width:fit-content;
-}
-#meio h1{
+#titulo h1{
     font-size: 3rem;
 }
+#titulo h3{
+    color:  rgb(208, 0, 0);
+    background-color: rgba(237, 35, 35, 0.247);
+    width: fit-content;
+}
 #info{
-    height: 45vh;
+    height: auto;
     width: 50vw;
 }
 #info h3{
@@ -28,7 +32,7 @@
 }
 #atend{
     background-color: rgb(19, 19, 19);
-    height: 40vh;
+    height: auto;
     width: 30vw;
     border: 1px solid rgba(128, 128, 128, 0.655) ;
 }
@@ -51,15 +55,15 @@
     height: 5vh;
 }
 #opcao{
-    
     margin-left: 1vw;
     margin-top: 1vh;
 }
 .mei{
     display: flex;
     flex-direction:row;
-    align-items: center;
     width: 100%;
+    height: auto;
+    padding: 5vh 0vw 10vh 0vw;
 }
 #exclusi{
     background-color: rgba(237, 35, 35, 0.247);

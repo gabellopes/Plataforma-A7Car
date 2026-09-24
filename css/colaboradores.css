@@ -19,11 +19,4 @@
     background-color: rgba(237, 35, 35, 0.247);
     width: fit-content;
 }
-#titulo input{
-    background-color: rgba(51, 51, 51, 0.425);
-    color: white;
-    border: 1px solid rgba(128, 128, 128, 0.655);
-    height: 3.5vh;
-    width: 24vw;
-    font-family: Barlow;
-}
+
