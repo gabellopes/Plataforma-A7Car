@@ -36,6 +36,7 @@ S
                     <p>Nenhum veículo vendido ainda.</p>
                     <p>Ao aceitar uma proposta ou marcar um veículo como vendido, ele aparecerá aqui.</p>
                 </div>
+                    
                 <div id="VVEItens2">
                     <?php 
                     include_once "../salvar/Conexao.php";
@@ -65,7 +66,7 @@ S
                     </div>
                     ";}}?>
                 </div>
-            </div> Final dos elementos 1-->
+            </div> <!--Final dos elementos 1-->
             
         </div><!-- Final do SubMain-->
 
