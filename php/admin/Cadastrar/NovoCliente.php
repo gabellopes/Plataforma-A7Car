@@ -42,7 +42,7 @@
         <div id="Mensagem_cnh"></div>
         <div>
         <div style="color: red;"><?php if (isset($_SESSION['erro_cadastro'])){echo $_SESSION['erro_cadastro'];unset($_SESSION['erro_cadastro']);} ?></div>
-        <input type="button" id="botaoCadastrar" name="botaoCadastrar"class="btn" onclick="validarCliente()" value="Salvar">
+        <input type="button" id="Cadastrar" class="btn" onclick="validarCliente()" value="Salvar">
         <button type="button" class="btn" onclick="window.location.href='../Clientes.php'">Voltar</button>
         </div>
         </div>
