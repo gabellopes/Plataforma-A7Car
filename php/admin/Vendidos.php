@@ -31,7 +31,7 @@ S
                 </div>
             <div id="VVElementos">
 
-                <!--<div id="VVEItens">
+                <div id="VVEItens">
                     <img src="" alt="">
                     <p>Nenhum veículo vendido ainda.</p>
                     <p>Ao aceitar uma proposta ou marcar um veículo como vendido, ele aparecerá aqui.</p>
