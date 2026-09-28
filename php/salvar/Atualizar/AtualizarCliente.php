@@ -33,7 +33,7 @@ if (empty($Nome) || empty($Email) || empty($Telefone) || empty($Cpf) || empty($C
 
 
 $stmt = $sql->prepare("UPDATE cliente SET nome_cli = ?, email_cli = ?, telefone_cli = ?, cpf_cli = ?, cnh_cli = ? WHERE id_cli = ?");
-$stmt->bind_param("sssiii", $Nome, $Email, $Telefone, $Cpf, $Cnh, $id);
+$stmt->bind_param("ssssii", $Nome, $Email, $Telefone, $Cpf, $Cnh, $id);
 $stmt->execute();
 
 $_SESSION['sucesso_cadastro'] = 'Cliente atualizado com sucesso!';
