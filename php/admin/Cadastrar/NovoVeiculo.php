@@ -29,7 +29,7 @@
     <div class="mei">
     <div id="cadastro">
       
-    <form method="POST" action="../../salvar/S_Veiculo.php">
+    <form method="POST" action="../../salvar/S_Veiculo.php"  enctype="multipart/form-data">
         <div>
         <div><label for="Marca">Marca</label><input type="text" name="Marca" id="Marca"  maxlength="20" required></div>
         <div><label for="Modelo">Modelo</label><input type="text" name="Modelo" id="Modelo"  maxlength="20" required></div>
@@ -47,8 +47,16 @@
             <option value="Elétrico">Elétrico</option>
             </select>
         </div>
+        
         <div><label for="Descricao">Descrição</label><input type="text" name="Descricao" id="Descricao"  maxlength="20" required></div>
-        <div><label for="Imagem">Imagem</label><input type="file" name="Imagem" id="Imagem"  maxlength="20"></div>
+
+        <div>
+            <label for="Imagem">Imagem</label>
+            <img id="preview-imagem" src="#" alt="Pré-visualização da imagem" style="max-width: 200px; display: none; border-radius: 5px; border: 1px solid #ccc;" />
+            <input type="file" name="Imagem" id="Imagem"  maxlength="20">
+        </div>
+
+        <div style="color: red;"><?php if (isset($_SESSION['erro_cadastro'])){echo $_SESSION['erro_cadastro'];unset($_SESSION['erro_cadastro']);} ?></div>
         <div>
         <input type="submit" class="btn" value="Salvar">
         <button type="button" class="btn" onclick="window.location.href='../Veiculos.php'">Voltar</button>
@@ -57,8 +65,7 @@
 
     </form>
     <script src="../../../js/mascaras.js"></script>
-
-
+    <script src="../../../js/visualizarImagem.js"></script>
     </div>
     </div>
 </body>

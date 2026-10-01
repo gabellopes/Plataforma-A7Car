@@ -29,19 +29,24 @@
     <div class="mei">
     <div id="cadastro">
     
-    <form method="Post" action="../../salvar/S_Colaborador.php">
+    <form method="Post" action="../../salvar/S_Colaborador.php" enctype="multipart/form-data">
         <div>
         <div><label for="Nome">Nome</label><input type="text" name="Nome" id="Nome"  maxlength="20" required></div>
         <div><label for="Email">Email</label><input type="email" name="Email" id="Email"  required></div>
         <div id="Mensagem_email"></div>
         <div><label for="Telefone">Telefone</label><input type="text" name="Telefone" id="Telefone"  maxlength="15" required></div>
         <div id="Mensagem_telefone"></div>
-        <div><label for="Imagem">Foto</label><input type="file" name="Foto" id="Foto"  maxlength="255"></div>
+        <div>
+            <label for="Imagem">Imagem</label>
+            <img id="preview-imagem" src="#" alt="Pré-visualização da imagem" style="max-width: 200px; display: none; border-radius: 5px; border: 1px solid #ccc;" />
+            <input type="file" name="Imagem" id="Imagem"  maxlength="20">
+        </div>
+        
         <div><label for="Servico">Serviço</label><input type="text" name="Servico" id="Servico"  maxlength="255" required></div>
         <div><label for="Descricao">Descrição</label><input type="text" name="Descricao" id="Descricao"  maxlength="255" required></div>
         <div>
-        <input type="button" id="Cadastrar" class="btn" onclick="validarColaborador()" value="Salvar">
         <div style="color: red;"><?php if (isset($_SESSION['erro_cadastro'])){echo $_SESSION['erro_cadastro'];unset($_SESSION['erro_cadastro']);} ?></div>
+        <input type="button" id="Cadastrar" class="btn" onclick="validarColaborador()" value="Salvar">
         <button type="button" class="btn" onclick="window.location.href='../Colaboradores.php'">Voltar</button>
         </div>
         </div>
@@ -51,6 +56,7 @@
 
     <script src="../../../js/mascaras.js"></script>
     <script src="../../../js/validarformulario.js"></script>
+    <script src="../../../js/visualizarImagem.js"></script>
     </body>
 </body>
 </html>

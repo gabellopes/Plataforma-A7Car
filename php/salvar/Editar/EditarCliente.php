@@ -59,7 +59,7 @@
         <p>Cliente não encontrado.</p>
     <?php } ?>
     <script src="../../../js/mascaras.js"></script>
-        <script src="../../../js/validarformulario.js"></script>
+    <script src="../../../js/validarformulario.js"></script>
 
 </body>
 </html>

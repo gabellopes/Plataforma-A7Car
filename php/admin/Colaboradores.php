@@ -31,6 +31,7 @@
             <div id="CE">
                 <table>
                 <tr>
+                    <td>FOTO</td>
                     <td>NOME</td>
                     <td>SERVIÇO</td>
                     <td>TELEFONE</td>
@@ -48,6 +49,7 @@
                     
                     echo "
                     <tr>
+                        <td><img src='" . htmlspecialchars($row['foto_col']) . "' alt='Foto do Colaborador' width='200'></td>
                         <td>".$row['nome_col']."</td>
                         <td>".$row['servico_col']."</td>
                         <td>".$row['telefone_col']."</td>

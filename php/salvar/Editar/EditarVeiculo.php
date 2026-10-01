@@ -35,10 +35,11 @@ if(isset($_SESSION['sucesso_cadastro'])){
         $stmt->execute();
         $result = $stmt->get_result();
         $carro = $result->fetch_assoc();
+
     ?>
         <div class="mei">
         <div id="cadastro">
-    <form method="POST" action="../../salvar/Atualizar/AtualizarVeiculo.php">
+    <form method="POST" action="../../salvar/Atualizar/AtualizarVeiculo.php" enctype="multipart/form-data">
         <div>
         <input type="hidden" name="id" value="<?php echo $carro['id_car']; ?>">
         <label for="Marca">Marca</label><input type="text" name="Marca" id="Marca"  value="<?php echo $carro['marca_car']; ?>" maxlength="20" required>
@@ -57,7 +58,13 @@ if(isset($_SESSION['sucesso_cadastro'])){
             <option value="Elétrico">Elétrico</option>
         </select>
         <label for="Descricao">Descrição</label><input type="text" name="Descricao" id="Descricao"  value="<?php echo $carro['descricao_car']; ?>" maxlength="20" required>
-        <label for="Imagem">Imagem</label><input type="file" name="Imagem" id="Imagem"  maxlength="20">
+        <div>
+            <label for="Imagem">Imagem</label>
+            <img id="preview-imagem" src="<?php echo !empty($carro['foto_car']) ? htmlspecialchars("../" . $carro['foto_car']) : '#'; ?>" alt="Pré-visualização da imagem" style="max-width: 200px; <?php echo empty($carro['foto_car']) ? 'display: none;' : 'display: block;'; ?> border-radius: 5px; border: 1px solid #ccc;" />
+            <input type="file" name="Imagem" id="Imagem"  maxlength="20">
+
+            <div style="color: red;"><?php if (isset($_SESSION['erro_cadastro'])){echo $_SESSION['erro_cadastro'];unset($_SESSION['erro_cadastro']);} ?></div>
+        </div>
         <input type="button" class="btn" value="Salvar" onclick="return confirm('Tem certeza que deseja salvar as alterações?') ? document.forms[0].submit() : false;">
         <button type="button" class="btn" onclick="window.location.href='../../admin/Veiculos.php'">Voltar</button>
         </div>
@@ -67,5 +74,7 @@ if(isset($_SESSION['sucesso_cadastro'])){
     <?php }else{ ?>
         <p>Veículo não encontrado.</p>
     <?php } ?>
+    <script src="../../../js/mascaras.js"></script>
+    <script src="../../../js/visualizarImagem.js"></script>
 </body>
 </html>

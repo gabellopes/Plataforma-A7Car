@@ -21,7 +21,7 @@ $Cor = trim($_POST['Cor'] ?? '');
 $Quilometragem = trim($_POST['Quilometragem'] ?? '');
 $Combustivel = trim($_POST['Combustivel'] ?? '');
 $Descricao = trim($_POST['Descricao'] ?? '');
-$Imagem = "semfoto";
+$Imagem = $_FILES['Imagem'];
 $id = trim($_POST['id'] ?? '');
 
 
@@ -34,8 +34,8 @@ if (empty($Marca) || empty($Modelo) || empty($Ano) || empty($Preco) || empty($Co
 }
 
     
-$stmt = $sql->prepare("UPDATE carro SET marca_car = ?, modelo_car = ?, ano_car = ?, preco_car = ?, cor_car = ?, quilometragem_car = ?, combustivel_car = ?, descricao_car = ?, foto_car = ? WHERE id_car = ?");
-$stmt->bind_param("ssiisisssi", $Marca, $Modelo, $Ano, $Preco, $Cor, $Quilometragem, $Combustivel, $Descricao, $Imagem, $id);
+$stmt = $sql->prepare("UPDATE carro SET marca_car = ?, modelo_car = ?, ano_car = ?, preco_car = ?, cor_car = ?, quilometragem_car = ?, combustivel_car = ?, descricao_car = ? WHERE id_car = ?");
+$stmt->bind_param("ssiisissi", $Marca, $Modelo, $Ano, $Preco, $Cor, $Quilometragem, $Combustivel, $Descricao, $id);
 $stmt->execute();
 
 $_SESSION['sucesso_cadastro'] = 'Veiculo atualizado com sucesso!';

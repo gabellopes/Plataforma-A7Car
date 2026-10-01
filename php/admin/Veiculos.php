@@ -43,6 +43,7 @@ if(isset($_SESSION['sucesso_cadastro'])){
                     <td>EDITAR</td>
                     <td>VENDER</td>
                     <td>EXCLUIR</td>
+                    <!--<img src=".$row['foto_car']." alt="">-->
                 </tr>
 		<?php
                 include_once "../salvar/Conexao.php";
@@ -57,7 +58,7 @@ if(isset($_SESSION['sucesso_cadastro'])){
                 if($row['status_car'] === 0){
                     echo "
                     <tr>
-                        <td>".$row['foto_car']."</td>
+                        <td><img src='" . htmlspecialchars($row['foto_car']) . "' alt='Foto do Veículo' width='200' height='150'></td>
                         <td>".$row['marca_car']."</td>
                         <td>".$row['modelo_car']."</td>
                         <td>".$row['ano_car']."</td>
