@@ -68,6 +68,6 @@ function verificarImagem($imagem, $pasta, $link, $caminho){
         exit;
     }
 
-    return '/a7car/img/uploads/' . $pasta . '/' . $nomeNovo;
+    return '/Plataforma-A7car/img/uploads/' . $pasta . '/' . $nomeNovo;
 }
 ?>
