@@ -40,14 +40,14 @@
     <form method="Post" action="../Atualizar/AtualizarColaborador.php" enctype="multipart/form-data">
         <div>
         <input type="hidden" name="id" value="<?php echo $colaborador['id_col']; ?>">
-        <label for="Nome">Nome</label><input type="text" name="Nome" id="Nome"  value="<?php echo $colaborador['nome_col']; ?>" maxlength="20" required>
-        <label for="Email">Email</label><input type="email" name="Email" id="Email"  value="<?php echo $colaborador['email_col']; ?>" required>
+        <label for="Nome">Nome</label><input type="text" name="Nome" id="Nome"  value="<?php echo $colaborador['nome_col']; ?>" maxlength="255" required>
+        <label for="Email">Email</label><input type="email" name="Email" id="Email"  value="<?php echo $colaborador['email_col']; ?>" maxlength="255" required>
         <div id="Mensagem_email"></div>
         <label for="Telefone">Telefone</label><input type="text" name="Telefone" id="Telefone"  value="<?php echo $colaborador['telefone_col']; ?>" maxlength="15" required>
         <div id="Mensagem_telefone"></div>
         <div>
             <label for="Imagem">Imagem</label>
-            <img id="preview-imagem" src="<?php echo !empty($colaborador['foto_col']) ? htmlspecialchars("../" . $colaborador['foto_col']) : '#'; ?>" alt="Pré-visualização da imagem" style="max-width: 200px; <?php echo empty($colaborador['foto_col']) ? 'display: none;' : 'display: block;'; ?> border-radius: 5px; border: 1px solid #ccc;" />
+            <img id="preview-imagem" src="<?php echo !empty($colaborador['foto_col']) ? htmlspecialchars($colaborador['foto_col']) : '#'; ?>" alt="Pré-visualização da imagem" style="max-width: 200px; <?php echo empty($colaborador['foto_col']) ? 'display: none;' : 'display: block;'; ?> border-radius: 5px; border: 1px solid #ccc;" />
             <input type="file" name="Imagem" id="Imagem"  maxlength="20">
         </div>
         <div id="Mensagem_imagem"></div>

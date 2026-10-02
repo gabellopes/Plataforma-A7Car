@@ -21,7 +21,7 @@ if ($resultado->num_rows > 0) {
 }
 }
 
-function verificarImagem($imagem, $pasta, $link){
+function verificarImagem($imagem, $pasta, $link, $caminho){
     if (!isset($imagem) || $imagem['error'] === UPLOAD_ERR_NO_FILE) {
         $_SESSION['erro_cadastro'] = "Nenhuma imagem foi enviada.";
         $_SESSION['erro'] = true;
@@ -53,7 +53,7 @@ function verificarImagem($imagem, $pasta, $link){
         exit;
     }
     
-    $pastaDestino = '../../img/uploads/' . $pasta . '/';
+    $pastaDestino = $caminho . $pasta . '/';
     if (!is_dir($pastaDestino)) {
         mkdir($pastaDestino, 0755, true);
     }
@@ -68,6 +68,6 @@ function verificarImagem($imagem, $pasta, $link){
         exit;
     }
 
-    return $caminhoCompleto;
+    return '/a7car/img/uploads/' . $pasta . '/' . $nomeNovo;
 }
 ?>

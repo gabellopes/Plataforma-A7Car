@@ -28,19 +28,8 @@ if (empty($Nome) || empty($Email) || empty($Telefone) || empty($Servico) || empt
     exit;
 }
 
-/*if(!isset($Imagem) || $Imagem['error'] === UPLOAD_ERR_NO_FILE){
-$nomeArquivo = verificarImagem($_FILES['Imagem'], 'colaboradores', 'Location: ../Editar/EditarColaborador.php?id=' . $id);
+if(!isset($Imagem) || $Imagem['error'] === UPLOAD_ERR_NO_FILE){
 
-$stmt = $sql->prepare("UPDATE colaborador SET nome_col = ?, email_col = ?, telefone_col = ?, servico_col = ?, descricao_col = ?, foto_col = ? WHERE id_col = ?");
-$stmt->bind_param("ssssssi", $Nome, $Email, $Telefone, $Servico, $Descricao, $nomeArquivo, $id);
-$stmt->execute();
-
-$_SESSION['sucesso_cadastro'] = 'Colaborador atualizado com sucesso!';
-$_SESSION['erro'] = false;
-
-header("Location: ../../admin/Colaboradores.php");
-exit;
-}*/
 
 $stmt = $sql->prepare("UPDATE colaborador SET nome_col = ?, email_col = ?, telefone_col = ?, servico_col = ?, descricao_col = ? WHERE id_col = ?");
 $stmt->bind_param("sssssi", $Nome, $Email, $Telefone, $Servico, $Descricao, $id);
@@ -51,6 +40,27 @@ $_SESSION['erro'] = false;
 
 header("Location: ../../admin/Colaboradores.php");
 exit;
+
+}else{
+$nomeArquivo = verificarImagem($_FILES['Imagem'], 'colaboradores', 'Location: ../Editar/EditarColaborador.php?id=' . $id, '../../../img/uploads/');
+
+$stmt = $sql->prepare("UPDATE colaborador SET nome_col = ?, email_col = ?, telefone_col = ?, servico_col = ?, descricao_col = ?, foto_col = ? WHERE id_col = ?");
+$stmt->bind_param("ssssssi", $Nome, $Email, $Telefone, $Servico, $Descricao, $nomeArquivo, $id);
+$stmt->execute();
+
+$_SESSION['sucesso_cadastro'] = 'Colaborador atualizado com sucesso!';
+$_SESSION['erro'] = false;
+
+header("Location: ../../admin/Colaboradores.php");
+exit;
+
+
+}
+
+
+
+
+
 
 
 ?>

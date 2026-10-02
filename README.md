@@ -12,4 +12,4 @@ PROBLEMAS ENCONTRADOS
 -> SE É A VISTA OU PARCELADO, e se sim em quantas vezes
 -> Fazer uma tela no admin mostrando os carros que ainda estão sendo pagos
 -> Tabela simulação não cadastra o telefone
--> Adicionar forma de pagamento a venda
+-> Adicionar Data do cadastro dos *veiculos, colaboradores e clientes e *vendas

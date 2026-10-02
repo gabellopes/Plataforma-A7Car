@@ -31,8 +31,8 @@
     
     <form method="Post" action="../../salvar/S_Colaborador.php" enctype="multipart/form-data">
         <div>
-        <div><label for="Nome">Nome</label><input type="text" name="Nome" id="Nome"  maxlength="20" required></div>
-        <div><label for="Email">Email</label><input type="email" name="Email" id="Email"  required></div>
+        <div><label for="Nome">Nome</label><input type="text" name="Nome" id="Nome"  maxlength="255" required></div>
+        <div><label for="Email">Email</label><input type="email" name="Email" id="Email"  maxlength="255" required></div>
         <div id="Mensagem_email"></div>
         <div><label for="Telefone">Telefone</label><input type="text" name="Telefone" id="Telefone"  maxlength="15" required></div>
         <div id="Mensagem_telefone"></div>

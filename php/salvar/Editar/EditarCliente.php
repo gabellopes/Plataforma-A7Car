@@ -40,7 +40,7 @@
     <form method="Post" action="../Atualizar/AtualizarCliente.php">
         <div>
         <input type="hidden" name="id" value="<?php echo $cliente['id_cli']; ?>">
-        <label for="Nome">Nome</label><input type="text" name="Nome" id="Nome"  value="<?php echo $cliente['nome_cli']; ?>" maxlength="20" required>
+        <label for="Nome">Nome</label><input type="text" name="Nome" id="Nome"  value="<?php echo $cliente['nome_cli']; ?>" maxlength="255" required>
         <label for="Email">Email</label><input type="email" name="Email" id="Email"  value="<?php echo $cliente['email_cli']; ?>" required>
         <div id="Mensagem_email"></div>
         <label for="Telefone">Telefone</label><input type="text" name="Telefone" id="Telefone" id="Telefone" value="<?php echo $cliente['telefone_cli']; ?>" maxlength="15" required>

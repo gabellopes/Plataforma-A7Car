@@ -26,7 +26,7 @@ $Descricao = trim($_POST['Descricao'] ?? '');
 $Imagem = $_FILES['Imagem'];
 
 
-$nomeArquivo = verificarImagem($Imagem, 'veiculos', 'Location: ../admin/Cadastrar/NovoVeiculo.php');
+$nomeArquivo = verificarImagem($Imagem, 'veiculos', 'Location: ../admin/Cadastrar/NovoVeiculo.php', '../../img/uploads/');
 
 if (empty($Marca) || empty($Modelo) || empty($Ano) || empty($Preco) || empty($Cor) || empty($Combustivel) || empty($Descricao) ||empty($Imagem)) {
     $_SESSION['erro_cadastro'] = 'Preencha todos os campos.';

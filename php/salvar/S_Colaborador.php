@@ -20,7 +20,7 @@ $Servico = trim($_POST['Servico'] ?? '');
 $Descricao = trim($_POST['Descricao'] ?? '');
 $Imagem = $_FILES['Imagem'];
 
-$nomeArquivo = verificarImagem($Imagem, 'colaboradores', 'Location: ../admin/Cadastrar/NovoColaborador.php');
+$nomeArquivo = verificarImagem($Imagem, 'colaboradores', 'Location: ../admin/Cadastrar/NovoColaborador.php', '../../img/uploads/');
 
 
 if (empty($Nome) || empty($Email) || empty($Telefone) || empty($Servico) || empty($Descricao) || empty($Imagem)) {

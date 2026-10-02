@@ -31,10 +31,10 @@
       
     <form method="POST" action="../../salvar/S_Veiculo.php"  enctype="multipart/form-data">
         <div>
-        <div><label for="Marca">Marca</label><input type="text" name="Marca" id="Marca"  maxlength="20" required></div>
-        <div><label for="Modelo">Modelo</label><input type="text" name="Modelo" id="Modelo"  maxlength="20" required></div>
+        <div><label for="Marca">Marca</label><input type="text" name="Marca" id="Marca"  maxlength="255" required></div>
+        <div><label for="Modelo">Modelo</label><input type="text" name="Modelo" id="Modelo"  maxlength="255" required></div>
         <div><label for="Ano">Ano</label><input type="number" name="Ano" id="Ano"  maxlength="4" required></div>
-        <div><label for="Preco">Preço</label><input type="number" name="Preco" id="Preco"  maxlength="20" required></div>
+        <div><label for="Preco">Preço</label><input type="number" name="Preco" id="Preco"  maxlength="255" required></div>
         <div><label for="Cor">Cor</label><input type="text" name="Cor" id="Cor"  maxlength="20" required></div>
         </div>
         <div>
@@ -48,7 +48,7 @@
             </select>
         </div>
         
-        <div><label for="Descricao">Descrição</label><input type="text" name="Descricao" id="Descricao"  maxlength="20" required></div>
+        <div><label for="Descricao">Descrição</label><input type="text" name="Descricao" id="Descricao"  maxlength="255" required></div>
 
         <div>
             <label for="Imagem">Imagem</label>
