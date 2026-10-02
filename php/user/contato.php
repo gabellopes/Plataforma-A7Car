@@ -123,8 +123,7 @@
         </h3>
     </div>
     <div id="divadm">
-        <a href="php/admin/Clientes.php" id="adm">ÁREA ADMINISTRATIVA</a>
-    </div>
+    <a href="../admin/Clientes.php" id="adm">ÁREA ADMINISTRATIVA</a>    </div>
 </div>
 </footer>
 
