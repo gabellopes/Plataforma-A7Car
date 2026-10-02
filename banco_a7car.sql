@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
   PRIMARY KEY (`nome_usuario_adm`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Exportação de dados foi desmarcado.
+-- Copiando dados para a tabela concessionaria.admin: ~0 rows (aproximadamente)
 
 -- Copiando estrutura para tabela concessionaria.carro
 CREATE TABLE IF NOT EXISTS `carro` (
@@ -40,10 +40,11 @@ CREATE TABLE IF NOT EXISTS `carro` (
   `combustivel_car` varchar(30) NOT NULL,
   `descricao_car` varchar(700) NOT NULL,
   `foto_car` varchar(255) NOT NULL,
+  `status_car` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id_car`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Exportação de dados foi desmarcado.
+-- Copiando dados para a tabela concessionaria.carro: ~6 rows (aproximadamente)
 
 -- Copiando estrutura para tabela concessionaria.cliente
 CREATE TABLE IF NOT EXISTS `cliente` (
@@ -57,9 +58,10 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   UNIQUE KEY `email_cli` (`email_cli`),
   UNIQUE KEY `cpf_cli` (`cpf_cli`),
   UNIQUE KEY `cnh_cli` (`cnh_cli`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Exportação de dados foi desmarcado.
+-- Copiando dados para a tabela concessionaria.cliente: ~3 rows (aproximadamente)
+
 
 -- Copiando estrutura para tabela concessionaria.colaborador
 CREATE TABLE IF NOT EXISTS `colaborador` (
@@ -72,9 +74,9 @@ CREATE TABLE IF NOT EXISTS `colaborador` (
   `servico_col` varchar(255) NOT NULL,
   PRIMARY KEY (`id_col`),
   UNIQUE KEY `email_col` (`email_col`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Exportação de dados foi desmarcado.
+-- Copiando dados para a tabela concessionaria.colaborador: ~1 rows (aproximadamente)
 
 -- Copiando estrutura para tabela concessionaria.favorito
 CREATE TABLE IF NOT EXISTS `favorito` (
@@ -88,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `favorito` (
   CONSTRAINT `favorito_ibfk_2` FOREIGN KEY (`id_car`) REFERENCES `carro` (`id_car`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Exportação de dados foi desmarcado.
+-- Copiando dados para a tabela concessionaria.favorito: ~0 rows (aproximadamente)
 
 -- Copiando estrutura para tabela concessionaria.simulacao
 CREATE TABLE IF NOT EXISTS `simulacao` (
@@ -103,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `simulacao` (
   CONSTRAINT `simulacao_ibfk_1` FOREIGN KEY (`id_usu`) REFERENCES `usuario` (`id_usu`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Exportação de dados foi desmarcado.
+-- Copiando dados para a tabela concessionaria.simulacao: ~0 rows (aproximadamente)
 
 -- Copiando estrutura para tabela concessionaria.usuario
 CREATE TABLE IF NOT EXISTS `usuario` (
@@ -116,7 +118,9 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   UNIQUE KEY `email_usu` (`email_usu`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Exportação de dados foi desmarcado.
+-- Copiando dados para a tabela concessionaria.usuario: ~0 rows (aproximadamente)
+REPLACE INTO `usuario` (`id_usu`, `nome_usu`, `email_usu`, `telefone_usu`, `senha_usu`) VALUES
+	(0, 'admin', 'admin@gmail.com', '(11)98229-9155', '$2y$10$IStkVoe8X6t5PeNkhhj/P.vKMyNWIxlP9YW/KvevCKAUUHQJQtCx2');
 
 -- Copiando estrutura para tabela concessionaria.vendas
 CREATE TABLE IF NOT EXISTS `vendas` (
@@ -130,11 +134,9 @@ CREATE TABLE IF NOT EXISTS `vendas` (
   KEY `id_car` (`id_car`),
   CONSTRAINT `vendas_ibfk_1` FOREIGN KEY (`id_cli`) REFERENCES `cliente` (`id_cli`),
   CONSTRAINT `vendas_ibfk_2` FOREIGN KEY (`id_car`) REFERENCES `carro` (`id_car`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Exportação de dados foi desmarcado.
-REPLACE INTO `usuario` (`id_usu`, `nome_usu`, `email_usu`, `telefone_usu`, `senha_usu`) VALUES
-	(0, 'admin', 'admin@gmail.com', '(11)98229-9155', '$2y$10$IStkVoe8X6t5PeNkhhj/P.vKMyNWIxlP9YW/KvevCKAUUHQJQtCx2');
+-- Copiando dados para a tabela concessionaria.vendas: ~6 rows (aproximadamente)
 
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
