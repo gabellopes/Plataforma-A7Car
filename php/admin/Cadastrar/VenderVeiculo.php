@@ -37,7 +37,7 @@
 
        <div>
 
-       <img id="preview-imagem" src="<?php echo !empty($carro['foto_car']) ? htmlspecialchars("../" . $carro['foto_car']) : '#'; ?>" alt="Pré-visualização da imagem" style="max-width: 200px; <?php echo empty($carro['foto_car']) ? 'display: none;' : 'display: block;'; ?> border-radius: 5px; border: 1px solid #ccc;" />
+       <img id="preview-imagem" src="<?php echo !empty($carro['foto_car']) ? htmlspecialchars($carro['foto_car']) : '#'; ?>" alt="Pré-visualização da imagem" style="max-width: 200px; <?php echo empty($carro['foto_car']) ? 'display: none;' : 'display: block;'; ?> border-radius: 5px; border: 1px solid #ccc;" />
        <p><?php echo $carro['marca_car']?></p>
        <h1><?php echo $carro['modelo_car']?></h1>
        <p><?php echo $carro['preco_car']?></p>

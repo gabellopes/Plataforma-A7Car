@@ -47,7 +47,7 @@
         <div id="Mensagem_telefone"></div>
         <label for="Cpf">CPF</label><input type="text" name="Cpf" id="Cpf" maxlength="14" value="<?php echo $cliente['cpf_cli']; ?>" required>
         <div id="Mensagem_cpf"></div>
-        <label for="Cnh">CNH</label><input type="text" name="Cnh" id="Cnh" maxlength="11"  value="<?php echo $cliente['cnh_cli']; ?>" required>
+        <label for="Cnh">CNH</label><input type="text" name="Cnh" id="Cnh" maxlength="9"  value="<?php echo $cliente['cnh_cli']; ?>" required>
         <div id="Mensagem_cnh"></div>
         <input type="button" class="btn" id="Cadastrar" value="Salvar" onclick="return confirm('Tem certeza que deseja atualizar este cliente?') ? validarCliente() : true;">
         <button type="button" class="btn" onclick="window.location.href='../../admin/Clientes.php'">Voltar</button>
