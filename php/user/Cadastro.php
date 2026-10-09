@@ -1,5 +1,6 @@
 <?php
-session_start();
+SESSION_START(); 
+require_once "../salvar/Conexao.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,12 +53,12 @@ session_start();
          <div ><h1 id="teste"></h1></div>
 
         <label for="senha">Senha</label>
-        <input type="password" name="Senha" id="Senha" maxlength="20" required>
-
+        <div><input type="password" name="Senha" id="Senha" maxlength="20" required><button type="button" data-target="Senha" id="mostrarSenha">👁</button></div>
+        
         <label for="confirmar-senha">Confirmar Senha</label>
-        <input type="password" name="Confirmar_Senha" id="Confirmar-senha" maxlength="20" required>
+        <div><input type="password" name="Confirmar_Senha" id="Confirmar-senha" maxlength="20" required><button type="button" data-target="senha" id="mostrarConfirmarSenha">👁</button></div>
         <div id="Mensagem_senha"></div>
-        <div style="color: red;"><?php if (isset($_SESSION['erro_cadastro'])){echo $_SESSION['erro_cadastro'];unset($_SESSION['erro_cadastro']);} ?></div>
+        <div style="color: red;"><?php if (isset($_SESSION['erro_cadastro'])){echo htmlspecialchars($_SESSION['erro_cadastro'], ENT_QUOTES, 'UTF-8');unset($_SESSION['erro_cadastro']);} ?></div>
 
 
         <button type="button" id="Cadastrar" onclick="validarUser()">Cadastrar</button>
@@ -71,6 +72,8 @@ session_start();
 
     <script src="../../js/mascaras.js"></script>
     <script src="../../js/validarformulario.js"></script>
+    <script src="../../js/assets.js"></script>
+
 
 </body>
 </html>

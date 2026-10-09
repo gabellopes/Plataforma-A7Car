@@ -19,7 +19,7 @@
     <?php include __DIR__ . "/_Aside.php"; 
         if(isset($_SESSION['sucesso_cadastro'])){
             $Mensagem = $_SESSION['sucesso_cadastro'];
-            echo "<script>alert('$Mensagem');</script>"; 
+            echo "<script>alert('" . htmlspecialchars($Mensagem, ENT_QUOTES, 'UTF-8') . "');</script>"; 
             $_SESSION['sucesso_cadastro'] = null;
         }
     

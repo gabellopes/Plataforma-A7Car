@@ -19,7 +19,7 @@
     <?php include __DIR__ . "/_Aside.php"; 
         if(isset($_SESSION['sucesso_cadastro'])){
             $Mensagem = $_SESSION['sucesso_cadastro'];
-            echo "<script>alert('$Mensagem');</script>"; 
+            echo "<script>alert('" . htmlspecialchars($Mensagem, ENT_QUOTES, 'UTF-8') . "');</script>"; 
             $_SESSION['sucesso_cadastro'] = null;
         }
     
@@ -51,13 +51,13 @@
                     
                     echo "
                     <tr>
-                        <td>".$row['nome_cli']."</td>
-                        <td>".$row['cpf_cli']."</td>
-                        <td>".$row['telefone_cli']."</td>
-                        <td>".$row['email_cli']."</td>
-                        <td>".$row['cnh_cli']."</td>
+                        <td>".htmlspecialchars($row['nome_cli'], ENT_QUOTES, 'UTF-8')."</td>
+                        <td>".htmlspecialchars($row['cpf_cli'])."</td>
+                        <td>".htmlspecialchars($row['telefone_cli'])."</td>
+                        <td>".htmlspecialchars($row['email_cli'], ENT_QUOTES, 'UTF-8')."</td>
+                        <td>".htmlspecialchars($row['cnh_cli'])."</td>
                         <td>
-                            <button onclick=\"location.href='../salvar/Editar/EditarCliente.php?id=".$row['id_cli']."'\">⚙</button>
+                            <button onclick=\"location.href='../salvar/Editar/EditarCliente.php?id=".htmlspecialchars($row['id_cli'])."'\">⚙</button>
                         </td>
                         <td>
                             <button onclick=\"return confirm('Tem certeza que deseja excluir este cliente?') ? location.href='../salvar/Excluir/ExcluirCliente.php?id=".$row['id_cli']."' : false;\">🧨</button>

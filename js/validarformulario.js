@@ -6,6 +6,7 @@ const ConfirmarSenha = document.getElementById("Confirmar-senha");
 const botaoCadastrar = document.getElementById("Cadastrar");
 
 
+
 let MensagemEmail = document.getElementById("Mensagem_email");
 let MensagemSenha = document.getElementById("Mensagem_senha");
 let MensagemTelefone = document.getElementById("Mensagem_telefone");
@@ -18,7 +19,6 @@ function PreencherUser(){
     Email.value ="fulano@email.com"
     Senha.value = "Senha123@"
     ConfirmarSenha.value = "Senha123@"
-
 }
 function validarUser() {
     validarCadastro();
@@ -50,6 +50,8 @@ function validarCliente(){
     botaoCadastrar.type = "submit";
     }
 }
+
+
 
 function validarVenda(){
      validarCpf();

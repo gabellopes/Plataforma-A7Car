@@ -19,7 +19,7 @@
 <?php
          if(isset($_SESSION['sucesso_cadastro'])){
             $Mensagem = $_SESSION['sucesso_cadastro'];
-            echo "<script>alert('$Mensagem');</script>"; 
+            echo "<script>alert('" . htmlspecialchars($Mensagem, ENT_QUOTES, 'UTF-8') . "');</script>"; 
             $_SESSION['sucesso_cadastro'] = null;
         }
     ?>
@@ -45,7 +45,7 @@
         <div><label for="Servico">Serviço</label><input type="text" name="Servico" id="Servico"  maxlength="255" required></div>
         <div><label for="Descricao">Descrição</label><input type="text" name="Descricao" id="Descricao"  maxlength="255" required></div>
         <div>
-        <div style="color: red;"><?php if (isset($_SESSION['erro_cadastro'])){echo $_SESSION['erro_cadastro'];unset($_SESSION['erro_cadastro']);} ?></div>
+        <div style="color: red;"><?php if (isset($_SESSION['erro_cadastro'])){echo htmlspecialchars($_SESSION['erro_cadastro'], ENT_QUOTES, 'UTF-8');unset($_SESSION['erro_cadastro']);} ?></div>
         <input type="button" id="Cadastrar" class="btn" onclick="validarColaborador()" value="Salvar">
         <button type="button" class="btn" onclick="window.location.href='../Colaboradores.php'">Voltar</button>
         </div>

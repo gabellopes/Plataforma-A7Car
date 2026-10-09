@@ -60,22 +60,22 @@
                                 $preco_formatado = number_format($row['preco_car'], 2, ',', '.');
                                 echo "
                                 <div id='VVEItens2'>
-                                     <td><img src='" . htmlspecialchars($row['foto_car']) . "' alt='Foto do Veículo' width='200' height='150'></td>
+                                     <td><img src='" . htmlspecialchars($row['foto_car'], ENT_QUOTES, 'UTF-8') . "' alt='Foto do Veículo' width='200' height='150'></td>
                                         <div>
-                                            <div>".$row['marca_car']."</div>
+                                            <div>".htmlspecialchars($row['marca_car'], ENT_QUOTES, 'UTF-8')."</div>
                                             <div>Vendido</div>
-                                            <div class='VEEItem2'><span> ".$row['modelo_car']."</span><span> ".$row['ano_car']."</span></div>
-                                            <span><img src='' alt=''>".$row['quilometragem_car']."km</span>
-                                            <span><img src='' alt=''>".$row['cor_car']."</span>
-                                            <span><img src='' alt=''>".$row['combustivel_car']."</span>
+                                            <div class='VEEItem2'><span> ".htmlspecialchars($row['modelo_car'], ENT_QUOTES, 'UTF-8')."</span><span> ".htmlspecialchars($row['ano_car'])."</span></div>
+                                            <span><img src='' alt=''>".htmlspecialchars($row['quilometragem_car'])."km</span>
+                                            <span><img src='' alt=''>".htmlspecialchars($row['cor_car'], ENT_QUOTES, 'UTF-8')."</span>
+                                            <span><img src='' alt=''>".htmlspecialchars($row['combustivel_car'], ENT_QUOTES, 'UTF-8')."</span>
 
                                             <div>Valor da venda</div>
-                                            <div>R$".$row['preco_car']."</div>
-                                            <div><img src='' alt=''>".$row['data_ven']."</div>
+                                            <div>R$".htmlspecialchars($row['preco_car'])."</div>
+                                            <div><img src='' alt=''>".htmlspecialchars($row['data_ven'], ENT_QUOTES, 'UTF-8')."</div>
                                             <hr><button><img src='' alt=''>CONTATAR</button>
                                             <div>Comprador</div>
-                                            <div>".$row['nome_cli']."</div>
-                                            <div><img src='' alt=''>".$row['telefone_cli']."</div>
+                                            <div>".htmlspecialchars($row['nome_cli'], ENT_QUOTES, 'UTF-8')."</div>
+                                            <div><img src='' alt=''>".htmlspecialchars($row['telefone_cli'])."</div>
                                         </div>
                                 </div>";
                             }

@@ -12,3 +12,9 @@ PROBLEMAS ENCONTRADOS
 -> Fazer uma tela no admin mostrando os carros que ainda estão sendo pagos
 -> Tabela simulação não cadastra o telefone
 -> Adicionar Data do cadastro dos *veiculos, colaboradores e clientes e *vendas
+-> Data que o carro foi cadastrado
+
+
+->Corrigir simulacao, não precisa de cpf_simu, etc. Apenas do ids do funcionario, carro e da propria simulacao
+-> Acrescentar uma data para a simulação, quando ela foi feita
+-> Cnh não pode ser obrigatorio

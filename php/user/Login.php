@@ -1,8 +1,9 @@
 <?php
-session_start();
+SESSION_START(); 
+require_once "../salvar/Conexao.php";
   if(isset($_SESSION['sucesso_cadastro'])){
             $Mensagem = $_SESSION['sucesso_cadastro'];
-            echo "<script>alert('$Mensagem');</script>"; 
+            echo "<script>alert('" . htmlspecialchars($Mensagem, ENT_QUOTES, 'UTF-8') . "');</script>"; 
             $_SESSION['sucesso_cadastro'] = null;
         }
 ?>
@@ -34,7 +35,7 @@ session_start();
             <button id="btnEntrar" class="btn" type="button" onclick="window.location.href='Login.php'">ENTRAR</button>
             <button id="btnCadastrar" class="btn" type="button" onclick="window.location.href='Cadastro.php'">CADASTRAR </button>
             <?php else: ?>
-            <p>Bem-vindo, <?php echo $_SESSION['user_nome']; ?>!</p>
+            <p>Bem-vindo, <?php echo htmlspecialchars($_SESSION['user_nome'], ENT_QUOTES, 'UTF-8'); ?>!</p>
             <button class="btn" type="button" onclick="window.location.href='../salvar/Sair.php'">SAIR </button>
             <?php endif; ?>
         </div>
@@ -57,8 +58,8 @@ session_start();
         <input type="email" name="Email" id="Email" maxlength="20" required>
 
         <label for="senha">Senha</label>
-        <input type="password" name="Senha" id="Senha" maxlength="20" required>
-        <div style="color: red;"><?php if (isset($_SESSION['erro_login'])){echo $_SESSION['erro_login'];unset($_SESSION['erro_login']);} ?></div>
+        <div><input type="password" name="Senha" id="Senha" maxlength="20" required><button type="button" id="mostrarSenha">👁</button></div>
+        <div style="color: red;"><?php if (isset($_SESSION['erro_login'])){echo htmlspecialchars($_SESSION['erro_login'], ENT_QUOTES, 'UTF-8');unset($_SESSION['erro_login']);} ?></div>
 
         <button type="submit" class="btn">ENTRAR</button>
         <input type="button" value="User" onclick="PreencherUser()">
@@ -85,5 +86,6 @@ session_start();
 
     
     </script>
+    <script src="../../js/assets.js"></script>
 </body>
 </html>

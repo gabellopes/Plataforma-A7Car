@@ -27,7 +27,7 @@
             <button id="btnEntrar" class="btn" type="button" onclick="window.location.href='php/user/Login.php'">ENTRAR</button>
             <button id="btnCadastrar" class="btn" type="button" onclick="window.location.href='php/user/Cadastro.php'">CADASTRAR </button>
             <?php else: ?>
-            <p>Bem-vindo, <?php echo $_SESSION['user_nome']; ?>!</p>
+            <p>Bem-vindo, <?php echo htmlspecialchars($_SESSION['user_nome'], ENT_QUOTES, 'UTF-8'); ?>!</p>
             <button class="btn" type="button" onclick="window.location.href='php/salvar/Sair.php'">SAIR </button>
             <?php endif; ?>
         </div>

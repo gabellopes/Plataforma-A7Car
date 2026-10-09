@@ -1,8 +1,5 @@
 const inputImagem = document.getElementById('Imagem');
-console.log(inputImagem);
-console.log(inputImagem.file);
 const previewImagem = document.getElementById('preview-imagem');
-console.log(previewImagem);
 
 inputImagem.addEventListener('change', function(event) {
     const arquivo = event.target.files[0];

@@ -19,7 +19,7 @@
     <?php
          if(isset($_SESSION['sucesso_cadastro'])){
             $Mensagem = $_SESSION['sucesso_cadastro'];
-            echo "<script>alert('$Mensagem');</script>"; 
+            echo "<script>alert('" . htmlspecialchars($Mensagem, ENT_QUOTES, 'UTF-8') . "');</script>"; 
             $_SESSION['sucesso_cadastro'] = null;
         }
     ?>
@@ -31,7 +31,7 @@
 
     <form method="Post" action="../../salvar/S_Cliente.php">
         <div>
-        <div><label for="Nome">Nome</label><input type="text" name="Nome" id="Nome"  maxlength="255"" required></div>
+        <div><label for="Nome">Nome</label><input type="text" name="Nome" id="Nome"  maxlength="255" required></div>
         <div><label for="Email">Email</label><input type="email" name="Email" id="Email"  maxlength="255" required></div>
         <div id="Mensagem_email"></div>
         <div><label for="Telefone">Telefone</label><input type="text" name="Telefone" id="Telefone" id="Telefone" maxlength="15" required></div>
@@ -41,7 +41,7 @@
         <div><label for="Cnh">CNH</label><input type="text" name="Cnh" id="Cnh" maxlength="9"  required></div>
         <div id="Mensagem_cnh"></div>
         <div>
-        <div style="color: red;"><?php if (isset($_SESSION['erro_cadastro'])){echo $_SESSION['erro_cadastro'];unset($_SESSION['erro_cadastro']);} ?></div>
+        <div style="color: red;"><?php if (isset($_SESSION['erro_cadastro'])){echo htmlspecialchars($_SESSION['erro_cadastro'], ENT_QUOTES, 'UTF-8');unset($_SESSION['erro_cadastro']);} ?></div>
         <input type="button" id="Cadastrar" class="btn" onclick="validarCliente()" value="Salvar">
         <button type="button" class="btn" onclick="window.location.href='../Clientes.php'">Voltar</button>
         </div>

@@ -20,7 +20,7 @@
 
 if(isset($_SESSION['sucesso_cadastro'])){
     $Mensagem = $_SESSION['sucesso_cadastro'];
-    echo "<script>alert('$Mensagem');</script>"; 
+    echo "<script>alert('" . htmlspecialchars($Mensagem, ENT_QUOTES, 'UTF-8') . "');</script>"; 
     $_SESSION['sucesso_cadastro'] = null;
 }
 ?>
@@ -58,13 +58,13 @@ if(isset($_SESSION['sucesso_cadastro'])){
                 if($row['status_car'] === 0){
                     echo "
                     <tr>
-                        <td><img src='" . htmlspecialchars($row['foto_car']) . "' alt='Foto do Veículo' width='200' height='150'></td>
-                        <td>".$row['marca_car']."</td>
-                        <td>".$row['modelo_car']."</td>
-                        <td>".$row['ano_car']."</td>
-                        <td>".$row['quilometragem_car']." km</td>
-                        <td>".$row['combustivel_car']."</td>
-                        <td>R$".$row['preco_car']."</td>
+                        <td><img src='" . htmlspecialchars($row['foto_car'], ENT_QUOTES, 'UTF-8') . "' alt='Foto do Veículo' width='200' height='150'></td>
+                        <td>".htmlspecialchars($row['marca_car'], ENT_QUOTES, 'UTF-8')."</td>
+                        <td>".htmlspecialchars($row['modelo_car'], ENT_QUOTES, 'UTF-8')."</td>
+                        <td>".htmlspecialchars($row['ano_car'])."</td>
+                        <td>".htmlspecialchars($row['quilometragem_car'])." km</td>
+                        <td>".htmlspecialchars($row['combustivel_car'], ENT_QUOTES, 'UTF-8')."</td>
+                        <td>R$".htmlspecialchars($row['preco_car'])."</td>
                         <td>"."07/09/26"."</td>
                         <td>
                             <button onclick=\"location.href='../salvar/Editar/EditarVeiculo.php?id=".$row['id_car']."'\">⚙</button>

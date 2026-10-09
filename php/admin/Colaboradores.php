@@ -19,7 +19,7 @@
     <?php include __DIR__ . "/_Aside.php"; 
         if(isset($_SESSION['sucesso_cadastro'])){
             $Mensagem = $_SESSION['sucesso_cadastro'];
-            echo "<script>alert('$Mensagem');</script>"; 
+            echo "<script>alert('" . htmlspecialchars($Mensagem, ENT_QUOTES, 'UTF-8') . "');</script>"; 
             $_SESSION['sucesso_cadastro'] = null;
         }
     ?>
@@ -49,11 +49,11 @@
                     
                     echo "
                     <tr>
-                        <td><img src='" . htmlspecialchars($row['foto_col']) . "' alt='Foto do Colaborador' width='200'></td>
-                        <td>".$row['nome_col']."</td>
-                        <td>".$row['servico_col']."</td>
-                        <td>".$row['telefone_col']."</td>
-                        <td>".$row['email_col']."</td>
+                        <td><img src='" . htmlspecialchars($row['foto_col'], ENT_QUOTES, 'UTF-8') . "' alt='Foto do Colaborador' width='200'></td>
+                        <td>".htmlspecialchars($row['nome_col'], ENT_QUOTES, 'UTF-8')."</td>
+                        <td>".htmlspecialchars($row['servico_col'], ENT_QUOTES, 'UTF-8')."</td>
+                        <td>".htmlspecialchars($row['telefone_col'])."</td>
+                        <td>".htmlspecialchars($row['email_col'], ENT_QUOTES, 'UTF-8')."</td>
                         <td>
                             <button onclick=\"location.href='../salvar/Editar/EditarColaborador.php?id=".$row['id_col']."'\">⚙</button>
                         </td>
