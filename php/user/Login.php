@@ -55,7 +55,7 @@ require_once "../salvar/Conexao.php";
 
     <form action="../salvar/Testelogin.php" method="post">
         <label for="email">E-mail</label>
-        <input type="email" name="Email" maxlength="20" required>
+        <input type="email" name="Email" id="Email2" maxlength="20" required>
 
         <label for="senha">Senha</label>
         <div><input type="password" name="Senha" id="Senha" maxlength="20" required><button type="button" id="mostrarSenha">👁</button></div>
@@ -102,16 +102,16 @@ require_once "../salvar/Conexao.php";
     </dialog>
 
     <script>
-
+        const Email2 = document.getElementById("Email2");
         function PreencherUserLo(){
 
-        Email.value = "gabriel.alves33@gmail.com";
-        Senha.value = "G@br13l4lv3s33";
+        Email2.value = "usuario@gmail.com";
+        Senha.value = "Usuario123!";
         }
 
         function PreencherAdmin(){
 
-        Email.value = "admin@gmail.com";
+        Email2.value = "admin@gmail.com";
         Senha.value = "Admin123!";
         }
 
