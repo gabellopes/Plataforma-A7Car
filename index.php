@@ -40,23 +40,69 @@
         <h2>As melhores marcas do mercado em um só lugar.</h2>
     <div>
         <button class="btn">Buscar </button>
-        <input type="text" name="" id="buscar">
+        <input type="text" name="" id="buscar" Placeholder="Buscar por Marca ou modelo...">
     </div>
     </div>
 
     <div id="faixa">
 
     </div>
+<?php
+    try{
+        require_once "php/salvar/Conexao.php";
+        $stmt = $sql->prepare("SELECT * FROM carro WHERE status_car = 0 ORDER BY data_car DESC LIMIT 3");
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
 
+
+
+?>
     <div id="cat">
         <div id="textocat">
             <h3>Destaque</h3>
             <h1>ÚLTIMAS ENTRADAS</h1>
+            <div>                
+		<?php
+                //onclick=\"location.href='../salvar/S_Favorito.php?id=".$row['id_car']."&status=".$row['status_car']."'\"
+                    
+                while($row = $result->fetch_assoc()){
+                   
+                if($row['status_car'] === 0){
+                    echo "
+
+                   <div>
+                    <button id='favoritar'>❤</button>
+                    <img src='" . htmlspecialchars($row['foto_car'], ENT_QUOTES, 'UTF-8') . "' alt='Foto do Veículo' width='200' height='150'>
+                    <span></span>
+                    <span>".htmlspecialchars($row['marca_car'], ENT_QUOTES, 'UTF-8')."</span>
+                    <span>".htmlspecialchars($row['modelo_car'], ENT_QUOTES, 'UTF-8')."</span>
+                    <span>".htmlspecialchars($row['ano_car'])."</span><span>".htmlspecialchars($row['quilometragem_car'])."</span><span>".htmlspecialchars($row['combustivel_car'], ENT_QUOTES, 'UTF-8')."</span>
+
+                    <hr>
+
+                    <div>
+                        <p>Valor</p>
+                        <span>R$".htmlspecialchars($row['preco_car'])."</span>
+                        <button onclick=\"location.href='php/user/Veiculo.php?id=".$row['id_car']."'\">👁VER</button>
+                    </div>
+                </div>
+                <br>
+
+                
+                    ";}}?>
+            </div>
         </div>
         <div>
         <button id="btnVender">VER TODOS</button>
         </div>
+        
+            
+        
     </div>
+<?php }catch(Exception $e){
+               
+                }?>
 
     <div id="atend">
 

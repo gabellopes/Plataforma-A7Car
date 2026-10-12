@@ -62,7 +62,7 @@ require_once "../salvar/Conexao.php";
 
 
         <button type="button" id="Cadastrar" onclick="validarUser()">Cadastrar</button>
-        <input type="button" value="User" onclick="PreencherUser()">
+        <input type="button" value="User" onclick="PreencherUserCad()">
     </form>
 <br>
    <a href="Login.php">Já tem cadastro? Logar</a>

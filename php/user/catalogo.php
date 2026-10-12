@@ -53,7 +53,7 @@ $result2 = $stmt->get_result();
     <div id="titulo">
         <h3>Estoque Completo</h3>
         <h1>CATÁLOGO DE VEÍCULOS</h1>
-        <input type="text">
+        <input type="text" Placeholder="Buscar por Marca ou modelo...">
     </div>
 
 

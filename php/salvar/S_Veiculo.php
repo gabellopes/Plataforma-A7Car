@@ -24,6 +24,7 @@ $Quilometragem = trim($_POST['Quilometragem'] ?? '');
 $Combustivel = trim($_POST['Combustivel'] ?? '');
 $Descricao = trim($_POST['Descricao'] ?? '');
 $Imagem = $_FILES['Imagem'];
+$Data = date('Y-m-d');
 
 
 $nomeArquivo = verificarImagem($Imagem, 'veiculos', 'Location: ../admin/Cadastrar/NovoVeiculo.php', '../../img/uploads/');
@@ -35,8 +36,10 @@ if (empty($Marca) || empty($Modelo) || empty($Ano) || empty($Preco) || empty($Co
     exit;
 }
 
-$stmt = $sql->prepare("INSERT INTO carro (marca_car, modelo_car, ano_car, preco_car, cor_car, quilometragem_car, combustivel_car, descricao_car, foto_car) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("ssiisisss", $Marca, $Modelo, $Ano, $Preco, $Cor, $Quilometragem, $Combustivel, $Descricao, $nomeArquivo);
+try{
+
+$stmt = $sql->prepare("INSERT INTO carro (marca_car, modelo_car, ano_car, preco_car, cor_car, quilometragem_car, combustivel_car, descricao_car, foto_car, data_car) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("ssiisissss", $Marca, $Modelo, $Ano, $Preco, $Cor, $Quilometragem, $Combustivel, $Descricao, $nomeArquivo, $Data);
 $stmt->execute();
 
 $_SESSION['sucesso_cadastro'] = 'Veículo cadastrado com sucesso!';
@@ -44,6 +47,14 @@ $_SESSION['erro'] = false;
 
 header("Location: ../admin/Cadastrar/NovoVeiculo.php");
 exit;
+
+}catch(Exception $e){
+                $_SESSION['erro_cadastro'] = "Erro ao cadastrar veiculo" . " " . $e->getMessage() ;
+                $_SESSION['erro'] = true;
+                header("Location: ../admin/Cadastrar/NovoVeiculo.php");
+                exit;
+                }
+
 
 
 ?>

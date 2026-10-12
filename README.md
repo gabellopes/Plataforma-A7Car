@@ -5,6 +5,7 @@ https://place-pic-60929211.figma.site/
 ALTER BD
 tabela carro
 -> atributo status_car tinyint 1 (valor default 0)
+-> atributo data_car DATE
 
 PROBLEMAS ENCONTRADOS
 -> ADICIONAR FORMA DE PAGAMENTO NA VENDA

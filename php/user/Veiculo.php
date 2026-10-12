@@ -70,11 +70,11 @@ $row = $result->fetch_assoc();
                  <div><span><?php echo htmlspecialchars($row['combustivel_car'], ENT_QUOTES, 'UTF-8')?></span></div>
                  <div><span><?php echo htmlspecialchars($row['descricao_car'])?></span></div>
                  <button>💬NEGOCIAR VIA WHATSAPP</button>
-                 <button id="abrirSimulacao">✈FAZER SIMULAÇAO</button>
+                 <button id="abrirDialog">✈FAZER SIMULAÇAO</button>
              </div><!-- Fim da div do carro-->
             
-            <dialog id="simulacao">
-                <button id="fecharSimulacao">🏃‍♂️💨</button>
+            <dialog id="dialog">
+                <button id="fecharDialog">🏃‍♂️💨</button>
 
                     <h1>SIMULAÇÃO - <?php echo htmlspecialchars($row['marca_car'], ENT_QUOTES, 'UTF-8') . " " . htmlspecialchars($row['modelo_car'], ENT_QUOTES, 'UTF-8') . " " . htmlspecialchars($row['ano_car'], ENT_QUOTES, 'UTF-8') ?></h1>
                     <hr>
@@ -87,6 +87,7 @@ $row = $result->fetch_assoc();
                     </div>
 
                     <form action="../salvar/S_Simulacao.php" method="post">
+                        <input id="tipoCadastro" type="text" value="simulacao" hidden>
                         <input name="id" type="text" hidden value="<?php echo htmlspecialchars($row['id_car'], ENT_QUOTES, 'UTF-8')?>">
                         <input name="status_car" type="text" hidden value="<?php echo htmlspecialchars($row['status_car'], ENT_QUOTES, 'UTF-8')?>">
                         <div><label for="Nome">Nome</label><input type="text" name="Nome" id="Nome"  maxlength="255" required></div>
@@ -103,7 +104,7 @@ $row = $result->fetch_assoc();
                         </div>
                         <div  id="divCnh"hidden><label for="Cnh" id="labelCnh">CNH</label><input type="text" name="Cnh" id="Cnh" maxlength="9"></div>
                         <div id="Mensagem_cnh"></div>
-                        <input type="button" id="enviarSimulacao" class="btn"  value="📊ENVIAR SIMULAÇÃO">
+                        <input type="button" id="enviarDialog" class="btn"  value="📊ENVIAR SIMULAÇÃO">
                     </form>
 
             </dialog>

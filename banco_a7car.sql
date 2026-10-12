@@ -41,10 +41,11 @@ CREATE TABLE IF NOT EXISTS `carro` (
   `descricao_car` varchar(700) NOT NULL,
   `foto_car` varchar(255) NOT NULL,
   `status_car` tinyint(1) DEFAULT '0',
+  `data_car` date DEFAULT NULL,
   PRIMARY KEY (`id_car`)
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Copiando dados para a tabela concessionaria.carro: ~6 rows (aproximadamente)
+-- Copiando dados para a tabela concessionaria.carro: ~5 rows (aproximadamente)
 
 -- Copiando estrutura para tabela concessionaria.cliente
 CREATE TABLE IF NOT EXISTS `cliente` (
@@ -58,9 +59,9 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   UNIQUE KEY `email_cli` (`email_cli`),
   UNIQUE KEY `cpf_cli` (`cpf_cli`),
   UNIQUE KEY `cnh_cli` (`cnh_cli`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Copiando dados para a tabela concessionaria.cliente: ~3 rows (aproximadamente)
+-- Copiando dados para a tabela concessionaria.cliente: ~1 rows (aproximadamente)
 
 
 -- Copiando estrutura para tabela concessionaria.colaborador
@@ -74,9 +75,10 @@ CREATE TABLE IF NOT EXISTS `colaborador` (
   `servico_col` varchar(255) NOT NULL,
   PRIMARY KEY (`id_col`),
   UNIQUE KEY `email_col` (`email_col`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Copiando dados para a tabela concessionaria.colaborador: ~1 rows (aproximadamente)
+
 
 -- Copiando estrutura para tabela concessionaria.favorito
 CREATE TABLE IF NOT EXISTS `favorito` (
@@ -88,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `favorito` (
   KEY `id_car` (`id_car`),
   CONSTRAINT `favorito_ibfk_1` FOREIGN KEY (`id_usu`) REFERENCES `usuario` (`id_usu`),
   CONSTRAINT `favorito_ibfk_2` FOREIGN KEY (`id_car`) REFERENCES `carro` (`id_car`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Copiando dados para a tabela concessionaria.favorito: ~0 rows (aproximadamente)
 
@@ -116,9 +118,9 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `senha_usu` varchar(255) NOT NULL,
   PRIMARY KEY (`id_usu`),
   UNIQUE KEY `email_usu` (`email_usu`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Copiando dados para a tabela concessionaria.usuario: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela concessionaria.usuario: ~3 rows (aproximadamente)
 REPLACE INTO `usuario` (`id_usu`, `nome_usu`, `email_usu`, `telefone_usu`, `senha_usu`) VALUES
 	(0, 'admin', 'admin@gmail.com', '(11)98229-9155', '$2y$10$IStkVoe8X6t5PeNkhhj/P.vKMyNWIxlP9YW/KvevCKAUUHQJQtCx2');
 
@@ -134,9 +136,9 @@ CREATE TABLE IF NOT EXISTS `vendas` (
   KEY `id_car` (`id_car`),
   CONSTRAINT `vendas_ibfk_1` FOREIGN KEY (`id_cli`) REFERENCES `cliente` (`id_cli`),
   CONSTRAINT `vendas_ibfk_2` FOREIGN KEY (`id_car`) REFERENCES `carro` (`id_car`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Copiando dados para a tabela concessionaria.vendas: ~6 rows (aproximadamente)
+-- Copiando dados para a tabela concessionaria.vendas: ~3 rows (aproximadamente)
 
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;

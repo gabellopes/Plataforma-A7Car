@@ -9,6 +9,12 @@
 h1{
     font-family: Barlow-Bold;
 }
+
+/*LOPES*/
+#Mensagem_senha {
+  white-space: pre-line; /* Essencial para o \n funcionar com textContent */
+}
+/**/
 a{
     text-decoration: none;
     color: white;
