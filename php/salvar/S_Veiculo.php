@@ -49,7 +49,8 @@ header("Location: ../admin/Cadastrar/NovoVeiculo.php");
 exit;
 
 }catch(Exception $e){
-                $_SESSION['erro_cadastro'] = "Erro ao cadastrar veiculo" . " " . $e->getMessage() ;
+                $_SESSION['erro_cadastro'] = "Erro ao cadastrar veiculo";
+                //$_SESSION['erro_cadastro'] = "Erro ao cadastrar veiculo" . " " . $e->getMessage();
                 $_SESSION['erro'] = true;
                 header("Location: ../admin/Cadastrar/NovoVeiculo.php");
                 exit;

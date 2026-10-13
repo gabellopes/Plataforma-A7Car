@@ -23,6 +23,7 @@ verifica("email_cli", "cliente", $Email, "Email já cadastrado", "Location: ../a
 verifica("cpf_cli", "cliente", $Cpf, "Cpf já cadastrado", "Location: ../admin/Cadastrar/NovoCliente.php");
 verifica("cnh_cli", "cliente", $Cnh, "Cnh já cadastrado", "Location: ../admin/Cadastrar/NovoCliente.php");
 
+try{
 $stmt = $sql->prepare("INSERT INTO cliente (nome_cli, email_cli, telefone_cli, cpf_cli, cnh_cli) VALUES (?, ?, ?, ?, ?)");
 $stmt->bind_param("ssssi", $Nome, $Email, $Telefone, $Cpf, $Cnh);
 $stmt->execute();
@@ -32,6 +33,11 @@ $_SESSION['erro'] = false;
 
 header("Location: ../admin/Cadastrar/NovoCliente.php");
 exit;
+}catch(Exception $e){
+                $_SESSION['erro_cadastro'] = "Erro ao tentar cadastrar cliente";
+                $_SESSION['erro'] = true;
+                header("Location: ../admin/Cadastrar/NovoCliente.php");
 
+                }
 
 ?>

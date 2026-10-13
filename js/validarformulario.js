@@ -4,6 +4,7 @@ const Senha = document.getElementById("Senha");
 
 const ConfirmarSenha = document.getElementById("Confirmar-senha");
 const botaoCadastrar = document.getElementById("Cadastrar");
+console.log(botaoCadastrar)
 
 
 
@@ -12,6 +13,7 @@ let MensagemSenha = document.getElementById("Mensagem_senha");
 let MensagemTelefone = document.getElementById("Mensagem_telefone");
 let MensagemCpf = document.getElementById("Mensagem_cpf");
 let MensagemCnh = document.getElementById("Mensagem_cnh");
+let MensagemAno = document.getElementById("Mensagem_ano");
 
 
 
@@ -28,6 +30,11 @@ function validarUser() {
     validarSenha();
     validarTelefone();
    
+}
+function validarVeiculo(){
+    if(validarAno() === true){
+        botaoCadastrar.type = "submit";
+    }
 }
 
 function validarCadastro(){
@@ -138,4 +145,27 @@ function validarCnh(){
         MensagemCnh.textContent = ""
         return true;
     }
+}
+
+function validarAno(){
+const anoAtual = new Date().getFullYear();
+
+MensagemAno.style.color = "red";
+
+if(Ano.value.length != 4){
+    MensagemAno.textContent = "Digite um ano valido";
+    return false;
+
+}else if(Ano.value > anoAtual){
+    MensagemAno.textContent = "Digite um ano valido";
+    return false;
+
+}else if(Ano.value < 1901){
+    MensagemAno.textContent = "Digite um ano valido";
+    return false;
+    
+}else{
+    MensagemAno.textContent = ""
+    return true;
+}
 }

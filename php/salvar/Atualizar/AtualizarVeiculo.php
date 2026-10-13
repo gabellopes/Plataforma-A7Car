@@ -29,10 +29,11 @@ $id = trim($_POST['id'] ?? '');
 if (empty($Marca) || empty($Modelo) || empty($Ano) || empty($Preco) || empty($Cor) || empty($Quilometragem) || empty($Combustivel) || empty($Descricao)) {
     $_SESSION['erro_cadastro'] = 'Preencha todos os campos.';
     $_SESSION['erro'] = true;
-    header("Location: ../admin/Salvar/Cadastro/NovoVeiculo.php");
+    header("Location: ../Editar/EditarVeiculo.php?id=" . $id);
+
     exit;
 }
-
+try{
 if(!isset($Imagem) || $Imagem['error'] === UPLOAD_ERR_NO_FILE){
 //$nomeArquivo = verificarImagem($_FILES['Imagem'], 'veiculos', 'Location: ../Editar/EditarVeiculo.php?id=' . $id, '../../../img/uploads/');
 
@@ -59,6 +60,11 @@ $_SESSION['erro'] = false;
 
 header("Location: ../../admin/Veiculos.php");
 exit;}
-
+}catch(Exception $e){
+                //$_SESSION['erro_cadastro'] = "Erro ao editar cliente" . " " . $e->getMessage() ;
+                $_SESSION['erro_cadastro'] = "Erro ao editar veiculo";
+                $_SESSION['erro'] = true;
+                header("Location: ../Editar/EditarVeiculo.php?id=" . $id);
+                }
 
 ?>

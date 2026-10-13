@@ -26,7 +26,9 @@ if(inputTipoCadastro.value === 'redefinirSenha'){
         if(validarSenha() === true){
             botaoCadastrar.type = "submit";
         }
-    } 
+    }else if(inputTipoCadastro.value === 'cadastroVeiculo'){
+        validarVeiculo();
+    }
     
 });}
 

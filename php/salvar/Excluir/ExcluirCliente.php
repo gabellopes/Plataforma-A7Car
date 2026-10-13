@@ -19,7 +19,7 @@ $stmt->execute();
 
 header("Location: ../../admin/Clientes.php");
 exit;}catch(Exception $e){
-                $_SESSION['erro_cadastro'] = "Erro ao tentar excluir cliente" . " " . $e->getMessage() ;
+                $_SESSION['erro_cadastro'] = "Erro ao tentar excluir cliente";
                 $_SESSION['erro'] = true;
                 header("Location: ../../admin/Clientes.php");
                 }

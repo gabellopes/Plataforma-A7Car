@@ -31,7 +31,7 @@ require_once "../salvar/Conexao.php";
 
 
     <form action="#" method="post">
-         <input id="tipoCadastro" type="text" value="redefinirSenha" hidden>
+        <input id="tipoCadastro" type="text" value="redefinirSenha" hidden>
         <label for="senha">Senha</label>
         <div><input type="password" name="Senha" id="Senha" maxlength="20" required><button type="button" data-target="Senha" id="mostrarSenha">👁</button></div>
         

@@ -21,7 +21,7 @@ $Cnh = trim($_POST['Cnh'] ?? '');
             $stmt->execute();
             
             }catch(Exception $e){
-                $_SESSION['erro_cadastro'] = "Erro ao enviar simulacao" . " " . $e->getMessage() ;
+                $_SESSION['erro_cadastro'] = "Erro ao enviar simulacao";
                 $_SESSION['erro'] = true;
                 header("Location: ../user/Veiculo.php?id=" . $idCar);
                 }

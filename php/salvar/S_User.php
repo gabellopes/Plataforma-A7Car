@@ -76,6 +76,7 @@ if (!checkdnsrr($dominio, "MX")) {
 verifica("email_usu", "usuario", $Email, "Email já cadastrado", "Location: ../user/Cadastro.php");
 $senhaHash = password_hash($Senha, PASSWORD_DEFAULT);
 
+try{
 $stmt = $sql->prepare("INSERT INTO usuario (nome_usu, email_usu, telefone_usu, senha_usu) VALUES (?, ?, ?, ?)");
 $stmt->bind_param("ssss", $Nome, $Email, $Telefone, $senhaHash);
 $stmt->execute();
@@ -84,5 +85,12 @@ $_SESSION['sucesso_cadastro'] = 'Cadastro realizado com sucesso!';
 $_SESSION['erro'] = false;
 header("Location: ../user/Login.php");
 exit;
+}catch(Exception $e){
+                $_SESSION['erro_cadastro'] = "Erro ao tentar cadastrar cliente";
+                $_SESSION['erro'] = true;
+                header("Location: ../user/Cadastro.php");
+
+
+                }
 
 ?>

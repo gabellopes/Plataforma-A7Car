@@ -27,11 +27,12 @@ $id = trim($_POST['id'] ?? '');
 if (empty($Nome) || empty($Email) || empty($Telefone) || empty($Cpf) || empty($Cnh)) {
     $_SESSION['erro_cadastro'] = 'Preencha todos os campos.';
     $_SESSION['erro'] = true;
-    header("Location: ../admin/Salvar/Cadastro/NovoCliente.php");
+    header("Location: ../Editar/EditarCliente.php?id=" . $id);
+
     exit;
 }
 
-
+try{
 $stmt = $sql->prepare("UPDATE cliente SET nome_cli = ?, email_cli = ?, telefone_cli = ?, cpf_cli = ?, cnh_cli = ? WHERE id_cli = ?");
 $stmt->bind_param("ssssii", $Nome, $Email, $Telefone, $Cpf, $Cnh, $id);
 $stmt->execute();
@@ -41,6 +42,13 @@ $_SESSION['erro'] = false;
 
 header("Location: ../../admin/Clientes.php");
 exit;
+
+}catch(Exception $e){
+                //$_SESSION['erro_cadastro'] = "Erro ao editar cliente" . " " . $e->getMessage() ;
+                $_SESSION['erro_cadastro'] = "Erro ao editar cliente";
+                $_SESSION['erro'] = true;
+                header("Location: ../Editar/EditarCliente.php?id=" . $id);
+                }
 
 
 ?>

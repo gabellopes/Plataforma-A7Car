@@ -23,6 +23,13 @@ if(isset($_SESSION['sucesso_cadastro'])){
     echo "<script>alert('" . htmlspecialchars($Mensagem, ENT_QUOTES, 'UTF-8') . "');</script>"; 
     $_SESSION['sucesso_cadastro'] = null;
 }
+
+         if(isset($_SESSION['erro_cadastro'])){
+            $Mensagem = $_SESSION['erro_cadastro'];
+            echo "<script>alert('" . htmlspecialchars($Mensagem, ENT_QUOTES, 'UTF-8') . "');</script>"; 
+            unset($_SESSION['erro_cadastro']);
+        }
+
 ?>
             <div id="meio">
                 <div id="titulo">
@@ -54,7 +61,7 @@ if(isset($_SESSION['sucesso_cadastro'])){
              
                     
                 while($row = $result->fetch_assoc()){
-                  
+                $caminho = $row['foto_car'];
                 if($row['status_car'] === 0){
                     echo "
                     <tr>
@@ -73,7 +80,7 @@ if(isset($_SESSION['sucesso_cadastro'])){
                             <button onclick=\"location.href='Cadastrar/VenderVeiculo.php?id=".$row['id_car']."'\">🟩</button>
                         </td>
                         <td>
-                        <button onclick=\"return confirm('Tem certeza que deseja excluir este veículo?') ? location.href='../salvar/Excluir/ExcluirVeiculo.php?id=".$row['id_car']."' : false;\">🧨</button>
+                        <button onclick=\"return confirm('Tem certeza que deseja excluir este veículo?') ? location.href='../salvar/Excluir/ExcluirVeiculo.php?id=".$row['id_car']."&caminho=".$caminho."' : false;\">🧨</button>
                         </td>
                     </tr>";}
                      

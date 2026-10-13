@@ -40,11 +40,13 @@ if(isset($_SESSION['sucesso_cadastro'])){
         <div class="mei">
         <div id="cadastro">
     <form method="POST" action="../../salvar/Atualizar/AtualizarVeiculo.php" enctype="multipart/form-data">
+        <input id="tipoCadastro" type="text" value="cadastroVeiculo" hidden>
         <div>
         <input type="hidden" name="id" value="<?php echo htmlspecialchars($carro['id_car'], ENT_QUOTES, 'UTF-8'); ?>">
         <label for="Marca">Marca</label><input type="text" name="Marca" id="Marca"  value="<?php echo htmlspecialchars($carro['marca_car'], ENT_QUOTES, 'UTF-8'); ?>" maxlength="255" required>
         <label for="Modelo">Modelo</label><input type="text" name="Modelo" id="Modelo"  value="<?php echo htmlspecialchars($carro['modelo_car'], ENT_QUOTES, 'UTF-8'); ?>" maxlength="255" required>
         <label for="Ano">Ano</label><input type="text" name="Ano" id="Ano"  value="<?php echo htmlspecialchars($carro['ano_car'], ENT_QUOTES, 'UTF-8'); ?>" maxlength="4" required>
+        <div id="Mensagem_ano"></div>
         <label for="Preco">Preço</label><input type="text" name="Preco" id="Preco"  value="<?php echo htmlspecialchars($carro['preco_car'], ENT_QUOTES, 'UTF-8'); ?>" maxlength="20" required>
         <label for="Cor">Cor</label><input type="text" name="Cor" id="Cor"  value="<?php echo htmlspecialchars($carro['cor_car'], ENT_QUOTES, 'UTF-8'); ?>" maxlength="20" required>
         </div>
@@ -65,7 +67,7 @@ if(isset($_SESSION['sucesso_cadastro'])){
 
             <div style="color: red;"><?php if (isset($_SESSION['erro_cadastro'])){echo htmlspecialchars($_SESSION['erro_cadastro'], ENT_QUOTES, 'UTF-8');unset($_SESSION['erro_cadastro']);} ?></div>
         </div>
-        <input type="button" class="btn" value="Salvar" onclick="return confirm('Tem certeza que deseja salvar as alterações?') ? document.forms[0].submit() : false;">
+        <input type="button" id="Cadastrar" class="btn" value="Salvar" onclick="return confirm('Tem certeza que deseja salvar as alterações?') ? validarVeiculo() : false;">
         <button type="button" class="btn" onclick="window.location.href='../../admin/Veiculos.php'">Voltar</button>
         </div>
     </form>
@@ -76,5 +78,7 @@ if(isset($_SESSION['sucesso_cadastro'])){
     <?php } ?>
     <script src="../../../js/mascaras.js"></script>
     <script src="../../../js/visualizarImagem.js"></script>
+    <script src="../../../js/validarformulario.js"></script>
+
 </body>
 </html>

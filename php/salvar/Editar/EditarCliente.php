@@ -25,6 +25,8 @@
         echo "<script>alert('" . htmlspecialchars($Mensagem, ENT_QUOTES, 'UTF-8') . "');</script>";
         $_SESSION['sucesso_cadastro'] = null;
     }
+
+
     if(isset($_GET['id'])){
         
         require_once "../../salvar/Conexao.php";
@@ -49,6 +51,7 @@
         <div id="Mensagem_cpf"></div>
         <label for="Cnh">CNH</label><input type="text" name="Cnh" id="Cnh" maxlength="9"  value="<?php echo htmlspecialchars($cliente['cnh_cli']); ?>" required>
         <div id="Mensagem_cnh"></div>
+        <div style="color: red;"><?php if (isset($_SESSION['erro_cadastro'])){echo htmlspecialchars($_SESSION['erro_cadastro'], ENT_QUOTES, 'UTF-8');unset($_SESSION['erro_cadastro']);} ?></div>
         <input type="button" class="btn" id="Cadastrar" value="Salvar" onclick="return confirm('Tem certeza que deseja atualizar este cliente?') ? validarCliente() : true;">
         <button type="button" class="btn" onclick="window.location.href='../../admin/Clientes.php'">Voltar</button>
         </div>

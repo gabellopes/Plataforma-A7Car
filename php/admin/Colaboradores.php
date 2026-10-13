@@ -22,6 +22,13 @@
             echo "<script>alert('" . htmlspecialchars($Mensagem, ENT_QUOTES, 'UTF-8') . "');</script>"; 
             $_SESSION['sucesso_cadastro'] = null;
         }
+
+        
+         if(isset($_SESSION['erro_cadastro'])){
+            $Mensagem = $_SESSION['erro_cadastro'];
+            echo "<script>alert('" . htmlspecialchars($Mensagem, ENT_QUOTES, 'UTF-8') . "');</script>"; 
+            unset($_SESSION['erro_cadastro']);
+        }
     ?>
         <div id="meio">
             <div id="titulo">

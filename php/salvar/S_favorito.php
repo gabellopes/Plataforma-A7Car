@@ -12,10 +12,18 @@ echo "id do usuario" . "->" . $idUsu;
 
     if($status == 0){
 
+        try{
         $stmt = $sql->prepare("INSERT INTO favorito (id_usu, id_car) VALUES (?, ?) ");
         $stmt->bind_param("ii", $idUsu, $idCar);
         $stmt->execute();
         echo "Sucesso";
+        }catch(Exception $e){
+                $_SESSION['erro_cadastro'] = "Erro ao favoritar veiculo";
+                $_SESSION['erro'] = true;
+                header("Location: ../user/catalogo.php");
+
+                }
+
 
 
     }else{

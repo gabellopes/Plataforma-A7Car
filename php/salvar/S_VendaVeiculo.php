@@ -40,6 +40,7 @@ $id_cli = $cliente['id_cli'];
 
 if ($resultado->num_rows > 0) {
 
+try{
 $stmt = $sql->prepare("INSERT INTO vendas (valor_ven, data_ven, id_cli, id_car) VALUES (?, ?, ?, ?)");
 $stmt->bind_param("dsii", $Preco, $Data, $id_cli, $id_car);
 $stmt->execute();
@@ -50,6 +51,13 @@ $stmt->execute();
 
 $_SESSION['sucesso_cadastro'] = 'Venda cadastrada com sucesso!';
 $_SESSION['erro'] = false;
+}catch(Exception $e){
+                $_SESSION['erro_cadastro'] = "Erro ao tentar cadastrar venda";
+                $_SESSION['erro'] = true;
+                header("Location: ../admin/Cadastrar/VenderVeiculo.php?id=" . $id_car);
+
+                }
+
 
 header("Location: ../admin/Veiculos.php");
 exit;

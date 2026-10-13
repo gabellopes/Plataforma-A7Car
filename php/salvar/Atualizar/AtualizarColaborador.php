@@ -27,7 +27,7 @@ if (empty($Nome) || empty($Email) || empty($Telefone) || empty($Servico) || empt
     header("Location: ../Editar/EditarColaborador.php?id=" . $id);
     exit;
 }
-
+try{
 if(!isset($Imagem) || $Imagem['error'] === UPLOAD_ERR_NO_FILE){
 
 
@@ -56,7 +56,12 @@ exit;
 
 
 }
-
+}catch(Exception $e){
+                //$_SESSION['erro_cadastro'] = "Erro ao editar cliente" . " " . $e->getMessage() ;
+                $_SESSION['erro_cadastro'] = "Erro ao editar colaborador";
+                $_SESSION['erro'] = true;
+                header("Location: ../Editar/EditarColaborador.php?id=" . $id);
+                }
 
 
 
