@@ -67,7 +67,7 @@ if(inputTipoCadastro.value === 'simulacao'){
             spanMensagem_email_enviado.textContent = $emailEsqueceuSenha ;
             
             dialog.close();
-            dialogEmailEnviado.showModal();
+            //dialogEmailEnviado.showModal();
              
         }
     }

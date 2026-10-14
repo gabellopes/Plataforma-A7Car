@@ -25,6 +25,19 @@ if ($resultado->num_rows > 0) {
     return false;
 }
 }
+function pegarid($atributo, $coluna, $atributo2 ,$variavel){
+
+include __DIR__ . "/Conexao.php";
+$verifica = $sql->prepare("SELECT $atributo FROM $coluna WHERE $atributo2 = ?");
+$verifica->bind_param("s", $variavel);
+$verifica->execute();
+$resultado = $verifica->get_result();
+$id = $resultado->fetch_assoc();
+
+if ($resultado->num_rows > 0) {
+    return $id[$atributo];
+}
+}
 
 function verificarImagem($imagem, $pasta, $link, $caminho){
     if (!isset($imagem) || $imagem['error'] === UPLOAD_ERR_NO_FILE) {

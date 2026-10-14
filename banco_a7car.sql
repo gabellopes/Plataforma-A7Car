@@ -156,6 +156,18 @@ CREATE TABLE IF NOT EXISTS `vendas` (
 REPLACE INTO `vendas` (`id_ven`, `valor_ven`, `data_ven`, `id_cli`, `id_car`) VALUES
 	(1, 3000000.00, '2026-10-12', 3, 4);
 
+CREATE TABLE IF NOT EXISTS password_resets (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_usu INT NOT NULL,
+    token VARCHAR(255) NOT NULL,
+    expira_em DATETIME NOT NULL,
+    usado TINYINT(1) NOT NULL DEFAULT 0,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_reset_usuario FOREIGN KEY (id_usu) REFERENCES usuario(id_usu) ON DELETE CASCADE
+);
+
+
+
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;

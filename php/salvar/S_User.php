@@ -69,7 +69,7 @@ if (!preg_match('/[\W_]/', $Senha)) {
 $dominio = substr(strrchr($Email, "@"), 1);
 
 if (!checkdnsrr($dominio, "MX")) {
-    header("O domínio do e-mail não existe.");
+    $_SESSION['erro_cadastro'] = "O domínio do e-mail não existe.";
     $_SESSION['erro'] = true;
     exit;
 }

@@ -1,11 +1,43 @@
 <?php
-SESSION_START(); 
 require_once "../salvar/Conexao.php";
+require_once "../salvar/funcoes.php";
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    SESSION_START(); 
+}
+
   if(isset($_SESSION['sucesso_cadastro'])){
             $Mensagem = $_SESSION['sucesso_cadastro'];
             echo "<script>alert('" . htmlspecialchars($Mensagem, ENT_QUOTES, 'UTF-8') . "');</script>"; 
             $_SESSION['sucesso_cadastro'] = null;
         }
+/*NECESSARIO - Colocar em arquivo separado */
+/*TEMPORARIO*/
+$Email = trim($_POST['Email'] ?? '');
+
+if($Email !== ''){
+$emailExiste = verifica("email_usu", "usuario", $Email);
+
+if($emailExiste === false){
+    echo "<script>alert('Email não cadastrado');</script>"; 
+
+}else{
+    $id = pegarid("id_usu", "usuario", "email_usu", $Email);
+    $token = bin2hex(random_bytes(32));
+
+    $link = "RedefinirSenha.php?token=" . $token; 
+    echo "<script>
+    if (confirm('Clique em OK para acessar o link de redefinição de senha.')) {
+        window.location.href = '" . $link . "';
+    }
+</script>";
+    exit;
+}}
+if(isset($_SESSION['sucesso_cadastro'])){
+            $Mensagem = $_SESSION['sucesso_cadastro'];
+            echo "<script>alert('" . htmlspecialchars($Mensagem, ENT_QUOTES, 'UTF-8') . "');</script>"; 
+            $_SESSION['sucesso_cadastro'] = null;
+        }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,18 +102,18 @@ require_once "../salvar/Conexao.php";
 
     <dialog id="dialog">
                 <button id="fecharDialog">🏃‍♂️💨</button>
-
+                
                     <h1>Redefinir Senha</h1>
                     <hr>
 
                     <p>Informe o e-mail cadastrado na sua conta. Enviaremos um link para você criar uma nova senha.</p>
 
-                    <form action="#" method="post">
+                    <form method="post">
                         <input id="tipoCadastro" type="text" value="esqueceuSenha" hidden>
                         <label for="email">E-mail</label>
                         <input type="email" name="Email" id="Email" maxlength="255" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" required>
                         <div id="Mensagem_email"></div>
-                        <input type="button" id="enviarDialog" class="btn"  value="✉ENVIAR EMAIL">
+                        <input type="submit" id="enviarDialog" class="btn"  value="✉ENVIAR EMAIL">
                     </form>
 
             </dialog>

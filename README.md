@@ -6,6 +6,15 @@ ALTER BD
 tabela carro
 -> atributo status_car tinyint 1 (valor default 0)
 -> atributo data_car DATE
+-> CREATE TABLE IF NOT EXISTS password_resets (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_usu INT NOT NULL,
+    token VARCHAR(255) NOT NULL,
+    expira_em DATETIME NOT NULL,
+    usado TINYINT(1) NOT NULL DEFAULT 0,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_reset_usuario FOREIGN KEY (id_usu) REFERENCES usuario(id_usu) ON DELETE CASCADE
+);
 
 PROBLEMAS ENCONTRADOS
 -> ADICIONAR FORMA DE PAGAMENTO NA VENDA

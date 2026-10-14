@@ -1,6 +1,12 @@
 <?php
 SESSION_START(); 
 require_once "../salvar/Conexao.php";
+
+if(isset($_SESSION['erro_cadastro'])){
+            $Mensagem = $_SESSION['erro_cadastro'];
+            echo "<script>alert('" . htmlspecialchars($Mensagem, ENT_QUOTES, 'UTF-8') . "');</script>"; 
+            unset($_SESSION['erro_cadastro']);
+        }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,8 +36,9 @@ require_once "../salvar/Conexao.php";
     <div id="cadastro">
 
 
-    <form action="#" method="post">
+    <form action="../salvar/Atualizar/AtualizarSenha.php" method="post">
         <input id="tipoCadastro" type="text" value="redefinirSenha" hidden>
+        <!--<input type="text" name="id" value="<?php echo htmlspecialchars($_GET['id']); ?>" hidden>-->
         <label for="senha">Senha</label>
         <div><input type="password" name="Senha" id="Senha" maxlength="20" required><button type="button" data-target="Senha" id="mostrarSenha">👁</button></div>
         
