@@ -25,6 +25,6 @@ PROBLEMAS ENCONTRADOS
 -> Data que o carro foi cadastrado
 
 
-->Corrigir simulacao, não precisa de cpf_simu, etc. Apenas do ids do funcionario, carro e da propria simulacao
+->Corrigir simulacao, não precisa de cpf_simu, etc. Apenas dos ids do funcionario, carro e da propria simulacao
 -> Acrescentar uma data para a simulação, quando ela foi feita
 -> Cnh não pode ser obrigatorio
