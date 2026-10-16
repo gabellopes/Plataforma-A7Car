@@ -21,49 +21,62 @@ $Descricao = trim($_POST['Descricao'] ?? '');
 $Imagem = $_FILES['Imagem'];
 $id = trim($_POST['id'] ?? '');
 
+/*MODIFICAR QUANDO PUBLICAR*/
+$caminho = "../../../.." . $_POST['foto_col'];
+
 if (empty($Nome) || empty($Email) || empty($Telefone) || empty($Servico) || empty($Descricao)) {
     $_SESSION['erro_cadastro'] = 'Preencha todos os campos.';
     $_SESSION['erro'] = true;
     header("Location: ../Editar/EditarColaborador.php?id=" . $id);
     exit;
 }
-try{
-if(!isset($Imagem) || $Imagem['error'] === UPLOAD_ERR_NO_FILE){
+
+if(file_exists($caminho)){
+    try{
+
+        if(!isset($Imagem) || $Imagem['error'] === UPLOAD_ERR_NO_FILE){
 
 
-$stmt = $sql->prepare("UPDATE colaborador SET nome_col = ?, email_col = ?, telefone_col = ?, servico_col = ?, descricao_col = ? WHERE id_col = ?");
-$stmt->bind_param("sssssi", $Nome, $Email, $Telefone, $Servico, $Descricao, $id);
-$stmt->execute();
+            $stmt = $sql->prepare("UPDATE colaborador SET nome_col = ?, email_col = ?, telefone_col = ?, servico_col = ?, descricao_col = ? WHERE id_col = ?");
+            $stmt->bind_param("sssssi", $Nome, $Email, $Telefone, $Servico, $Descricao, $id);
+            $stmt->execute();
 
-$_SESSION['sucesso_cadastro'] = 'Colaborador atualizado com sucesso!';
-$_SESSION['erro'] = false;
+            $_SESSION['sucesso_cadastro'] = 'Colaborador atualizado com sucesso!';
+            $_SESSION['erro'] = false;
 
-header("Location: ../../admin/Colaboradores.php");
-exit;
+            header("Location: ../../admin/Colaboradores.php");
+            exit;
+
+        }else{
+            unlink($caminho);
+            $nomeArquivo = verificarImagem($_FILES['Imagem'], 'colaboradores', 'Location: ../Editar/EditarColaborador.php?id=' . $id, '../../../img/uploads/');
+
+            $stmt = $sql->prepare("UPDATE colaborador SET nome_col = ?, email_col = ?, telefone_col = ?, servico_col = ?, descricao_col = ?, foto_col = ? WHERE id_col = ?");
+            $stmt->bind_param("ssssssi", $Nome, $Email, $Telefone, $Servico, $Descricao, $nomeArquivo, $id);
+            $stmt->execute();
+
+            $_SESSION['sucesso_cadastro'] = 'Colaborador atualizado com sucesso!';
+            $_SESSION['erro'] = false;
+
+            header("Location: ../../admin/Colaboradores.php");
+            exit;
+
+
+        }
+    }catch(Exception $e){
+                    //$_SESSION['erro_cadastro'] = "Erro ao editar cliente" . " " . $e->getMessage() ;
+                    $_SESSION['erro_cadastro'] = "Erro ao editar colaborador";
+                    $_SESSION['erro'] = true;
+                    header("Location: ../Editar/EditarColaborador.php?id=" . $id);
+                    exit;
+                    }
 
 }else{
-$nomeArquivo = verificarImagem($_FILES['Imagem'], 'colaboradores', 'Location: ../Editar/EditarColaborador.php?id=' . $id, '../../../img/uploads/');
-
-$stmt = $sql->prepare("UPDATE colaborador SET nome_col = ?, email_col = ?, telefone_col = ?, servico_col = ?, descricao_col = ?, foto_col = ? WHERE id_col = ?");
-$stmt->bind_param("ssssssi", $Nome, $Email, $Telefone, $Servico, $Descricao, $nomeArquivo, $id);
-$stmt->execute();
-
-$_SESSION['sucesso_cadastro'] = 'Colaborador atualizado com sucesso!';
-$_SESSION['erro'] = false;
-
-header("Location: ../../admin/Colaboradores.php");
-exit;
-
-
-}
-}catch(Exception $e){
-                //$_SESSION['erro_cadastro'] = "Erro ao editar cliente" . " " . $e->getMessage() ;
                 $_SESSION['erro_cadastro'] = "Erro ao editar colaborador";
                 $_SESSION['erro'] = true;
                 header("Location: ../Editar/EditarColaborador.php?id=" . $id);
-                }
-
-
+                exit;
+}
 
 
 

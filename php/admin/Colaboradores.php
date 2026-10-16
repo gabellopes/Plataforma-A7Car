@@ -53,7 +53,7 @@
                 $stmt->execute();
                 $result = $stmt->get_result();
                 while($row = $result->fetch_assoc()){
-                    
+                $caminho = $row['foto_col'];
                     echo "
                     <tr>
                         <td><img src='" . htmlspecialchars($row['foto_col'], ENT_QUOTES, 'UTF-8') . "' alt='Foto do Colaborador' width='200'></td>
@@ -65,7 +65,7 @@
                             <button onclick=\"location.href='../salvar/Editar/EditarColaborador.php?id=".$row['id_col']."'\">⚙</button>
                         </td>
                         <td>
-                            <button onclick=\"return confirm('Tem certeza que deseja excluir este colaborador?') ? location.href='../salvar/Excluir/ExcluirColaborador.php?id=".$row['id_col']."' : false;\">🧨</button>
+                            <button onclick=\"return confirm('Tem certeza que deseja excluir este colaborador?') ? location.href='../salvar/Excluir/ExcluirColaborador.php?id=".$row['id_col']."&caminho=".$caminho."' : false;\">🧨</button>
                         </td>
                     </tr>";
                 }

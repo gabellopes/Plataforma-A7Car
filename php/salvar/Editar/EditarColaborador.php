@@ -33,6 +33,7 @@
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $result = $stmt->get_result();
+
         $colaborador = $result->fetch_assoc();
     ?>
         <div class="mei">
@@ -40,6 +41,7 @@
     <form method="Post" action="../Atualizar/AtualizarColaborador.php" enctype="multipart/form-data">
         <div>
         <input type="hidden" name="id" value="<?php echo htmlspecialchars($colaborador['id_col']); ?>">
+        <input type="hidden" name="foto_col" value="<?php echo htmlspecialchars($colaborador['foto_col']); ?>">
         <label for="Nome">Nome</label><input type="text" name="Nome" id="Nome"  value="<?php echo htmlspecialchars($colaborador['nome_col'], ENT_QUOTES, 'UTF-8'); ?>" maxlength="255" required>
         <label for="Email">Email</label><input type="email" name="Email" id="Email"  value="<?php echo htmlspecialchars($colaborador['email_col'], ENT_QUOTES, 'UTF-8'); ?>" maxlength="255" required>
         <div id="Mensagem_email"></div>

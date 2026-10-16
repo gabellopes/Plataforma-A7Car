@@ -41,6 +41,7 @@ if(isset($_SESSION['sucesso_cadastro'])){
         <div id="cadastro">
     <form method="POST" action="../../salvar/Atualizar/AtualizarVeiculo.php" enctype="multipart/form-data">
         <input id="tipoCadastro" type="text" value="cadastroVeiculo" hidden>
+        <input type="hidden" name="foto_car" value="<?php echo htmlspecialchars($carro['foto_car']); ?>">
         <div>
         <input type="hidden" name="id" value="<?php echo htmlspecialchars($carro['id_car'], ENT_QUOTES, 'UTF-8'); ?>">
         <label for="Marca">Marca</label><input type="text" name="Marca" id="Marca"  value="<?php echo htmlspecialchars($carro['marca_car'], ENT_QUOTES, 'UTF-8'); ?>" maxlength="255" required>
