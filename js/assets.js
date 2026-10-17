@@ -58,19 +58,18 @@ if(inputTipoCadastro.value === 'simulacao'){
         }
 
         
-    }}else if(inputTipoCadastro.value === 'esqueceuSenha'){
+    }}/*else if(inputTipoCadastro.value === 'esqueceuSenha'){
         validarEmail();
 
         if(validarEmail() === true){
             $emailEsqueceuSenha = Email.value;
-            console.log($emailEsqueceuSenha);
             spanMensagem_email_enviado.textContent = $emailEsqueceuSenha ;
             
             dialog.close();
-            //dialogEmailEnviado.showModal();
+            dialogEmailEnviado.showModal();
              
         }
-    }
+    }*/
 });
 
 if(inputTipoCadastro.value === 'simulacao'){

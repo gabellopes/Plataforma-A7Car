@@ -10,28 +10,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
             echo "<script>alert('" . htmlspecialchars($Mensagem, ENT_QUOTES, 'UTF-8') . "');</script>"; 
             $_SESSION['sucesso_cadastro'] = null;
         }
-/*NECESSARIO - Colocar em arquivo separado */
-/*TEMPORARIO*/
-$Email = trim($_POST['Email'] ?? '');
 
-if($Email !== ''){
-$emailExiste = verifica("email_usu", "usuario", $Email);
-
-if($emailExiste === false){
-    echo "<script>alert('Email não cadastrado');</script>"; 
-
-}else{
-    $id = pegarid("id_usu", "usuario", "email_usu", $Email);
-    $token = bin2hex(random_bytes(32));
-
-    $link = "RedefinirSenha.php?token=" . $token; 
-    echo "<script>
-    if (confirm('Clique em OK para acessar o link de redefinição de senha.')) {
-        window.location.href = '" . $link . "';
-    }
-</script>";
-    exit;
-}}
 if(isset($_SESSION['sucesso_cadastro'])){
             $Mensagem = $_SESSION['sucesso_cadastro'];
             echo "<script>alert('" . htmlspecialchars($Mensagem, ENT_QUOTES, 'UTF-8') . "');</script>"; 
@@ -108,13 +87,13 @@ if(isset($_SESSION['sucesso_cadastro'])){
 
                     <p>Informe o e-mail cadastrado na sua conta. Enviaremos um link para você criar uma nova senha.</p>
 
-                    <form method="post">
+                    <div>
                         <input id="tipoCadastro" type="text" value="esqueceuSenha" hidden>
                         <label for="email">E-mail</label>
                         <input type="email" name="Email" id="Email" maxlength="255" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" required>
                         <div id="Mensagem_email"></div>
-                        <input type="submit" id="enviarDialog" class="btn"  value="✉ENVIAR EMAIL">
-                    </form>
+                        <input type="button" id="enviarDialog" class="btn"  value="✉ENVIAR EMAIL">
+                    </div>
 
             </dialog>
 
@@ -129,7 +108,7 @@ if(isset($_SESSION['sucesso_cadastro'])){
                     <p>Enviamos um e-mail para <span id="Mensagem_email_enviado" style="color: red;"></span> com  as instruções para redefinir sua senha</p>
 
                     <h1>Simulação do link recebido</h1>
-                    <a href="RedefinirSenha.php" style="color: blue;">exemplodelink</a>
+                    <a href="#" style="color: blue;" id="linkRedefinirSenha">link</a>
                     
     </dialog>
 
@@ -153,5 +132,6 @@ if(isset($_SESSION['sucesso_cadastro'])){
 <script src="../../js/mascaras.js"></script>
 <script src="../../js/validarformulario.js"></script>
 <script src="../../js/assets.js"></script>
+<script src="../../js/temp.js"></script>
 </body>
 </html>

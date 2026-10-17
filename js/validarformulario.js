@@ -4,7 +4,6 @@ const Senha = document.getElementById("Senha");
 
 const ConfirmarSenha = document.getElementById("Confirmar-senha");
 const botaoCadastrar = document.getElementById("Cadastrar");
-console.log(botaoCadastrar)
 
 
 
