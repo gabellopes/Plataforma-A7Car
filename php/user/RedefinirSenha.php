@@ -50,6 +50,7 @@ $dataAtual =  time();
         <h1>Redefinição de Senha</h1>
     </div>
 <div class="mei">
+
 <?php
 try{$stmt = $sql->prepare("SELECT * FROM password_resets WHERE token = ?");
 $stmt->bind_param("s", $token);
@@ -74,6 +75,7 @@ if($result->num_rows > 0){
 
     <form action="../salvar/Atualizar/AtualizarSenha.php" method="post">
         <input id="tipoCadastro" type="text" value="redefinirSenha" hidden>
+        <input type="text" name="token" value=<?php echo $password_resets['token']?> hidden>
         <label for="senha">Senha</label>
         <div><input type="password" name="Senha" id="Senha" maxlength="20" required><button type="button" data-target="Senha" id="mostrarSenha">👁</button></div>
         
@@ -91,20 +93,20 @@ if($result->num_rows > 0){
    </div>
 
 <?php
+       }else{
+            echo "<h1>Link Expirado⏰</h1>";
        }
+    }else{
+         echo "<h1>Este link já foi Usado👀</h1>";
     }
 }else{
-?>
-<h1 >Link Invalido😢🚗</h1>
-<?php
-
-}}catch(Exception $e){
-
-?>
-<h1>⛔Erro no sistema, tente novamente mais tarde. 🚧🚚</h1>
-<?php
+    echo "<h1>Link Invalido😢🚗</h1>";
+    }
+}catch(Exception $e){
+    echo "<h1>⛔Erro no sistema, tente novamente mais tarde. 🚧🚚</h1>";
 }
 ?>
+
    </div>
 
     <script src="../../js/mascaras.js"></script>
