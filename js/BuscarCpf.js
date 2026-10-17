@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             validarCpf();
-            const response = await fetch(`/a7car2/php/salvar/BuscarCpf.php?Cpf=${Cpf.value}`);
+            const response = await fetch(`/Plataforma-A7Car/php/salvar/BuscarCpf.php?Cpf=${Cpf.value}`);
             const dados = await response.json();
             
             if (dados.sucesso) {
