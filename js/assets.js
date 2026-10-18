@@ -7,7 +7,10 @@ const botaoFecharDialogEmailEnviado = document.getElementById("FecharDialogEmail
 const botaoEnviarDialog = document.getElementById("enviarDialog");
 const botaotemCnh = document.getElementById("temCnh");
 const botaonaoTemCnh = document.getElementById("naoTemCnh");
+const botoesFavorito = document.querySelectorAll('.btn-favoritar');
 const divCnh = document.getElementById("divCnh");
+
+
 
 const inputTipoCadastro = document.getElementById("tipoCadastro");
 
@@ -124,5 +127,45 @@ botaoMostrarConfirmarSenha.addEventListener('click', ()=>{
         botaoMostrarConfirmarSenha.textContent = '👁';
     }
 });}
+
+
+
+botoesFavorito.forEach(botao => {
+    botao.addEventListener('click', (e) => {
+        const veiculoId = e.currentTarget.getAttribute('data-id');
+        const botaoAtual = e.currentTarget;
+
+        // Faz a requisição Fetch para o arquivo PHP
+        fetch('../salvar/S_favorito.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            // Enviamos o ID do veículo para o PHP
+            body: `id_veiculo=${encodeURIComponent(veiculoId)}`
+        })
+        .then(response => response.json()) // Converte a resposta do PHP para JSON
+        .then(data => {
+            if (data.sucesso) {
+                // Alterna a classe visual do botão (ex: mudar a cor do coração)
+                botaoAtual.classList.toggle('favoritado');
+                
+                // Opcional: atualizar o texto do botão
+                if (botaoAtual.classList.contains('favoritado')) {
+                    botaoAtual.textContent = '❤️ Favoritado';
+                } else {
+                    botaoAtual.textContent = '🤍 Favoritar';
+                }
+            } else {
+                alert('Erro ao favoritar: ' + data.mensagem);
+            }
+        })
+        .catch(error => {
+            console.error('Erro na requisição:', error);
+            console.log('error')
+        });
+    });
+});
+
 
 

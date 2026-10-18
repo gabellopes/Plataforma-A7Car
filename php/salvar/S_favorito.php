@@ -1,38 +1,23 @@
 <?php
+
 include "funcoes.php";
-include "Conexao.php";
-
-//NECESSARIO - VALIDAÇÃO DE LOGIN USER
-
-$idCar = trim($_GET['id']);
-$idUsu = trim($_SESSION['user_id']);
-$status = trim($_GET['status']);
-
-echo "id do usuario" . "->" . $idUsu;
-
-    if($status == 0){
-
-        try{
-        $stmt = $sql->prepare("INSERT INTO favorito (id_usu, id_car) VALUES (?, ?) ");
-        $stmt->bind_param("ii", $idUsu, $idCar);
-        $stmt->execute();
-        echo "Sucesso";
-        }catch(Exception $e){
-                $_SESSION['erro_cadastro'] = "Erro ao favoritar veiculo";
-                $_SESSION['erro'] = true;
-                header("Location: ../user/catalogo.php");
-
-                }
+require_once "Conexao.php";
+header('Content-Type: application/json');
 
 
 
-    }else{
-        $_SESSION['erro_cadastro'] = "Erro ao favoritar";
-        $_SESSION['erro'] = true;
-        header("Location: ../user/catalogo.php");
-    }
+if (isset($_POST['id_veiculo'])) {
+    $usuarioId = $_SESSION['user_id'];
+    $veiculoId = intval($_POST['id_veiculo']);
 
-/*CREATE TABLE IF NOT EXISTS `favorito` (
+
+    $verifica = $sql->prepare("SELECT favorito FROM id_usu WHERE id_car = ?");
+    $verifica->bind_param("ii", $usuarioId, $veiculoId);
+    $verifica->execute();
+    $resultado = $verifica->get_result();
+
+    /*
+CREATE TABLE IF NOT EXISTS `favorito` (
   `id_fav` int NOT NULL AUTO_INCREMENT,
   `id_usu` int NOT NULL,
   `id_car` int NOT NULL,
@@ -41,5 +26,35 @@ echo "id do usuario" . "->" . $idUsu;
   KEY `id_car` (`id_car`),
   CONSTRAINT `favorito_ibfk_1` FOREIGN KEY (`id_usu`) REFERENCES `usuario` (`id_usu`),
   CONSTRAINT `favorito_ibfk_2` FOREIGN KEY (`id_car`) REFERENCES `carro` (`id_car`)
-) */
+)
+    */
+    if (mysqli_num_rows($resultado) > 0) {
+        // Se já existe, remove (desfavorita)
+        $sqlDeleta = "DELETE FROM  WHERE id_usu = ? AND id_car = ?";
+        $stmtDel = mysqli_prepare($sql, $sqlDeleta);
+        mysqli_stmt_bind_param($stmtDel, "ii", $usuarioId, $veiculoId);
+        
+        if (mysqli_stmt_execute($stmtDel)) {
+            $resposta = ['sucesso' => true, 'acao' => 'removido'];
+        } else {
+            $resposta['mensagem'] = 'Erro ao remover dos favoritos.';
+        }
+    } else {
+        // Se não existe, insere (favorita)
+        $sqlInsere = "INSERT INTO favorito (id_usu, id_car) VALUES (?, ?)";
+        $stmtIns = mysqli_prepare($sql, $sqlInsere);
+        mysqli_stmt_bind_param($stmtIns, "ii", $usuarioId, $veiculoId);
+        
+        if (mysqli_stmt_execute($stmtIns)) {
+            $resposta = ['sucesso' => true, 'acao' => 'adicionado'];
+        } else {
+            $resposta['mensagem'] = 'Erro ao adicionar aos favoritos.';
+        }
+    }
+} else {
+    $resposta['mensagem'] = 'ID do veículo não recebido.';
+}
+
+// Retorna a resposta em formato JSON para o JavaScript
+echo json_encode($resposta);
 ?>

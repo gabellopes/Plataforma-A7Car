@@ -67,9 +67,8 @@ $result2 = $stmt->get_result();
                    
                 if($row['status_car'] === 0){
                     echo "
-
                    <div>
-                   <button id='favoritar'>❤</button>
+                   <button class='btn-favoritar' data-id=".$row['id_car'].">❤</button>
                     <img src='" . htmlspecialchars($row['foto_car'], ENT_QUOTES, 'UTF-8') . "' alt='Foto do Veículo' width='200' height='150'>
                     <span></span>
                     <span>".htmlspecialchars($row['marca_car'], ENT_QUOTES, 'UTF-8')."</span>
@@ -121,6 +120,7 @@ $result2 = $stmt->get_result();
 </footer>
 
 <script src="../../js/assets.js"></script>
+<script src="../../js/validarformulario.js"></script>
 
 </body>
 </html>
