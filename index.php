@@ -69,10 +69,20 @@
                 while($row = $result->fetch_assoc()){
                    
                 if($row['status_car'] === 0){
-                    echo "
 
-                   <div>
-                    <button id='favoritar'>❤</button>
+                    if(isset($_SESSION['user_id'])){
+                    echo"
+                    <div>
+                    <button class='btn-favoritar' data-id=".$row['id_car'].">❤</button>
+                    ";
+                    }else{
+                    echo"
+                    <div>
+                    <button onclick='window.location.href=\"php/user/Login.php\"'>❤</button>
+                    ";
+                    }
+                    echo "
+                   
                     <img src='" . htmlspecialchars($row['foto_car'], ENT_QUOTES, 'UTF-8') . "' alt='Foto do Veículo' width='200' height='150'>
                     <span></span>
                     <span>".htmlspecialchars($row['marca_car'], ENT_QUOTES, 'UTF-8')."</span>
@@ -142,6 +152,7 @@
             </div>
         </div>
     </footer>
+<script src="js/assets.js"></script>
 
 </body>
 

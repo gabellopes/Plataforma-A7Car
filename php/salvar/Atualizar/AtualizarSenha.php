@@ -1,7 +1,6 @@
 <?php
 require_once "../Conexao.php";
 require_once "../funcoes.php";
-/*MODIFICAR QUANDO PUBLICAR - Não tem a validação do link, apenas na tela redefinirSenha*/
 if (session_status() !== PHP_SESSION_ACTIVE) {
     SESSION_START(); 
 }

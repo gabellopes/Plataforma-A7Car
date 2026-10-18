@@ -7,6 +7,7 @@ const botaoCadastrar = document.getElementById("Cadastrar");
 
 
 
+
 let MensagemEmail = document.getElementById("Mensagem_email");
 let MensagemSenha = document.getElementById("Mensagem_senha");
 let MensagemTelefone = document.getElementById("Mensagem_telefone");
@@ -30,6 +31,19 @@ function validarUser() {
     validarTelefone();
    
 }
+
+if(botaoCadastrar){
+botaoCadastrar.addEventListener('click', ()=>{
+if(inputTipoCadastro.value === 'redefinirSenha'){
+        
+        if(validarSenha() === true){
+            botaoCadastrar.type = "submit";
+        }
+    }else if(inputTipoCadastro.value === 'cadastroVeiculo'){
+        validarVeiculo();
+    }
+    
+});}
 function validarVeiculo(){
     if(validarAno() === true){
         botaoCadastrar.type = "submit";

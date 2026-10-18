@@ -11,7 +11,6 @@ const botoesFavorito = document.querySelectorAll('.btn-favoritar');
 const divCnh = document.getElementById("divCnh");
 
 
-
 const inputTipoCadastro = document.getElementById("tipoCadastro");
 
 
@@ -21,18 +20,7 @@ const dialog = document.getElementById("dialog");
 const dialogEmailEnviado = document.getElementById("dialogEmailEnviado");
 const dialogRedefinirSenha = document.getElementById("dialogEmailEnviado");
 
-/*if(botaoCadastrar){
-botaoCadastrar.addEventListener('click', ()=>{
-if(inputTipoCadastro.value === 'redefinirSenha'){
-        
-        if(validarSenha() === true){
-            botaoCadastrar.type = "submit";
-        }
-    }else if(inputTipoCadastro.value === 'cadastroVeiculo'){
-        validarVeiculo();
-    }
-    
-});}*/
+
 
 if(dialog){
 

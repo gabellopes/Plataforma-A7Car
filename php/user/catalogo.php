@@ -66,9 +66,20 @@ $result2 = $stmt->get_result();
                 while($row = $result->fetch_assoc()){
                    
                 if($row['status_car'] === 0){
+
+                    if(isset($_SESSION['user_id'])){
+                    echo"
+                    <div>
+                    <button class='btn-favoritar' data-id=".$row['id_car'].">❤</button>
+                    ";
+                    }else{
+                    echo"
+                    <div>
+                    <button onclick='window.location.href=\"Login.php\"'>❤</button>
+                    ";
+                    }
                     echo "
-                   <div>
-                   <button class='btn-favoritar' data-id=".$row['id_car'].">❤</button>
+                   
                     <img src='" . htmlspecialchars($row['foto_car'], ENT_QUOTES, 'UTF-8') . "' alt='Foto do Veículo' width='200' height='150'>
                     <span></span>
                     <span>".htmlspecialchars($row['marca_car'], ENT_QUOTES, 'UTF-8')."</span>
@@ -121,6 +132,7 @@ $result2 = $stmt->get_result();
 
 <script src="../../js/assets.js"></script>
 <script src="../../js/validarformulario.js"></script>
+
 
 </body>
 </html>

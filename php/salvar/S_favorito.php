@@ -35,6 +35,7 @@ $resposta = ['sucesso' => false, 'mensagem' => 'Erro desconhecido.'];
 if (!isset($_SESSION['user_id'])) {
     $resposta['mensagem'] = 'Usuário não autenticado.';
     echo json_encode($resposta);
+    header("Location: ../user/Login.php");
     exit;
 }
 
