@@ -21,8 +21,7 @@ const dialog = document.getElementById("dialog");
 const dialogEmailEnviado = document.getElementById("dialogEmailEnviado");
 const dialogRedefinirSenha = document.getElementById("dialogEmailEnviado");
 
-
-if(botaoCadastrar){
+/*if(botaoCadastrar){
 botaoCadastrar.addEventListener('click', ()=>{
 if(inputTipoCadastro.value === 'redefinirSenha'){
         
@@ -33,7 +32,7 @@ if(inputTipoCadastro.value === 'redefinirSenha'){
         validarVeiculo();
     }
     
-});}
+});}*/
 
 if(dialog){
 
@@ -129,14 +128,14 @@ botaoMostrarConfirmarSenha.addEventListener('click', ()=>{
 });}
 
 
-
+if(botoesFavorito){
 botoesFavorito.forEach(botao => {
     botao.addEventListener('click', (e) => {
         const veiculoId = e.currentTarget.getAttribute('data-id');
         const botaoAtual = e.currentTarget;
 
-        // Faz a requisição Fetch para o arquivo PHP
-        fetch('../salvar/S_favorito.php', {
+        /*MODIFICAR QUANDO PUBLICAR*/
+        fetch('/Plataforma-A7Car/php/salvar/S_favorito.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -152,9 +151,9 @@ botoesFavorito.forEach(botao => {
                 
                 // Opcional: atualizar o texto do botão
                 if (botaoAtual.classList.contains('favoritado')) {
-                    botaoAtual.textContent = '❤️ Favoritado';
+                    botaoAtual.textContent = '❤️';
                 } else {
-                    botaoAtual.textContent = '🤍 Favoritar';
+                    botaoAtual.textContent = '🤍';
                 }
             } else {
                 alert('Erro ao favoritar: ' + data.mensagem);
@@ -166,6 +165,6 @@ botoesFavorito.forEach(botao => {
         });
     });
 });
-
+}
 
 

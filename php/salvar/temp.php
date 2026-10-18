@@ -30,9 +30,9 @@ if ($emailExiste) {
         $link = "RedefinirSenha.php?token=" . $token; 
         $expira = date('Y-m-d H:i:s', strtotime('+1 hour'));
 
-        $stmt = $sql->prepare("INSERT INTO password_resets (id_usu, token, expira_em, usado) VALUES (?, ?, ?, ?)");
+        $stmt = $sql->prepare("INSERT INTO password_resets (id_usu, token, expira_em) VALUES (?, ?, ?)");
         
-        $stmt->bind_param("issi", $id, $token, $expira, $usado);
+        $stmt->bind_param("iss", $id, $token, $expira);
         $stmt->execute();
 
 

@@ -11,7 +11,7 @@ if (isset($_POST['id_veiculo'])) {
     $veiculoId = intval($_POST['id_veiculo']);
 
 
-    $verifica = $sql->prepare("SELECT favorito FROM id_usu WHERE id_car = ?");
+    $verifica = $sql->prepare("SELECT id_fav FROM favorito WHERE id_usu = ? AND id_car = ?");
     $verifica->bind_param("ii", $usuarioId, $veiculoId);
     $verifica->execute();
     $resultado = $verifica->get_result();
@@ -28,9 +28,19 @@ CREATE TABLE IF NOT EXISTS `favorito` (
   CONSTRAINT `favorito_ibfk_2` FOREIGN KEY (`id_car`) REFERENCES `carro` (`id_car`)
 )
     */
+
+$resposta = ['sucesso' => false, 'mensagem' => 'Erro desconhecido.'];
+
+// Verifica se o usuário está logado
+if (!isset($_SESSION['user_id'])) {
+    $resposta['mensagem'] = 'Usuário não autenticado.';
+    echo json_encode($resposta);
+    exit;
+}
+
     if (mysqli_num_rows($resultado) > 0) {
         // Se já existe, remove (desfavorita)
-        $sqlDeleta = "DELETE FROM  WHERE id_usu = ? AND id_car = ?";
+        $sqlDeleta = "DELETE FROM  favorito WHERE id_usu = ? AND id_car = ?";
         $stmtDel = mysqli_prepare($sql, $sqlDeleta);
         mysqli_stmt_bind_param($stmtDel, "ii", $usuarioId, $veiculoId);
         

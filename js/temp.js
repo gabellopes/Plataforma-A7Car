@@ -1,11 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const botaoEnviarDialog = document.getElementById("enviarDialog");
-    const Email = document.getElementById("Email");
-    const MensagemEmail = document.getElementById("Mensagem_email"); 
-    const spanMensagem_email_enviado = document.getElementById("Mensagem_email_enviado");
-    const dialog = document.getElementById("dialog");
-    const dialogEmailEnviado = document.getElementById("dialogEmailEnviado");
-    const aLinkRedefinirSenha = document.getElementById("linkRedefinirSenha");
+console.log(Email.value);
 
     async function verificarEmail(evento) {
         if (evento) evento.preventDefault();
@@ -28,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (spanMensagem_email_enviado) {
                 spanMensagem_email_enviado.textContent = emailEsqueceuSenha;
             }
-
+            /*MODIFICAR QUANDO PUBLICAR*/
             const response = await fetch('/Plataforma-A7Car/php/salvar/temp.php', {
                 method: 'POST', 
                 headers: { 'Content-Type': 'application/json; charset=utf-8' }, 
