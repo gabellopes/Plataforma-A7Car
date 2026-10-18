@@ -134,14 +134,11 @@ botoesFavorito.forEach(botao => {
         .then(response => response.json()) // Converte a resposta do PHP para JSON
         .then(data => {
             if (data.sucesso) {
-                // Alterna a classe visual do botão (ex: mudar a cor do coração)
-                botaoAtual.classList.toggle('favoritado');
                 
-                // Opcional: atualizar o texto do botão
-                if (botaoAtual.classList.contains('favoritado')) {
+                if (botaoAtual.textContent === '❤') {
                     botaoAtual.textContent = '❤️';
                 } else {
-                    botaoAtual.textContent = '🤍';
+                    botaoAtual.textContent = '❤';
                 }
             } else {
                 alert('Erro ao favoritar: ' + data.mensagem);

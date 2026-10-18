@@ -59,7 +59,33 @@ $row = $result->fetch_assoc();
                 <a href="catalogo.php">⬅VOLTAR AO CATALOGO</a>
 
                 <div>
-                <button id='favoritar'>❤</button>
+                <?php
+                if(isset($_SESSION['user_id'])){
+                        $verifica = $sql->prepare("SELECT id_fav FROM favorito WHERE id_usu = ? AND id_car = ?");
+                        $verifica->bind_param("ii", $_SESSION['user_id'], $row['id_car']);
+                        $verifica->execute();
+                        $resultado = $verifica->get_result();
+
+                        if($resultado->num_rows > 0){
+                            echo"
+                        
+                        <button class='btn-favoritar' data-id=".$row['id_car'].">❤️</button>
+                        ";
+                        }else{
+                        echo"
+                        
+                        <button class='btn-favoritar' data-id=".$row['id_car'].">❤</button>
+                        ";
+                        }
+                    }else{
+                        echo"
+                        
+                        <button onclick='window.location.href=\"Login.php\"'>❤</button>
+                        ";
+                    }
+                
+                ?>
+                
                 <img <?php echo "src='" . htmlspecialchars($row['foto_car'], ENT_QUOTES, 'UTF-8') . "'"?> alt='Foto do Veículo' width='200' height='150'>
                 <span></span>
                  <span><?php echo htmlspecialchars($row['marca_car'], ENT_QUOTES, 'UTF-8')?></span>

@@ -11,9 +11,7 @@ $stmt = $sql->prepare("SELECT * FROM carro");
 $stmt->execute();
 $result = $stmt->get_result();
 
-$stmt = $sql->prepare("SELECT * FROM favorito");
-$stmt->execute();
-$result2 = $stmt->get_result();
+
              
 ?>
 <!DOCTYPE html>
@@ -68,16 +66,29 @@ $result2 = $stmt->get_result();
                 if($row['status_car'] === 0){
 
                     if(isset($_SESSION['user_id'])){
-                    echo"
-                    <div>
-                    <button class='btn-favoritar' data-id=".$row['id_car'].">❤</button>
-                    ";
+                        $verifica = $sql->prepare("SELECT id_fav FROM favorito WHERE id_usu = ? AND id_car = ?");
+                        $verifica->bind_param("ii", $_SESSION['user_id'], $row['id_car']);
+                        $verifica->execute();
+                        $resultado = $verifica->get_result();
+
+                        if($resultado->num_rows > 0){
+                            echo"
+                        <div>
+                        <button class='btn-favoritar' data-id=".$row['id_car'].">❤️</button>
+                        ";
+                        }else{
+                        echo"
+                        <div>
+                        <button class='btn-favoritar' data-id=".$row['id_car'].">❤</button>
+                        ";
+                        }
                     }else{
-                    echo"
-                    <div>
-                    <button onclick='window.location.href=\"Login.php\"'>❤</button>
-                    ";
+                        echo"
+                        <div>
+                        <button onclick='window.location.href=\"Login.php\"'>❤</button>
+                        ";
                     }
+
                     echo "
                    
                     <img src='" . htmlspecialchars($row['foto_car'], ENT_QUOTES, 'UTF-8') . "' alt='Foto do Veículo' width='200' height='150'>

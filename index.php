@@ -71,15 +71,27 @@
                 if($row['status_car'] === 0){
 
                     if(isset($_SESSION['user_id'])){
-                    echo"
-                    <div>
-                    <button class='btn-favoritar' data-id=".$row['id_car'].">❤</button>
-                    ";
+                        $verifica = $sql->prepare("SELECT id_fav FROM favorito WHERE id_usu = ? AND id_car = ?");
+                        $verifica->bind_param("ii", $_SESSION['user_id'], $row['id_car']);
+                        $verifica->execute();
+                        $resultado = $verifica->get_result();
+
+                        if($resultado->num_rows > 0){
+                            echo"
+                        <div>
+                        <button class='btn-favoritar' data-id=".$row['id_car'].">❤️</button>
+                        ";
+                        }else{
+                        echo"
+                        <div>
+                        <button class='btn-favoritar' data-id=".$row['id_car'].">❤</button>
+                        ";
+                        }
                     }else{
-                    echo"
-                    <div>
-                    <button onclick='window.location.href=\"php/user/Login.php\"'>❤</button>
-                    ";
+                        echo"
+                        <div>
+                        <button onclick='window.location.href=\"Login.php\"'>❤</button>
+                        ";
                     }
                     echo "
                    
@@ -104,7 +116,7 @@
             </div>
         </div>
         <div>
-        <button id="btnVender">VER TODOS</button>
+        <button id="btnVender" onclick="window.location.href='php/user/catalogo.php'">VER TODOS</button>
         </div>
         
             
