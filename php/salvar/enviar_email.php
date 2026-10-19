@@ -53,15 +53,14 @@ try {
 
     $mail->Body    = '
         <div style="background-color: #f4f4f4; padding: 20px; font-family: Arial, sans-serif;">
-            <h2 style="color: #333;">Olá! Tudo certo!</h2>
+            <h2 style="color: #333;">Redefinir senha</h2>
 
             <a href='.$link.'>clique nesse link para redefinir a senha</a>
-            <p>Se você está lendo isso, a instalação <b>manual</b> do PHPMailer funcionou perfeitamente e o SMTP do Brevo fez o disparo.</p>
             
         </div>
     ';
 
-    $mail->AltBody = 'Olá! Se você está lendo isso, a instalação manual do PHPMailer funcionou perfeitamente.';
+    $mail->AltBody = 'link pare redefinir senha '. $link;
 
     // Enviar!
     $mail->send();

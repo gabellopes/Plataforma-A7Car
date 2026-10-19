@@ -107,7 +107,6 @@ if(isset($_SESSION['erro_cadastro'])){
                     <p>Link enviado!</p>
                     <p>Enviamos um e-mail para <span id="Mensagem_email_enviado" style="color: red;"></span> com  as instruções para redefinir sua senha</p>
 
-                    <h1>Simulação do link recebido</h1>
                     <a href="#" style="color: blue;" id="linkRedefinirSenha"></a>
                     
     </dialog>
