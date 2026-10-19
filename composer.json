@@ -5,7 +5,9 @@
             "Quaiati\\Email\\": "src/"
         }
     },
-    "require": {},
+    "require": {
+        "vlucas/phpdotenv": "^5.7"
+    },
     "config": {
         "disable-tls": true
     }
