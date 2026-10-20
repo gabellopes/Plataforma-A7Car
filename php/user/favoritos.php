@@ -80,7 +80,7 @@ $result = $stmt->get_result();
                             <div>
                                 <p>Valor</p>
                                 <span>R$".htmlspecialchars($row['preco_car'])."</span>
-                                <button onclick=\"location.href='php/user/Veiculo.php?id=".$row['id_car']."'\">👁VER</button>
+                                <button onclick=\"location.href='Veiculo.php?id=".$row['id_car']."'\">👁VER</button>
                             </div>
                         </div>
                         <br>
