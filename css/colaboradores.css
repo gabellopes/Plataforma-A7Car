@@ -1,0 +1,22 @@
+#titulo{
+    margin-top: 9vh;
+    background-color: rgb(19, 19, 19);
+    height: 20vh;
+    width: 100%;
+    color: white;
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+    text-align: left;
+    gap: 1vh;
+    padding: 2vh 1vw 1vh 4vw;
+}
+#titulo h1{
+    font-size: 3rem;
+}
+#titulo h3{
+    color:  rgb(208, 0, 0);
+    background-color: rgba(237, 35, 35, 0.247);
+    width: fit-content;
+}
+
