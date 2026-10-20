@@ -83,3 +83,78 @@
     height: 5vh;
     margin-left: 1vw;
 }
+
+
+@media (max-width: 768px) {
+
+    #titulo {
+        margin-top: 0;
+        height: auto;
+        min-height: 130px;
+        padding: 25px 20px;
+    }
+
+    #titulo h1 {
+        font-size: 2.2rem;
+    }
+
+    .mei {
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+        padding: 30px 15px;
+    }
+
+    #info {
+        width: 100%;
+    }
+
+    #info h3,
+    #info h2 {
+        margin-left: 0;
+        padding: 0 15px;
+    }
+
+    #atend {
+        width: 100%;
+        max-width: 500px;
+        padding: 15px;
+    }
+
+    #atend h2,
+    #atend h3 {
+        margin-left: 0;
+    }
+
+    #nome {
+        width: 100%;
+        margin-left: 0;
+        height: 40px;
+    }
+
+    #opcao {
+        margin-left: 0;
+    }
+
+    #exclusi {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    #botao {
+        width: 100%;
+        height: auto;
+        min-height: 45px;
+        margin-left: 0;
+        font-size: 1.2rem;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    #titulo h1 {
+        font-size: 1.8rem;
+    }
+
+}

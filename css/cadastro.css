@@ -67,3 +67,69 @@
     font-size: 3vh;
 }
 
+
+@media (max-width: 768px) {
+
+    #titulo {
+        margin-top: 0;
+        height: auto;
+        min-height: 130px;
+        padding: 25px 20px;
+    }
+
+    #titulo h1 {
+        font-size: 2.3rem;
+    }
+
+    .mei {
+        height: auto;
+        min-height: 75vh;
+        padding: 30px 15px;
+    }
+
+    #cadastro {
+        width: 90%;
+        max-width: 500px;
+        padding: 30px 20px;
+    }
+
+    #cadastro label {
+        font-size: 1.2rem;
+    }
+
+    #cadastro input {
+        padding: 12px;
+        font-size: 1rem;
+    }
+
+    #cadastro button {
+        font-size: 1.2rem;
+        padding: 15px;
+    }
+
+    #cadastro a {
+        font-size: 1.1rem;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    #titulo h1 {
+        font-size: 2rem;
+    }
+
+    #cadastro {
+        width: 100%;
+        padding: 25px 18px;
+    }
+
+    #cadastro label {
+        font-size: 1.1rem;
+    }
+
+    #cadastro a {
+        font-size: 1rem;
+    }
+
+}

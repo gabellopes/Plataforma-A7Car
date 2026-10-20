@@ -71,3 +71,68 @@
 }
 
 
+@media (max-width: 768px) {
+
+    #titulo {
+        margin-top: 0;
+        height: auto;
+        min-height: 130px;
+        padding: 25px 20px;
+    }
+
+    #titulo h1 {
+        font-size: 2.3rem;
+    }
+
+    .mei {
+        height: auto;
+        min-height: 70vh;
+        padding: 35px 15px;
+    }
+
+    #login {
+        width: 90%;
+        max-width: 450px;
+        padding: 30px 20px;
+    }
+
+    #login label {
+        font-size: 1.2rem;
+    }
+
+    #login button {
+        font-size: 1.2rem;
+        padding: 15px;
+    }
+
+    #login a {
+        font-size: 1.1rem;
+    }
+
+    #login input {
+        padding: 12px;
+        font-size: 1rem;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    #titulo h1 {
+        font-size: 2rem;
+    }
+
+    #login {
+        width: 100%;
+        padding: 25px 18px;
+    }
+
+    #login label {
+        font-size: 1.1rem;
+    }
+
+    #login a {
+        font-size: 1rem;
+    }
+
+}

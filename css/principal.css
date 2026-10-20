@@ -163,3 +163,131 @@ h3{
     margin-top: 1vh;
     margin-right: 1vw;
 }
+
+@media (max-width: 768px) {
+
+    body {
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    header {
+        position: relative;
+        width: 100%;
+        height: auto;
+        min-height: 75px;
+        padding: 10px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    .logo {
+        width: 100px;
+        height: 60px;
+        margin: 0;
+    }
+
+    #link {
+        position: static;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        order: 3;
+    }
+
+    header a {
+        font-size: 1rem;
+        margin: 0;
+    }
+
+    #linksAuth {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+    }
+
+    #linksAuth p {
+        font-size: 0.9rem;
+        margin: 0;
+        text-align: center;
+    }
+
+    header .btn {
+        font-size: 1rem;
+        margin: 0;
+        padding: 5px 8px;
+        border-width: 2px;
+    }
+
+    footer {
+        height: auto;
+        padding: 30px 15px;
+    }
+
+    .fo {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    #ter {
+        width: 100%;
+    }
+
+    #ter h3 {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    footer h1 {
+        font-size: 1.5rem;
+    }
+
+    footer h3 {
+        font-size: 1rem;
+    }
+
+    .nav {
+        align-items: center;
+        gap: 8px;
+    }
+
+    #divadm {
+        height: auto;
+        padding-top: 0;
+    }
+
+    #adm {
+        font-size: 0.9rem;
+        padding: 5px;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .logo {
+        width: 85px;
+        height: 50px;
+    }
+
+    header a {
+        font-size: 0.9rem;
+    }
+
+    header .btn {
+        font-size: 0.85rem;
+    }
+
+    footer {
+        padding: 25px 10px;
+    }
+
+}

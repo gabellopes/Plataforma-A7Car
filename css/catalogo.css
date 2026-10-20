@@ -27,3 +27,43 @@
     width: 24vw;
     font-family: Barlow;
 }
+
+
+@media (max-width: 768px) {
+
+    #titulo {
+        margin-top: 0;
+        height: auto;
+        min-height: 160px;
+        padding: 25px 20px;
+    }
+
+    #titulo h1 {
+        font-size: 2.2rem;
+    }
+
+    #titulo input {
+        width: 90%;
+        max-width: 400px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .catalogo {
+        width: 100%;
+        padding: 15px;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    #titulo h1 {
+        font-size: 1.8rem;
+    }
+
+    #titulo h3 {
+        font-size: 1rem;
+    }
+
+}
