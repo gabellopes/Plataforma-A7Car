@@ -41,16 +41,16 @@ CREATE TABLE IF NOT EXISTS `carro` (
   `descricao_car` varchar(700) NOT NULL,
   `foto_car` varchar(255) NOT NULL,
   `status_car` tinyint(1) DEFAULT '0',
+  `data_car` date DEFAULT NULL,
   PRIMARY KEY (`id_car`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Copiando dados para a tabela concessionaria.carro: ~5 rows (aproximadamente)
-INSERT INTO `carro` (`id_car`, `marca_car`, `modelo_car`, `ano_car`, `cor_car`, `preco_car`, `quilometragem_car`, `combustivel_car`, `descricao_car`, `foto_car`, `status_car`) VALUES
-	(1, 'Honda', 'Kl-2', '2018', 'Branco', 35000.00, 20000, 'Diesel', 'Em ótimo estado', 'semfoto', 1),
-	(2, 'asda', 'asdasd', '2020', '23123', 231231.00, 123123, 'Gasolina', '123123', 'semfoto', 1),
-	(3, 'BWD', 'a78', '2013', 'rosa', 1000000.00, 30, 'Elétrico', 'Ultima geração', 'semfoto', 1),
-	(4, 'sdasd', 'asdasd', '2020', 'asdasd', 231231.00, 1231231, 'Gasolina', '3123123', 'semfoto', 1),
-	(5, 's', 's', '2020', 'asas', 202002.00, 20202, 'Gasolina', 'asdasdasd', 'Array', 0);
+-- Copiando dados para a tabela concessionaria.carro: ~7 rows (aproximadamente)
+REPLACE INTO `carro` (`id_car`, `marca_car`, `modelo_car`, `ano_car`, `cor_car`, `preco_car`, `quilometragem_car`, `combustivel_car`, `descricao_car`, `foto_car`, `status_car`, `data_car`) VALUES
+	(1, 'Ferrari', 'H66', '2026', 'Azul', 2000000.00, 200000, 'Gasolina', 'Última geração', '/Plataforma-A7car/img/uploads/veiculos/img_6acd397e1549e.webp', 0, '2026-10-12'),
+	(2, 'Volkswagen', 'LP44', '2001', 'Vermelho', 45023.00, 10000, 'Gasolina', 'Reformado', '/Plataforma-A7car/img/uploads/veiculos/img_6acd39b9e8fb6.webp', 0, '2026-10-12'),
+	(3, 'Volkswagen', 'OV95', '2015', 'Azul bebê', 140000.00, 9000, 'Gasolina', 'Reformado', '/Plataforma-A7car/img/uploads/veiculos/img_6acd39d7e6ddd.jpg', 0, '2026-10-12'),
+	(4, 'Jaguar', 'Type-1', '2026', 'Prateado', 3000000.00, 10, 'Gasolina', 'Última geração', '/Plataforma-A7car/img/uploads/veiculos/img_6acd3b7137db0.jpg', 1, '2026-10-12');
 
 -- Copiando estrutura para tabela concessionaria.cliente
 CREATE TABLE IF NOT EXISTS `cliente` (
@@ -64,12 +64,15 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   UNIQUE KEY `email_cli` (`email_cli`),
   UNIQUE KEY `cpf_cli` (`cpf_cli`),
   UNIQUE KEY `cnh_cli` (`cnh_cli`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Copiando dados para a tabela concessionaria.cliente: ~2 rows (aproximadamente)
-INSERT INTO `cliente` (`id_cli`, `nome_cli`, `email_cli`, `telefone_cli`, `cpf_cli`, `cnh_cli`) VALUES
-	(1, 'João', 'joaozinho@hotmail.com', '(11) 976768866', '128.393.876-55', '738929223'),
-	(2, 'Anna', 'anna@youkout.com', '(11) 989898888', '789.988.323-23', '111111111');
+-- Copiando dados para a tabela concessionaria.cliente: ~1 rows (aproximadamente)
+REPLACE INTO `cliente` (`id_cli`, `nome_cli`, `email_cli`, `telefone_cli`, `cpf_cli`, `cnh_cli`) VALUES
+	(1, 'Giovanna', 'giovanna@gmail.com', '(11) 994848243', '123.354.534-53', '345234234'),
+	(2, 'Luca', 'luca@gmail.com', '(11) 123123123', '243.242.342-34', '123123123'),
+	(3, 'Rayssa@gmail.com', 'rayssa@gmail.com', '(11) 923123123', '123.124.354-45', '231466743'),
+	(4, 'Gabriel', 'gabriel@gmail.com', '(11) 986456456', '546.343.242-34', '656334523'),
+	(5, 'Júlia', 'julia@gmail.com', '(11) 982312312', '956.743.413-41', '342342342');
 
 -- Copiando estrutura para tabela concessionaria.colaborador
 CREATE TABLE IF NOT EXISTS `colaborador` (
@@ -82,11 +85,13 @@ CREATE TABLE IF NOT EXISTS `colaborador` (
   `servico_col` varchar(255) NOT NULL,
   PRIMARY KEY (`id_col`),
   UNIQUE KEY `email_col` (`email_col`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Copiando dados para a tabela concessionaria.colaborador: ~0 rows (aproximadamente)
-INSERT INTO `colaborador` (`id_col`, `nome_col`, `foto_col`, `descricao_col`, `telefone_col`, `email_col`, `servico_col`) VALUES
-	(2, 'Giulia', 'semfoto', 'muito muiot legal', '(11) 111111111', 'legal@gmail.com', 'ser legal');
+-- Copiando dados para a tabela concessionaria.colaborador: ~1 rows (aproximadamente)
+REPLACE INTO `colaborador` (`id_col`, `nome_col`, `foto_col`, `descricao_col`, `telefone_col`, `email_col`, `servico_col`) VALUES
+	(1, 'Renato', '/Plataforma-A7car/img/uploads/colaboradores/img_6ac1442baf2ec.jpg', 'Limpinho', '(11) 987654321', 'renatoalves@gmail.com', 'Lava rapido'),
+	(2, 'Cesar', '/Plataforma-A7car/img/uploads/colaboradores/img_6acd3c548a1d3.webp', 'Conserto de carros em geral', '(11) 983123123', 'cesar@gmail.com', 'Mêcanico'),
+	(3, 'Julia Lima', '/Plataforma-A7car/img/uploads/colaboradores/img_6acd3cdc69670.jpg', 'Serviços de ótima qualidade. Depois de 14h, porque de manhã eu tenho escola', '(11) 982283123', 'julialima@gmail.com', 'Embelezamento de veículos');
 
 -- Copiando estrutura para tabela concessionaria.favorito
 CREATE TABLE IF NOT EXISTS `favorito` (
@@ -98,7 +103,7 @@ CREATE TABLE IF NOT EXISTS `favorito` (
   KEY `id_car` (`id_car`),
   CONSTRAINT `favorito_ibfk_1` FOREIGN KEY (`id_usu`) REFERENCES `usuario` (`id_usu`),
   CONSTRAINT `favorito_ibfk_2` FOREIGN KEY (`id_car`) REFERENCES `carro` (`id_car`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Copiando dados para a tabela concessionaria.favorito: ~0 rows (aproximadamente)
 
@@ -126,11 +131,12 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `senha_usu` varchar(255) NOT NULL,
   PRIMARY KEY (`id_usu`),
   UNIQUE KEY `email_usu` (`email_usu`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Copiando dados para a tabela concessionaria.usuario: ~0 rows (aproximadamente)
-INSERT INTO `usuario` (`id_usu`, `nome_usu`, `email_usu`, `telefone_usu`, `senha_usu`) VALUES
-	(0, 'admin', 'admin@gmail.com', '(11)98229-9155', '$2y$10$IStkVoe8X6t5PeNkhhj/P.vKMyNWIxlP9YW/KvevCKAUUHQJQtCx2');
+-- Copiando dados para a tabela concessionaria.usuario: ~3 rows (aproximadamente)
+REPLACE INTO `usuario` (`id_usu`, `nome_usu`, `email_usu`, `telefone_usu`, `senha_usu`) VALUES
+	(0, 'admin', 'admin@gmail.com', '(11)98229-9155', '$2y$10$IStkVoe8X6t5PeNkhhj/P.vKMyNWIxlP9YW/KvevCKAUUHQJQtCx2'),
+	(1, 'Usuario', 'usuario@gmail.com', '(11) 973123123', '$2y$10$7BUmDUaMXmOvGVEiDwWuzewmPjVvpSe505Z.SVti6Ixc.nY3HcVj2');
 
 -- Copiando estrutura para tabela concessionaria.vendas
 CREATE TABLE IF NOT EXISTS `vendas` (
@@ -144,17 +150,23 @@ CREATE TABLE IF NOT EXISTS `vendas` (
   KEY `id_car` (`id_car`),
   CONSTRAINT `vendas_ibfk_1` FOREIGN KEY (`id_cli`) REFERENCES `cliente` (`id_cli`),
   CONSTRAINT `vendas_ibfk_2` FOREIGN KEY (`id_car`) REFERENCES `carro` (`id_car`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Copiando dados para a tabela concessionaria.vendas: ~6 rows (aproximadamente)
-INSERT INTO `vendas` (`id_ven`, `valor_ven`, `data_ven`, `id_cli`, `id_car`) VALUES
-	(1, 35000.00, '2026-09-23', 1, 1),
-	(2, 231231.00, '2026-09-23', 1, 2),
-	(3, 231231.00, '2026-09-23', 1, 2),
-	(4, 231231.00, '2026-09-23', 1, 2),
-	(5, 35000.00, '2026-09-23', 1, 1),
-	(6, 1000000.00, '2026-07-10', 2, 3),
-	(7, 231231.00, '2026-09-28', 1, 4);
+-- Copiando dados para a tabela concessionaria.vendas: ~0 rows (aproximadamente)
+REPLACE INTO `vendas` (`id_ven`, `valor_ven`, `data_ven`, `id_cli`, `id_car`) VALUES
+	(1, 3000000.00, '2026-10-12', 3, 4);
+
+CREATE TABLE IF NOT EXISTS password_resets (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_usu INT NOT NULL,
+    token VARCHAR(255) NOT NULL,
+    expira_em DATETIME NOT NULL,
+    usado TINYINT(1) NOT NULL DEFAULT 0,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_reset_usuario FOREIGN KEY (id_usu) REFERENCES usuario(id_usu) ON DELETE CASCADE
+);
+
+
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

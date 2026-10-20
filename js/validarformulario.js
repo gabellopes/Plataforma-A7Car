@@ -6,19 +6,23 @@ const ConfirmarSenha = document.getElementById("Confirmar-senha");
 const botaoCadastrar = document.getElementById("Cadastrar");
 
 
+
+
 let MensagemEmail = document.getElementById("Mensagem_email");
 let MensagemSenha = document.getElementById("Mensagem_senha");
 let MensagemTelefone = document.getElementById("Mensagem_telefone");
 let MensagemCpf = document.getElementById("Mensagem_cpf");
 let MensagemCnh = document.getElementById("Mensagem_cnh");
+let MensagemAno = document.getElementById("Mensagem_ano");
 
 
-function PreencherUser(){
+
+
+function PreencherUserCad(){
     Nome.value = "Fulano";
     Email.value ="fulano@email.com"
     Senha.value = "Senha123@"
     ConfirmarSenha.value = "Senha123@"
-
 }
 function validarUser() {
     validarCadastro();
@@ -26,6 +30,24 @@ function validarUser() {
     validarSenha();
     validarTelefone();
    
+}
+
+if(botaoCadastrar){
+botaoCadastrar.addEventListener('click', ()=>{
+if(inputTipoCadastro.value === 'redefinirSenha'){
+        
+        if(validarSenha() === true){
+            botaoCadastrar.type = "submit";
+        }
+    }else if(inputTipoCadastro.value === 'cadastroVeiculo'){
+        validarVeiculo();
+    }
+    
+});}
+function validarVeiculo(){
+    if(validarAno() === true){
+        botaoCadastrar.type = "submit";
+    }
 }
 
 function validarCadastro(){
@@ -51,6 +73,8 @@ function validarCliente(){
     }
 }
 
+
+
 function validarVenda(){
      validarCpf();
      validarTelefone();
@@ -59,32 +83,35 @@ if(validarCpf() === true && validarTelefone() === true){
     }
 }
 function validarSenha() {
-MensagemSenha.style.color = "red";
-const regexCaracteresEspeciais = /[@$!%*?&]/;
+    MensagemSenha.style.color = "red";
+    const regexCaracteresEspeciais = /[@$!%*?&]/;
+    
+    let erros = [];
 
-   if(Senha.value !== ConfirmarSenha.value) {
-        MensagemSenha.textContent = "As senhas não coincidem!";
-        return false;
+    if (Senha.value !== ConfirmarSenha.value) {
+        erros.push("As senhas não coincidem!");
+    }
+    if (Senha.value.length < 8) {
+        erros.push("A senha deve ter no mínimo 8 caracteres!");
+    }
+    if (!regexCaracteresEspeciais.test(Senha.value)) {
+        erros.push("A senha deve conter pelo menos um caractere especial!");
+    }
+    if (!/[A-Z]/.test(Senha.value)) {
+        erros.push("A senha deve conter pelo menos uma letra maiúscula!");
+    }
+    if (!/[a-z]/.test(Senha.value)) {
+        erros.push("A senha deve conter pelo menos uma letra minúscula!");
+    }
+    if (!/[0-9]/.test(Senha.value)) {
+        erros.push("A senha deve conter pelo menos um número!");
+    }
 
-    }else if(Senha.value.length < 8 || ConfirmarSenha.value.length < 8) {
-        MensagemSenha.textContent = "A senha deve ter no mínimo 8 caracteres!";
+    if (erros.length > 0) {
+        // Junta os erros usando quebra de linha (\n) em vez de <br>
+        MensagemSenha.textContent = erros.join("\n");
         return false;
-
-    }else if (!regexCaracteresEspeciais.test(Senha.value)) {
-        MensagemSenha.textContent = "A senha deve conter pelo menos um caractere especial!";
-        return false;
-    }else if (!/[A-Z]/.test(Senha.value)) {
-        MensagemSenha.textContent = "A senha deve conter pelo menos uma letra maiúscula!";
-        return false;
-    }else if (!/[a-z]/.test(Senha.value)) {
-        MensagemSenha.textContent = "A senha deve conter pelo menos uma letra minúscula!";
-        return false;
-        
-    }else if (!/[1-9]/.test(Senha.value)) {
-        MensagemSenha.textContent = "A senha deve conter pelo menos uma letra minúscula!";
-        return false;
-        
-    }else{
+    } else {
         MensagemSenha.textContent = "";
         return true;
     }
@@ -131,4 +158,27 @@ function validarCnh(){
         MensagemCnh.textContent = ""
         return true;
     }
+}
+
+function validarAno(){
+const anoAtual = new Date().getFullYear();
+
+MensagemAno.style.color = "red";
+
+if(Ano.value.length != 4){
+    MensagemAno.textContent = "Digite um ano valido";
+    return false;
+
+}else if(Ano.value > anoAtual){
+    MensagemAno.textContent = "Digite um ano valido";
+    return false;
+
+}else if(Ano.value < 1901){
+    MensagemAno.textContent = "Digite um ano valido";
+    return false;
+    
+}else{
+    MensagemAno.textContent = ""
+    return true;
+}
 }

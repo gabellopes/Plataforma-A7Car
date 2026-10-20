@@ -23,7 +23,7 @@
 
 if(isset($_SESSION['sucesso_cadastro'])){
     $Mensagem = $_SESSION['sucesso_cadastro'];
-    echo "<script>alert('$Mensagem');</script>";
+    echo "<script>alert('" . htmlspecialchars($Mensagem, ENT_QUOTES, 'UTF-8') . "');</script>";
     $_SESSION['sucesso_cadastro'] = null;
 }
     if(isset($_GET['id'])){
@@ -35,30 +35,40 @@ if(isset($_SESSION['sucesso_cadastro'])){
         $stmt->execute();
         $result = $stmt->get_result();
         $carro = $result->fetch_assoc();
+
     ?>
         <div class="mei">
         <div id="cadastro">
-    <form method="POST" action="../../salvar/Atualizar/AtualizarVeiculo.php">
+    <form method="POST" action="../../salvar/Atualizar/AtualizarVeiculo.php" enctype="multipart/form-data">
+        <input id="tipoCadastro" type="text" value="cadastroVeiculo" hidden>
+        <input type="hidden" name="foto_car" value="<?php echo htmlspecialchars($carro['foto_car']); ?>">
         <div>
-        <input type="hidden" name="id" value="<?php echo $carro['id_car']; ?>">
-        <label for="Marca">Marca</label><input type="text" name="Marca" id="Marca"  value="<?php echo $carro['marca_car']; ?>" maxlength="20" required>
-        <label for="Modelo">Modelo</label><input type="text" name="Modelo" id="Modelo"  value="<?php echo $carro['modelo_car']; ?>" maxlength="20" required>
-        <label for="Ano">Ano</label><input type="text" name="Ano" id="Ano"  value="<?php echo $carro['ano_car']; ?>" maxlength="4" required>
-        <label for="Preco">Preço</label><input type="text" name="Preco" id="Preco"  value="<?php echo $carro['preco_car']; ?>" maxlength="20" required>
-        <label for="Cor">Cor</label><input type="text" name="Cor" id="Cor"  value="<?php echo $carro['cor_car']; ?>" maxlength="20" required>
+        <input type="hidden" name="id" value="<?php echo htmlspecialchars($carro['id_car'], ENT_QUOTES, 'UTF-8'); ?>">
+        <label for="Marca">Marca</label><input type="text" name="Marca" id="Marca"  value="<?php echo htmlspecialchars($carro['marca_car'], ENT_QUOTES, 'UTF-8'); ?>" maxlength="255" required>
+        <label for="Modelo">Modelo</label><input type="text" name="Modelo" id="Modelo"  value="<?php echo htmlspecialchars($carro['modelo_car'], ENT_QUOTES, 'UTF-8'); ?>" maxlength="255" required>
+        <label for="Ano">Ano</label><input type="text" name="Ano" id="Ano"  value="<?php echo htmlspecialchars($carro['ano_car'], ENT_QUOTES, 'UTF-8'); ?>" maxlength="4" required>
+        <div id="Mensagem_ano"></div>
+        <label for="Preco">Preço</label><input type="text" name="Preco" id="Preco"  value="<?php echo htmlspecialchars($carro['preco_car'], ENT_QUOTES, 'UTF-8'); ?>" maxlength="20" required>
+        <label for="Cor">Cor</label><input type="text" name="Cor" id="Cor"  value="<?php echo htmlspecialchars($carro['cor_car'], ENT_QUOTES, 'UTF-8'); ?>" maxlength="20" required>
         </div>
         <div>
-        <label for="Quilometragem">Quilometragem</label><input type="text" name="Quilometragem" id="Quilometragem"  value="<?php echo $carro['quilometragem_car']; ?>" maxlength="20" required>
-        <label for="Combustivel">Combustível</label><select name="Combustivel" id="Combustivel" value="<?php echo $carro['combustivel_car']; ?>" required>
-            <option value="<?php echo $carro['combustivel_car']; ?>" style="font-weight: bold; color: #ffffff; background-color: #ff0000;"><?php echo $carro['combustivel_car']; ?></option>
+        <label for="Quilometragem">Quilometragem</label><input type="text" name="Quilometragem" id="Quilometragem"  value="<?php echo htmlspecialchars($carro['quilometragem_car'], ENT_QUOTES, 'UTF-8'); ?>" maxlength="20" required>
+        <label for="Combustivel">Combustível</label><select name="Combustivel" id="Combustivel" value="<?php echo htmlspecialchars($carro['combustivel_car'], ENT_QUOTES, 'UTF-8'); ?>" required>
+            <option value="<?php echo htmlspecialchars($carro['combustivel_car'], ENT_QUOTES, 'UTF-8'); ?>" style="font-weight: bold; color: #ffffff; background-color: #ff0000;"><?php echo htmlspecialchars($carro['combustivel_car'], ENT_QUOTES, 'UTF-8'); ?></option>
             <option value="Gasolina">Gasolina</option>
             <option value="Álcool">Álcool</option>
             <option value="Diesel">Diesel</option>
             <option value="Elétrico">Elétrico</option>
         </select>
-        <label for="Descricao">Descrição</label><input type="text" name="Descricao" id="Descricao"  value="<?php echo $carro['descricao_car']; ?>" maxlength="20" required>
-        <label for="Imagem">Imagem</label><input type="file" name="Imagem" id="Imagem"  maxlength="20">
-        <input type="button" class="btn" value="Salvar" onclick="return confirm('Tem certeza que deseja salvar as alterações?') ? document.forms[0].submit() : false;">
+        <label for="Descricao">Descrição</label><input type="text" name="Descricao" id="Descricao"  value="<?php echo htmlspecialchars($carro['descricao_car'], ENT_QUOTES, 'UTF-8'); ?>" maxlength="20" required>
+        <div>
+            <label for="Imagem">Imagem</label>
+            <img id="preview-imagem" src="<?php echo !empty($carro['foto_car']) ? htmlspecialchars($carro['foto_car'], ENT_QUOTES, 'UTF-8') : '#'; ?>" alt="Pré-visualização da imagem" style="max-width: 200px; <?php echo empty($carro['foto_car']) ? 'display: none;' : 'display: block;'; ?> border-radius: 5px; border: 1px solid #ccc;" />
+            <input type="file" name="Imagem" id="Imagem"  maxlength="20">
+
+            <div style="color: red;"><?php if (isset($_SESSION['erro_cadastro'])){echo htmlspecialchars($_SESSION['erro_cadastro'], ENT_QUOTES, 'UTF-8');unset($_SESSION['erro_cadastro']);} ?></div>
+        </div>
+        <input type="button" id="Cadastrar" class="btn" value="Salvar" onclick="return confirm('Tem certeza que deseja salvar as alterações?') ? validarVeiculo() : false;">
         <button type="button" class="btn" onclick="window.location.href='../../admin/Veiculos.php'">Voltar</button>
         </div>
     </form>
@@ -67,5 +77,9 @@ if(isset($_SESSION['sucesso_cadastro'])){
     <?php }else{ ?>
         <p>Veículo não encontrado.</p>
     <?php } ?>
+    <script src="../../../js/mascaras.js"></script>
+    <script src="../../../js/visualizarImagem.js"></script>
+    <script src="../../../js/validarformulario.js"></script>
+
 </body>
 </html>

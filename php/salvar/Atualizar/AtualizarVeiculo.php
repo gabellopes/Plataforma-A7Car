@@ -1,5 +1,5 @@
 <?php
-SESSION_START();
+include "../funcoes.php";
     if($_SESSION['user_email'] !== 'admin@gmail.com'){
             header("Location: ../../user/Login.php");
             exit;
@@ -21,28 +21,63 @@ $Cor = trim($_POST['Cor'] ?? '');
 $Quilometragem = trim($_POST['Quilometragem'] ?? '');
 $Combustivel = trim($_POST['Combustivel'] ?? '');
 $Descricao = trim($_POST['Descricao'] ?? '');
-$Imagem = "semfoto";
+$Imagem = $_FILES['Imagem'];
 $id = trim($_POST['id'] ?? '');
 
+/*MODIFICAR QUANDO PUBLICAR*/
+$caminho = "../../../.." . $_POST['foto_car'];
 
 
 if (empty($Marca) || empty($Modelo) || empty($Ano) || empty($Preco) || empty($Cor) || empty($Quilometragem) || empty($Combustivel) || empty($Descricao)) {
     $_SESSION['erro_cadastro'] = 'Preencha todos os campos.';
     $_SESSION['erro'] = true;
-    header("Location: ../admin/Salvar/Cadastro/NovoVeiculo.php");
+    header("Location: ../Editar/EditarVeiculo.php?id=" . $id);
+
     exit;
 }
+if(file_exists($caminho)){    
+    try{
+        if(!isset($Imagem) || $Imagem['error'] === UPLOAD_ERR_NO_FILE){
+            //$nomeArquivo = verificarImagem($_FILES['Imagem'], 'veiculos', 'Location: ../Editar/EditarVeiculo.php?id=' . $id, '../../../img/uploads/');
 
-    
-$stmt = $sql->prepare("UPDATE carro SET marca_car = ?, modelo_car = ?, ano_car = ?, preco_car = ?, cor_car = ?, quilometragem_car = ?, combustivel_car = ?, descricao_car = ?, foto_car = ? WHERE id_car = ?");
-$stmt->bind_param("ssiisisssi", $Marca, $Modelo, $Ano, $Preco, $Cor, $Quilometragem, $Combustivel, $Descricao, $Imagem, $id);
-$stmt->execute();
+                
+            $stmt = $sql->prepare("UPDATE carro SET marca_car = ?, modelo_car = ?, ano_car = ?, preco_car = ?, cor_car = ?, quilometragem_car = ?, combustivel_car = ?, descricao_car = ? WHERE id_car = ?");
+            $stmt->bind_param("ssiisissi", $Marca, $Modelo, $Ano, $Preco, $Cor, $Quilometragem, $Combustivel, $Descricao, $id);
+            $stmt->execute();
 
-$_SESSION['sucesso_cadastro'] = 'Veiculo atualizado com sucesso!';
-$_SESSION['erro'] = false;
+            $_SESSION['sucesso_cadastro'] = 'Veiculo atualizado com sucesso!';
+            $_SESSION['erro'] = false;
 
-header("Location: ../../admin/Veiculos.php");
-exit;
+            header("Location: ../../admin/Veiculos.php");
+            exit;
 
+        }else {
+            unlink($caminho);
+            $nomeArquivo = verificarImagem($Imagem, 'veiculos', 'Location: ../Editar/EditarVeiculo.php?id=' . $id, '../../../img/uploads/');
+
+                
+            $stmt = $sql->prepare("UPDATE carro SET marca_car = ?, modelo_car = ?, ano_car = ?, preco_car = ?, cor_car = ?, quilometragem_car = ?, combustivel_car = ?, descricao_car = ?, foto_car = ? WHERE id_car = ?");
+            $stmt->bind_param("ssiisisssi", $Marca, $Modelo, $Ano, $Preco, $Cor, $Quilometragem, $Combustivel, $Descricao, $nomeArquivo, $id);
+            $stmt->execute();
+
+            $_SESSION['sucesso_cadastro'] = 'Veiculo atualizado com sucesso!';
+            $_SESSION['erro'] = false;
+
+            header("Location: ../../admin/Veiculos.php");
+            exit;
+
+        }
+    }catch(Exception $e){
+        //$_SESSION['erro_cadastro'] = "Erro ao editar cliente" . " " . $e->getMessage() ;
+        $_SESSION['erro_cadastro'] = "Erro ao editar veiculo";
+        $_SESSION['erro'] = true;
+        header("Location: ../Editar/EditarVeiculo.php?id=" . $id);
+    }
+}else{
+    $_SESSION['erro_cadastro'] = "Erro ao editar veiculo";
+    $_SESSION['erro'] = true;
+    header("Location: ../Editar/EditarVeiculo.php?id=" . $id);
+
+}
 
 ?>

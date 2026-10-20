@@ -27,7 +27,7 @@
             <button id="btnEntrar" class="btn" type="button" onclick="window.location.href='php/user/Login.php'">ENTRAR</button>
             <button id="btnCadastrar" class="btn" type="button" onclick="window.location.href='php/user/Cadastro.php'">CADASTRAR </button>
             <?php else: ?>
-            <p>Bem-vindo, <?php echo $_SESSION['user_nome']; ?>!</p>
+            <p>Bem-vindo, <?php echo htmlspecialchars($_SESSION['user_nome'], ENT_QUOTES, 'UTF-8'); ?>!</p>
             <button class="btn" type="button" onclick="window.location.href='php/salvar/Sair.php'">SAIR </button>
             <?php endif; ?>
         </div>
@@ -40,23 +40,91 @@
         <h2>As melhores marcas do mercado em um só lugar.</h2>
     <div>
         <button class="btn">Buscar </button>
-        <input type="text" name="" id="buscar">
+        <input type="text" name="" id="buscar" Placeholder="Buscar por Marca ou modelo...">
     </div>
     </div>
 
     <div id="faixa">
 
     </div>
+<?php
+    try{
+        require_once "php/salvar/Conexao.php";
+        $stmt = $sql->prepare("SELECT * FROM carro WHERE status_car = 0 ORDER BY data_car DESC LIMIT 3");
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
 
+
+
+?>
     <div id="cat">
         <div id="textocat">
             <h3>Destaque</h3>
             <h1>ÚLTIMAS ENTRADAS</h1>
+            <div>                
+		<?php
+                //onclick=\"location.href='../salvar/S_Favorito.php?id=".$row['id_car']."&status=".$row['status_car']."'\"
+                    
+                while($row = $result->fetch_assoc()){
+                   
+                if($row['status_car'] === 0){
+
+                    if(isset($_SESSION['user_id'])){
+                        $verifica = $sql->prepare("SELECT id_fav FROM favorito WHERE id_usu = ? AND id_car = ?");
+                        $verifica->bind_param("ii", $_SESSION['user_id'], $row['id_car']);
+                        $verifica->execute();
+                        $resultado = $verifica->get_result();
+
+                        if($resultado->num_rows > 0){
+                            echo"
+                        <div>
+                        <button class='btn-favoritar' data-id=".$row['id_car'].">❤️</button>
+                        ";
+                        }else{
+                        echo"
+                        <div>
+                        <button class='btn-favoritar' data-id=".$row['id_car'].">❤</button>
+                        ";
+                        }
+                    }else{
+                        echo"
+                        <div>
+                        <button onclick='window.location.href=\"Login.php\"'>❤</button>
+                        ";
+                    }
+                    echo "
+                   
+                    <img src='" . htmlspecialchars($row['foto_car'], ENT_QUOTES, 'UTF-8') . "' alt='Foto do Veículo' width='200' height='150'>
+                    <span></span>
+                    <span>".htmlspecialchars($row['marca_car'], ENT_QUOTES, 'UTF-8')."</span>
+                    <span>".htmlspecialchars($row['modelo_car'], ENT_QUOTES, 'UTF-8')."</span>
+                    <span>".htmlspecialchars($row['ano_car'])."</span><span>".htmlspecialchars($row['quilometragem_car'])."</span><span>".htmlspecialchars($row['combustivel_car'], ENT_QUOTES, 'UTF-8')."</span>
+
+                    <hr>
+
+                    <div>
+                        <p>Valor</p>
+                        <span>R$".htmlspecialchars($row['preco_car'])."</span>
+                        <button onclick=\"location.href='php/user/Veiculo.php?id=".$row['id_car']."'\">👁VER</button>
+                    </div>
+                </div>
+                <br>
+
+                
+                    ";}}?>
+            </div>
         </div>
         <div>
         <button id="btnVender" onclick="window.location.href='php/user/catalogo.php'">VER TODOS</button>
         </div>
+        
+            
+        
     </div>
+<?php }catch(Exception $e){
+               
+                }?>
 
     <div id="atend">
         <img src="img/footer/atendzap.png" alt="IMGzap">
@@ -96,6 +164,7 @@
             </div>
         </div>
     </footer>
+<script src="js/assets.js"></script>
 
 </body>
 

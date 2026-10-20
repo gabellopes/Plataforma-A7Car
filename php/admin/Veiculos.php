@@ -20,9 +20,16 @@
 
 if(isset($_SESSION['sucesso_cadastro'])){
     $Mensagem = $_SESSION['sucesso_cadastro'];
-    echo "<script>alert('$Mensagem');</script>"; 
+    echo "<script>alert('" . htmlspecialchars($Mensagem, ENT_QUOTES, 'UTF-8') . "');</script>"; 
     $_SESSION['sucesso_cadastro'] = null;
 }
+
+         if(isset($_SESSION['erro_cadastro'])){
+            $Mensagem = $_SESSION['erro_cadastro'];
+            echo "<script>alert('" . htmlspecialchars($Mensagem, ENT_QUOTES, 'UTF-8') . "');</script>"; 
+            unset($_SESSION['erro_cadastro']);
+        }
+
 ?>
             <div id="meio">
                 <div id="titulo">
@@ -43,6 +50,7 @@ if(isset($_SESSION['sucesso_cadastro'])){
                     <td>EDITAR</td>
                     <td>VENDER</td>
                     <td>EXCLUIR</td>
+                    <!--<img src=".$row['foto_car']." alt="">-->
                 </tr>
 		<?php
                 include_once "../salvar/Conexao.php";
@@ -53,17 +61,17 @@ if(isset($_SESSION['sucesso_cadastro'])){
              
                     
                 while($row = $result->fetch_assoc()){
-                  
+                $caminho = $row['foto_car'];
                 if($row['status_car'] === 0){
                     echo "
                     <tr>
-                        <td>".$row['foto_car']."</td>
-                        <td>".$row['marca_car']."</td>
-                        <td>".$row['modelo_car']."</td>
-                        <td>".$row['ano_car']."</td>
-                        <td>".$row['quilometragem_car']." km</td>
-                        <td>".$row['combustivel_car']."</td>
-                        <td>R$".$row['preco_car']."</td>
+                        <td><img src='" . htmlspecialchars($row['foto_car'], ENT_QUOTES, 'UTF-8') . "' alt='Foto do Veículo' width='200' height='150'></td>
+                        <td>".htmlspecialchars($row['marca_car'], ENT_QUOTES, 'UTF-8')."</td>
+                        <td>".htmlspecialchars($row['modelo_car'], ENT_QUOTES, 'UTF-8')."</td>
+                        <td>".htmlspecialchars($row['ano_car'])."</td>
+                        <td>".htmlspecialchars($row['quilometragem_car'])." km</td>
+                        <td>".htmlspecialchars($row['combustivel_car'], ENT_QUOTES, 'UTF-8')."</td>
+                        <td>R$".htmlspecialchars($row['preco_car'])."</td>
                         <td>"."07/09/26"."</td>
                         <td>
                             <button onclick=\"location.href='../salvar/Editar/EditarVeiculo.php?id=".$row['id_car']."'\">⚙</button>
@@ -72,7 +80,7 @@ if(isset($_SESSION['sucesso_cadastro'])){
                             <button onclick=\"location.href='Cadastrar/VenderVeiculo.php?id=".$row['id_car']."'\">🟩</button>
                         </td>
                         <td>
-                        <button onclick=\"return confirm('Tem certeza que deseja excluir este veículo?') ? location.href='../salvar/Excluir/ExcluirVeiculo.php?id=".$row['id_car']."' : false;\">🧨</button>
+                        <button onclick=\"return confirm('Tem certeza que deseja excluir este veículo?') ? location.href='../salvar/Excluir/ExcluirVeiculo.php?id=".$row['id_car']."&caminho=".$caminho."' : false;\">🧨</button>
                         </td>
                     </tr>";}
                      

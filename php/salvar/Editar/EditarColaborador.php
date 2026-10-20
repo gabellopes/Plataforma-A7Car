@@ -22,7 +22,7 @@
     <?php
         if(isset($_SESSION['sucesso_cadastro'])){
             $Mensagem = $_SESSION['sucesso_cadastro'];
-            echo "<script>alert('$Mensagem');</script>"; 
+            echo "<script>alert('" . htmlspecialchars($Mensagem, ENT_QUOTES, 'UTF-8') . "');</script>"; 
             $_SESSION['sucesso_cadastro'] = null;
         }
     if(isset($_GET['id'])){
@@ -33,23 +33,30 @@
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $result = $stmt->get_result();
+
         $colaborador = $result->fetch_assoc();
     ?>
         <div class="mei">
         <div id="cadastro">
     <form method="Post" action="../Atualizar/AtualizarColaborador.php" enctype="multipart/form-data">
         <div>
-        <input type="hidden" name="id" value="<?php echo $colaborador['id_col']; ?>">
-        <label for="Nome">Nome</label><input type="text" name="Nome" id="Nome"  value="<?php echo $colaborador['nome_col']; ?>" maxlength="20" required>
-        <label for="Email">Email</label><input type="email" name="Email" id="Email"  value="<?php echo $colaborador['email_col']; ?>" required>
+        <input type="hidden" name="id" value="<?php echo htmlspecialchars($colaborador['id_col']); ?>">
+        <input type="hidden" name="foto_col" value="<?php echo htmlspecialchars($colaborador['foto_col']); ?>">
+        <label for="Nome">Nome</label><input type="text" name="Nome" id="Nome"  value="<?php echo htmlspecialchars($colaborador['nome_col'], ENT_QUOTES, 'UTF-8'); ?>" maxlength="255" required>
+        <label for="Email">Email</label><input type="email" name="Email" id="Email"  value="<?php echo htmlspecialchars($colaborador['email_col'], ENT_QUOTES, 'UTF-8'); ?>" maxlength="255" required>
         <div id="Mensagem_email"></div>
-        <label for="Telefone">Telefone</label><input type="text" name="Telefone" id="Telefone"  value="<?php echo $colaborador['telefone_col']; ?>" maxlength="15" required>
+        <label for="Telefone">Telefone</label><input type="text" name="Telefone" id="Telefone"  value="<?php echo htmlspecialchars($colaborador['telefone_col']); ?>" maxlength="15" required>
         <div id="Mensagem_telefone"></div>
-        <label for="Imagem">Foto</label><input type="file" name="Foto" id="Foto"  maxlength="255">
+        <div>
+            <label for="Imagem">Imagem</label>
+            <img id="preview-imagem" src="<?php echo !empty($colaborador['foto_col']) ? htmlspecialchars($colaborador['foto_col'], ENT_QUOTES, 'UTF-8') : '#'; ?>" alt="Pré-visualização da imagem" style="max-width: 200px; <?php echo empty($colaborador['foto_col']) ? 'display: none;' : 'display: block;'; ?> border-radius: 5px; border: 1px solid #ccc;" />
+            <input type="file" name="Imagem" id="Imagem"  maxlength="20">
+        </div>
         <div id="Mensagem_imagem"></div>
-        <label for="Servico">Serviço</label><input type="text" name="Servico" id="Servico"  value="<?php echo $colaborador['servico_col']; ?>" maxlength="255" required>
-        <label for="Descricao">Descrição</label><input type="text" name="Descricao" id="Descricao"  value="<?php echo $colaborador['descricao_col']; ?>" maxlength="255" required>
+        <label for="Servico">Serviço</label><input type="text" name="Servico" id="Servico"  value="<?php echo htmlspecialchars($colaborador['servico_col'], ENT_QUOTES, 'UTF-8'); ?>" maxlength="255" required>
+        <label for="Descricao">Descrição</label><input type="text" name="Descricao" id="Descricao"  value="<?php echo htmlspecialchars($colaborador['descricao_col'], ENT_QUOTES, 'UTF-8'); ?>" maxlength="255" required>
 
+        <div style="color: red;"><?php if (isset($_SESSION['erro_cadastro'])){echo htmlspecialchars($_SESSION['erro_cadastro'], ENT_QUOTES, 'UTF-8');unset($_SESSION['erro_cadastro']);} ?></div>
         <input type="button" class="btn" value="Salvar" id="Cadastrar" onclick="return confirm('Tem certeza que deseja atualizar este colaborador?') ? validarColaborador() :  true;">
         <button type="button" class="btn"onclick="window.location.href='../../admin/Colaboradores.php'">Voltar</button>
         </div>
@@ -61,5 +68,6 @@
     <?php } ?>
     <script src="../../../js/mascaras.js"></script>
     <script src="../../../js/validarformulario.js"></script>
+    <script src="../../../js/visualizarImagem.js"></script>
 </body>
 </html>

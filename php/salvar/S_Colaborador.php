@@ -1,5 +1,4 @@
 <?php
-SESSION_START();
 include __DIR__ . "/funcoes.php";
     if($_SESSION['user_email'] !== 'admin@gmail.com'){
             header("Location: ../../user/Login.php");
@@ -19,22 +18,23 @@ $Email = trim($_POST['Email'] ?? '');
 $Telefone = trim($_POST['Telefone'] ?? '');
 $Servico = trim($_POST['Servico'] ?? '');
 $Descricao = trim($_POST['Descricao'] ?? '');
-$Imagem = "semfoto";
+$Imagem = $_FILES['Imagem'];
+
+$nomeArquivo = verificarImagem($Imagem, 'colaboradores', 'Location: ../admin/Cadastrar/NovoColaborador.php', '../../img/uploads/');
 
 
-
-
-if (empty($Nome) || empty($Email) || empty($Telefone) || empty($Servico) || empty($Descricao)) {
+if (empty($Nome) || empty($Email) || empty($Telefone) || empty($Servico) || empty($Descricao) || empty($Imagem)) {
     $_SESSION['erro_cadastro'] = 'Preencha todos os campos.';
     $_SESSION['erro'] = true;
-    header("Location: ../admin/Salvar/Cadastro/NovoColaborador.php");
+    header("Location: ../admin/Cadastrar/NovoColaborador.php");
     exit;
 }
 
 verifica("email_col", "colaborador", $Email, "Email já cadastrado", "Location: ../admin/Cadastrar/NovoColaborador.php");
 
+try{
 $stmt = $sql->prepare("INSERT INTO colaborador (nome_col, email_col, telefone_col, servico_col, descricao_col, foto_col) VALUES (?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("ssssss", $Nome, $Email, $Telefone, $Servico, $Descricao, $Imagem);
+$stmt->bind_param("ssssss", $Nome, $Email, $Telefone, $Servico, $Descricao, $nomeArquivo);
 $stmt->execute();
 
 $_SESSION['sucesso_cadastro'] = 'Colaborador cadastrado com sucesso!';
@@ -42,6 +42,12 @@ $_SESSION['erro'] = false;
 
 header("Location: ../admin/Cadastrar/NovoColaborador.php");
 exit;
+}catch(Exception $e){
+                $_SESSION['erro_cadastro'] = "Erro ao tentar cadastrar colaborador";
+                $_SESSION['erro'] = true;
+                header("Location: ../admin/Cadastrar/NovoColaborador.php");
+
+                }
 
 
 ?>

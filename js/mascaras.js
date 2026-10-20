@@ -2,6 +2,8 @@ const Telefone = document.getElementById("Telefone");
 const Cpf = document.getElementById("Cpf");
 const Cnh = document.getElementById("Cnh");
 const Ano = document.getElementById("Ano");
+const Preco = document.getElementById("Preco");
+const Quilometragem = document.getElementById("Quilometragem");
 
 if (Telefone) {
 
@@ -46,7 +48,46 @@ if (Cpf) {
   if (Ano) {
 
   Ano.addEventListener('input', (e) => {
-          
+    let valor = e.target.value.replace(/\D/g, '');
+    
+    if (valor.length > 4) {
+        valor = valor.slice(0, 4);
+    }
+    
+    e.target.value = valor;      
+  });
+
+}
+
+ if (Cnh) {
+
+  Cnh.addEventListener('input', (e) => {
+    let valor = e.target.value.replace(/\D/g, '');
+    
+    if (valor.length > 9) {
+        valor = valor.slice(0, 9);
+    }
+    
+    e.target.value = valor;      
+  });
+
+}
+if (Preco) {
+
+  Preco.addEventListener('input', (e) => {
+    let valor = e.target.value.replace(/\D/g, '');
+    
+    e.target.value = valor;      
+  });
+
+}
+
+if (Quilometragem) {
+
+  Quilometragem.addEventListener('input', (e) => {
+    let valor = e.target.value.replace(/\D/g, '');
+    
+    e.target.value = valor;      
   });
 
 }

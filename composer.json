@@ -1,0 +1,14 @@
+{
+    "name": "quaiati/email",
+    "autoload": {
+        "psr-4": {
+            "Quaiati\\Email\\": "src/"
+        }
+    },
+    "require": {
+        "vlucas/phpdotenv": "^5.7"
+    },
+    "config": {
+        "disable-tls": true
+    }
+}

@@ -22,9 +22,11 @@
     <?php
     if(isset($_SESSION['sucesso_cadastro'])){
         $Mensagem = $_SESSION['sucesso_cadastro'];
-        echo "<script>alert('$Mensagem');</script>";
+        echo "<script>alert('" . htmlspecialchars($Mensagem, ENT_QUOTES, 'UTF-8') . "');</script>";
         $_SESSION['sucesso_cadastro'] = null;
     }
+
+
     if(isset($_GET['id'])){
         
         require_once "../../salvar/Conexao.php";
@@ -39,16 +41,17 @@
         <div id="cadastro">
     <form method="Post" action="../Atualizar/AtualizarCliente.php">
         <div>
-        <input type="hidden" name="id" value="<?php echo $cliente['id_cli']; ?>">
-        <label for="Nome">Nome</label><input type="text" name="Nome" id="Nome"  value="<?php echo $cliente['nome_cli']; ?>" maxlength="20" required>
-        <label for="Email">Email</label><input type="email" name="Email" id="Email"  value="<?php echo $cliente['email_cli']; ?>" required>
+        <input type="hidden" name="id" value="<?php echo htmlspecialchars($cliente['id_cli']); ?>">
+        <label for="Nome">Nome</label><input type="text" name="Nome" id="Nome"  value="<?php echo htmlspecialchars($cliente['nome_cli'], ENT_QUOTES, 'UTF-8'); ?>" maxlength="255" required>
+        <label for="Email">Email</label><input type="email" name="Email" id="Email"  value="<?php echo htmlspecialchars($cliente['email_cli'], ENT_QUOTES, 'UTF-8'); ?>" required>
         <div id="Mensagem_email"></div>
-        <label for="Telefone">Telefone</label><input type="text" name="Telefone" id="Telefone" id="Telefone" value="<?php echo $cliente['telefone_cli']; ?>" maxlength="15" required>
+        <label for="Telefone">Telefone</label><input type="text" name="Telefone" id="Telefone" id="Telefone" value="<?php echo htmlspecialchars($cliente['telefone_cli']); ?>" maxlength="15" required>
         <div id="Mensagem_telefone"></div>
-        <label for="Cpf">CPF</label><input type="text" name="Cpf" id="Cpf" maxlength="14" value="<?php echo $cliente['cpf_cli']; ?>" required>
+        <label for="Cpf">CPF</label><input type="text" name="Cpf" id="Cpf" maxlength="14" value="<?php echo htmlspecialchars($cliente['cpf_cli']); ?>" required>
         <div id="Mensagem_cpf"></div>
-        <label for="Cnh">CNH</label><input type="text" name="Cnh" id="Cnh" maxlength="11"  value="<?php echo $cliente['cnh_cli']; ?>" required>
+        <label for="Cnh">CNH</label><input type="text" name="Cnh" id="Cnh" maxlength="9"  value="<?php echo htmlspecialchars($cliente['cnh_cli']); ?>" required>
         <div id="Mensagem_cnh"></div>
+        <div style="color: red;"><?php if (isset($_SESSION['erro_cadastro'])){echo htmlspecialchars($_SESSION['erro_cadastro'], ENT_QUOTES, 'UTF-8');unset($_SESSION['erro_cadastro']);} ?></div>
         <input type="button" class="btn" id="Cadastrar" value="Salvar" onclick="return confirm('Tem certeza que deseja atualizar este cliente?') ? validarCliente() : true;">
         <button type="button" class="btn" onclick="window.location.href='../../admin/Clientes.php'">Voltar</button>
         </div>
@@ -59,7 +62,7 @@
         <p>Cliente não encontrado.</p>
     <?php } ?>
     <script src="../../../js/mascaras.js"></script>
-        <script src="../../../js/validarformulario.js"></script>
+    <script src="../../../js/validarformulario.js"></script>
 
 </body>
 </html>

@@ -16,11 +16,20 @@
     <link rel="stylesheet" href="../../css/ADMcolaboradores.css">
 </head>
 <body>
-    <?php include __DIR__ . "/_Aside.php"; 
+    <?php 
+    include __DIR__ . "/_Aside.php"; 
+    
         if(isset($_SESSION['sucesso_cadastro'])){
             $Mensagem = $_SESSION['sucesso_cadastro'];
-            echo "<script>alert('$Mensagem');</script>"; 
+            echo "<script>alert('" . htmlspecialchars($Mensagem, ENT_QUOTES, 'UTF-8') . "');</script>"; 
             $_SESSION['sucesso_cadastro'] = null;
+        }
+
+        
+         if(isset($_SESSION['erro_cadastro'])){
+            $Mensagem = $_SESSION['erro_cadastro'];
+            echo "<script>alert('" . htmlspecialchars($Mensagem, ENT_QUOTES, 'UTF-8') . "');</script>"; 
+            unset($_SESSION['erro_cadastro']);
         }
     ?>
         <div id="meio">
@@ -31,6 +40,7 @@
             <div id="CE">
                 <table>
                 <tr>
+                    <td>FOTO</td>
                     <td>NOME</td>
                     <td>SERVIÇO</td>
                     <td>TELEFONE</td>
@@ -45,18 +55,19 @@
                 $stmt->execute();
                 $result = $stmt->get_result();
                 while($row = $result->fetch_assoc()){
-                    
+                $caminho = $row['foto_col'];
                     echo "
                     <tr>
-                        <td>".$row['nome_col']."</td>
-                        <td>".$row['servico_col']."</td>
-                        <td>".$row['telefone_col']."</td>
-                        <td>".$row['email_col']."</td>
+                        <td><img src='" . htmlspecialchars($row['foto_col'], ENT_QUOTES, 'UTF-8') . "' alt='Foto do Colaborador' width='200'></td>
+                        <td>".htmlspecialchars($row['nome_col'], ENT_QUOTES, 'UTF-8')."</td>
+                        <td>".htmlspecialchars($row['servico_col'], ENT_QUOTES, 'UTF-8')."</td>
+                        <td>".htmlspecialchars($row['telefone_col'])."</td>
+                        <td>".htmlspecialchars($row['email_col'], ENT_QUOTES, 'UTF-8')."</td>
                         <td>
                             <button onclick=\"location.href='../salvar/Editar/EditarColaborador.php?id=".$row['id_col']."'\">⚙</button>
                         </td>
                         <td>
-                            <button onclick=\"return confirm('Tem certeza que deseja excluir este colaborador?') ? location.href='../salvar/Excluir/ExcluirColaborador.php?id=".$row['id_col']."' : false;\">🧨</button>
+                            <button onclick=\"return confirm('Tem certeza que deseja excluir este colaborador?') ? location.href='../salvar/Excluir/ExcluirColaborador.php?id=".$row['id_col']."&caminho=".$caminho."' : false;\">🧨</button>
                         </td>
                     </tr>";
                 }

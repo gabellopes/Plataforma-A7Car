@@ -19,7 +19,7 @@
     <?php
          if(isset($_SESSION['sucesso_cadastro'])){
             $Mensagem = $_SESSION['sucesso_cadastro'];
-            echo "<script>alert('$Mensagem');</script>"; 
+            echo "<script>alert('" . htmlspecialchars($Mensagem, ENT_QUOTES, 'UTF-8') . "');</script>"; 
             $_SESSION['sucesso_cadastro'] = null;
         }
     ?>
@@ -29,12 +29,14 @@
     <div class="mei">
     <div id="cadastro">
       
-    <form method="POST" action="../../salvar/S_Veiculo.php">
+    <form method="POST" action="../../salvar/S_Veiculo.php"  enctype="multipart/form-data">
+        <input id="tipoCadastro" type="text" value="cadastroVeiculo" hidden>
         <div>
-        <div><label for="Marca">Marca</label><input type="text" name="Marca" id="Marca"  maxlength="20" required></div>
-        <div><label for="Modelo">Modelo</label><input type="text" name="Modelo" id="Modelo"  maxlength="20" required></div>
+        <div><label for="Marca">Marca</label><input type="text" name="Marca" id="Marca"  maxlength="255" required></div>
+        <div><label for="Modelo">Modelo</label><input type="text" name="Modelo" id="Modelo"  maxlength="255" required></div>
         <div><label for="Ano">Ano</label><input type="number" name="Ano" id="Ano"  maxlength="4" required></div>
-        <div><label for="Preco">Preço</label><input type="number" name="Preco" id="Preco"  maxlength="20" required></div>
+        <div id="Mensagem_ano"></div>
+        <div><label for="Preco">Preço</label><input type="number" name="Preco" id="Preco"  maxlength="255" required></div>
         <div><label for="Cor">Cor</label><input type="text" name="Cor" id="Cor"  maxlength="20" required></div>
         </div>
         <div>
@@ -47,19 +49,27 @@
             <option value="Elétrico">Elétrico</option>
             </select>
         </div>
-        <div><label for="Descricao">Descrição</label><input type="text" name="Descricao" id="Descricao"  maxlength="20" required></div>
-        <div><label for="Imagem">Imagem</label><input type="file" name="Imagem" id="Imagem"  maxlength="20"></div>
+        
+        <div><label for="Descricao">Descrição</label><input type="text" name="Descricao" id="Descricao"  maxlength="255" required></div>
+
         <div>
-        <input type="submit" class="btn" value="Salvar">
+            <label for="Imagem">Imagem</label>
+            <img id="preview-imagem" src="#" alt="Pré-visualização da imagem" style="max-width: 200px; display: none; border-radius: 5px; border: 1px solid #ccc;" />
+            <input type="file" name="Imagem" id="Imagem"  maxlength="20">
+        </div>
+
+        <div style="color: red;"><?php if (isset($_SESSION['erro_cadastro'])){echo htmlspecialchars($_SESSION['erro_cadastro'], ENT_QUOTES, 'UTF-8');unset($_SESSION['erro_cadastro']);} ?></div>
+        <div>
+        <input type="button" id="Cadastrar" class="btn" value="Salvar" onclick="validarVeiculo()">
         <button type="button" class="btn" onclick="window.location.href='../Veiculos.php'">Voltar</button>
         </div>
         </div>
 
     </form>
     <script src="../../../js/mascaras.js"></script>
-
-
-    </div>
+    <script src="../../../js/visualizarImagem.js"></script>
+    <script src="../../../js/validarformulario.js"></script>
+        </div>
     </div>
 </body>
 </html>

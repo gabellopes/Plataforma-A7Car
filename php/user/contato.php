@@ -1,4 +1,8 @@
-<?php SESSION_START(); ?>
+<?php 
+SESSION_START(); 
+require_once "../salvar/Conexao.php";
+
+ ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -25,7 +29,7 @@
             <button id="btnEntrar" class="btn" type="button" onclick="window.location.href='Login.php'">ENTRAR</button>
             <button id="btnCadastrar" class="btn" type="button" onclick="window.location.href='Cadastro.php'">CADASTRAR </button>
             <?php else: ?>
-            <p>Bem-vindo, <?php echo $_SESSION['user_nome']; ?>!</p>
+            <p>Bem-vindo, <?php echo htmlspecialchars($_SESSION['user_nome'], ENT_QUOTES, 'UTF-8'); ?>!</p>
             
             <button class="btn" type="button" onclick="window.location.href='../salvar/Sair.php'">SAIR </button>
             <?php endif; ?>
@@ -123,8 +127,7 @@
         </h3>
     </div>
     <div id="divadm">
-        <a href="../admin/Dashboard.php" id="adm">ÁREA ADMINISTRATIVA</a>
-    </div>
+    <a href="../admin/Clientes.php" id="adm">ÁREA ADMINISTRATIVA</a>    </div>
 </div>
 </footer>
 
