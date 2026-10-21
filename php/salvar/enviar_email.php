@@ -43,24 +43,24 @@ try {
     $mail->setFrom($_ENV['SMTP_FROM_EMAIL'], $_ENV['SMTP_FROM_NAME']);
 
     // O email que vai receber a mensagem
-    $mail->addAddress($email, $nome);
+    $mail->addAddress($email, $emailNome);
 
     // ------------------------------------------------------
     // Conteúdo do Email
     // ------------------------------------------------------
     $mail->isHTML(true);
-    $mail->Subject = 'ModoDevAtivado';
-
+    $mail->Subject = $emailAssunto;
+    
     $mail->Body    = '
         <div style="background-color: #f4f4f4; padding: 20px; font-family: Arial, sans-serif;">
-            <h2 style="color: #333;">Redefinir senha</h2>
+            <h2 style="color: #333;">'.$emailTitulo.'</h2>
 
-            <a href='.$link.'>clique nesse link para redefinir a senha</a>
+            <a href="'.$emaiLink.'">'.$emailTextoLink.'</a>
             
         </div>
     ';
 
-    $mail->AltBody = 'link pare redefinir senha '. $link;
+    $mail->AltBody = 'link pare redefinir senha '. $emaiLink;
 
     // Enviar!
     $mail->send();
@@ -68,4 +68,12 @@ try {
 } catch (Exception $e) {
     
 }
+/*
+$email
+$emailNome
+$emailAssunto
+$emailTitulo
+$emailTextoLink
+$emaiLink
+*/
 ?>

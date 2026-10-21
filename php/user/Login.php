@@ -66,7 +66,7 @@ if(isset($_SESSION['erro_cadastro'])){
 
     <form action="../salvar/Testelogin.php" method="post">
         <label for="email">E-mail</label>
-        <input type="email" name="Email" id="Email2" maxlength="20" required>
+        <input type="email" name="Email" id="Email2" maxlength="255" required>
 
         <label for="senha">Senha</label>
         <div><input type="password" name="Senha" id="Senha" maxlength="20" required><button type="button" id="mostrarSenha">👁</button></div>

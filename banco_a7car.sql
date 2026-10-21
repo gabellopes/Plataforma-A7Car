@@ -129,14 +129,15 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `email_usu` varchar(255) NOT NULL,
   `telefone_usu` varchar(15) NOT NULL,
   `senha_usu` varchar(255) NOT NULL,
+  `status_usu` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id_usu`),
   UNIQUE KEY `email_usu` (`email_usu`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Copiando dados para a tabela concessionaria.usuario: ~3 rows (aproximadamente)
-REPLACE INTO `usuario` (`id_usu`, `nome_usu`, `email_usu`, `telefone_usu`, `senha_usu`) VALUES
-	(0, 'admin', 'admin@gmail.com', '(11)98229-9155', '$2y$10$IStkVoe8X6t5PeNkhhj/P.vKMyNWIxlP9YW/KvevCKAUUHQJQtCx2'),
-	(1, 'Usuario', 'usuario@gmail.com', '(11) 973123123', '$2y$10$7BUmDUaMXmOvGVEiDwWuzewmPjVvpSe505Z.SVti6Ixc.nY3HcVj2');
+REPLACE INTO `usuario` (`id_usu`, `nome_usu`, `email_usu`, `telefone_usu`, `senha_usu`, `status_usu`) VALUES
+	(0, 'admin', 'admin@gmail.com', '(11)98229-9155', '$2y$10$IStkVoe8X6t5PeNkhhj/P.vKMyNWIxlP9YW/KvevCKAUUHQJQtCx2', 1),
+	(1, 'Usuario', 'usuario@gmail.com', '(11) 973123123', '$2y$10$7BUmDUaMXmOvGVEiDwWuzewmPjVvpSe505Z.SVti6Ixc.nY3HcVj2', 1);
 
 -- Copiando estrutura para tabela concessionaria.vendas
 CREATE TABLE IF NOT EXISTS `vendas` (

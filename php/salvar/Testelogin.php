@@ -17,7 +17,7 @@ if (empty($email) || empty($senha)) {
     exit;
 }
 
-$stmt = $sql->prepare("SELECT id_usu, nome_usu, email_usu, senha_usu FROM usuario WHERE email_usu = ?");
+$stmt = $sql->prepare("SELECT * FROM usuario WHERE email_usu = ?");
 if (!$stmt) {
     $_SESSION['erro_login'] = 'Erro ao consultar o banco.';
     header("Location: ../user/Login.php");
@@ -31,26 +31,35 @@ $resultado = $stmt->get_result();
 if ($resultado->num_rows === 1) {
     $usuario = $resultado->fetch_assoc();
 
-    if (password_verify($senha, $usuario['senha_usu'])) {
-        $_SESSION['user_id'] = $usuario['id_usu'];
-        $_SESSION['user_nome'] = $usuario['nome_usu'];
-        $_SESSION['user_email'] = $usuario['email_usu'];
-        
+    if($usuario['status_usu'] === 1){
+        if (password_verify($senha, $usuario['senha_usu'])) {
+            $_SESSION['user_id'] = $usuario['id_usu'];
+            $_SESSION['user_nome'] = $usuario['nome_usu'];
+            $_SESSION['user_email'] = $usuario['email_usu'];
+            
 
-        if($_SESSION['user_email'] === 'admin@gmail.com'){
-            header("Location: ../admin/Clientes.php");
-            exit;
+            if($_SESSION['user_email'] === 'admin@gmail.com'){
+                header("Location: ../admin/Clientes.php");
+                exit;
+            }else{
+                header("Location: ../user/catalogo.php");
+                exit;
+            } 
         }else{
-            header("Location: ../user/catalogo.php");
+            $_SESSION['erro_login'] = 'E-mail ou senha inválidos.';
+            header("Location: ../user/Login.php");
             exit;
-        }
-        
-
-        
+            }
+    }else{
+        $_SESSION['erro_login'] = 'Usuario não validado.';
+        header("Location: ../user/Login.php");
+        exit;
     }
+}else{
+    $_SESSION['erro_login'] = 'Usuario não cadastrado';
+    header("Location: ../user/Login.php");
+    exit;
 }
 
-$_SESSION['erro_login'] = 'E-mail ou senha inválidos.';
-header("Location: ../user/Login.php");
-exit;
+
 ?>

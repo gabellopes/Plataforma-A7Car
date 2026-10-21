@@ -15,6 +15,8 @@ tabela carro
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_reset_usuario FOREIGN KEY (id_usu) REFERENCES usuario(id_usu) ON DELETE CASCADE
 );
+tabela usuario
+-> status_usu tinyint(1) DEFAULT '0'
 
 PROBLEMAS ENCONTRADOS
 -> ADICIONAR FORMA DE PAGAMENTO NA VENDA

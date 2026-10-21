@@ -21,6 +21,8 @@ if (json_last_error() !== JSON_ERROR_NONE || empty($dados['email'])) {
 $email = trim($dados['email']);
 $modoDev = $dados['modoDev'];
 
+
+
 $emailExiste = verifica("email_usu", "usuario", $email);
 
 if ($emailExiste) {
@@ -32,6 +34,13 @@ if ($emailExiste) {
         $link = "http://localhost/Plataforma-A7Car/php/user/RedefinirSenha.php?token=" . $token; 
         $expira = date('Y-m-d H:i:s', strtotime('+1 hour'));
         $usado = 0; 
+
+        //Para enviar o email
+        $emailNome = $nome;
+        $emailAssunto = 'Recuperar Senha';
+        $emailTitulo = 'Recuperação de Senha';
+        $emailTextoLink = 'Clique aqui para recuperar a sua senha';
+        $emaiLink = $link;
 
         $stmt = $sql->prepare("INSERT INTO password_resets (id_usu, token, expira_em, usado) VALUES (?, ?, ?, ?)");
         

@@ -1,6 +1,8 @@
 <?php
 SESSION_START(); 
 require_once "../salvar/Conexao.php";
+
+$email = $_GET['email'] ?? '';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,6 +71,19 @@ require_once "../salvar/Conexao.php";
 
    </div>
    </div>
+   <dialog id="dialogEmailEnviado" <?php if (isset($_GET['email'])) echo 'open'; ?>>
+                <button id="FecharDialogEmailEnviado">🏃‍♂️💨</button>
+
+                    <h1>E-mail Enviado</h1>
+                    <hr>
+                    
+                    <img src="#" alt="✉">
+                    <p>Link enviado!</p>
+                    <p>Enviamos um e-mail para <span id="Mensagem_email_enviado" style="color: red;"><?php echo htmlspecialchars($email, ENT_QUOTES, 'UTF-8'); ?></span> com  as instruções para validar sua conta</p>
+
+                    <a href="#" style="color: blue;" id="linkRedefinirSenha"></a>
+                    
+    </dialog>
 
     <script src="../../js/mascaras.js"></script>
     <script src="../../js/validarformulario.js"></script>

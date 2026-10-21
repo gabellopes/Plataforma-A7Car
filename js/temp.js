@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const response = await fetch('/Plataforma-A7Car/php/salvar/temp.php', {
                 method: 'POST', 
                 headers: { 'Content-Type': 'application/json; charset=utf-8' }, 
-                body: JSON.stringify({ email: emailEsqueceuSenha, modoDev: true })
+                body: JSON.stringify({ email: emailEsqueceuSenha, modoDev: false })
             });
 
             if (!response.ok) {
