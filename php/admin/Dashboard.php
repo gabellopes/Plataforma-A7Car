@@ -5,23 +5,7 @@
              header("Location: ../user/Login.php");
             exit;
         }
-?>
-<!DOCTYPE html>
-<html lang="pt">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="../../css/adimin.css">
-</head>
-<body>
-<?php include __DIR__ . "/_Aside.php"; ?>
-    <div id="DM1">
-        <div id="DSM">
-            <div id="DT"><h1>Dashboard</h1></div>
-            <?php
-
-            include_once "../salvar/Conexao.php";
+    include_once "../salvar/Conexao.php";
 
                     $stmt = $sql->prepare("SELECT COUNT(id_car) FROM carro WHERE status_car = 0");
                     $stmt->execute();
@@ -47,6 +31,21 @@
                     $stmt->execute();
                     $result = $stmt->get_result();
                     $numsimu = $result->fetch_assoc();
+?>
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="../../css/adimin.css">
+</head>
+<body>
+<?php include __DIR__ . "/_Aside.php"; ?>
+    <div id="DM1">
+        <div id="DSM">
+            <div id="DT"><h1>Dashboard</h1></div>
+            <?php
             echo"
             <div class='DI'>
                 <br><br><br>
@@ -77,6 +76,32 @@
                 </div>
              ";?>   
             </div><!-- final dos elementos-->
+
+             <div id="DM1">
+        <div id="DSM">
+            <div id="DT"><h2>📊RELATORIO MENSAL</h2></div>
+            <div>
+                <span>MÊS ANO</span>
+                <span>TOTAL DA VENDA</span>
+            </div>
+
+            <div>
+                <div>
+                    <span>Foto do carro</span>
+                    <span>Modelo do carro</span>
+                    <span>Ano do carro</span>
+                    <span>Comprador</span>
+                </div>
+
+                <div>
+                    <span>Preco</span>
+                    <span>Data</span>
+                </div>
+            </div>
+
+            </div><!-- final dos elementos-->
+
+            
 
             <div id="DI2">
                 <div class="DIE2">
