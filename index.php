@@ -9,7 +9,6 @@
     <title>Inicio</title>
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/principal.css">
-    <script src="js/menu.js"></script>
 </head>
 
 <body>
