@@ -37,9 +37,8 @@ body{
     border-top: 1px solid rgba(128, 128, 128, 0.655);
     width: 100%;
     padding-top: 5vh;
-    padding-bottom: 5vh;
     background-color: rgb(19, 19, 19);
-    height: auto;
+    height: 34vh;
 }
 #btnVender:hover{
     color: white;
@@ -93,4 +92,113 @@ body{
 }
 
 
+
+@media (max-width: 768px) {
+
+    .meio {
+        margin-top: 0;
+        height: auto;
+        min-height: 350px;
+        padding: 50px 15px;
+        gap: 15px;
+    }
+
+    .meio h1 {
+        font-size: 2.2rem;
+    }
+
+    .meio h2 {
+        font-size: 1.2rem;
+    }
+
+    #buscar {
+        width: 60vw;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .meio .btn {
+        font-size: 1rem;
+        padding: 8px 12px;
+        border-width: 2px;
+    }
+
+    #faixa {
+        height: 50px;
+    }
+
+    #cat {
+        height: auto;
+        padding: 25px 15px;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    #textocat h1 {
+        font-size: 2rem;
+        margin-left: 0;
+    }
+
+    #textocat h3 {
+        margin: 0 0 10px 0;
+    }
+
+    #cat #btnVender {
+        margin: 0;
+        font-size: 1.2rem;
+    }
+
+    #atend {
+        height: auto;
+        padding: 35px 15px;
+    }
+
+    #atend h1 {
+        font-size: 1.8rem;
+    }
+
+    #atend h2 {
+        font-size: 1.1rem;
+        padding: 10px 0;
+    }
+
+    #atend button {
+        margin: 10px 5px;
+        font-size: 1rem;
+        padding: 8px;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .meio h1 {
+        font-size: 1.8rem;
+    }
+
+    .meio h2 {
+        font-size: 1rem;
+    }
+
+    #buscar {
+        width: 65vw;
+    }
+
+    #textocat h1 {
+        font-size: 1.7rem;
+    }
+
+    #atend h1 {
+        font-size: 1.5rem;
+    }
+
+    #atend h2 {
+        font-size: 1rem;
+    }
+
+    #atend button {
+        width: 90%;
+    }
+
+}
 
