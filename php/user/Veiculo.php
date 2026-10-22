@@ -90,12 +90,18 @@ $row = $result->fetch_assoc();
                 <span></span>
                  <span><?php echo htmlspecialchars($row['marca_car'], ENT_QUOTES, 'UTF-8')?></span>
                  <span><?php echo htmlspecialchars($row['modelo_car'], ENT_QUOTES, 'UTF-8')?></span>
-                 <span>R$ <?php echo htmlspecialchars($row['preco_car'])?></span>
+                 <span>R$ <?php echo number_format(htmlspecialchars($row['preco_car']), 2, ',', '.')?></span>
                  <div><span><?php echo htmlspecialchars($row['ano_car'])?></span></div>
                  <div><span><?php echo htmlspecialchars($row['quilometragem_car'])?></span></div>
                  <div><span><?php echo htmlspecialchars($row['combustivel_car'], ENT_QUOTES, 'UTF-8')?></span></div>
                  <div><span><?php echo htmlspecialchars($row['descricao_car'])?></span></div>
-                 <button>💬NEGOCIAR VIA WHATSAPP</button>
+
+                 <?php
+
+                    $mensagemWhatsApp = "Olá! Tenho interesse no ".$row['marca_car']." ".$row['modelo_car']." ".$row['ano_car']." (R$ ".number_format($row['preco_car'], 2, ',', '.')."). Gostaria de mais informações sobre este veículo!";
+                    include_once "../salvar/Config/linkWhatsapp.php";
+                 ?>
+                 <button onclick="window.open('<?php echo $urlWhatsApp; ?>', '_blank');">💬NEGOCIAR VIA WHATSAPP</button>
                  <button id="abrirDialog">✈FAZER SIMULAÇAO</button>
              </div><!-- Fim da div do carro-->
             
@@ -109,7 +115,7 @@ $row = $result->fetch_assoc();
                     <span></span>
                     <span><?php echo htmlspecialchars($row['marca_car'], ENT_QUOTES, 'UTF-8')?></span>
                     <span><?php echo htmlspecialchars($row['modelo_car'], ENT_QUOTES, 'UTF-8')?></span>
-                    <span>R$ <?php echo htmlspecialchars($row['preco_car'])?></span>
+                    <span>R$ <?php echo number_format(htmlspecialchars($row['preco_car']), 2, ',', '.')?></span>
                     </div>
 
                     <form action="../salvar/S_Simulacao.php" method="post">

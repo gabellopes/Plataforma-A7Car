@@ -110,14 +110,18 @@ CREATE TABLE IF NOT EXISTS `favorito` (
 -- Copiando estrutura para tabela concessionaria.simulacao
 CREATE TABLE IF NOT EXISTS `simulacao` (
   `id_simu` int NOT NULL AUTO_INCREMENT,
+  `data_simu` date NOT NULL,
   `cpf_simu` varchar(14) NOT NULL,
-  `cnh_simu` varchar(11) NOT NULL,
+  `cnh_simu` varchar(11),
   `data_nasci_simu` date NOT NULL,
   `nome_comple_simu` varchar(255) NOT NULL,
   `id_usu` int NOT NULL,
+  `id_car` int NOT NULL,
   PRIMARY KEY (`id_simu`),
   KEY `id_usu` (`id_usu`),
-  CONSTRAINT `simulacao_ibfk_1` FOREIGN KEY (`id_usu`) REFERENCES `usuario` (`id_usu`)
+  KEY `id_car` (`id_car`),
+  CONSTRAINT `simulacao_ibfk_1` FOREIGN KEY (`id_usu`) REFERENCES `usuario` (`id_usu`),
+  CONSTRAINT `simulacao_ibfk_2` FOREIGN KEY (`id_car`) REFERENCES `carro` (`id_car`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Copiando dados para a tabela concessionaria.simulacao: ~0 rows (aproximadamente)

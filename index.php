@@ -1,4 +1,7 @@
 <?php SESSION_START(); 
+
+$mensagemWhatsApp = "Olá! Vim pelo site A7Car e gostaria de vender meu carro.";
+include_once "php/salvar/Config/linkWhatsapp.php";
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -105,7 +108,7 @@
 
                     <div>
                         <p>Valor</p>
-                        <span>R$".htmlspecialchars($row['preco_car'])."</span>
+                        <span>R$".number_format(htmlspecialchars($row['preco_car']), 2, ',', '.')."</span>
                         <button onclick=\"location.href='php/user/Veiculo.php?id=".$row['id_car']."'\">👁VER</button>
                     </div>
                 </div>
@@ -132,7 +135,7 @@
         <h2> Nossos consultores estão prontos para atender você. <br>
             Tire dúvidas, negocie e feche negócio sem sair de casa</h2>
         <button class="btn">FAZER UMA PROPOSTA</button>
-        <button id="btnVender">VENDER MEU CARRO</button>
+        <button id="btnVender" onclick="window.open('<?php echo $urlWhatsApp; ?>', '_blank');">VENDER MEU CARRO</button>
 
     </div>
     <footer>

@@ -71,7 +71,7 @@ if(isset($_SESSION['sucesso_cadastro'])){
                         <td>".htmlspecialchars($row['ano_car'])."</td>
                         <td>".htmlspecialchars($row['quilometragem_car'])." km</td>
                         <td>".htmlspecialchars($row['combustivel_car'], ENT_QUOTES, 'UTF-8')."</td>
-                        <td>R$".htmlspecialchars($row['preco_car'])."</td>
+                        <td>R$".number_format(htmlspecialchars($row['preco_car']), 2, ',', '.')."</td>
                         <td>"."07/09/26"."</td>
                         <td>
                             <button onclick=\"location.href='../salvar/Editar/EditarVeiculo.php?id=".$row['id_car']."'\">⚙</button>

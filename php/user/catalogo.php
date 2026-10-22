@@ -101,7 +101,7 @@ $result = $stmt->get_result();
 
                     <div>
                         <p>Valor</p>
-                        <span>R$".htmlspecialchars($row['preco_car'])."</span>
+                        <span>R$".number_format(htmlspecialchars($row['preco_car']), 2, ',', '.')."</span>
                         <button onclick=\"location.href='Veiculo.php?id=".$row['id_car']."'\">👁VER</button>
                     </div>
                 </div>

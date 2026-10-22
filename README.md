@@ -18,6 +18,11 @@ tabela carro
 tabela usuario
 -> status_usu tinyint(1) DEFAULT '0'
 
+tabela simulacao
+-> id_car (chave estrangeira)
+-> data de quando a simulação foi feita
+-> email_simu 
+
 PROBLEMAS ENCONTRADOS
 -> ADICIONAR FORMA DE PAGAMENTO NA VENDA
 -> SE É A VISTA OU PARCELADO, e se sim em quantas vezes
