@@ -150,6 +150,23 @@ botoesFavorito.forEach(botao => {
         });
     });
 });
+
+function toggleElemento(elemento) {
+    var conteudo = elemento.nextElementSibling;
+    var seta = elemento.querySelector('.seta-icone');
+    
+    if (conteudo.style.display === "none" || conteudo.style.display === "") {
+        conteudo.style.display = "block";
+        if (seta) {
+            seta.innerText = "🔽";
+        }
+    } else {
+        conteudo.style.display = "none";
+        if (seta) {
+            seta.innerText = "🔼";
+        }
+    }
+}
 }
 
 
