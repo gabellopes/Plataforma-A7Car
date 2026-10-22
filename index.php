@@ -90,7 +90,7 @@
                     }else{
                         echo"
                         <div>
-                        <button onclick='window.location.href=\"Login.php\"'>❤</button>
+                        <button onclick='window.location.href=\"php/user/Login.php\"'>❤</button>
                         ";
                     }
                     echo "
