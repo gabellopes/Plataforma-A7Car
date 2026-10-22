@@ -71,7 +71,7 @@ $email = $_GET['email'] ?? '';
 
    </div>
    </div>
-   <dialog id="dialogEmailEnviado" <?php if (isset($_GET['email'])) echo 'open'; ?>>
+   <dialog id="dialogEmailEnviado">
                 <button id="FecharDialogEmailEnviado">🏃‍♂️💨</button>
 
                     <h1>E-mail Enviado</h1>
@@ -88,6 +88,10 @@ $email = $_GET['email'] ?? '';
     <script src="../../js/mascaras.js"></script>
     <script src="../../js/validarformulario.js"></script>
     <script src="../../js/assets.js"></script>
+    <script>
+    // Verifica se a URL tem o parâmetro 'sucesso' via PHP/JS e abre corretamente como modal
+    
+</script>
 
 
 </body>

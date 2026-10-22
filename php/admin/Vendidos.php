@@ -41,7 +41,7 @@
                 
                 <div id="VVElementos">
                 <?php 
-                    $stmt = $sql->prepare("SELECT * FROM vendas v INNER JOIN carro c ON v.id_car = c.id_car INNER JOIN cliente cl ON v.id_cli = cl.id_cli;");
+                    $stmt = $sql->prepare("SELECT * FROM vendas v INNER JOIN carro c ON v.id_car = c.id_car INNER JOIN cliente cl ON v.id_cli = cl.id_cli");
                     $stmt->execute();
                     $result = $stmt->get_result();
 

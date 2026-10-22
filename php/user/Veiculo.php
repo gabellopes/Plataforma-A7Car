@@ -3,11 +3,7 @@ SESSION_START();
 require_once "../salvar/Conexao.php";
 
 
-$id = $_GET['id'];
-$stmt = $sql->prepare("SELECT * FROM carro WHERE id_car = $id ");
-$stmt->execute();
-$result = $stmt->get_result();
-$row = $result->fetch_assoc();
+
              
 ?>
 <!DOCTYPE html>
@@ -57,9 +53,16 @@ $row = $result->fetch_assoc();
     <div class="catalogo">
                 
                 <a href="catalogo.php">⬅VOLTAR AO CATALOGO</a>
-
+                <?php try{
+                    $id =  $_GET['id'] ;
+                    $stmt = $sql->prepare("SELECT * FROM carro WHERE id_car = $id ");
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    $row = $result->fetch_assoc();    
+                ?>
                 <div>
                 <?php
+                
                 if(isset($_SESSION['user_id'])){
                         $verifica = $sql->prepare("SELECT id_fav FROM favorito WHERE id_usu = ? AND id_car = ?");
                         $verifica->bind_param("ii", $_SESSION['user_id'], $row['id_car']);
@@ -104,6 +107,13 @@ $row = $result->fetch_assoc();
                  <button onclick="window.open('<?php echo $urlWhatsApp; ?>', '_blank');">💬NEGOCIAR VIA WHATSAPP</button>
                  <button id="abrirDialog">✈FAZER SIMULAÇAO</button>
              </div><!-- Fim da div do carro-->
+             <?php }catch(Exception $e){
+                echo"
+                <div> Erro ao buscar veiculo🚗</div>
+
+
+                ";
+             }?>
             
             <dialog id="dialog">
                 <button id="fecharDialog">🏃‍♂️💨</button>
@@ -140,6 +150,20 @@ $row = $result->fetch_assoc();
                     </form>
 
             </dialog>
+
+            <dialog id="dialogEmailEnviado" >
+                <button id="FecharDialogEmailEnviado">🏃‍♂️💨</button>
+
+                    <h1>SIMULAÇÃO - <?php echo htmlspecialchars($row['marca_car'], ENT_QUOTES, 'UTF-8') . " " . htmlspecialchars($row['modelo_car'], ENT_QUOTES, 'UTF-8') . " " . htmlspecialchars($row['ano_car'], ENT_QUOTES, 'UTF-8'); ?></h1>
+                    <hr>
+                    
+                    <img src="#" alt="✔">
+                    <p>Simulação enviada</p>
+                    <p>Nossa equipe entrará em contato em breve</p>
+
+                    <a href="#" style="color: blue;" id="linkRedefinirSenha"></a>
+                    
+            </dialog>
              
         </div>
     <footer>
@@ -173,6 +197,7 @@ $row = $result->fetch_assoc();
 <script src="../../js/mascaras.js"></script>
 <script src="../../js/validarformulario.js"></script>
 <script src="../../js/assets.js"></script>
+
 
     
 </body>

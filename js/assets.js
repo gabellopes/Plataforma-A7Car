@@ -169,4 +169,23 @@ function toggleElemento(elemento) {
 }
 }
 
+window.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const dialog = document.getElementById('dialogEmailEnviado');
+        
+        if (urlParams.has('email') && dialog) {
+            dialog.showModal(); // <--- Isto transforma a tag em um modal real!
+        }else if(urlParams.has('sucesso') && dialog) {
+            dialog.showModal(); // <--- Isto transforma a tag em um modal real!
+        }
+
+        // Botão para fechar o dialog
+        const btnFechar = document.getElementById('FecharDialogEmailEnviado');
+        if (btnFechar) {
+            btnFechar.addEventListener('click', () => {
+                dialog.close();
+            });
+        }
+    });
+
 

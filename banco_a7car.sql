@@ -111,6 +111,7 @@ CREATE TABLE IF NOT EXISTS `favorito` (
 CREATE TABLE IF NOT EXISTS `simulacao` (
   `id_simu` int NOT NULL AUTO_INCREMENT,
   `data_simu` date NOT NULL,
+  `telefone_simu` varchar(15) NOT NULL,
   `cpf_simu` varchar(14) NOT NULL,
   `cnh_simu` varchar(11),
   `data_nasci_simu` date NOT NULL,
