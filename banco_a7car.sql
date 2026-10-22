@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `cliente` (
 REPLACE INTO `cliente` (`id_cli`, `nome_cli`, `email_cli`, `telefone_cli`, `cpf_cli`, `cnh_cli`) VALUES
 	(1, 'Giovanna', 'giovanna@gmail.com', '(11) 994848243', '123.354.534-53', '345234234'),
 	(2, 'Luca', 'luca@gmail.com', '(11) 123123123', '243.242.342-34', '123123123'),
-	(3, 'Rayssa@gmail.com', 'rayssa@gmail.com', '(11) 923123123', '123.124.354-45', '231466743'),
+	(3, 'Rayssa', 'rayssa@gmail.com', '(11) 923123123', '123.124.354-45', '231466743'),
 	(4, 'Gabriel', 'gabriel@gmail.com', '(11) 986456456', '546.343.242-34', '656334523'),
 	(5, 'Júlia', 'julia@gmail.com', '(11) 982312312', '956.743.413-41', '342342342');
 
