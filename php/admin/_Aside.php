@@ -21,7 +21,6 @@
             <a href="Colaboradores.php"><img src="../../img/admin/colaboradores.png" alt="">COLABORADORES</a>
             <a href="Vendidos.php"><img src="../../img/admin/vendidos.png" alt="">VENDIDOS</a>
             <a href="Simulacoes.php"><img src="../../img/admin/simulacao.png" alt="">SIMULAÇÕES </a>
-            <a href="Configuracoes.php">CONFIGURAÇÕES</a>
             <a href="../user/catalogo.php"><img src="" alt=""><- VER SITE </a>
             <a href="../salvar/Sair.php"><img src="" alt="">SAIR </a>
         </div>

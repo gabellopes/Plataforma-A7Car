@@ -47,31 +47,35 @@ require_once "../salvar/Conexao.php";
                
 		<?php
                 include_once "../salvar/Conexao.php";
-
+                
+                
                 $stmt = $sql->prepare("SELECT * FROM colaborador ");
                 $stmt->execute();
                 $result = $stmt->get_result();
-                while($row = $result->fetch_assoc()){
-                    
-                    echo "
-               
-                    <div>
-                        <img src='".htmlspecialchars($row['foto_col'], ENT_QUOTES, 'UTF-8') . "' alt='Foto do Colaborador' style='width: 200px; '>
-                        <span>".htmlspecialchars($row['nome_col'], ENT_QUOTES, 'UTF-8')."</span>
-                        <span>".htmlspecialchars($row['servico_col'], ENT_QUOTES, 'UTF-8')."</span>
-                        <span>".htmlspecialchars($row['descricao_col'], ENT_QUOTES, 'UTF-8')."</span>
+                while($row = $result->fetch_assoc()) {
 
-                        <div>
-                            <span>".htmlspecialchars($row['telefone_col'])."</span>
-                            <span>".htmlspecialchars($row['email_col'], ENT_QUOTES, 'UTF-8')."</span>
-                            <button>💬WHATSAPP</button>
-                        </div>
+                //Link do whatsapp
+                $telefone = preg_replace('/[^0-9]/', '', $row['telefone_col']);
+                $mensagemWhatsApp = "Olá! Vim pelo site A7 Car e gostaria de falar com" . " ". $row['nome_col'] . " ". $row['servico_col'];
+                $urlWhatsApp = "https://wa.me/" . $telefone . "?text=" . urlencode($mensagemWhatsApp);
 
-                    </div>
-                    <br>
-                   ";
-                }
                 ?>
+            <div>
+                <img src="<?php echo htmlspecialchars($row['foto_col'], ENT_QUOTES, 'UTF-8'); ?>" alt="Foto do Colaborador" style="width: 200px;">
+                <span><?php echo htmlspecialchars($row['nome_col'], ENT_QUOTES, 'UTF-8'); ?></span>
+                <span><?php echo htmlspecialchars($row['servico_col'], ENT_QUOTES, 'UTF-8'); ?></span>
+                <span><?php echo htmlspecialchars($row['descricao_col'], ENT_QUOTES, 'UTF-8'); ?></span>
+
+                <div>
+                    <span><?php echo htmlspecialchars($row['telefone_col'], ENT_QUOTES, 'UTF-8'); ?></span>
+                    <span><?php echo htmlspecialchars($row['email_col'], ENT_QUOTES, 'UTF-8'); ?></span>
+                    <button onclick="window.open('<?php echo $urlWhatsApp; ?>', '_blank')">💬WHATSAPP</button>
+                </div>
+            </div>
+            <br>
+        <?php 
+        } // Fim do while
+        ?>
             </div>
 
     <footer>
