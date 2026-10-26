@@ -1,6 +1,9 @@
 <?php
-$telefone = "5511982289155"; 
-$urlWhatsApp = "https://wa.me/" . $telefone . "?text=" . urlencode($mensagemWhatsApp);
+if(!isset($mensagemWhatsApp)){
+    $mensagemWhatsApp = " ";
+}
+$telefone = "5511982289155";
 
+$urlWhatsApp = "https://wa.me/" . $telefone . "?text=" . urlencode($mensagemWhatsApp);
 
 ?>

@@ -1,7 +1,7 @@
 <?php SESSION_START(); 
 
-$mensagemWhatsApp = "Olá! Vim pelo site A7Car e gostaria de vender meu carro.";
-include_once "php/salvar/Config/linkWhatsapp.php";
+
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -42,8 +42,10 @@ include_once "php/salvar/Config/linkWhatsapp.php";
         <h1>VEÍCULOS DE AUTO PADRÃO</h1>
         <h2>As melhores marcas do mercado em um só lugar.</h2>
     <div>
-        <button class="btn">Buscar </button>
-        <input type="text" name="" id="buscar" Placeholder="Buscar por Marca ou modelo...">
+        <form action="php/user/catalogo.php" method="GET" >
+            <input type="text" id="buscar" name="busca" placeholder="Buscar por Marca ou modelo..." required>
+            <button type="submit" class="btn">Buscar</button>
+        </form>
     </div>
     </div>
 
@@ -134,8 +136,14 @@ include_once "php/salvar/Config/linkWhatsapp.php";
         <h1>ATENDIMENTO PELO WHATSAPP</h1>
         <h2> Nossos consultores estão prontos para atender você. <br>
             Tire dúvidas, negocie e feche negócio sem sair de casa</h2>
-        <button class="btn">FAZER UMA PROPOSTA</button>
+        
+        <?php $mensagemWhatsApp = "Olá! Vim pelo site A7Car e gostaria de fazer uma proposta"; include "php/salvar/Config/linkWhatsapp.php";?>
+        <button class="btn" onclick="window.open('<?php echo $urlWhatsApp; ?>', '_blank');">FAZER UMA PROPOSTA</button>
+        
+        <?php $mensagemWhatsApp = "Olá! Vim pelo site A7Car e gostaria de vender meu carro."; include "php/salvar/Config/linkWhatsapp.php";?>
         <button id="btnVender" onclick="window.open('<?php echo $urlWhatsApp; ?>', '_blank');">VENDER MEU CARRO</button>
+
+        
 
     </div>
     <footer>

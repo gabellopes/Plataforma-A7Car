@@ -136,7 +136,9 @@ foreach ($vendas as $venda) {
 
              <div id="DM1">
         <div id="DSM">
-
+<button onclick="window.open('../salvar/relatorio_estoque.php', '_blank')" class="btn">
+    Gerar Relatório em PDF
+</button>
 
 
 <div> 

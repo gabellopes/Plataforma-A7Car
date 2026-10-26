@@ -1,5 +1,7 @@
 <?php 
-SESSION_START(); 
+if(SESSION_STATUS() === PHP_SESSION_NONE){
+    session_start();
+}
 require_once "../salvar/Conexao.php";
 
 
@@ -7,9 +9,7 @@ require_once "../salvar/Conexao.php";
 
 
 
-$stmt = $sql->prepare("SELECT * FROM carro");
-$stmt->execute();
-$result = $stmt->get_result();
+
 
 
              
@@ -51,65 +51,15 @@ $result = $stmt->get_result();
     <div id="titulo">
         <h3>Estoque Completo</h3>
         <h1>CATÁLOGO DE VEÍCULOS</h1>
-        <input type="text" Placeholder="Buscar por Marca ou modelo...">
+        <div><input type="text" id="campoBusca" placeholder="Buscar por Marca ou modelo..." value="<?php echo isset($_GET['busca']) ? htmlspecialchars($_GET['busca'], ENT_QUOTES, 'UTF-8') : ''; ?>"><button style="width: 20px" onclick="cancelarBusca()">X</button></div>
     </div>
 
 
 
     <div class="catalogo">
-    <div>                
-		<?php
-                //onclick=\"location.href='../salvar/S_Favorito.php?id=".$row['id_car']."&status=".$row['status_car']."'\"
-                    
-                while($row = $result->fetch_assoc()){
-                   
-                if($row['status_car'] === 0){
-
-                    if(isset($_SESSION['user_id'])){
-                        $verifica = $sql->prepare("SELECT id_fav FROM favorito WHERE id_usu = ? AND id_car = ?");
-                        $verifica->bind_param("ii", $_SESSION['user_id'], $row['id_car']);
-                        $verifica->execute();
-                        $resultado = $verifica->get_result();
-
-                        if($resultado->num_rows > 0){
-                            echo"
-                        <div>
-                        <button class='btn-favoritar' data-id=".$row['id_car'].">❤️</button>
-                        ";
-                        }else{
-                        echo"
-                        <div>
-                        <button class='btn-favoritar' data-id=".$row['id_car'].">❤</button>
-                        ";
-                        }
-                    }else{
-                        echo"
-                        <div>
-                        <button onclick='window.location.href=\"Login.php\"'>❤</button>
-                        ";
-                    }
-
-                    echo "
-                   
-                    <img src='" . htmlspecialchars($row['foto_car'], ENT_QUOTES, 'UTF-8') . "' alt='Foto do Veículo' width='200' height='150'>
-                    <span></span>
-                    <span>".htmlspecialchars($row['marca_car'], ENT_QUOTES, 'UTF-8')."</span>
-                    <span>".htmlspecialchars($row['modelo_car'], ENT_QUOTES, 'UTF-8')."</span>
-                    <span>".htmlspecialchars($row['ano_car'])."</span><span>".htmlspecialchars($row['quilometragem_car'])."</span><span>".htmlspecialchars($row['combustivel_car'], ENT_QUOTES, 'UTF-8')."</span>
-
-                    <hr>
-
-                    <div>
-                        <p>Valor</p>
-                        <span>R$".number_format(htmlspecialchars($row['preco_car']), 2, ',', '.')."</span>
-                        <button onclick=\"location.href='Veiculo.php?id=".$row['id_car']."'\">👁VER</button>
-                    </div>
-                </div>
-                <br>
-
-                
-                    ";}}?>
-            </div>
+    <div style="margin-left: 10vw;" id="listaVeiculos">
+        <?php include "buscarCarro.php";?>
+    </div>
 
     </div>
     <footer>
@@ -143,6 +93,7 @@ $result = $stmt->get_result();
 
 <script src="../../js/assets.js"></script>
 <script src="../../js/validarformulario.js"></script>
+<script src="../../js/buscarVeiculo.js"></script>
 
 
 </body>

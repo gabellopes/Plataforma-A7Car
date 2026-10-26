@@ -1,7 +1,7 @@
-<?php 
-SESSION_START(); 
+<?php
+SESSION_START();
 require_once "../salvar/Conexao.php";
-
+include_once "../salvar/Config/linkWhatsapp.php";
  ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -70,28 +70,17 @@ require_once "../salvar/Conexao.php";
         <br>
         <h3>Nome</h3>
 
-    <form  method="POST">
+    <form id="contatoForm"  action="contato.php" method="GET">
+        <input type="hidden" id="numeroWhatsApp" value="<?php echo htmlspecialchars($telefone); ?>">
+        <input type="text" id="nome" name="Nome">
+        <Select id="Atendimento">
+            <option value="fazer uma proposta">Fazer uma proposta</option>
+            <option value="fazer uma simulacao">Solicitar uma simulação</option>
+            <option value="vender meu carro">Vender meu carro</option>
+        </Select>
 
-        <input id="nome" placeholder="Digite o nome completo*" required>
-        <br>
-        <h3>Tipo de atendimento</h3>
-        
-    <label>
-        <input type="radio"  id="opcao" name="atend" value="proposta">
-        Fazer uma proposta
-    </label>
-    <br>
-    <label>
-        <input type="radio" id="opcao" name="atend" value="simulacao">
-        Solicitar uma simulação
-    </label>
-    <br>
-    <label>
-        <input type="radio"  id="opcao" name="atend" value="venda">
-        Vender meu carro
-    </label>
-    <br>
-    <br>
+      <br>
+      <br>
     <button id="botao">Enviar pelo WhatsApp</button>
 
 
@@ -128,6 +117,8 @@ require_once "../salvar/Conexao.php";
     </div>
     <div id="divadm">
     <a href="../admin/Clientes.php" id="adm">ÁREA ADMINISTRATIVA</a>    </div>
+    <script src="../../js/contato.js"></script>
+
 </div>
 </footer>
 

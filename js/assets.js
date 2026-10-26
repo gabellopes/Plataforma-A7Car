@@ -36,14 +36,15 @@ botaoEnviarDialog.addEventListener('click', () =>{
 if(inputTipoCadastro.value === 'simulacao'){
     validarCpf()
     validarTelefone();
+    validarData();
 
     if(divCnh.hidden){
-        if(validarCpf() === true && validarTelefone() === true){
+        if(validarCpf() === true && validarTelefone() === true && validarData() === true){
         botaoEnviarDialog.type = "submit";
         }
     }else{
         validarCnh();
-        if(validarCpf() === true && validarTelefone() === true && validarCnh() === true){
+        if(validarCpf() === true && validarTelefone() === true && validarData() === true && validarCnh() === true){
         botaoEnviarDialog.type = "submit";
         }
 

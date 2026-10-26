@@ -1,9 +1,7 @@
 <?php
-// 1. Declarar o uso dos namespaces do PHPMailer
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-// 2. Importar os arquivos essenciais manualmente
 require '../../PHPMailer/src/Exception.php';
 require '../../PHPMailer/src/PHPMailer.php';
 require '../../PHPMailer/src/SMTP.php';
@@ -11,13 +9,10 @@ require '../../vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../../');
 $dotenv->load();
 
-// 3. Instanciar a classe
 $mail = new PHPMailer(true);
 
 try {
-    // ------------------------------------------------------
-    // Configurações do Servidor SMTP (Brevo)
-    // ------------------------------------------------------
+
     $mail->isSMTP();
     $mail->Host       = $_ENV['SMTP_HOST'];
     $mail->SMTPAuth   = true;
@@ -36,18 +31,12 @@ try {
             'allow_self_signed' => true
         )
     );
-    // ------------------------------------------------------
-    // Remetente e Destinatário
-    // ------------------------------------------------------
-    // O email do 'setFrom' DEVE ser o mesmo que você verificou no Brevo
+
     $mail->setFrom($_ENV['SMTP_FROM_EMAIL'], $_ENV['SMTP_FROM_NAME']);
 
-    // O email que vai receber a mensagem
     $mail->addAddress($email, $emailNome);
 
-    // ------------------------------------------------------
-    // Conteúdo do Email
-    // ------------------------------------------------------
+
     $mail->isHTML(true);
     $mail->Subject = $emailAssunto;
     
@@ -62,7 +51,6 @@ try {
 
     $mail->AltBody = 'link pare redefinir senha '. $emaiLink;
 
-    // Enviar!
     $mail->send();
     
 } catch (Exception $e) {

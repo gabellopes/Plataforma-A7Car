@@ -105,7 +105,15 @@ require_once "../salvar/Conexao.php";
                     include_once "../salvar/Config/linkWhatsapp.php";
                  ?>
                  <button onclick="window.open('<?php echo $urlWhatsApp; ?>', '_blank');">💬NEGOCIAR VIA WHATSAPP</button>
-                 <button id="abrirDialog">✈FAZER SIMULAÇAO</button>
+
+                 <?php
+                    if(!isset($_SESSION['user_email'])){
+                        echo "<button onclick='window.location.href=\"Login.php\"'>✈FAZER SIMULAÇAO</button>";
+                    }else{
+                        echo "<button id='abrirDialog'>✈FAZER SIMULAÇAO</button>";
+                    }
+                 ?>
+                 
              </div><!-- Fim da div do carro-->
              <?php }catch(Exception $e){
                 echo"
@@ -136,6 +144,7 @@ require_once "../salvar/Conexao.php";
                         <div><label for="Cpf">CPF</label><input type="text" name="Cpf" id="Cpf" maxlength="14" required></div>
                         <div id="Mensagem_cpf"></div>
                         <div><label for="DataNascimento">Data de Nascimento</label><input type="date" name="DataNascimento" id="DataNascimento" required></div>
+                        <div id="Mensagem_data"></div>
                         <div><label for="Telefone">Telefone</label><input type="text" name="Telefone" id="Telefone" id="Telefone" maxlength="15" required></div>
                         <div id="Mensagem_telefone"></div>
                         

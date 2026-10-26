@@ -1,6 +1,7 @@
 const Nome = document.getElementById("Nome");
 const Email = document.getElementById("Email");
 const Senha = document.getElementById("Senha");
+const DataNasc = document.getElementById("DataNascimento");
 
 const ConfirmarSenha = document.getElementById("Confirmar-senha");
 const botaoCadastrar = document.getElementById("Cadastrar");
@@ -14,6 +15,9 @@ let MensagemTelefone = document.getElementById("Mensagem_telefone");
 let MensagemCpf = document.getElementById("Mensagem_cpf");
 let MensagemCnh = document.getElementById("Mensagem_cnh");
 let MensagemAno = document.getElementById("Mensagem_ano");
+let MensagemData = document.getElementById("Mensagem_data");
+
+
 
 
 
@@ -178,7 +182,30 @@ if(Ano.value.length != 4){
     return false;
     
 }else{
-    MensagemAno.textContent = ""
+    MensagemAno.textContent = "";
     return true;
 }
 }
+
+function validarData(){
+    MensagemData.style.color = "red"; 
+
+const hoje = new Date();
+const nascimento = new Date(DataNasc.value);
+    
+    const dataMaioridade = new Date(
+        nascimento.getFullYear() + 18,
+        nascimento.getMonth(),
+        nascimento.getDate()
+    );
+    
+     if(hoje <= dataMaioridade){
+        MensagemData.textContent = "É necessario ter +18 anos para fazer uma simulação";
+        return false;
+     }else{
+        MensagemData.textContent = "";
+        return true;
+     }
+     
+}
+
