@@ -101,7 +101,10 @@ foreach ($vendas as $venda) {
 <?php include __DIR__ . "/_Aside.php"; ?>
     <div id="DM1">
         <div id="DSM">
+            <br><br><br><br><br>
             <div id="DT"><h1>Dashboard</h1></div>
+                <br>
+                <button onclick="window.open('../salvar/Relatorios/relatorio_geral.php', '_blank')" class="btn">Gerar Relatório em PDF</button>
             <?php
             echo"
             <div class='DI'>
@@ -136,9 +139,7 @@ foreach ($vendas as $venda) {
 
              <div id="DM1">
         <div id="DSM">
-<button onclick="window.open('../salvar/relatorio_estoque.php', '_blank')" class="btn">
-    Gerar Relatório em PDF
-</button>
+
 
 
 <div> 

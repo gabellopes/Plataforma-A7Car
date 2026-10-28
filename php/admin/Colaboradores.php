@@ -37,6 +37,8 @@
                 <h1>COLABORADORES</h1>
                 <button class="btn" onclick="window.location.href='Cadastrar/NovoColaborador.php'"> + NOVO COLABORADOR</button>
             </div>
+            <br>
+            <button onclick="window.open('../salvar/Relatorios/relatorio_colaborador.php', '_blank')" class="btn">Gerar Relatório em PDF</button>
             <div id="CE">
                 <table>
                 <tr>

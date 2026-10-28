@@ -72,7 +72,7 @@ include_once "../salvar/Config/linkWhatsapp.php";
 
     <form id="contatoForm"  action="contato.php" method="GET">
         <input type="hidden" id="numeroWhatsApp" value="<?php echo htmlspecialchars($telefone); ?>">
-        <input type="text" id="nome" name="Nome">
+        <input type="text" id="nome" name="Nome" required>
         <Select id="Atendimento">
             <option value="fazer uma proposta">Fazer uma proposta</option>
             <option value="fazer uma simulacao">Solicitar uma simulação</option>

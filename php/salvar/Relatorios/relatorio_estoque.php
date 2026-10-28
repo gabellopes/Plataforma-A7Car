@@ -1,26 +1,30 @@
 <?php
 ob_start();
-require('../../fpdf/fpdf.php'); 
-require_once "Conexao.php"; 
+date_default_timezone_set('America/Sao_Paulo'); // Garante o fuso horário correto
+require('../../../fpdf/fpdf.php'); 
+require_once "../Conexao.php"; 
 
 class PDF extends FPDF {
     function Header() {
-        $this->Image('../../img/logo.png', 10, 8, 33);
+        $this->Image('../../../img/logo.png', 10, 8, 33);
         $this->SetFont('Arial', 'B', 15);
-        $this->Cell(50); 
+        $this->Cell(45); 
         
-        // Uso do mb_convert_encoding no lugar de utf8_decode
-        $titulo = mb_convert_encoding('Relatório de Estoque - Veículos Disponíveis', 'ISO-8859-1', 'UTF-8');
-        $this->Cell(90, 10, $titulo, 0, 0, 'C');
+        $titulo = mb_convert_encoding('Relatório de Estoque', 'ISO-8859-1', 'UTF-8');
+        $this->Cell(70, 10, $titulo, 0, 0, 'C');
         
-        $this->Ln(25);
+        // Data de emissão no topo à direita
+        $this->SetFont('Arial', 'I', 9);
+        $dataEmissao = mb_convert_encoding('Emitido em: ' . date('d/m/Y H:i'), 'ISO-8859-1', 'UTF-8');
+        $this->Cell(0, 10, $dataEmissao, 0, 1, 'R');
+        
+        $this->Ln(15);
         
         $this->SetFont('Arial', 'B', 11);
         $this->SetFillColor(200, 220, 255); 
         $this->Cell(45, 10, 'Marca', 1, 0, 'C', true);
         $this->Cell(65, 10, 'Modelo', 1, 0, 'C', true);
         $this->Cell(30, 10, 'Ano', 1, 0, 'C', true);
-        
         $preco = mb_convert_encoding('Preço (R$)', 'ISO-8859-1', 'UTF-8');
         $this->Cell(50, 10, $preco, 1, 1, 'C', true);
     }
@@ -46,7 +50,6 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $marca = mb_convert_encoding($row['marca_car'], 'ISO-8859-1', 'UTF-8');
         $modelo = mb_convert_encoding($row['modelo_car'], 'ISO-8859-1', 'UTF-8');
-        
         $pdf->Cell(45, 10, $marca, 1, 0, 'C');
         $pdf->Cell(65, 10, $modelo, 1, 0, 'L');
         $pdf->Cell(30, 10, $row['ano_car'], 1, 0, 'C');

@@ -36,6 +36,8 @@ if(isset($_SESSION['sucesso_cadastro'])){
                 <h1>VEICULOS</h1>
                 <button class="btn" onclick="location.href='Cadastrar/NovoVeiculo.php'"> + NOVO VEICULO</button>
                 </div>
+                <br>
+                <button onclick="window.open('../salvar/Relatorios/relatorio_estoque.php', '_blank')" class="btn">Gerar Relatório em PDF</button>
             <div id="CE">
                 <table>
                 <tr>

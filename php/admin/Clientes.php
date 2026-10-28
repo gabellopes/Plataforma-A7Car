@@ -36,6 +36,9 @@
                 <h1>CLIENTE</h1>
                 <button class="btn" onclick="window.location.href='Cadastrar/NovoCliente.php'"> + NOVO CLIENTE</button>
                 </div>
+                <br>
+                <button onclick="window.open('../salvar/Relatorios/relatorio_cliente.php', '_blank')" class="btn">Gerar Relatório em PDF</button>
+
             <div id="CE">
                 <table>
                 <tr>
