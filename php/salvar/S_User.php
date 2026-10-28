@@ -1,5 +1,7 @@
 <?php
-SESSION_START();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 include __DIR__ . "/funcoes.php";
 include __DIR__ . "/Conexao.php";
 
