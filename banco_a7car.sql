@@ -19,13 +19,6 @@
 CREATE DATABASE IF NOT EXISTS `concessionaria` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `concessionaria`;
 
--- Copiando estrutura para tabela concessionaria.admin
-CREATE TABLE IF NOT EXISTS `admin` (
-  `nome_usuario_adm` varchar(255) NOT NULL,
-  `senha_adm` varchar(100) NOT NULL,
-  PRIMARY KEY (`nome_usuario_adm`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
 -- Copiando dados para a tabela concessionaria.admin: ~0 rows (aproximadamente)
 
 -- Copiando estrutura para tabela concessionaria.carro
