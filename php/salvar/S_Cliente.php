@@ -1,12 +1,19 @@
 <?php
 include __DIR__ . "/funcoes.php";
 include __DIR__ . "/Conexao.php";
+if(session_status() === PHP_SESSION_NONE){
+        session_start();
+    }
+    
+   require_once "../auth/authadm.php";
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     $_SESSION['erro_cadastro'] = 'Método inválido.';
     header("Location: ../admin/Cadastrar/NovoCliente.php");
     exit;
 }
-
+if (!validarTokenCsrf($_POST['csrf_token'] ?? '')) {
+        die("Erro de segurança: Token CSRF inválido ou expirado.");
+    }
 $Nome = trim($_POST['Nome'] ?? '');
 $Email = trim($_POST['Email'] ?? '');
 $Telefone = trim($_POST['Telefone'] ?? '');

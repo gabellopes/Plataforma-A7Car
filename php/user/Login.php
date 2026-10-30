@@ -1,9 +1,13 @@
 <?php
-require_once "../salvar/Conexao.php";
-require_once "../salvar/funcoes.php";
 if (session_status() !== PHP_SESSION_ACTIVE) {
     SESSION_START(); 
 }
+
+if(isset($_SESSION['user_id'])){
+    header("Location: ../../index.php");
+}
+require_once "../salvar/Conexao.php";
+require_once "../salvar/funcoes.php";
 
   if(isset($_SESSION['sucesso_cadastro'])){
             $Mensagem = $_SESSION['sucesso_cadastro'];

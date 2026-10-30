@@ -1,10 +1,9 @@
 <?php
-    SESSION_START();
+    if(session_status() === PHP_SESSION_NONE){
+        session_start();
+    }
     
-    if($_SESSION['user_email'] !== 'admin@gmail.com'){
-            header("Location: ../admin/Login.php");
-            exit;
-        }
+   require_once "../../auth/authadm.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,6 +30,7 @@
     
     <form method="Post" action="../../salvar/S_Colaborador.php" enctype="multipart/form-data">
         <div>
+        <?php echo $inputCsrf;?>
         <div><label for="Nome">Nome</label><input type="text" name="Nome" id="Nome"  maxlength="255" required></div>
         <div><label for="Email">Email</label><input type="email" name="Email" id="Email"  maxlength="255" required></div>
         <div id="Mensagem_email"></div>

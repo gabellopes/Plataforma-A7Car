@@ -2,10 +2,11 @@
     include __DIR__ . "/../../salvar/funcoes.php";
 
 
-    if($_SESSION['user_email'] !== 'admin@gmail.com'){
-            header("Location: ../admin/Login.php");
-            exit;
-        }
+    if(session_status() === PHP_SESSION_NONE){
+        session_start();
+    }
+    
+   require_once "../../auth/authadm.php";
     
 ?>
 <!DOCTYPE html>
@@ -46,7 +47,7 @@
 
     <form method="Post" action="../../salvar/S_VendaVeiculo.php">
         <input type="hidden" name="id_car"  value="<?php echo htmlspecialchars(intval($carro['id_car'])); ?>">
-        
+        <?php echo $inputCsrf;?>
         <fieldset><label for="Cpf">CPF</label><input type="text" name="Cpf" id="Cpf" maxlength="14"  required><button type="button" value="BuscarCpf" name="BuscarCpf" id="BuscarCpf">Buscar</button></fieldset>
         <div id="Mensagem_cpf"></div>
         <fieldset><label for="Nome">Nome do Comprador</label><input type="text" name="Nome" id="Nome"  maxlength="255" required></fieldset>

@@ -1,10 +1,9 @@
 <?php
-    SESSION_START();
+    if(session_status() === PHP_SESSION_NONE){
+        session_start();
+    }
     
-    if($_SESSION['user_email'] !== 'admin@gmail.com'){
-             header("Location: ../user/Login.php");
-            exit;
-        }
+   require_once "../auth/authadm.php";
     include_once "../salvar/Conexao.php";
 
                     $stmt = $sql->prepare("SELECT COUNT(id_car) FROM carro WHERE status_car = 0");

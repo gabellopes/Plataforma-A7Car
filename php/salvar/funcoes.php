@@ -1,6 +1,9 @@
 
 <?php
-Session_start();
+if(session_status() === PHP_SESSION_NONE){
+        session_start();
+    }
+    
 function verifica($atributo, $coluna, $variavel, $mensagem = "", $link = ""){
 include __DIR__ . "/Conexao.php";
 $verifica = $sql->prepare("SELECT $atributo FROM $coluna WHERE $atributo = ?");

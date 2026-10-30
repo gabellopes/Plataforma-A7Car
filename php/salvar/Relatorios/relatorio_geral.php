@@ -4,7 +4,12 @@ date_default_timezone_set('America/Sao_Paulo');
 
 // CAMINHOS
 require('../../../fpdf/fpdf.php'); 
-require_once "../Conexao.php"; 
+require_once "../Conexao.php";
+if(session_status() === PHP_SESSION_NONE){
+        session_start();
+    }
+    
+   require_once "../../auth/authadm.php"; 
 
 // ==============================================================================
 // 1. CLASSE PDF COM FUNÇÕES MATEMÁTICAS PARA DESENHAR GRÁFICOS (PIZZA E COLUNAS)

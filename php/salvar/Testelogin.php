@@ -18,12 +18,6 @@ if (empty($email) || empty($senha)) {
 }
 
 $stmt = $sql->prepare("SELECT * FROM usuario WHERE email_usu = ?");
-if (!$stmt) {
-    $_SESSION['erro_login'] = 'Erro ao consultar o banco.';
-    header("Location: ../user/Login.php");
-    exit;
-}
-
 $stmt->bind_param("s", $email);
 $stmt->execute();
 $resultado = $stmt->get_result();
@@ -37,11 +31,14 @@ if ($resultado->num_rows === 1) {
             $_SESSION['user_nome'] = $usuario['nome_usu'];
             $_SESSION['user_email'] = $usuario['email_usu'];
             
-
-            if($_SESSION['user_email'] === 'admin@gmail.com'){
+    
+            if($usuario['role'] === 1){
+                $_SESSION['user_role'] = 1;
+                $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
                 header("Location: ../admin/Clientes.php");
                 exit;
             }else{
+                $_SESSION['user_role'] = 0;
                 header("Location: ../user/catalogo.php");
                 exit;
             } 

@@ -1,10 +1,9 @@
 <?php
-    SESSION_START();
+    if(session_status() === PHP_SESSION_NONE){
+        session_start();
+    }
     
-    if($_SESSION['user_email'] !== 'admin@gmail.com'){
-            header("Location: ../user/Login.php");
-            exit;
-        }
+   require_once "../auth/authadm.php";
 ?>
 <!DOCTYPE html>
 <html lang="pt">

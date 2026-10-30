@@ -3,6 +3,11 @@ ob_start();
 date_default_timezone_set('America/Sao_Paulo');
 require('../../../fpdf/fpdf.php'); 
 require_once "../Conexao.php"; 
+if(session_status() === PHP_SESSION_NONE){
+        session_start();
+    }
+    
+   require_once "../../auth/authadm.php";
 
 class PDF extends FPDF {
     function Header() {
