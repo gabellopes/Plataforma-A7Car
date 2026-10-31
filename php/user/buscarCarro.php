@@ -1,8 +1,10 @@
 <?php
+require_once "../salvar/Conexao.php";
+try{
 if(SESSION_STATUS() === PHP_SESSION_NONE){
     session_start();
 }
-require_once "../salvar/Conexao.php";
+
 
 $busca = isset($_GET['busca']) ? $_GET['busca'] : '';
 
@@ -69,4 +71,8 @@ while($row = $result->fetch_assoc()){
 
                 
                     ";}}
+}catch(Exception $e){
+            
+            echo"Erro tente novamente mais tarde";
+        }
 ?>

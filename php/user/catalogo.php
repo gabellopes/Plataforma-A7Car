@@ -58,7 +58,13 @@ require_once "../salvar/Conexao.php";
 
     <div class="catalogo">
     <div style="margin-left: 10vw;" id="listaVeiculos">
-        <?php include "buscarCarro.php";?>
+        
+        <?php 
+        
+            include "buscarCarro.php";
+
+        
+        ?>
     </div>
 
     </div>
