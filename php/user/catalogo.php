@@ -57,7 +57,7 @@ require_once "../salvar/Conexao.php";
 
 
     <div class="catalogo">
-    <div style="margin-left: 10vw;" id="listaVeiculos">
+    <div  id="listaVeiculos">
         
         <?php 
         
@@ -66,7 +66,7 @@ require_once "../salvar/Conexao.php";
         
         ?>
     </div>
-
+<button id="btn-carregar-mais">Carregar mais veículos</button>
     </div>
     <footer>
         
@@ -100,7 +100,7 @@ require_once "../salvar/Conexao.php";
 <script src="../../js/assets.js"></script>
 <script src="../../js/validarformulario.js"></script>
 <script src="../../js/buscarVeiculo.js"></script>
-
+<script src="../../js/carregarMaisVeiculos.js"></script>
 
 </body>
 </html>

@@ -7,13 +7,15 @@ if(SESSION_STATUS() === PHP_SESSION_NONE){
 
 
 $busca = isset($_GET['busca']) ? $_GET['busca'] : '';
-
+$limit = 6; // Quantidade de carros por clique
+$offset = isset($_GET['offset']) ? (int)$_GET['offset'] : 0;
 if (!empty($busca)) {
-    $stmt = $sql->prepare("SELECT * FROM carro WHERE (marca_car LIKE ? OR modelo_car LIKE ?) AND status_car = 0");
+    $stmt = $sql->prepare("SELECT * FROM carro WHERE (marca_car LIKE ? OR modelo_car LIKE ?) AND status_car = 0 LIMIT ? OFFSET ? ");
     $termo = "%" . $busca . "%";
-    $stmt->bind_param("ss", $termo, $termo);
+    $stmt->bind_param("ssii", $termo, $termo, $limit, $offset);
 } else {
-    $stmt = $sql->prepare("SELECT * FROM carro WHERE status_car = 0");
+    $stmt = $sql->prepare("SELECT * FROM carro WHERE status_car = 0 LIMIT ? OFFSET ?");
+    $stmt->bind_param("ii", $limit, $offset);
 }
 
 $stmt->execute();
@@ -75,7 +77,15 @@ while($row = $result->fetch_assoc()){
                 
                     ";}}
 }catch(Exception $e){
-            
-            echo"Erro tente novamente mais tarde";
+            echo"Erro tente novamente mais tarde" . " " . $e->getMessage();
+            //echo"Erro tente novamente mais tarde" ;
         }
+
+if ($result->num_rows < $limit) {
+    // Se o banco trouxe menos carros que o limite, injeta um CSS forçando o botão a sumir
+    echo "<style>#btn-carregar-mais { display: none !important; }</style>";
+} else {
+    // Se trouxe a quantidade exata do limite, injeta um CSS garantindo que o botão apareça
+    echo "<style>#btn-carregar-mais { display: block !important; }</style>";
+}
 ?>
