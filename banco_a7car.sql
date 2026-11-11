@@ -94,8 +94,8 @@ CREATE TABLE IF NOT EXISTS `favorito` (
   PRIMARY KEY (`id_fav`),
   KEY `id_usu` (`id_usu`),
   KEY `id_car` (`id_car`),
-  CONSTRAINT `favorito_ibfk_1` FOREIGN KEY (`id_usu`) REFERENCES `usuario` (`id_usu`),
-  CONSTRAINT `favorito_ibfk_2` FOREIGN KEY (`id_car`) REFERENCES `carro` (`id_car`)
+  CONSTRAINT `favorito_ibfk_1` FOREIGN KEY (`id_usu`) REFERENCES `usuario` (`id_usu`) ON DELETE CASCADE,
+  CONSTRAINT `favorito_ibfk_2` FOREIGN KEY (`id_car`) REFERENCES `carro` (`id_car`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Copiando dados para a tabela concessionaria.favorito: ~0 rows (aproximadamente)
