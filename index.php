@@ -103,16 +103,16 @@
                     <img src='" . htmlspecialchars($row['foto_car'], ENT_QUOTES, 'UTF-8') . "' alt='Foto do Veículo' width='200' height='150'>
                     <div>
                         <span></span>
-                        <span>".htmlspecialchars($row['marca_car'], ENT_QUOTES, 'UTF-8')."</span>
-                        <span>".htmlspecialchars($row['modelo_car'], ENT_QUOTES, 'UTF-8')."</span>
-                        <span>".htmlspecialchars($row['ano_car'])."</span><span>".htmlspecialchars($row['quilometragem_car'])."</span><span>".htmlspecialchars($row['combustivel_car'], ENT_QUOTES, 'UTF-8')."</span>
+                        <span>Marca:".htmlspecialchars($row['marca_car'], ENT_QUOTES, 'UTF-8')."</span>
+                        <span>Modelo:".htmlspecialchars($row['modelo_car'], ENT_QUOTES, 'UTF-8')."</span>
+                        <span><img src='img/catalogo/calendario.png' alt='📅'>".htmlspecialchars($row['ano_car'])."</span><span><img src='img/catalogo/velocimetro.png' alt='📅'>".htmlspecialchars($row['quilometragem_car'])."</span><span><img src='img/catalogo/cor.png' alt='📅'>".htmlspecialchars($row['combustivel_car'], ENT_QUOTES, 'UTF-8')."</span>
 
                         <hr>
 
                         <div>
                             <p>Valor</p>
                             <span>R$".number_format(htmlspecialchars($row['preco_car']), 2, ',', '.')."</span>
-                            <button onclick=\"location.href='php/user/Veiculo.php?id=".$row['id_car']."'\">👁VER</button>
+                            <button onclick=\"location.href='php/user/Veiculo.php?id=".$row['id_car']."'\"><img src='img/catalogo/olho.png' alt='📅'>VER</button>
                         </div>
                     </div>
                     
