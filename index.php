@@ -101,18 +101,21 @@
                     echo "
                    
                     <img src='" . htmlspecialchars($row['foto_car'], ENT_QUOTES, 'UTF-8') . "' alt='Foto do Veículo' width='200' height='150'>
-                    <span></span>
-                    <span>".htmlspecialchars($row['marca_car'], ENT_QUOTES, 'UTF-8')."</span>
-                    <span>".htmlspecialchars($row['modelo_car'], ENT_QUOTES, 'UTF-8')."</span>
-                    <span>".htmlspecialchars($row['ano_car'])."</span><span>".htmlspecialchars($row['quilometragem_car'])."</span><span>".htmlspecialchars($row['combustivel_car'], ENT_QUOTES, 'UTF-8')."</span>
-
-                    <hr>
-
                     <div>
-                        <p>Valor</p>
-                        <span>R$".number_format(htmlspecialchars($row['preco_car']), 2, ',', '.')."</span>
-                        <button onclick=\"location.href='php/user/Veiculo.php?id=".$row['id_car']."'\">👁VER</button>
+                        <span></span>
+                        <span>".htmlspecialchars($row['marca_car'], ENT_QUOTES, 'UTF-8')."</span>
+                        <span>".htmlspecialchars($row['modelo_car'], ENT_QUOTES, 'UTF-8')."</span>
+                        <span>".htmlspecialchars($row['ano_car'])."</span><span>".htmlspecialchars($row['quilometragem_car'])."</span><span>".htmlspecialchars($row['combustivel_car'], ENT_QUOTES, 'UTF-8')."</span>
+
+                        <hr>
+
+                        <div>
+                            <p>Valor</p>
+                            <span>R$".number_format(htmlspecialchars($row['preco_car']), 2, ',', '.')."</span>
+                            <button onclick=\"location.href='php/user/Veiculo.php?id=".$row['id_car']."'\">👁VER</button>
+                        </div>
                     </div>
+                    
                 </div>
                 <br>
 
