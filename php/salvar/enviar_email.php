@@ -18,7 +18,6 @@ try {
     $mail->Host       = $_ENV['SMTP_HOST'];
     $mail->SMTPAuth   = true;
 
-    // ATENÇÃO: Preencha com os seus dados do Brevo
     $mail->Username   = $_ENV['SMTP_USER'];
     $mail->Password   = $_ENV['SMTP_PASS'];
 

@@ -41,10 +41,8 @@ class PDF extends FPDF {
 
 $pdf = new PDF();$pdf->tituloCabecalho = 'Relatório Mensal de Vendas - ' . str_pad($mes, 2, '0', STR_PAD_LEFT) . '/' .$ano;
 $pdf->AliasNbPages();$pdf->AddPage();
-// Aumentamos a fonte dos dados para 9, já que temos mais espaço
 $pdf->SetFont('Arial', '', 9);
 
-// Consulta trazendo apenas o CPF do cliente
 $sqlBusca = "SELECT c.marca_car, c.modelo_car, cli.nome_cli, cli.cpf_cli, v.valor_ven 
              FROM vendas v
              INNER JOIN carro c ON v.id_car = c.id_car
@@ -65,7 +63,6 @@ while ($row =$result->fetch_assoc()) {
 $pdf->SetFont('Arial', 'B', 10);$pdf->SetFillColor(230, 230, 230);
 
 $textoTotal = 'TOTAL DO MÊS (' . $qtdCarros . ' veículos):';
-// A largura somada das 3 primeiras colunas é 160 (65 + 60 + 35)
 $pdf->Cell(160, 10, mb_convert_encoding($textoTotal, 'ISO-8859-1', 'UTF-8'), 1, 0, 'R', true);
 $pdf->Cell(30, 10, number_format($totalVendas, 2, ',', '.'), 1, 1, 'R', true);
 

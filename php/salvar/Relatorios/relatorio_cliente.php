@@ -24,16 +24,16 @@ class PDF extends FPDF {
         
         $this->Ln(15);
         
-        // Cabeçalho da Tabela
-        $this->SetFont('Arial', 'B', 10); // Fonte 10 para caber todas as colunas
+        
+        $this->SetFont('Arial', 'B', 10); 
         $this->SetFillColor(230, 240, 255); 
         
-        // As larguras somam exatos 190mm
+        
         $this->Cell(60, 10, 'Nome', 1, 0, 'C', true);
         $this->Cell(55, 10, 'E-mail', 1, 0, 'C', true);
         $this->Cell(30, 10, 'Telefone', 1, 0, 'C', true);
         $this->Cell(25, 10, 'CPF', 1, 0, 'C', true);
-        $this->Cell(20, 10, 'CNH', 1, 1, 'C', true); // '1' no final quebra a linha
+        $this->Cell(20, 10, 'CNH', 1, 1, 'C', true); 
     }
 
     function Footer() {
@@ -47,10 +47,8 @@ class PDF extends FPDF {
 $pdf = new PDF();
 $pdf->AliasNbPages();
 $pdf->AddPage();
-// Fonte 9 para os dados, garantindo que e-mails muito longos não quebrem o layout da tabela
 $pdf->SetFont('Arial', '', 9); 
 
-// Consulta atualizada com os nomes corretos das colunas e da tabela
 $stmt = $sql->prepare("SELECT nome_cli, email_cli, telefone_cli, cpf_cli, cnh_cli FROM cliente ORDER BY nome_cli ASC");
 $stmt->execute();
 $result = $stmt->get_result();
@@ -60,7 +58,6 @@ if ($result->num_rows > 0) {
         $nome = mb_convert_encoding($row['nome_cli'], 'ISO-8859-1', 'UTF-8');
         $email = mb_convert_encoding($row['email_cli'], 'ISO-8859-1', 'UTF-8');
         
-        // Preenche as células com os dados exatos do seu banco
         $pdf->Cell(60, 10, $nome, 1, 0, 'L');
         $pdf->Cell(55, 10, $email, 1, 0, 'L');
         $pdf->Cell(30, 10, $row['telefone_cli'], 1, 0, 'C');

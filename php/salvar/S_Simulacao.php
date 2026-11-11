@@ -18,7 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 
 
-//NECESSARIO - VALIDAÇÃO DE LOGIN USER
 $idCar = trim($_POST['id']);
 $idUsu = trim($_SESSION['user_id']);
 $status = trim($_POST['status_car']);

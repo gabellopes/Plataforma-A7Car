@@ -89,7 +89,7 @@ $email = $_GET['email'] ?? '';
     <script src="../../js/validarformulario.js"></script>
     <script src="../../js/assets.js"></script>
     <script>
-    // Verifica se a URL tem o parâmetro 'sucesso' via PHP/JS e abre corretamente como modal
+    
     
 </script>
 

@@ -20,7 +20,6 @@ async function carregarMais() {
         if (htmlRetornado.includes("Nenhum veículo encontrado") || htmlRetornado.trim() === "") {
             btnCarregar.style.display = 'none';
         } else {
-            // Ao inserir o HTML, a tag <style> do PHP vem junto e aplica a regra no botão na mesma hora!
             containerVeiculos.insertAdjacentHTML('beforeend', htmlRetornado);
         }
 

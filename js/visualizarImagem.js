@@ -9,12 +9,12 @@ inputImagem.addEventListener('change', function(event) {
 
         leitor.onload = function(e) {
             previewImagem.src = e.target.result;
-            previewImagem.style.display = 'block'; // Mostra a imagem
+            previewImagem.style.display = 'block'; 
         }
 
         leitor.readAsDataURL(arquivo);
     } else {
         previewImagem.src = '#';
-        previewImagem.style.display = 'none'; // Esconde se cancelar
+        previewImagem.style.display = 'none'; 
     }
 });

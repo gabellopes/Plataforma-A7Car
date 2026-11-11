@@ -11,9 +11,6 @@ if(session_status() === PHP_SESSION_NONE){
     
    require_once "../../auth/authadm.php"; 
 
-// ==============================================================================
-// 1. CLASSE PDF COM FUNÇÕES MATEMÁTICAS PARA DESENHAR GRÁFICOS (PIZZA E COLUNAS)
-// ==============================================================================
 class PDF extends FPDF {
     public $tituloCabecalho = 'Relatório Geral Consolidado - A7Car';
 
@@ -38,7 +35,6 @@ class PDF extends FPDF {
         $this->Cell(0, 10, $pagina.$this->PageNo().'/{nb}', 0, 0, 'C');
     }
 
-    // --- FUNÇÕES NATIVAS PARA DESENHAR O GRÁFICO DE PIZZA (Sector) ---
     function Sector($xc, $yc, $r, $a, $b, $style='FD', $cw=true, $o=90) {
         $d0 = $a - $b;
         if($cw){
@@ -85,7 +81,6 @@ class PDF extends FPDF {
 $pdf = new PDF();
 $pdf->AliasNbPages();
 
-// Arrays de tradução de meses para usar no título mensal
 $nomeMeses = [
     1 => 'Janeiro', 2 => 'Fevereiro', 3 => 'Março', 4 => 'Abril',
     5 => 'Maio', 6 => 'Junho', 7 => 'Julho', 8 => 'Agosto',
@@ -93,9 +88,6 @@ $nomeMeses = [
 ];
 $mesAtualNome = $nomeMeses[(int)date('m')];
 
-// ==============================================================================
-// 2. PÁGINA 1: GRÁFICOS DE DESEMPENHO
-// ==============================================================================
 $pdf->tituloCabecalho = 'Relatório Geral Consolidado - A7Car'; 
 $pdf->AddPage();
 
@@ -103,7 +95,6 @@ $pdf->SetFont('Arial', 'B', 12);
 $pdf->Cell(0, 10, mb_convert_encoding('1. GRÁFICOS DE DESEMPENHO', 'ISO-8859-1', 'UTF-8'), 0, 1, 'L');
 $pdf->Ln(5);
 
-// Busca o total vendido por ano para a Pizza
 $sqlAnos = "SELECT YEAR(data_ven) as ano, SUM(valor_ven) as total FROM vendas GROUP BY YEAR(data_ven)";
 $resultAnos = $sql->query($sqlAnos);
 
@@ -145,7 +136,6 @@ if ($totalGeral > 0) {
     $pdf->Cell(0, 10, 'Nenhum dado de venda disponivel para o grafico.', 0, 1, 'C');
 }
 
-// Gráfico de Colunas (Vendas do Ano Atual por Mês)
 $pdf->SetXY(10, 130);
 $pdf->SetFont('Arial', 'B', 10);
 $pdf->Cell(0, 10, mb_convert_encoding('Vendas Mensais do Ano Atual', 'ISO-8859-1', 'UTF-8'), 0, 1, 'C');
@@ -170,12 +160,10 @@ $larguraColuna = 10;
 $alturaMax = 100;
 
 foreach ($vendasMes as $mes => $valor) {
-    // Coluna Real
     $alturaReal = ($valor / $maxVenda) * $alturaMax;
     $pdf->SetFillColor(50,150,250);
     $pdf->Rect($posX, $posYBase - $alturaReal, $larguraColuna, $alturaReal, 'F');
     
-    // Texto do mês
     $pdf->SetXY($posX, $posYBase + 2);
     $pdf->SetFont('Arial', '', 8);
     $pdf->Cell($larguraColuna, 5, str_pad($mes, 2, '0', STR_PAD_LEFT), 0, 0, 'C');
@@ -183,16 +171,12 @@ foreach ($vendasMes as $mes => $valor) {
     $posX += 14; 
 }
 
-// Legenda do Gráfico de Colunas
 $pdf->SetFillColor(50,150,250);
 $pdf->Rect(20, 265, 5, 5, 'F');
 $pdf->SetXY(28, 263);
 $pdf->Cell(40, 10, 'Total Vendido no Mes (Real)', 0, 0);
 
 
-// ==============================================================================
-// 3. PÁGINA 2: HISTÓRICO DE VENDAS (ANTES ERA "VENDAS ANUAIS")
-// ==============================================================================
 $pdf->tituloCabecalho = 'Relatório Geral - Histórico de Vendas'; 
 $pdf->AddPage();
 
@@ -235,11 +219,6 @@ $pdf->SetFillColor(230, 230, 230);
 $textoAnual = mb_convert_encoding('TOTAL HISTÓRICO (' . $qtdAnual . ' carros):', 'ISO-8859-1', 'UTF-8');
 $pdf->Cell(155, 10, $textoAnual, 1, 0, 'R', true);
 $pdf->Cell(35, 10, number_format($totalAnual, 2, ',', '.'), 1, 1, 'R', true);
-
-
-// ==============================================================================
-// 4. PÁGINA 3: VENDAS DO MÊS (EX: "Vendas de Outubro")
-// ==============================================================================
 $pdf->tituloCabecalho = 'Relatório Geral - Vendas de ' . $mesAtualNome; 
 $pdf->AddPage();
 
@@ -279,11 +258,6 @@ $pdf->SetFont('Arial', 'B', 10);
 $pdf->SetFillColor(230, 230, 230);
 $pdf->Cell(160, 10, mb_convert_encoding('TOTAL MENSAL (' . $qtdMes . ' carros):', 'ISO-8859-1', 'UTF-8'), 1, 0, 'R', true);
 $pdf->Cell(30, 10, number_format($totalMes, 2, ',', '.'), 1, 1, 'R', true);
-
-
-// ==============================================================================
-// 5. PÁGINA 4: ESTOQUE ATIVO
-// ==============================================================================
 $pdf->tituloCabecalho = 'Relatório Geral - Veículos em Estoque'; 
 $pdf->AddPage();
 
@@ -311,9 +285,6 @@ if ($resEstoque->num_rows > 0) {
 }
 
 
-// ==============================================================================
-// 6. PÁGINA 5: COLABORADORES
-// ==============================================================================
 $pdf->tituloCabecalho = 'Relatório Geral - Equipe de Colaboradores';
 $pdf->AddPage();
 
@@ -341,9 +312,6 @@ if ($resCol->num_rows > 0) {
 }
 
 
-// ==============================================================================
-// 7. PÁGINA 6: CLIENTES
-// ==============================================================================
 $pdf->tituloCabecalho = 'Relatório Geral - Clientes Cadastrados';
 $pdf->AddPage();
 
@@ -372,9 +340,6 @@ if ($resCli->num_rows > 0) {
     $pdf->Cell(190, 10, 'Nenhum cliente cadastrado.', 1, 1, 'C');
 }
 
-// ==============================================================================
-// 8. GERAÇÃO FINAL DO ARQUIVO
-// ==============================================================================
 ob_end_clean(); 
 $pdf->Output('I', 'Relatorio_Completo_A7Car.pdf');
 ?>

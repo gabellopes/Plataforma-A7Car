@@ -24,16 +24,14 @@ class PDF extends FPDF {
         
         $this->Ln(15);
         
-        // Cabeçalho da Tabela
         $this->SetFont('Arial', 'B', 10); 
-        $this->SetFillColor(255, 240, 200); // Fundo amarelo bem suave para diferenciar
+        $this->SetFillColor(255, 240, 200);
         
-        // As larguras somam exatos 190mm (50 + 45 + 35 + 60)
         $this->Cell(50, 10, 'Nome', 1, 0, 'C', true);
         $cargo = mb_convert_encoding('Serviço/Cargo', 'ISO-8859-1', 'UTF-8');
         $this->Cell(45, 10, $cargo, 1, 0, 'C', true);
         $this->Cell(35, 10, 'Telefone', 1, 0, 'C', true);
-        $this->Cell(60, 10, 'E-mail', 1, 1, 'C', true); // '1' no final quebra a linha
+        $this->Cell(60, 10, 'E-mail', 1, 1, 'C', true); 
     }
 
     function Footer() {
@@ -47,10 +45,8 @@ class PDF extends FPDF {
 $pdf = new PDF();
 $pdf->AliasNbPages();
 $pdf->AddPage();
-// Fonte 9 para garantir que e-mails e cargos longos caibam na célula
 $pdf->SetFont('Arial', '', 9); 
 
-// Busca apenas as colunas que farão parte da tabela
 $stmt = $sql->prepare("SELECT nome_col, servico_col, telefone_col, email_col FROM colaborador ORDER BY nome_col ASC");
 $stmt->execute();
 $result = $stmt->get_result();

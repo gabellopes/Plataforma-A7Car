@@ -7,18 +7,18 @@
     
     include_once "../salvar/Conexao.php";
 
-    // Pega o total geral em vendas
+    
     $stmt = $sql->prepare("SELECT SUM(valor_ven) AS total FROM vendas;");
     $stmt->execute();
     $result = $stmt->get_result();
     $total = $result->fetch_assoc();
     $total_vendas = $total['total'] ?? 0;
 
-    // 1. Busca os ANOS que possuem vendas na tabela 'vendas'
+    
 $sqlAnos = "SELECT DISTINCT YEAR(data_ven) AS ano FROM vendas ORDER BY ano DESC";
 $resultAnos = $sql->query($sqlAnos);
 
-// 2. Busca os MESES e ANOS que possuem vendas na tabela 'vendas'
+
 $sqlMeses = "SELECT DISTINCT MONTH(data_ven) AS mes, YEAR(data_ven) AS ano FROM vendas ORDER BY ano DESC, mes DESC";
 $resultMeses = $sql->query($sqlMeses);
 
@@ -57,7 +57,7 @@ $nomeMeses = [
                     $stmt->execute();
                     $result = $stmt->get_result();
 
-                    // Verifica se existem registros
+                    
                     if ($result->num_rows === 0) {
                 ?>
                     <div id="VVEItens">

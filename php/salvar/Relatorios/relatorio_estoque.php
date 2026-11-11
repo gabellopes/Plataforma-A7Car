@@ -1,6 +1,6 @@
 <?php
 ob_start();
-date_default_timezone_set('America/Sao_Paulo'); // Garante o fuso horário correto
+date_default_timezone_set('America/Sao_Paulo'); 
 require('../../../fpdf/fpdf.php'); 
 require_once "../Conexao.php";
 if(session_status() === PHP_SESSION_NONE){

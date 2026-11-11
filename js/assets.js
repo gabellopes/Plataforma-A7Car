@@ -129,10 +129,10 @@ botoesFavorito.forEach(botao => {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
             },
-            // Enviamos o ID do veículo para o PHP
+            
             body: `id_veiculo=${encodeURIComponent(veiculoId)}`
         })
-        .then(response => response.json()) // Converte a resposta do PHP para JSON
+        .then(response => response.json()) 
         .then(data => {
             if (data.sucesso) {
                 
@@ -175,12 +175,12 @@ window.addEventListener('DOMContentLoaded', () => {
         const dialog = document.getElementById('dialogEmailEnviado');
         
         if (urlParams.has('email') && dialog) {
-            dialog.showModal(); // <--- Isto transforma a tag em um modal real!
+            dialog.showModal(); 
         }else if(urlParams.has('sucesso') && dialog) {
-            dialog.showModal(); // <--- Isto transforma a tag em um modal real!
+            dialog.showModal(); 
         }
 
-        // Botão para fechar o dialog
+        
         const btnFechar = document.getElementById('FecharDialogEmailEnviado');
         if (btnFechar) {
             btnFechar.addEventListener('click', () => {

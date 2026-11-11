@@ -16,7 +16,7 @@ if (!validarTokenCsrf($_POST['csrf_token'] ?? '')) {
         die("Erro de segurança: Token CSRF inválido ou expirado.");
     }
 
-// 1. Recebe os dados do formulário
+
 $Nome = trim($_POST['Nome'] ?? '');
 $Email = trim($_POST['Email'] ?? '');
 $Telefone = trim($_POST['Telefone'] ?? '');
@@ -26,7 +26,7 @@ $id = trim($_POST['id'] ?? '');
 
 
 
-// 2. Valida campos vazios e confirmação da senha
+
 if (empty($Nome) || empty($Email) || empty($Telefone) || empty($Cpf) || empty($Cnh)) {
     $_SESSION['erro_cadastro'] = 'Preencha todos os campos.';
     $_SESSION['erro'] = true;

@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
     async function buscarcpf(evento) {
-        // Evita comportamento padrão de formulário (recarregar a página)
+        
         if (evento) evento.preventDefault();
 
         try {
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Garante que o botão existe antes de adicionar o evento
+    
     if (botaobuscar) {
         botaobuscar.addEventListener('click', buscarcpf);
     }

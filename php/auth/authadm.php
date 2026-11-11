@@ -3,7 +3,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-$tempoInatividade = 1800; // 30 minutos (em segundos)
+$tempoInatividade = 1800; 
 
 if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] !== 1) {
     /*MODIFICAR QUANDO PUBLICAR*/

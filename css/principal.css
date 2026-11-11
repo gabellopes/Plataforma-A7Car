@@ -12,7 +12,7 @@ h1{
 
 /*LOPES*/
 #Mensagem_senha {
-  white-space: pre-line; /* Essencial para o \n funcionar com textContent */
+  white-space: pre-line; 
 }
 /**/
 a{

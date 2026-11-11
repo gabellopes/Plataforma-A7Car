@@ -31,7 +31,6 @@ CREATE TABLE IF NOT EXISTS `favorito` (
 
 $resposta = ['sucesso' => false, 'mensagem' => 'Erro desconhecido.'];
 
-// Verifica se o usuário está logado
 if (!isset($_SESSION['user_id'])) {
     $resposta['mensagem'] = 'Usuário não autenticado.';
     echo json_encode($resposta);
@@ -40,7 +39,6 @@ if (!isset($_SESSION['user_id'])) {
 }
 
     if (mysqli_num_rows($resultado) > 0) {
-        // Se já existe, remove (desfavorita)
         $sqlDeleta = "DELETE FROM  favorito WHERE id_usu = ? AND id_car = ?";
         $stmtDel = mysqli_prepare($sql, $sqlDeleta);
         mysqli_stmt_bind_param($stmtDel, "ii", $usuarioId, $veiculoId);
@@ -51,7 +49,6 @@ if (!isset($_SESSION['user_id'])) {
             $resposta['mensagem'] = 'Erro ao remover dos favoritos.';
         }
     } else {
-        // Se não existe, insere (favorita)
         $sqlInsere = "INSERT INTO favorito (id_usu, id_car) VALUES (?, ?)";
         $stmtIns = mysqli_prepare($sql, $sqlInsere);
         mysqli_stmt_bind_param($stmtIns, "ii", $usuarioId, $veiculoId);
@@ -66,6 +63,5 @@ if (!isset($_SESSION['user_id'])) {
     $resposta['mensagem'] = 'ID do veículo não recebido.';
 }
 
-// Retorna a resposta em formato JSON para o JavaScript
 echo json_encode($resposta);
 ?>
