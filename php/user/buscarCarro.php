@@ -65,7 +65,7 @@ while($row = $result->fetch_assoc()){
                         <div>
                             <p>Valor</p>
                             <span>R$".number_format(htmlspecialchars($row['preco_car']), 2, ',', '.')."</span>
-                            <button onclick=\"location.href='php/user/Veiculo.php?id=".$row['id_car']."'\"><img src='../../img/catalogo/olho.png' alt='📅'>VER</button>
+                            <button onclick=\"location.href='Veiculo.php?id=".$row['id_car']."'\"><img src='../../img/catalogo/olho.png' alt='📅'>VER</button>
                         </div>
                     </div>
                     

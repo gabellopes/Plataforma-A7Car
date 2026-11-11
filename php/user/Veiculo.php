@@ -91,14 +91,13 @@ require_once "../salvar/Conexao.php";
                 
                 <img <?php echo "src='" . htmlspecialchars($row['foto_car'], ENT_QUOTES, 'UTF-8') . "'"?> alt='Foto do Veículo' width='200' height='150'>
                 <span></span>
-                 <span><?php echo htmlspecialchars($row['marca_car'], ENT_QUOTES, 'UTF-8')?></span>
-                 <span><?php echo htmlspecialchars($row['modelo_car'], ENT_QUOTES, 'UTF-8')?></span>
+                 <span>Marca: <?php echo htmlspecialchars($row['marca_car'], ENT_QUOTES, 'UTF-8')?></span>
+                 <span>Modelo: <?php echo htmlspecialchars($row['modelo_car'], ENT_QUOTES, 'UTF-8')?></span>
                  <span>R$ <?php echo number_format(htmlspecialchars($row['preco_car']), 2, ',', '.')?></span>
-                 <div><span><?php echo htmlspecialchars($row['ano_car'])?></span></div>
-                 <div><span><?php echo htmlspecialchars($row['quilometragem_car'])?></span></div>
-                 <div><span><?php echo htmlspecialchars($row['combustivel_car'], ENT_QUOTES, 'UTF-8')?></span></div>
+                 <div><img src="../../img/catalogo/calendario.png" alt="📅"><span><?php echo htmlspecialchars($row['ano_car'])?></span></div>
+                 <div><img src="../../img/catalogo/velocimetro.png" alt="📅"><span><?php echo htmlspecialchars($row['quilometragem_car'])?></span></div>
+                 <div><img src="../../img/catalogo/cor.png" alt="📅"><span><?php echo htmlspecialchars($row['combustivel_car'], ENT_QUOTES, 'UTF-8')?></span></div>
                  <div><span><?php echo htmlspecialchars($row['descricao_car'])?></span></div>
-
                  <?php
 
                     $mensagemWhatsApp = "Olá! Tenho interesse no ".$row['marca_car']." ".$row['modelo_car']." ".$row['ano_car']." (R$ ".number_format($row['preco_car'], 2, ',', '.')."). Gostaria de mais informações sobre este veículo!";
