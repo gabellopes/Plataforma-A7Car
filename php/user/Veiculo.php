@@ -57,7 +57,13 @@ $row = $result->fetch_assoc();
     <div class="catalogo">
                 
                 <a href="catalogo.php">⬅VOLTAR AO CATALOGO</a>
-
+                     <?php try{
+                    $id =  $_GET['id'] ;
+                    $stmt = $sql->prepare("SELECT * FROM carro WHERE id_car = $id ");
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    $row = $result->fetch_assoc();    
+                ?>
                 <div>
                 <?php
                 if(isset($_SESSION['user_id'])){
@@ -88,16 +94,36 @@ $row = $result->fetch_assoc();
                 
                 <img <?php echo "src='" . htmlspecialchars($row['foto_car'], ENT_QUOTES, 'UTF-8') . "'"?> alt='Foto do Veículo' width='200' height='150'>
                 <span></span>
-                <span><?php echo htmlspecialchars($row['marca_car'], ENT_QUOTES, 'UTF-8')?></span>
-                <span><?php echo htmlspecialchars($row['modelo_car'], ENT_QUOTES, 'UTF-8')?></span>
-                <span>R$ <?php echo htmlspecialchars($row['preco_car'])?></span>
-                <div><span><?php echo htmlspecialchars($row['ano_car'])?></span></div>
-                <div><span><?php echo htmlspecialchars($row['quilometragem_car'])?></span></div>
-                <div><span><?php echo htmlspecialchars($row['combustivel_car'], ENT_QUOTES, 'UTF-8')?></span></div>
-                <div><span><?php echo htmlspecialchars($row['descricao_car'])?></span></div>
-                <button>💬NEGOCIAR VIA WHATSAPP</button>
-                <button id="abrirDialog">✈FAZER SIMULAÇAO</button>
-            </div><!-- Fim da div do carro-->
+                 <span>Marca: <?php echo htmlspecialchars($row['marca_car'], ENT_QUOTES, 'UTF-8')?></span>
+                 <span>Modelo: <?php echo htmlspecialchars($row['modelo_car'], ENT_QUOTES, 'UTF-8')?></span>
+                 <span>R$ <?php echo number_format(htmlspecialchars($row['preco_car']), 2, ',', '.')?></span>
+                 <div><img src="../../img/catalogo/calendario.png" alt="📅"><span><?php echo htmlspecialchars($row['ano_car'])?></span></div>
+                 <div><img src="../../img/catalogo/velocimetro.png" alt="📅"><span><?php echo htmlspecialchars($row['quilometragem_car'])?></span></div>
+                 <div><img src="../../img/catalogo/cor.png" alt="📅"><span><?php echo htmlspecialchars($row['combustivel_car'], ENT_QUOTES, 'UTF-8')?></span></div>
+                 <div><span><?php echo htmlspecialchars($row['descricao_car'])?></span></div>
+                 <?php
+
+                    $mensagemWhatsApp = "Olá! Tenho interesse no ".$row['marca_car']." ".$row['modelo_car']." ".$row['ano_car']." (R$ ".number_format($row['preco_car'], 2, ',', '.')."). Gostaria de mais informações sobre este veículo!";
+                    include_once "../salvar/Config/linkWhatsapp.php";
+                 ?>
+                 <button onclick="window.open('<?php echo $urlWhatsApp; ?>', '_blank');">💬NEGOCIAR VIA WHATSAPP</button>
+
+                 <?php
+                    if(!isset($_SESSION['user_email'])){
+                        echo "<button onclick='window.location.href=\"Login.php\"'>✈FAZER SIMULAÇAO</button>";
+                    }else{
+                        echo "<button id='abrirDialog'>✈FAZER SIMULAÇAO</button>";
+                    }
+                 ?>
+                 
+             </div><!-- Fim da div do carro-->
+             <?php }catch(Exception $e){
+                echo"
+                <div> Erro ao buscar veiculo🚗</div>
+
+
+                ";
+             }?>
             
             <dialog id="dialog">
                 <button id="fecharDialog">🏃‍♂️💨</button>
@@ -134,6 +160,21 @@ $row = $result->fetch_assoc();
                     </form>
 
             </dialog>
+
+             <dialog id="dialogEmailEnviado" >
+                <button id="FecharDialogEmailEnviado">🏃‍♂️💨</button>
+
+                    <h1>SIMULAÇÃO - <?php echo htmlspecialchars($row['marca_car'], ENT_QUOTES, 'UTF-8') . " " . htmlspecialchars($row['modelo_car'], ENT_QUOTES, 'UTF-8') . " " . htmlspecialchars($row['ano_car'], ENT_QUOTES, 'UTF-8'); ?></h1>
+                    <hr>
+                    
+                    <img src="#" alt="✔">
+                    <p>Simulação enviada</p>
+                    <p>Nossa equipe entrará em contato em breve</p>
+
+                    <a href="#" style="color: blue;" id="linkRedefinirSenha"></a>
+                    
+            </dialog>
+             
 
         </div>
     <footer>
