@@ -1,9 +1,10 @@
 <?php
-    if(session_status() === PHP_SESSION_NONE){
-        session_start();
-    }
+    SESSION_START();
     
-   require_once "../../auth/authadm.php";
+    if($_SESSION['user_email'] !== 'admin@gmail.com'){
+            header("Location: ../admin/Login.php");
+            exit;
+        }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,7 +43,6 @@ if(isset($_SESSION['sucesso_cadastro'])){
         <input id="tipoCadastro" type="text" value="cadastroVeiculo" hidden>
         <input type="hidden" name="foto_car" value="<?php echo htmlspecialchars($carro['foto_car']); ?>">
         <div>
-        <?php echo $inputCsrf;?>
         <input type="hidden" name="id" value="<?php echo htmlspecialchars($carro['id_car'], ENT_QUOTES, 'UTF-8'); ?>">
         <label for="Marca">Marca</label><input type="text" name="Marca" id="Marca"  value="<?php echo htmlspecialchars($carro['marca_car'], ENT_QUOTES, 'UTF-8'); ?>" maxlength="255" required>
         <label for="Modelo">Modelo</label><input type="text" name="Modelo" id="Modelo"  value="<?php echo htmlspecialchars($carro['modelo_car'], ENT_QUOTES, 'UTF-8'); ?>" maxlength="255" required>

@@ -21,7 +21,8 @@
     color: white;
     font-family: Barlow-Bold;
     font-size: 1.3rem;
-    margin-left: 66vw;
+    margin-left: 64vw;
+    border-radius: 5px;
     width: fit-content;
 }
 #titulo{

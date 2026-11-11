@@ -1,7 +1,5 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+SESSION_START();
 include __DIR__ . "/funcoes.php";
 include __DIR__ . "/Conexao.php";
 
@@ -17,15 +15,7 @@ $Telefone = trim($_POST['Telefone'] ?? '');
 $Senha = $_POST['Senha'] ?? '';
 $Confirmar_Senha = $_POST['Confirmar_Senha'] ?? '';
 
-//Para enviar o email
-$email = $Email;
-$emailNome = $Nome;
-$emailAssunto = 'Confirmação de Cadastro';
-$emailTitulo = 'Bem-vindo ao nosso sistema!';
-$emailTextoLink = 'Clique aqui para confirmar seu cadastro';
 
-/*MODIFICAR QUANDO PUBLICAR*/
-$emaiLink = 'http://localhost/Plataforma-A7Car/php/salvar/Atualizar/ValidarUsuario.php?email=' . urlencode($email); 
 
 if (empty($Nome) || empty($Email) || empty($Telefone) || empty($Senha) || empty($Confirmar_Senha)) {
     $_SESSION['erro_cadastro'] = 'Preencha todos os campos.';
@@ -91,9 +81,9 @@ $stmt = $sql->prepare("INSERT INTO usuario (nome_usu, email_usu, telefone_usu, s
 $stmt->bind_param("ssss", $Nome, $Email, $Telefone, $senhaHash);
 $stmt->execute();
 
+$_SESSION['sucesso_cadastro'] = 'Cadastro realizado com sucesso!';
 $_SESSION['erro'] = false;
-require_once "enviar_email.php";
-header("Location: ../user/Cadastro.php?email=" . $Email);
+header("Location: ../user/Login.php");
 exit;
 }catch(Exception $e){
                 $_SESSION['erro_cadastro'] = "Erro ao tentar cadastrar cliente";

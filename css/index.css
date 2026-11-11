@@ -37,8 +37,9 @@ body{
     border-top: 1px solid rgba(128, 128, 128, 0.655);
     width: 100%;
     padding-top: 5vh;
+    padding-bottom: 5vh;
     background-color: rgb(19, 19, 19);
-    height: 34vh;
+    height: auto;
 }
 #btnVender:hover{
     color: white;
@@ -66,18 +67,28 @@ body{
     color: white;
     display: flex;
     justify-content: left;
-    flex-direction: row;
+    flex-direction: column;
     text-align: left;
-    gap: 65vw;
+    
 }
 #textocat h1{
     font-size: 3rem;
     margin-left: 0;
     display: flex;
     justify-content: left;
-    flex-direction: column;
+    flex-direction: row;
     text-align: left;
     margin-left: 4vw;
+    flex-wrap: wrap;
+}
+#textocat{
+    width:fit-content;
+    display: flex;
+    flex-direction: row;
+}
+#btnVer{
+    margin-left: 55vw;
+    margin-right: 2vw;
 }
 #textocat h3{
     color:  rgb(208, 0, 0);
@@ -85,13 +96,83 @@ body{
     width:fit-content;
     display: flex;
     justify-content: left;
-    flex-direction: column;
+    flex-direction: row;
     text-align: left;
     margin-top: 3vh;
     margin-left: 4vw;
 }
-
-
+#catalogo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+#catalogoM{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    text-align: center;
+    flex-wrap: wrap;
+    padding: 1vh 1vw 1vh 1vw;
+}
+#carro{
+    background-color: rgba(51, 51, 51, 0.425);
+    height: auto;
+    width: auto;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    margin-top: 4vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 1vh 1vw 1vh 1vw;
+}
+#carro span{
+    width: fit-content;
+    font-family: Barlow-Bold;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5vw;
+}
+#carro button{
+    font-family: Barlow-Bold;
+    font-size: 1.2rem;
+}
+.btn-favoritar{
+    color: white;
+    background-color: rgba(51, 51, 51, 0.425);
+    border: none;
+    border-radius: 2px;
+    width: 2vw;
+    position: absolute;
+    margin-top: -52vh;
+    margin-left: 23vw;
+}
+#fotoCarro{
+    height: 27vh;
+    width: 25vw;
+    border-radius: 2px;
+}
+.btn-ver{
+    width: fit-content;
+    height: 5.5vh;
+    background: #e50914;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    padding: 1vh 1vw 1vh 1vw;
+}
+.btn-ver:hover {
+    background: #b8000b;
+}
 
 @media (max-width: 768px) {
 
@@ -201,4 +282,6 @@ body{
     }
 
 }
+
+
 

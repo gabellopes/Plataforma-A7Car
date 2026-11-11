@@ -1,14 +1,15 @@
 <?php
-
+    /*if($_SESSION['user_email'] !== 'admin@gmail.com'){
+            header("Location: ../../user/Login.php");
+            exit;
+        }*/
 
 require_once "../Conexao.php";
 require_once "../funcoes.php";
 
-if(session_status() === PHP_SESSION_NONE){
-        session_start();
-    }
-    
-   require_once "../../auth/authadm.php";
+if(SESSION_STATUS() !== PHP_SESSION_ACTIVE){
+    SESSION_START();
+}
 
 
 

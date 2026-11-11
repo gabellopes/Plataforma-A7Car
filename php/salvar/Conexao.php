@@ -1,4 +1,4 @@
-<?php
+<?php 
 $sql = new mysqli("localhost", "root", "", "concessionaria");
 if ($sql->connect_errno) {
     echo "Falha na conexão: (" . $sql->connect_errno . ") " . $sql->connect_error;
@@ -8,4 +8,4 @@ if ($sql->connect_errno) {
 //header("Content-Security-Policy: default-src 'self'; script-src 'self';");
 
 
-
+?>

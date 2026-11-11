@@ -1,8 +1,8 @@
 <?php
 SESSION_START();
 require_once "../salvar/Conexao.php";
-include_once "../salvar/Config/linkWhatsapp.php";
- ?>
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -11,7 +11,7 @@ include_once "../salvar/Config/linkWhatsapp.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contato</title>
     <link rel="stylesheet" href="../../css/contato.css">
-   <link rel="stylesheet" href="../../css/principal.css">
+    <link rel="stylesheet" href="../../css/principal.css">
 </head>
 <body>
     <header id="cabecalho">
@@ -25,7 +25,7 @@ include_once "../salvar/Config/linkWhatsapp.php";
             <?php endif; ?>
         </div>
         <div id="linksAuth">
-           <?php if(!isset($_SESSION['user_email'])): ?>
+            <?php if(!isset($_SESSION['user_email'])): ?>
             <button id="btnEntrar" class="btn" type="button" onclick="window.location.href='Login.php'">ENTRAR</button>
             <button id="btnCadastrar" class="btn" type="button" onclick="window.location.href='Cadastro.php'">CADASTRAR </button>
             <?php else: ?>
@@ -70,17 +70,28 @@ include_once "../salvar/Config/linkWhatsapp.php";
         <br>
         <h3>Nome</h3>
 
-    <form id="contatoForm"  action="contato.php" method="GET">
-        <input type="hidden" id="numeroWhatsApp" value="<?php echo htmlspecialchars($telefone); ?>">
-        <input type="text" id="nome" name="Nome" required>
-        <Select id="Atendimento">
-            <option value="fazer uma proposta">Fazer uma proposta</option>
-            <option value="fazer uma simulacao">Solicitar uma simulação</option>
-            <option value="vender meu carro">Vender meu carro</option>
-        </Select>
+    <form  method="POST">
 
-      <br>
-      <br>
+        <input id="nome" placeholder="Digite o nome completo*" required>
+        <br>
+        <h3>Tipo de atendimento</h3>
+        
+    <label>
+        <input type="radio"  id="opcao" name="atend" value="proposta">
+        Fazer uma proposta
+    </label>
+    <br>
+    <label>
+        <input type="radio" id="opcao" name="atend" value="simulacao">
+        Solicitar uma simulação
+    </label>
+    <br>
+    <label>
+        <input type="radio"  id="opcao" name="atend" value="venda">
+        Vender meu carro
+    </label>
+    <br>
+    <br>
     <button id="botao">Enviar pelo WhatsApp</button>
 
 
@@ -107,7 +118,7 @@ include_once "../salvar/Config/linkWhatsapp.php";
         <a href="">CONTATO</a>
     </div>
     <div>
-      <h1>CONTATO</h1>
+        <h1>CONTATO</h1>
         <h3>📞 (11) 97332-0504
             <br>
             email
@@ -117,8 +128,6 @@ include_once "../salvar/Config/linkWhatsapp.php";
     </div>
     <div id="divadm">
     <a href="../admin/Clientes.php" id="adm">ÁREA ADMINISTRATIVA</a>    </div>
-    <script src="../../js/contato.js"></script>
-
 </div>
 </footer>
 

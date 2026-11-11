@@ -8,6 +8,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    $_SESSION['erro_cadastro'] = 'Método inválido.';
     header("Location: ../user/Login.php");
     exit;
 }

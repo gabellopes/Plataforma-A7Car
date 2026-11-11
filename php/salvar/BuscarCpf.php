@@ -1,7 +1,5 @@
 <?php
 include __DIR__ . "/Conexao.php";
-require_once "../auth/authadm.php";
-
 
 header('Content-Type: application/json; charset=utf-8');
 

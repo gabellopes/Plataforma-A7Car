@@ -1,5 +1,5 @@
 <?php
-SESSION_START(); 
+SESSION_START();
 require_once "../salvar/Conexao.php";
 
 if(isset($_SESSION['erro_cadastro'])){
@@ -41,7 +41,7 @@ $dataAtual =  time();
 
 <header id="cabecalho">
         <img src="../../img/logo.png" alt="" class="logo" onclick="window.location.href='../../index.php'">
-       
+
 
     </header>
 
@@ -66,7 +66,7 @@ if($result->num_rows > 0){
     if($password_resets['usado'] === 0){
         if($dataExpira > $dataAtual){
         
- 
+
 
 ?>
     
@@ -90,14 +90,14 @@ if($result->num_rows > 0){
 
     
 <br>
-   </div>
+    </div>
 
 <?php
-       }else{
+        }else{
             echo "<h1>Link Expirado⏰</h1>";
-       }
+        }
     }else{
-         echo "<h1>Este link já foi Usado👀</h1>";
+        echo "<h1>Este link já foi Usado👀</h1>";
     }
 }else{
     echo "<h1>Link Invalido😢🚗</h1>";
@@ -107,7 +107,7 @@ if($result->num_rows > 0){
 }
 ?>
 
-   </div>
+    </div>
 
     <script src="../../js/mascaras.js"></script>
     <script src="../../js/validarformulario.js"></script>

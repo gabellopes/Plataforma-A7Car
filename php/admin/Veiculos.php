@@ -1,9 +1,10 @@
 <?php
-    if(session_status() === PHP_SESSION_NONE){
-        session_start();
-    }
+    SESSION_START();
     
-   require_once "../auth/authadm.php";
+    if($_SESSION['user_email'] !== 'admin@gmail.com'){
+             header("Location: ../user/Login.php");
+            exit;
+        }
 ?>
 <!DOCTYPE html>
 <html lang="pt">
@@ -35,8 +36,6 @@ if(isset($_SESSION['sucesso_cadastro'])){
                 <h1>VEICULOS</h1>
                 <button class="btn" onclick="location.href='Cadastrar/NovoVeiculo.php'"> + NOVO VEICULO</button>
                 </div>
-                <br>
-                <button onclick="window.open('../salvar/Relatorios/relatorio_estoque.php', '_blank')" class="btn">Gerar Relatório em PDF</button>
             <div id="CE">
                 <table>
                 <tr>
@@ -72,7 +71,7 @@ if(isset($_SESSION['sucesso_cadastro'])){
                         <td>".htmlspecialchars($row['ano_car'])."</td>
                         <td>".htmlspecialchars($row['quilometragem_car'])." km</td>
                         <td>".htmlspecialchars($row['combustivel_car'], ENT_QUOTES, 'UTF-8')."</td>
-                        <td>R$".number_format(htmlspecialchars($row['preco_car']), 2, ',', '.')."</td>
+                        <td>R$".htmlspecialchars($row['preco_car'])."</td>
                         <td>"."07/09/26"."</td>
                         <td>
                             <button onclick=\"location.href='../salvar/Editar/EditarVeiculo.php?id=".$row['id_car']."'\">⚙</button>

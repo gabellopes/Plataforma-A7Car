@@ -1,8 +1,6 @@
 <?php
-SESSION_START(); 
+SESSION_START();
 require_once "../salvar/Conexao.php";
-
-$email = $_GET['email'] ?? '';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,7 +50,7 @@ $email = $_GET['email'] ?? '';
         <label for="telefone">Telefone</label>
         <input type="tel" name="Telefone" id="Telefone" maxlength="15"  required>
         <div id="Mensagem_telefone"></div>
-         <div ><h1 id="teste"></h1></div>
+        <div ><h1 id="teste"></h1></div>
 
         <label for="senha">Senha</label>
         <div><input type="password" name="Senha" id="Senha" maxlength="20" required><button type="button" data-target="Senha" id="mostrarSenha">👁</button></div>
@@ -67,31 +65,14 @@ $email = $_GET['email'] ?? '';
         <input type="button" value="User" onclick="PreencherUserCad()">
     </form>
 <br>
-   <a href="Login.php">Já tem cadastro? Logar</a>
+    <a href="Login.php">Já tem cadastro? Logar</a>
 
-   </div>
-   </div>
-   <dialog id="dialogEmailEnviado">
-                <button id="FecharDialogEmailEnviado">🏃‍♂️💨</button>
-
-                    <h1>E-mail Enviado</h1>
-                    <hr>
-                    
-                    <img src="#" alt="✉">
-                    <p>Link enviado!</p>
-                    <p>Enviamos um e-mail para <span id="Mensagem_email_enviado" style="color: red;"><?php echo htmlspecialchars($email, ENT_QUOTES, 'UTF-8'); ?></span> com  as instruções para validar sua conta</p>
-
-                    <a href="#" style="color: blue;" id="linkRedefinirSenha"></a>
-                    
-    </dialog>
+    </div>
+    </div>
 
     <script src="../../js/mascaras.js"></script>
     <script src="../../js/validarformulario.js"></script>
     <script src="../../js/assets.js"></script>
-    <script>
-    // Verifica se a URL tem o parâmetro 'sucesso' via PHP/JS e abre corretamente como modal
-    
-</script>
 
 
 </body>

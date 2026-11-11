@@ -48,14 +48,16 @@ $result = $stmt->get_result();
     <div id="titulo">
         <h3>Minha lista</h3>
         <h1>FAVORITOS</h1>
-    </div>
-
-    <div>                
+                    </div>
+                    <div>
+                <div id="catalogo">
+                <div id="catalogoM">
+                
 		<?php
                 //onclick=\"location.href='../salvar/S_Favorito.php?id=".$row['id_car']."&status=".$row['status_car']."'\"
                 $temFavorito = false;
                 while($row = $result->fetch_assoc()){
-                   
+                    
                 if($row['status_car'] === 0){
 
                     if(isset($_SESSION['user_id'])){
@@ -67,23 +69,23 @@ $result = $stmt->get_result();
                         if($resultado->num_rows > 0){
                         $temFavorito = true;
                         echo "
-                        <div>
+                        <div id='carro'>
                                 <button class='btn-favoritar' data-id=".$row['id_car'].">❤️</button>
-                            <img src='" . htmlspecialchars($row['foto_car'], ENT_QUOTES, 'UTF-8') . "' alt='Foto do Veículo' width='200' height='150'>
+                            <img src='" . htmlspecialchars($row['foto_car'], ENT_QUOTES, 'UTF-8') . "' alt='Foto do Veículo' id='fotoCarro'>
                             <span></span>
                             <span>".htmlspecialchars($row['marca_car'], ENT_QUOTES, 'UTF-8')."</span>
                             <span>".htmlspecialchars($row['modelo_car'], ENT_QUOTES, 'UTF-8')."</span>
                             <span>".htmlspecialchars($row['ano_car'])."</span><span>".htmlspecialchars($row['quilometragem_car'])."</span><span>".htmlspecialchars($row['combustivel_car'], ENT_QUOTES, 'UTF-8')."</span>
 
-                            <hr>
+                        <hr>
 
-                            <div>
-                                <p>Valor</p>
-                                <span>R$".htmlspecialchars($row['preco_car'])."</span>
-                                <button onclick=\"location.href='Veiculo.php?id=".$row['id_car']."'\">👁VER</button>
+                        <div>
+                            <p>Valor</p>
+                            <span>R$".htmlspecialchars($row['preco_car'])."</span>
                             </div>
-                        </div>
-                        <br>
+                            <button onclick=\"location.href='Veiculo.php?id=".$row['id_car']."'\" class='btn-ver'>👁VER</button>
+                    </div>
+                    <br>
                         ";
                         }
                     }
@@ -92,13 +94,16 @@ $result = $stmt->get_result();
                     }
                     
                     if($temFavorito === false):?>
+                    </div>
+                    </div>
+
 
                     <div>
                         <img src="#" alt="ftcoracao">🖤🚗
                         <h1>Você ainda não tem favoritos</h1>
                         <a href="catalogo.php">EXPLORAR CATÁLOGO🚘</a>
                     </div>
-            <?php endif;?>       
+            <?php endif;?>
             </div>
 
 
@@ -110,35 +115,34 @@ $result = $stmt->get_result();
 
 
     <footer>
-        
+
         <div class="fo">
-        <div id="ter">
-            <img src="../../img/logo.png" alt="" id="logo">
-            <h3>Multimarcas premium especializada em venda </h3>
-            <h3>e compra de veículos.Transparência, qualidade </h3>
-            <h3>e atendimento diferenciado.</h3>
+            <div id="ter">
+                <img src="../../img/logo.png" alt="" id="logo">
+                <h3>Multimarcas premium especializada em venda </h3>
+                <h3>e compra de veículos.Transparência, qualidade </h3>
+                <h3>e atendimento diferenciado.</h3>
+            </div>
+            <div class="nav">
+                <h1>NAVEGAÇÃO</h1>
+                <a href="">CATÁLOGO</a>
+                <a href="">COLABORADORES</a>
+                <a href="">CONTATO</a>
+            </div>
+            <div>
+                <h1>CONTATO</h1>
+                <h3>📞 (11) 97332-0504
+                    <br>
+                    email
+                    <br>
+                    📍 Estr. de Itapecerica, 4660 - Capão Redondo, São Paulo - SP, 05849-440
+                </h3>
+            </div>
+            <div id="divadm">
+                <a href="php/admin/Clientes.php" id="adm">ÁREA ADMINISTRATIVA</a>
+            </div>
         </div>
-        <div class="nav">
-            <h1>NAVEGAÇÃO</h1>
-            <a href="catalogo.php">CATÁLOGO</a>
-            <a href="colaboradores.php">COLABORADORES</a>
-            <a href="contato.php">CONTATO</a>
-        </div>
-        <div>
-            <h1>CONTATO</h1>
-            <h3>numero telefone
-                <br>
-                email
-                <br>
-                endereço
-            </h3>
-        </div>
-        <div id="divadm">
-           <a href="../admin/Clientes.php" id="adm">ÁREA ADMINISTRATIVA</a>
-            
-        </div>
-    </div>
-</footer>
+    </footer>
 
 <script src="../../js/assets.js"></script>
 

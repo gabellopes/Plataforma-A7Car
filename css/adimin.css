@@ -48,7 +48,7 @@ header{
     border-bottom: 1px solid rgba(128, 128, 128, 0.655);
     height: 8vh;
     background-color: black;
-    margin-left: 13vw;
+    margin-left: 15vw;
 }
 header p{
     font-family: Barlow-Bold;
@@ -56,7 +56,7 @@ header p{
 }
 #Menu{
     left: 0;
-    width: 13vw;
+    width: 18vw;
     display: flex;
     flex-direction: column;
     border-right: 1px solid rgba(128, 128, 128, 0.655);

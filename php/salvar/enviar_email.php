@@ -1,8 +1,9 @@
 <?php
-
+// 1. Declarar o uso dos namespaces do PHPMailer
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+// 2. Importar os arquivos essenciais manualmente
 require '../../PHPMailer/src/Exception.php';
 require '../../PHPMailer/src/PHPMailer.php';
 require '../../PHPMailer/src/SMTP.php';
@@ -10,10 +11,13 @@ require '../../vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../../');
 $dotenv->load();
 
+// 3. Instanciar a classe
 $mail = new PHPMailer(true);
 
 try {
-
+    // ------------------------------------------------------
+    // Configurações do Servidor SMTP (Brevo)
+    // ------------------------------------------------------
     $mail->isSMTP();
     $mail->Host       = $_ENV['SMTP_HOST'];
     $mail->SMTPAuth   = true;
@@ -32,37 +36,36 @@ try {
             'allow_self_signed' => true
         )
     );
-
+    // ------------------------------------------------------
+    // Remetente e Destinatário
+    // ------------------------------------------------------
+    // O email do 'setFrom' DEVE ser o mesmo que você verificou no Brevo
     $mail->setFrom($_ENV['SMTP_FROM_EMAIL'], $_ENV['SMTP_FROM_NAME']);
 
-    $mail->addAddress($email, $emailNome);
+    // O email que vai receber a mensagem
+    $mail->addAddress($email, $nome);
 
-
+    // ------------------------------------------------------
+    // Conteúdo do Email
+    // ------------------------------------------------------
     $mail->isHTML(true);
-    $mail->Subject = $emailAssunto;
-    
+    $mail->Subject = 'ModoDevAtivado';
+
     $mail->Body    = '
         <div style="background-color: #f4f4f4; padding: 20px; font-family: Arial, sans-serif;">
-            <h2 style="color: #333;">'.$emailTitulo.'</h2>
+            <h2 style="color: #333;">Redefinir senha</h2>
 
-            <a href="'.$emaiLink.'">'.$emailTextoLink.'</a>
+            <a href='.$link.'>clique nesse link para redefinir a senha</a>
             
         </div>
     ';
 
-    $mail->AltBody = 'link pare redefinir senha '. $emaiLink;
+    $mail->AltBody = 'link pare redefinir senha '. $link;
 
+    // Enviar!
     $mail->send();
     
 } catch (Exception $e) {
     
 }
-/*
-$email
-$emailNome
-$emailAssunto
-$emailTitulo
-$emailTextoLink
-$emaiLink
-*/
 ?>

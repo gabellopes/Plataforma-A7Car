@@ -1,9 +1,10 @@
 <?php
-    if(session_status() === PHP_SESSION_NONE){
-        session_start();
-    }
+    SESSION_START();
     
-   require_once "../../auth/authadm.php";
+    if($_SESSION['user_email'] !== 'admin@gmail.com'){
+            header("Location: ../admin/Login.php");
+            exit;
+        }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +32,6 @@
     <form method="POST" action="../../salvar/S_Veiculo.php"  enctype="multipart/form-data">
         <input id="tipoCadastro" type="text" value="cadastroVeiculo" hidden>
         <div>
-        <?php echo $inputCsrf;?>
         <div><label for="Marca">Marca</label><input type="text" name="Marca" id="Marca"  maxlength="255" required></div>
         <div><label for="Modelo">Modelo</label><input type="text" name="Modelo" id="Modelo"  maxlength="255" required></div>
         <div><label for="Ano">Ano</label><input type="number" name="Ano" id="Ano"  maxlength="4" required></div>

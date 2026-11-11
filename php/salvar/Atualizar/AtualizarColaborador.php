@@ -1,10 +1,9 @@
 <?php
 include "../funcoes.php";
-    if(session_status() === PHP_SESSION_NONE){
-        session_start();
-    }
-    
-   require_once "../../auth/authadm.php";
+    if($_SESSION['user_email'] !== 'admin@gmail.com'){
+            header("Location: ../../user/Login.php");
+            exit;
+        }
 
 include __DIR__ . "../../Conexao.php";
 
@@ -13,9 +12,6 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header("Location: ../user/Login.php");
     exit;
 }
-if (!validarTokenCsrf($_POST['csrf_token'] ?? '')) {
-        die("Erro de segurança: Token CSRF inválido ou expirado.");
-    }
 
 $Nome = trim($_POST['Nome'] ?? '');
 $Email = trim($_POST['Email'] ?? '');

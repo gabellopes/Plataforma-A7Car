@@ -1,23 +1,19 @@
 <?php
-if (session_status() !== PHP_SESSION_ACTIVE) {
-    SESSION_START(); 
-}
-
-if(isset($_SESSION['user_id'])){
-    header("Location: ../../index.php");
-}
 require_once "../salvar/Conexao.php";
 require_once "../salvar/funcoes.php";
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    SESSION_START();
+}
 
-  if(isset($_SESSION['sucesso_cadastro'])){
+if(isset($_SESSION['sucesso_cadastro'])){
             $Mensagem = $_SESSION['sucesso_cadastro'];
-            echo "<script>alert('" . htmlspecialchars($Mensagem, ENT_QUOTES, 'UTF-8') . "');</script>"; 
+            echo "<script>alert('" . htmlspecialchars($Mensagem, ENT_QUOTES, 'UTF-8') . "');</script>";
             $_SESSION['sucesso_cadastro'] = null;
         }
 
 if(isset($_SESSION['erro_cadastro'])){
             $Mensagem = $_SESSION['erro_cadastro'];
-            echo "<script>alert('" . htmlspecialchars($Mensagem, ENT_QUOTES, 'UTF-8') . "');</script>"; 
+            echo "<script>alert('" . htmlspecialchars($Mensagem, ENT_QUOTES, 'UTF-8') . "');</script>";
             unset($_SESSION['erro_cadastro']);
         }
 
@@ -70,7 +66,7 @@ if(isset($_SESSION['erro_cadastro'])){
 
     <form action="../salvar/Testelogin.php" method="post">
         <label for="email">E-mail</label>
-        <input type="email" name="Email" id="Email2" maxlength="255" required>
+        <input type="email" name="Email" id="Email2" maxlength="20" required>
 
         <label for="senha">Senha</label>
         <div><input type="password" name="Senha" id="Senha" maxlength="20" required><button type="button" id="mostrarSenha">👁</button></div>

@@ -1,7 +1,5 @@
-<?php 
-if(SESSION_STATUS() === PHP_SESSION_NONE){
-    session_start();
-}
+<?php
+SESSION_START();
 require_once "../salvar/Conexao.php";
 
 
@@ -9,10 +7,12 @@ require_once "../salvar/Conexao.php";
 
 
 
+$stmt = $sql->prepare("SELECT * FROM carro");
+$stmt->execute();
+$result = $stmt->get_result();
 
 
 
-             
 ?>
 <!DOCTYPE html>
 <html lang="pt">
@@ -51,21 +51,66 @@ require_once "../salvar/Conexao.php";
     <div id="titulo">
         <h3>Estoque Completo</h3>
         <h1>CATÁLOGO DE VEÍCULOS</h1>
-        <div><input type="text" id="campoBusca" placeholder="Buscar por Marca ou modelo..." value="<?php echo isset($_GET['busca']) ? htmlspecialchars($_GET['busca'], ENT_QUOTES, 'UTF-8') : ''; ?>"><button style="width: 20px" onclick="cancelarBusca()">X</button></div>
+        <input type="text" Placeholder="Buscar por Marca ou modelo...">
     </div>
 
 
 
-    <div class="catalogo">
-    <div style="margin-left: 10vw;" id="listaVeiculos">
-        
-        <?php 
-        
-            include "buscarCarro.php";
+    <div id="catalogo">
+    <div id="catalogoM">
+		<?php
+                //onclick=\"location.href='../salvar/S_Favorito.php?id=".$row['id_car']."&status=".$row['status_car']."'\"
+                    
+                while($row = $result->fetch_assoc()){
+                    
+                if($row['status_car'] === 0){
 
-        
-        ?>
-    </div>
+                    if(isset($_SESSION['user_id'])){
+                        $verifica = $sql->prepare("SELECT id_fav FROM favorito WHERE id_usu = ? AND id_car = ?");
+                        $verifica->bind_param("ii", $_SESSION['user_id'], $row['id_car']);
+                        $verifica->execute();
+                        $resultado = $verifica->get_result();
+
+                        if($resultado->num_rows > 0){
+                            echo"
+                        <div id='carro'>
+                        <button class='btn-favoritar' data-id=".$row['id_car'].">❤️</button>
+                        ";
+                        }else{
+                        echo"
+                        <div id='carro'>
+                        <button class='btn-favoritar' data-id=".$row['id_car'].">❤</button>
+                        ";
+                        }
+                    }else{
+                        echo"
+                        <div id='carro'>
+                        <button onclick='window.location.href=\"Login.php\"' class='btn-favoritar'>❤</button>
+                        ";
+                    }
+
+                    echo "
+                    
+                     <img src='" . htmlspecialchars($row['foto_car'], ENT_QUOTES, 'UTF-8') . "' alt='Foto do Veículo' >
+                    <div>
+                        <span></span>
+                        <span>".htmlspecialchars($row['marca_car'], ENT_QUOTES, 'UTF-8')."</span>
+                        <span>".htmlspecialchars($row['modelo_car'], ENT_QUOTES, 'UTF-8')."</span>
+                        <span>".htmlspecialchars($row['ano_car'])."</span><span>".htmlspecialchars($row['quilometragem_car'])."</span><span>".htmlspecialchars($row['combustivel_car'], ENT_QUOTES, 'UTF-8')."</span>
+
+                        <hr>
+
+                        <div>
+                            <p>Valor</p>
+                            <span>R$".number_format(htmlspecialchars($row['preco_car']), 2, ',', '.')."</span>
+                            <button onclick=\"location.href='Veiculo.php?id=".$row['id_car']."'\">👁VER</button>
+                        </div>
+                    </div>
+                <br>
+
+                
+                    ";}}?>
+            </div>
 
     </div>
     <footer>
@@ -84,7 +129,7 @@ require_once "../salvar/Conexao.php";
         <a href="">CONTATO</a>
     </div>
     <div>
-      <h1>CONTATO</h1>
+        <h1>CONTATO</h1>
         <h3>📞 (11) 97332-0504
             <br>
             email
@@ -99,7 +144,6 @@ require_once "../salvar/Conexao.php";
 
 <script src="../../js/assets.js"></script>
 <script src="../../js/validarformulario.js"></script>
-<script src="../../js/buscarVeiculo.js"></script>
 
 
 </body>

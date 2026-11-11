@@ -1,9 +1,10 @@
 <?php
-    if(session_status() === PHP_SESSION_NONE){
-        session_start();
-    }
+    SESSION_START();
     
-   require_once "../../auth/authadm.php";
+    if($_SESSION['user_email'] !== 'admin@gmail.com'){
+            header("Location: ../admin/Login.php");
+            exit;
+        }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +41,6 @@
         <div id="cadastro">
     <form method="Post" action="../Atualizar/AtualizarCliente.php">
         <div>
-        <?php echo $inputCsrf;?>
         <input type="hidden" name="id" value="<?php echo htmlspecialchars($cliente['id_cli']); ?>">
         <label for="Nome">Nome</label><input type="text" name="Nome" id="Nome"  value="<?php echo htmlspecialchars($cliente['nome_cli'], ENT_QUOTES, 'UTF-8'); ?>" maxlength="255" required>
         <label for="Email">Email</label><input type="email" name="Email" id="Email"  value="<?php echo htmlspecialchars($cliente['email_cli'], ENT_QUOTES, 'UTF-8'); ?>" required>
