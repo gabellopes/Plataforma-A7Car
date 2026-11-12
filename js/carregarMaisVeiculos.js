@@ -1,5 +1,5 @@
 let offset = 0; 
-const limit = 6;
+const limit = 3;
 const btnCarregar = document.getElementById('btn-carregar-mais');
 const containerVeiculos = document.getElementById('listaVeiculos'); 
 const inputBusca = document.getElementById('campoBusca'); 

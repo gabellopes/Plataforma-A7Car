@@ -7,7 +7,7 @@ if(SESSION_STATUS() === PHP_SESSION_NONE){
 
 
 $busca = isset($_GET['busca']) ? $_GET['busca'] : '';
-$limit = 6; 
+$limit = 3;
 $offset = isset($_GET['offset']) ? (int)$_GET['offset'] : 0;
 if (!empty($busca)) {
     $stmt = $sql->prepare("SELECT * FROM carro WHERE (marca_car LIKE ? OR modelo_car LIKE ?) AND status_car = 0 LIMIT ? OFFSET ? ");
@@ -82,9 +82,8 @@ while($row = $result->fetch_assoc()){
         }
 
 if ($result->num_rows < $limit) {
-    
+    echo "<style>#btn-carregar-mais { display: none !important; }</style>";
 } else {
-    
     echo "<style>#btn-carregar-mais { display: block !important; }</style>";
 }
 ?>
