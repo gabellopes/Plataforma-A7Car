@@ -27,6 +27,7 @@ $Combustivel = trim($_POST['Combustivel'] ?? '');
 $Descricao = trim($_POST['Descricao'] ?? '');
 $Imagem = $_FILES['Imagem'];
 $id = trim($_POST['id'] ?? '');
+$Data = date('Y-m-d');
 
 /*MODIFICAR QUANDO PUBLICAR*/
 $caminho = "../../../.." . $_POST['foto_car'];
@@ -45,8 +46,8 @@ if(file_exists($caminho)){
             //$nomeArquivo = verificarImagem($_FILES['Imagem'], 'veiculos', 'Location: ../Editar/EditarVeiculo.php?id=' . $id, '../../../img/uploads/');
 
                 
-            $stmt = $sql->prepare("UPDATE carro SET marca_car = ?, modelo_car = ?, ano_car = ?, preco_car = ?, cor_car = ?, quilometragem_car = ?, combustivel_car = ?, descricao_car = ? WHERE id_car = ?");
-            $stmt->bind_param("ssiisissi", $Marca, $Modelo, $Ano, $Preco, $Cor, $Quilometragem, $Combustivel, $Descricao, $id);
+            $stmt = $sql->prepare("UPDATE carro SET marca_car = ?, modelo_car = ?, ano_car = ?, preco_car = ?, cor_car = ?, quilometragem_car = ?, combustivel_car = ?, descricao_car = ?, data_car = ? WHERE id_car = ?");
+            $stmt->bind_param("ssiisisssi", $Marca, $Modelo, $Ano, $Preco, $Cor, $Quilometragem, $Combustivel, $Descricao, $Data, $id);
             $stmt->execute();
 
             $_SESSION['sucesso_cadastro'] = 'Veiculo atualizado com sucesso!';
