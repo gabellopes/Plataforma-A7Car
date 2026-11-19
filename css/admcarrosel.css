@@ -1,0 +1,48 @@
+.carrossel-preview {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 10px;
+    width: 100%;
+    max-width: 450px; /* Ajuste conforme a largura do seu formulário */
+}
+
+#preview-container {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Firefox */
+    padding: 4px 2px;
+    flex: 1;
+}
+
+#preview-container::-webkit-scrollbar {
+    display: none; /* Chrome, Edge, Safari */
+}
+
+#preview-container .preview-item {
+    flex: 0 0 120px;
+    position: relative;
+}
+
+.btn-carrossel-preview {
+    flex: 0 0 28px;
+    height: 90px;
+    background: rgba(0, 0, 0, 0.65);
+    color: #fff;
+    border: 1px solid #555;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 1;
+    display: none; /* Aparece automaticamente quando houver fotos passando da largura */
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.btn-carrossel-preview:hover {
+    background: rgba(0, 123, 255, 0.9);
+}

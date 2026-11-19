@@ -2,13 +2,37 @@ document.addEventListener('DOMContentLoaded', function () {
     const inputFotos = document.getElementById('Imagem');
     const previewContainer = document.getElementById('preview-container');
     const removidasContainer = document.getElementById('imagens-removidas-container');
+    const btnPrev = document.getElementById('btn-prev-preview');
+    const btnNext = document.getElementById('btn-next-preview');
     const previewUnico = document.getElementById('preview-imagem');
 
     if (!inputFotos) return;
 
+    // =========================================================================
+    // MODO MÚLTIPLAS IMAGENS COM CARROSSEL — Cadastro e Edição de Veículos
+    // =========================================================================
     if (previewContainer) {
         let listaArquivos = [];
 
+        // Mostra as setas apenas quando a quantidade de fotos ultrapassa a largura visível
+        function atualizarSetas() {
+            if (!btnPrev || !btnNext) return;
+            const temOverflow = previewContainer.scrollWidth > previewContainer.clientWidth + 2;
+            btnPrev.style.display = temOverflow ? 'flex' : 'none';
+            btnNext.style.display = temOverflow ? 'flex' : 'none';
+        }
+
+        if (btnPrev && btnNext) {
+            btnPrev.addEventListener('click', () => {
+                previewContainer.scrollBy({ left: -260, behavior: 'smooth' });
+            });
+            btnNext.addEventListener('click', () => {
+                previewContainer.scrollBy({ left: 260, behavior: 'smooth' });
+            });
+            window.addEventListener('resize', atualizarSetas);
+        }
+
+        // Atualiza a borda azul e o selo "Capa" sempre na primeira imagem da fila
         function atualizarCapa() {
             const itens = previewContainer.querySelectorAll('.preview-item');
 
@@ -30,8 +54,11 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (img) img.style.border = '1px solid #ccc';
                 }
             });
+
+            atualizarSetas();
         }
 
+        // Ativa o botão "×" das imagens que já vieram do banco (tela de edição)
         previewContainer.querySelectorAll('.btn-remover-existente').forEach(btn => {
             btn.addEventListener('click', function () {
                 const item = this.closest('.preview-item');
@@ -50,6 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
 
+        // Aplica capa e checa setas ao abrir a página
         atualizarCapa();
 
         inputFotos.addEventListener('change', function () {
@@ -83,7 +111,6 @@ document.addEventListener('DOMContentLoaded', function () {
             listaArquivos.forEach((arquivo, index) => {
                 const wrapper = document.createElement('div');
                 wrapper.className = 'preview-item imagem-nova';
-                wrapper.style.position = 'relative';
 
                 const img = document.createElement('img');
                 img.alt = 'Pré-visualização ' + (index + 1);
@@ -117,11 +144,16 @@ document.addEventListener('DOMContentLoaded', function () {
             });
 
             atualizarCapa();
+            // Rola automaticamente para o final para mostrar a última foto adicionada
+            previewContainer.scrollTo({ left: previewContainer.scrollWidth, behavior: 'smooth' });
         }
 
         return;
     }
 
+    // =========================================================================
+    // MODO IMAGEM ÚNICA (Fallback para telas como Colaboradores)
+    // =========================================================================
     if (previewUnico) {
         inputFotos.addEventListener('change', function () {
             const arquivo = this.files[0];

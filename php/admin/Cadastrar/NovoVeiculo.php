@@ -13,11 +13,12 @@ require_once "../../auth/authadm.php";
     <title>Adicionar Veículo</title>
     <link rel="stylesheet" href="../../../css/ADMnovoV.css">
     <link rel="stylesheet" href="../../../css/principal.css">
+    <link rel="stylesheet" href="../../../css/admcarrosel.css">
 </head>
 <body>
     <?php
     if (isset($_SESSION['sucesso_cadastro'])) {
-        $Mensagem = $_SESSION['sucesso_cadastro'];
+        $Mensagem =$_SESSION['sucesso_cadastro'];
         echo "<script>alert('" . htmlspecialchars($Mensagem, ENT_QUOTES, 'UTF-8') . "');</script>";
         $_SESSION['sucesso_cadastro'] = null;
     }
@@ -53,10 +54,15 @@ require_once "../../auth/authadm.php";
                     <div><label for="Descricao">Descrição</label><input type="text" name="Descricao" id="Descricao" maxlength="255" required></div>
 
                     <div>
-                        <label for="Imagem">Imagens do Veículo (adicione uma por vez — a primeira será a capa)</label>
-                        <input type="file" id="Imagem" name="Imagem[]" accept="image/jpeg, image/png, image/webp" required>
+                        <label for="Imagem">Imagens do Veículo (selecione uma ou várias — a primeira será a capa)</label>
+                        <input type="file" id="Imagem" name="Imagem[]" accept="image/jpeg, image/png, image/webp" multiple required>
 
-                        <div id="preview-container" style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px;"></div>
+                        <!-- Carrossel de preview das imagens acumuladas -->
+                        <div class="carrossel-preview">
+                            <button type="button" id="btn-prev-preview" class="btn-carrossel-preview" aria-label="Anterior">&#8249;</button>
+                            <div id="preview-container"></div>
+                            <button type="button" id="btn-next-preview" class="btn-carrossel-preview" aria-label="Próxima">&#8250;</button>
+                        </div>
                     </div>
 
                     <div style="color: red;">
