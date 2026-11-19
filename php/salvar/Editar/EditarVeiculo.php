@@ -37,8 +37,6 @@ require_once "../../auth/authadm.php";
         $stmt->execute();
         $result = $stmt->get_result();
         $carro = $result->fetch_assoc();
-
-        // Busca todas as imagens já salvas desse veículo
         $stmtFotos = $sql->prepare("SELECT id_img, caminho_img FROM carro_imagem WHERE id_car = ? ORDER BY id_img ASC");
         $stmtFotos->bind_param("i", $id);
         $stmtFotos->execute();
@@ -94,13 +92,11 @@ require_once "../../auth/authadm.php";
                         <input type="text" name="Descricao" id="Descricao" value="<?php echo htmlspecialchars($carro['descricao_car'], ENT_QUOTES, 'UTF-8'); ?>" maxlength="255" required>
                         
                         <div>
-                            <label for="Imagem">Imagens do Veículo (selecione uma ou várias — a primeira será a capa)</label>
+                            <label for="Imagem">Imagens do Veículo</label>
                             <input type="file" name="Imagem[]" id="Imagem" accept="image/jpeg, image/png, image/webp" multiple>
 
-                            <!-- Guarda os IDs das imagens salvas no banco que você clicar no "×" para excluir -->
                             <div id="imagens-removidas-container"></div>
 
-                            <!-- Carrossel unificado: imagens já cadastradas + novas imagens adicionadas -->
                             <div class="carrossel-preview">
                                 <button type="button" id="btn-prev-preview" class="btn-carrossel-preview" aria-label="Anterior">&#8249;</button>
 
@@ -118,7 +114,6 @@ require_once "../../auth/authadm.php";
                                             </div>
                                         <?php endforeach; ?>
                                     <?php elseif (!empty($carro['foto_car'])): ?>
-                                        <!-- Fallback para carros antigos salvos antes da tabela carro_imagem -->
                                         <div class="preview-item imagem-existente">
                                             <img src="<?php echo htmlspecialchars($carro['foto_car'], ENT_QUOTES, 'UTF-8'); ?>"
                                                  alt="Foto atual"

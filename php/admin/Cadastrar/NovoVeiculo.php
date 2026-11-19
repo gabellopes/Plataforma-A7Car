@@ -54,10 +54,9 @@ require_once "../../auth/authadm.php";
                     <div><label for="Descricao">Descrição</label><input type="text" name="Descricao" id="Descricao" maxlength="255" required></div>
 
                     <div>
-                        <label for="Imagem">Imagens do Veículo (selecione uma ou várias — a primeira será a capa)</label>
+                        <label for="Imagem">Imagens do Veículo</label>
                         <input type="file" id="Imagem" name="Imagem[]" accept="image/jpeg, image/png, image/webp" multiple required>
 
-                        <!-- Carrossel de preview das imagens acumuladas -->
                         <div class="carrossel-preview">
                             <button type="button" id="btn-prev-preview" class="btn-carrossel-preview" aria-label="Anterior">&#8249;</button>
                             <div id="preview-container"></div>
