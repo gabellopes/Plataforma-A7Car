@@ -18,15 +18,15 @@ if (!validarTokenCsrf($_POST['csrf_token'] ?? '')) {
     die("Erro de segurança: Token CSRF inválido ou expirado.");
 }
 
-$Marca         = trim($_POST['Marca'] ?? '');
-$Modelo        = trim($_POST['Modelo'] ?? '');
-$Ano           = trim($_POST['Ano'] ?? '');
-$Preco         = trim($_POST['Preco'] ?? '');
-$Cor           = trim($_POST['Cor'] ?? '');
+$Marca = trim($_POST['Marca'] ?? '');
+$Modelo = trim($_POST['Modelo'] ?? '');
+$Ano = trim($_POST['Ano'] ?? '');
+$Preco = trim($_POST['Preco'] ?? '');
+$Cor = trim($_POST['Cor'] ?? '');
 $Quilometragem = trim($_POST['Quilometragem'] ?? '');
-$Combustivel   = trim($_POST['Combustivel'] ?? '');
-$Descricao     = trim($_POST['Descricao'] ?? '');
-$Data          = date('Y-m-d');
+$Combustivel  = trim($_POST['Combustivel'] ?? '');
+$Descricao = trim($_POST['Descricao'] ?? '');
+$Data = date('Y-m-d');
 
 if (
     empty($Marca) || empty($Modelo) || empty($Ano) || empty($Preco) ||
@@ -39,7 +39,6 @@ if (
     exit;
 }
 
-// Processa todas as imagens enviadas usando a sua função verificarImagem()
 $caminhosSalvos = [];
 $totalArquivos = count($_FILES['Imagem']['name']);
 
@@ -48,7 +47,6 @@ for ($i = 0; $i < $totalArquivos; $i++) {
         continue;
     }
 
-    // Reorganiza os dados no formato de arquivo único que a verificarImagem() espera
     $arquivoAtual = [
         'name'     => $_FILES['Imagem']['name'][$i],
         'type'     => $_FILES['Imagem']['type'][$i],
@@ -76,21 +74,17 @@ if (empty($caminhosSalvos)) {
     exit;
 }
 
-// A primeira imagem continua sendo a capa na tabela 'carro'
 $fotoCapa = $caminhosSalvos[0];
 
 try {
     $sql->begin_transaction();
 
-    // 1. Insere o veículo
     $stmt = $sql->prepare("INSERT INTO carro (marca_car, modelo_car, ano_car, preco_car, cor_car, quilometragem_car, combustivel_car, descricao_car, foto_car, data_car) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->bind_param("ssiisissss", $Marca, $Modelo, $Ano, $Preco, $Cor, $Quilometragem, $Combustivel, $Descricao, $fotoCapa, $Data);
     $stmt->execute();
 
-    // Captura o ID gerado para vincular as fotos
     $idCarro = $sql->insert_id;
 
-    // 2. Insere todas as fotos na tabela 'carro_imagem'
     $stmtImg = $sql->prepare("INSERT INTO carro_imagem (id_car, caminho_img) VALUES (?, ?)");
     foreach ($caminhosSalvos as $caminho) {
         $stmtImg->bind_param("is", $idCarro, $caminho);

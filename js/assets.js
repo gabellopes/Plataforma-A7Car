@@ -167,7 +167,6 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. Carrossel de Miniaturas — Página de Detalhes do Veículo
     const fotoPrincipal = document.getElementById('foto-principal');
     const miniaturas = document.querySelectorAll('#miniaturas-track img');
 

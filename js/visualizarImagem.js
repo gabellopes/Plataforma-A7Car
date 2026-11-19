@@ -6,13 +6,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (!inputFotos) return;
 
-    // =========================================================================
-    // MODO MÚLTIPLAS IMAGENS (uma por vez) — Cadastro e Edição de Veículos
-    // =========================================================================
     if (previewContainer) {
         let listaArquivos = [];
 
-        // Atualiza a borda azul e o selo "Capa" sempre na primeira imagem da fila
         function atualizarCapa() {
             const itens = previewContainer.querySelectorAll('.preview-item');
 
@@ -36,7 +32,6 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
 
-        // Ativa o botão "×" das imagens que já vieram do banco (tela de edição)
         previewContainer.querySelectorAll('.btn-remover-existente').forEach(btn => {
             btn.addEventListener('click', function () {
                 const item = this.closest('.preview-item');
@@ -55,7 +50,6 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
 
-        // Aplica o selo "Capa" logo ao abrir a página de edição
         atualizarCapa();
 
         inputFotos.addEventListener('change', function () {
@@ -80,12 +74,10 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         function atualizarInputEPreview() {
-            // Sincroniza a lista acumulada com o input real via DataTransfer
             const dataTransfer = new DataTransfer();
             listaArquivos.forEach(arquivo => dataTransfer.items.add(arquivo));
             inputFotos.files = dataTransfer.files;
 
-            // Remove apenas os previews das novas imagens, mantendo as que já estão no banco
             previewContainer.querySelectorAll('.imagem-nova').forEach(el => el.remove());
 
             listaArquivos.forEach((arquivo, index) => {
@@ -130,9 +122,6 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
     }
 
-    // =========================================================================
-    // MODO IMAGEM ÚNICA (Fallback para telas como Colaboradores)
-    // =========================================================================
     if (previewUnico) {
         inputFotos.addEventListener('change', function () {
             const arquivo = this.files[0];

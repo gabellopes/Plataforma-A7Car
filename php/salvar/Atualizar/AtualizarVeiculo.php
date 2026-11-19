@@ -18,17 +18,17 @@ if (!validarTokenCsrf($_POST['csrf_token'] ?? '')) {
     die("Erro de segurança: Token CSRF inválido ou expirado.");
 }
 
-$Marca         = trim($_POST['Marca'] ?? '');
-$Modelo        = trim($_POST['Modelo'] ?? '');
-$Ano           = trim($_POST['Ano'] ?? '');
-$Preco         = trim($_POST['Preco'] ?? '');
-$Cor           = trim($_POST['Cor'] ?? '');
+$Marca = trim($_POST['Marca'] ?? '');
+$Modelo = trim($_POST['Modelo'] ?? '');
+$Ano = trim($_POST['Ano'] ?? '');
+$Preco = trim($_POST['Preco'] ?? '');
+$Cor = trim($_POST['Cor'] ?? '');
 $Quilometragem = trim($_POST['Quilometragem'] ?? '');
-$Combustivel   = trim($_POST['Combustivel'] ?? '');
-$Descricao     = trim($_POST['Descricao'] ?? '');
-$id            = (int)($_POST['id'] ?? 0);
-$fotoAtual     = trim($_POST['foto_car'] ?? '');
-$Data          = date('Y-m-d');
+$Combustivel = trim($_POST['Combustivel'] ?? '');
+$Descricao = trim($_POST['Descricao'] ?? '');
+$id = (int)($_POST['id'] ?? 0);
+$fotoAtual = trim($_POST['foto_car'] ?? '');
+$Data = date('Y-m-d');
 
 if (
     $id <= 0 || empty($Marca) || empty($Modelo) || empty($Ano) || empty($Preco) ||
@@ -43,7 +43,6 @@ if (
 try {
     $sql->begin_transaction();
 
-    // 1. Remove as imagens marcadas no checkbox (apaga o arquivo físico e o registro no banco)
     if (!empty($_POST['imagens_remover']) && is_array($_POST['imagens_remover'])) {
         $stmtBuscaImg = $sql->prepare("SELECT caminho_img FROM carro_imagem WHERE id_img = ? AND id_car = ?");
         $stmtDelImg   = $sql->prepare("DELETE FROM carro_imagem WHERE id_img = ? AND id_car = ?");
@@ -69,7 +68,6 @@ try {
         }
     }
 
-    // 2. Adiciona novas imagens (se o usuário enviou uma ou mais)
     if (isset($_FILES['Imagem']) && !empty($_FILES['Imagem']['name'][0])) {
         $totalArquivos = count($_FILES['Imagem']['name']);
         $stmtAddImg = $sql->prepare("INSERT INTO carro_imagem (id_car, caminho_img) VALUES (?, ?)");
@@ -79,7 +77,6 @@ try {
                 continue;
             }
 
-            // Monta o array no formato individual esperado pela sua função verificarImagem()
             $arquivoAtual = [
                 'name'     => $_FILES['Imagem']['name'][$i],
                 'type'     => $_FILES['Imagem']['type'][$i],
@@ -102,7 +99,6 @@ try {
         }
     }
 
-    // 3. Atualiza a foto de capa (foto_car) para a primeira imagem restante na tabela carro_imagem
     $stmtCapa = $sql->prepare("SELECT caminho_img FROM carro_imagem WHERE id_car = ? ORDER BY id_img ASC LIMIT 1");
     $stmtCapa->bind_param("i", $id);
     $stmtCapa->execute();
@@ -111,11 +107,9 @@ try {
     if ($rowCapa = $resCapa->fetch_assoc()) {
         $fotoCapa = $rowCapa['caminho_img'];
     } else {
-        // Fallback para carros antigos cuja foto ainda não está na tabela carro_imagem
         $fotoCapa = (!empty($fotoAtual) && file_exists("../../../.." . $fotoAtual)) ? $fotoAtual : '';
     }
 
-    // 4. Atualiza os dados do veículo na tabela carro
     $stmt = $sql->prepare("UPDATE carro SET marca_car = ?, modelo_car = ?, ano_car = ?, preco_car = ?, cor_car = ?, quilometragem_car = ?, combustivel_car = ?, descricao_car = ?, foto_car = ?, data_car = ? WHERE id_car = ?");
     $stmt->bind_param("ssiisissssi", $Marca, $Modelo, $Ano, $Preco, $Cor, $Quilometragem, $Combustivel, $Descricao, $fotoCapa, $Data, $id);
     $stmt->execute();
@@ -130,7 +124,6 @@ try {
 
 } catch (Exception $e) {
     $sql->rollback();
-    //$_SESSION['erro_cadastro'] = "Erro ao editar veiculo: " . $e->getMessage();
     $_SESSION['erro_cadastro'] = "Erro ao editar veiculo";
     $_SESSION['erro'] = true;
     header("Location: ../Editar/EditarVeiculo.php?id=" . $id);

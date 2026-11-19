@@ -52,7 +52,6 @@ require_once "../salvar/Conexao.php";
         try {
             $id = (int)($_GET['id'] ?? 0);
 
-            // Busca os dados do veículo com Prepared Statement seguro
             $stmt = $sql->prepare("SELECT * FROM carro WHERE id_car = ?");
             $stmt->bind_param("i", $id);
             $stmt->execute();
@@ -63,7 +62,6 @@ require_once "../salvar/Conexao.php";
                 throw new Exception("Veículo não encontrado.");
             }
 
-            // Busca todas as fotos do veículo na tabela carro_imagem
             $stmtFotos = $sql->prepare("SELECT caminho_img FROM carro_imagem WHERE id_car = ? ORDER BY id_img ASC");
             $stmtFotos->bind_param("i", $id);
             $stmtFotos->execute();
@@ -75,7 +73,6 @@ require_once "../salvar/Conexao.php";
                 }
             }
 
-            // Fallback: se for um veículo antigo sem registros em carro_imagem, usa a foto_car
             if (empty($fotos) && !empty($row['foto_car'])) {
                 $fotos[] = $row['foto_car'];
             }

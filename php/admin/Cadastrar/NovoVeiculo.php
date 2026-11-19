@@ -56,7 +56,6 @@ require_once "../../auth/authadm.php";
                         <label for="Imagem">Imagens do Veículo (adicione uma por vez — a primeira será a capa)</label>
                         <input type="file" id="Imagem" name="Imagem[]" accept="image/jpeg, image/png, image/webp" required>
 
-                        <!-- Container onde as miniaturas acumuladas vão aparecer -->
                         <div id="preview-container" style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px;"></div>
                     </div>
 

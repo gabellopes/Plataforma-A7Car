@@ -18,10 +18,8 @@ if ($id <= 0) {
 }
 
 try {
-    // 1. Busca todas as imagens vinculadas a este veículo ANTES de excluir do banco
     $caminhosParaExcluir = [];
 
-    // Busca na tabela carro_imagem
     $stmtImgs = $sql->prepare("SELECT caminho_img FROM carro_imagem WHERE id_car = ?");
     $stmtImgs->bind_param("i", $id);
     $stmtImgs->execute();
@@ -33,7 +31,6 @@ try {
         }
     }
 
-    // Busca também a foto_car na tabela carro (fallback para veículos antigos)
     $stmtCarro = $sql->prepare("SELECT foto_car FROM carro WHERE id_car = ?");
     $stmtCarro->bind_param("i", $id);
     $stmtCarro->execute();
@@ -45,15 +42,12 @@ try {
         }
     }
 
-    // Evita tentar apagar o mesmo arquivo duas vezes (já que a capa está nas duas tabelas)
     $caminhosParaExcluir = array_unique($caminhosParaExcluir);
 
-    // 2. Exclui o veículo do banco (o ON DELETE CASCADE apaga os registros de carro_imagem automaticamente)
     $stmtDel = $sql->prepare("DELETE FROM carro WHERE id_car = ?");
     $stmtDel->bind_param("i", $id);
     $stmtDel->execute();
 
-    // 3. Só apaga os arquivos físicos DEPOIS que o DELETE no banco deu certo
     foreach ($caminhosParaExcluir as $caminhoImg) {
         /*MODIFICAR QUANDO PUBLICAR*/
         $caminhoRelativo = "../../../.." . $caminhoImg;
@@ -69,7 +63,6 @@ try {
     exit;
 
 } catch (Exception $e) {
-    // Se o banco impedir a exclusão (ex: veículo já vinculado a uma venda), nenhuma foto é perdida
     $_SESSION['erro_cadastro'] = "Erro ao tentar excluir veículo.";
     $_SESSION['erro'] = true;
     header("Location: ../../admin/Veiculos.php");

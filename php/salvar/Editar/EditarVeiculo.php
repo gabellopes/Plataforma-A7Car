@@ -36,7 +36,6 @@ require_once "../../auth/authadm.php";
         $result = $stmt->get_result();
         $carro = $result->fetch_assoc();
 
-        // Busca todas as imagens já salvas desse veículo
         $stmtFotos = $sql->prepare("SELECT id_img, caminho_img FROM carro_imagem WHERE id_car = ? ORDER BY id_img ASC");
         $stmtFotos->bind_param("i", $id);
         $stmtFotos->execute();
@@ -95,10 +94,8 @@ require_once "../../auth/authadm.php";
                             <label for="Imagem">Imagens do Veículo (adicione uma por vez — a primeira será a capa)</label>
                             <input type="file" name="Imagem[]" id="Imagem" accept="image/jpeg, image/png, image/webp">
 
-                            <!-- Guarda os IDs das imagens salvas no banco que você clicar no "×" para excluir -->
                             <div id="imagens-removidas-container"></div>
 
-                            <!-- Container unificado: imagens já cadastradas + novas imagens adicionadas -->
                             <div id="preview-container" style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px;">
                                 <?php if (!empty($fotosAtuais)): ?>
                                     <?php foreach ($fotosAtuais as $foto): ?>
@@ -113,7 +110,6 @@ require_once "../../auth/authadm.php";
                                         </div>
                                     <?php endforeach; ?>
                                 <?php elseif (!empty($carro['foto_car'])): ?>
-                                    <!-- Fallback para carros antigos salvos antes da tabela carro_imagem -->
                                     <div class="preview-item imagem-existente" style="position: relative;">
                                         <img src="<?php echo htmlspecialchars($carro['foto_car'], ENT_QUOTES, 'UTF-8'); ?>"
                                              alt="Foto atual"
