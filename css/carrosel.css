@@ -1,0 +1,76 @@
+
+.galeria-veiculo {
+    max-width: 420px;
+}
+
+.foto-principal-wrapper {
+    position: relative;
+    width: 100%;
+    height: 260px;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #111;
+}
+
+.foto-principal-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.carrossel-miniaturas {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+.miniaturas-track {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none; 
+    padding: 2px 0;
+}
+
+.miniaturas-track::-webkit-scrollbar {
+    display: none; 
+}
+
+.miniaturas-track img {
+    flex: 0 0 80px;
+    height: 60px;
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 4px;
+    border: 2px solid #555;
+    opacity: 0.7;
+    transition: border-color 0.2s, opacity 0.2s;
+}
+
+.miniaturas-track img.ativa {
+    border-color: #007bff;
+    opacity: 1;
+}
+
+.btn-carrossel {
+    flex: 0 0 28px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    border: 1px solid #555;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.btn-carrossel:hover {
+    background: rgba(0, 123, 255, 0.8);
+}

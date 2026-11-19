@@ -1,12 +1,12 @@
 <?php
-    if(session_status() === PHP_SESSION_NONE){
-        session_start();
-    }
-    
-   require_once "../../auth/authadm.php";
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+require_once "../../auth/authadm.php";
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,60 +16,69 @@
 </head>
 <body>
     <?php
-         if(isset($_SESSION['sucesso_cadastro'])){
-            $Mensagem = $_SESSION['sucesso_cadastro'];
-            echo "<script>alert('" . htmlspecialchars($Mensagem, ENT_QUOTES, 'UTF-8') . "');</script>"; 
-            $_SESSION['sucesso_cadastro'] = null;
-        }
+    if (isset($_SESSION['sucesso_cadastro'])) {
+        $Mensagem = $_SESSION['sucesso_cadastro'];
+        echo "<script>alert('" . htmlspecialchars($Mensagem, ENT_QUOTES, 'UTF-8') . "');</script>";
+        $_SESSION['sucesso_cadastro'] = null;
+    }
     ?>
     <div id="meio">
-    <h1>Adicionar Veículo</h1>
+        <h1>Adicionar Veículo</h1>
     </div>
     <div class="mei">
-    <div id="cadastro">
-      
-    <form method="POST" action="../../salvar/S_Veiculo.php"  enctype="multipart/form-data">
-        <input id="tipoCadastro" type="text" value="cadastroVeiculo" hidden>
-        <div>
-        <?php echo $inputCsrf;?>
-        <div><label for="Marca">Marca</label><input type="text" name="Marca" id="Marca"  maxlength="255" required></div>
-        <div><label for="Modelo">Modelo</label><input type="text" name="Modelo" id="Modelo"  maxlength="255" required></div>
-        <div><label for="Ano">Ano</label><input type="number" name="Ano" id="Ano"  maxlength="4" required></div>
-        <div id="Mensagem_ano"></div>
-        <div><label for="Preco">Preço</label><input type="number" name="Preco" id="Preco"  maxlength="255" required></div>
-        <div><label for="Cor">Cor</label><input type="text" name="Cor" id="Cor"  maxlength="20" required></div>
-        </div>
-        <div>
-        <div><label for="Quilometragem">Quilometragem</label><input type="number" name="Quilometragem" id="Quilometragem"  maxlength="20" required></div>
-        <div><label for="Combustivel">Combustível</label>
-            <select name="Combustivel" id="Combustivel" required>
-            <option value="Gasolina" selected>Gasolina</option>
-            <option value="Álcool">Álcool</option>
-            <option value="Diesel">Diesel</option>
-            <option value="Elétrico">Elétrico</option>
-            </select>
-        </div>
-        
-        <div><label for="Descricao">Descrição</label><input type="text" name="Descricao" id="Descricao"  maxlength="255" required></div>
+        <div id="cadastro">
+            <form method="POST" action="../../salvar/S_Veiculo.php" enctype="multipart/form-data">
+                <input id="tipoCadastro" type="text" value="cadastroVeiculo" hidden>
+                <div>
+                    <?php echo $inputCsrf; ?>
+                    <div><label for="Marca">Marca</label><input type="text" name="Marca" id="Marca" maxlength="255" required></div>
+                    <div><label for="Modelo">Modelo</label><input type="text" name="Modelo" id="Modelo" maxlength="255" required></div>
+                    <div><label for="Ano">Ano</label><input type="number" name="Ano" id="Ano" maxlength="4" required></div>
+                    <div id="Mensagem_ano"></div>
+                    <div><label for="Preco">Preço</label><input type="number" name="Preco" id="Preco" maxlength="255" required></div>
+                    <div><label for="Cor">Cor</label><input type="text" name="Cor" id="Cor" maxlength="20" required></div>
+                </div>
+                <div>
+                    <div><label for="Quilometragem">Quilometragem</label><input type="number" name="Quilometragem" id="Quilometragem" maxlength="20" required></div>
+                    <div>
+                        <label for="Combustivel">Combustível</label>
+                        <select name="Combustivel" id="Combustivel" required>
+                            <option value="Gasolina" selected>Gasolina</option>
+                            <option value="Álcool">Álcool</option>
+                            <option value="Diesel">Diesel</option>
+                            <option value="Elétrico">Elétrico</option>
+                        </select>
+                    </div>
 
-        <div>
-            <label for="Imagem">Imagem</label>
-            <img id="preview-imagem" src="#" alt="Pré-visualização da imagem" style="max-width: 200px; display: none; border-radius: 5px; border: 1px solid #ccc;" />
-            <input type="file" name="Imagem" id="Imagem"  maxlength="20">
-        </div>
+                    <div><label for="Descricao">Descrição</label><input type="text" name="Descricao" id="Descricao" maxlength="255" required></div>
 
-        <div style="color: red;"><?php if (isset($_SESSION['erro_cadastro'])){echo htmlspecialchars($_SESSION['erro_cadastro'], ENT_QUOTES, 'UTF-8');unset($_SESSION['erro_cadastro']);} ?></div>
-        <div>
-        <input type="button" id="Cadastrar" class="btn" value="Salvar" onclick="validarVeiculo()">
-        <button type="button" class="btn" onclick="window.location.href='../Veiculos.php'">Voltar</button>
-        </div>
-        </div>
+                    <div>
+                        <label for="Imagem">Imagens do Veículo (adicione uma por vez — a primeira será a capa)</label>
+                        <input type="file" id="Imagem" name="Imagem[]" accept="image/jpeg, image/png, image/webp" required>
 
-    </form>
+                        <!-- Container onde as miniaturas acumuladas vão aparecer -->
+                        <div id="preview-container" style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px;"></div>
+                    </div>
+
+                    <div style="color: red;">
+                        <?php
+                        if (isset($_SESSION['erro_cadastro'])) {
+                            echo htmlspecialchars($_SESSION['erro_cadastro'], ENT_QUOTES, 'UTF-8');
+                            unset($_SESSION['erro_cadastro']);
+                        }
+                        ?>
+                    </div>
+                    <div>
+                        <input type="button" id="Cadastrar" class="btn" value="Salvar" onclick="validarVeiculo()">
+                        <button type="button" class="btn" onclick="window.location.href='../Veiculos.php'">Voltar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <script src="../../../js/mascaras.js"></script>
     <script src="../../../js/visualizarImagem.js"></script>
     <script src="../../../js/validarformulario.js"></script>
-        </div>
-    </div>
 </body>
 </html>

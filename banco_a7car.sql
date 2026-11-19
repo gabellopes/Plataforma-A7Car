@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `carro` (
   `modelo_car` varchar(100) NOT NULL,
   `ano_car` year NOT NULL,
   `cor_car` varchar(50) NOT NULL,
-  `preco_car` decimal(10,2) NOT NULL,
+  `preco_car` decimal(20,2) NOT NULL,
   `quilometragem_car` int NOT NULL,
   `combustivel_car` varchar(30) NOT NULL,
   `descricao_car` varchar(700) NOT NULL,
@@ -166,6 +166,14 @@ CREATE TABLE IF NOT EXISTS password_resets (
     CONSTRAINT fk_reset_usuario FOREIGN KEY (id_usu) REFERENCES usuario(id_usu) ON DELETE CASCADE
 );
 
+CREATE TABLE IF NOT EXISTS `carro_imagem` (
+  `id_img` int NOT NULL AUTO_INCREMENT,
+  `id_car` int NOT NULL,
+  `caminho_img` varchar(255) NOT NULL,
+  PRIMARY KEY (`id_img`),
+  KEY `id_car` (`id_car`),
+  CONSTRAINT `carro_imagem_ibfk_1` FOREIGN KEY (`id_car`) REFERENCES `carro` (`id_car`) ON DELETE CASCADE
+);
 
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
