@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<html lang="pt">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../../css/adimin.css">
-</head>
-<body>
 
     <Header>
         <div id="AT"><img src="" alt=""><p>Painel Administrativo</p></div>
@@ -29,5 +20,3 @@
             <img src="" alt="">
         </button></div>
     </Aside>
-</body>
-</html>

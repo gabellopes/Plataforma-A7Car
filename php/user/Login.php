@@ -28,8 +28,12 @@ if(isset($_SESSION['erro_cadastro'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    
     <link rel="stylesheet" href="../../css/principal.css">
     <link rel="stylesheet" href="../../css/login.css">
+    <link rel="stylesheet" href="../../css/dialog.css">
+    
+
 </head>
 <body>
 
@@ -84,9 +88,8 @@ if(isset($_SESSION['erro_cadastro'])){
     <a href="Cadastro.php">Não tem cadastro? Cadastrar</a>
 
     <dialog id="dialog">
-                <button id="fecharDialog">🏃‍♂️💨</button>
-                
-                    <h1>Redefinir Senha</h1>
+    
+                    <div id="dialogTitulo"><h1>Redefinir Senha</h1><button id="fecharDialog">X</button></div>
                     <hr>
 
                     <p>Informe o e-mail cadastrado na sua conta. Enviaremos um link para você criar uma nova senha.</p>
@@ -102,12 +105,12 @@ if(isset($_SESSION['erro_cadastro'])){
             </dialog>
 
     <dialog id="dialogEmailEnviado">
-                <button id="FecharDialogEmailEnviado">🏃‍♂️💨</button>
+                <button id="FecharDialogEmailEnviado">X</button>
 
                     <h1>E-mail Enviado</h1>
                     <hr>
                     
-                    <img src="#" alt="✉">
+                    <p>✉</p>
                     <p>Link enviado!</p>
                     <p>Enviamos um e-mail para <span id="Mensagem_email_enviado" style="color: red;"></span> com  as instruções para redefinir sua senha</p>
 

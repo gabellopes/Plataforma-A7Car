@@ -55,7 +55,7 @@ $stmt->execute();
 $_SESSION['sucesso_cadastro'] = 'Venda cadastrada com sucesso!';
 $_SESSION['erro'] = false;
 }catch(Exception $e){
-                $_SESSION['erro_cadastro'] = "Erro ao tentar cadastrar venda";
+                $_SESSION['erro_cadastro'] = "Erro ao tentar cadastrar venda" . " " . $e->getMessage();
                 $_SESSION['erro'] = true;
                 header("Location: ../admin/Cadastrar/VenderVeiculo.php?id=" . $id_car);
 
