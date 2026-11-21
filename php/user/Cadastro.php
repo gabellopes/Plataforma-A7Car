@@ -12,6 +12,7 @@ $email = $_GET['email'] ?? '';
     <title>Document</title>
     <link rel="stylesheet" href="../../css/principal.css">
     <link rel="stylesheet" href="../../css/cadastro.css">
+    <link rel="stylesheet" href="../../css/dialog.css">
     
 </head>
 <body>
@@ -72,7 +73,7 @@ $email = $_GET['email'] ?? '';
    </div>
    </div>
    <dialog id="dialogEmailEnviado">
-                <button id="FecharDialogEmailEnviado">🏃‍♂️💨</button>
+                <button id="FecharDialogEmailEnviado">X</button>
 
                     <h1>E-mail Enviado</h1>
                     <hr>
