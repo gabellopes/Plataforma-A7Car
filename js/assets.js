@@ -56,6 +56,8 @@ if (dialog) {
             botaonaoTemCnh.addEventListener('click', () => {
                 botaonaoTemCnh.style.backgroundColor = "red";
                 botaotemCnh.style.backgroundColor = "white";
+                botaonaoTemCnh.style.color = "white";
+                botaotemCnh.style.color = "gray";
                 MensagemCnh.textContent = "";
                 divCnh.hidden = true;
             });
@@ -65,6 +67,8 @@ if (dialog) {
             botaotemCnh.addEventListener('click', () => {
                 botaotemCnh.style.backgroundColor = "red";
                 botaonaoTemCnh.style.backgroundColor = "white";
+                botaonaoTemCnh.style.color = "gray";
+                botaotemCnh.style.color = "white";
                 divCnh.hidden = false;
             });
         }

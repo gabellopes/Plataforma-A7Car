@@ -11,6 +11,7 @@ require_once "../salvar/Conexao.php";
     <link rel="stylesheet" href="../../css/principal.css">
     <link rel="stylesheet" href="../../css/catalogo.css">
     <link rel="stylesheet" href="../../css/carrosel.css">
+    <link rel="stylesheet" href="../../css/dialog.css">
 </head>
 <body>
     <?php
@@ -147,37 +148,44 @@ require_once "../salvar/Conexao.php";
         </div><!-- Fim da div do carro -->
 
         <dialog id="dialog">
-            <button id="fecharDialog">🏃‍♂️💨</button>
+            
 
-            <h1>SIMULAÇÃO - <?php echo htmlspecialchars($row['marca_car'], ENT_QUOTES, 'UTF-8') . " " . htmlspecialchars($row['modelo_car'], ENT_QUOTES, 'UTF-8') . " " . htmlspecialchars($row['ano_car'], ENT_QUOTES, 'UTF-8'); ?></h1>
+            <div id="dialogTitulo"><h1>SIMULAÇÃO - <?php echo htmlspecialchars($row['marca_car'], ENT_QUOTES, 'UTF-8') . " " . htmlspecialchars($row['modelo_car'], ENT_QUOTES, 'UTF-8') . " " . htmlspecialchars($row['ano_car'], ENT_QUOTES, 'UTF-8'); ?></h1><button id="fecharDialog">X</button></div>
             <hr>
-            <div>
+            <div id="infoCar">
                 <img src="<?php echo htmlspecialchars($fotoPrincipal, ENT_QUOTES, 'UTF-8'); ?>" alt="Foto do Veículo" width="200" height="150" style="object-fit: cover;">
-                <span></span>
-                <span><?php echo htmlspecialchars($row['marca_car'], ENT_QUOTES, 'UTF-8'); ?></span>
-                <span><?php echo htmlspecialchars($row['modelo_car'], ENT_QUOTES, 'UTF-8'); ?></span>
-                <span>R$ <?php echo number_format((float)$row['preco_car'], 2, ',', '.'); ?></span>
+                <ul>
+                    <li><span id="carroMarca"><?php echo htmlspecialchars($row['marca_car'], ENT_QUOTES, 'UTF-8'); ?></span></li>
+                    <li><span id="carroModelo"><?php echo htmlspecialchars($row['modelo_car'], ENT_QUOTES, 'UTF-8'); ?></span></li>
+                    <li><span id="carroPreco">R$ <?php echo number_format((float)$row['preco_car'], 2, ',', '.'); ?></span></li>
+                </ul>
+                
             </div>
 
             <form action="../salvar/S_Simulacao.php" method="post">
                 <input id="tipoCadastro" type="text" value="simulacao" hidden>
                 <input name="id" type="text" hidden value="<?php echo htmlspecialchars($row['id_car'], ENT_QUOTES, 'UTF-8'); ?>">
                 <input name="status_car" type="text" hidden value="<?php echo htmlspecialchars($row['status_car'], ENT_QUOTES, 'UTF-8'); ?>">
-                <div><label for="Nome">Nome</label><input type="text" name="Nome" id="Nome" maxlength="255" required></div>
-                <div><label for="Cpf">CPF</label><input type="text" name="Cpf" id="Cpf" maxlength="14" required></div>
-                <div id="Mensagem_cpf"></div>
-                <div><label for="DataNascimento">Data de Nascimento</label><input type="date" name="DataNascimento" id="DataNascimento" required></div>
-                <div id="Mensagem_data"></div>
-                <div><label for="Telefone">Telefone</label><input type="text" name="Telefone" id="Telefone" maxlength="15" required></div>
+                <div class="campo"><label for="Nome">NOME COMPLETO*</label><input type="text" name="Nome" id="Nome" maxlength="255" required placeholder="Seu nome completo"></div>
+                
+                <div class="linha">
+                    <div class="campo"><label for="DataNascimento">DATA DE NASCIMENTO</label><input type="date"  name="DataNascimento" id="DataNascimento" required></div>
+                    <div class="campo"><label for="Cpf">CPF*</label><input type="text"  name="Cpf" id="Cpf" maxlength="14" required placeholder="000.000.000-00"></div>
+                </div>
+                <div id="Mensagem_data" class="Mensagem"></div>
+                <div id="Mensagem_cpf" class="Mensagem"></div>
+                <div class="campo"><label for="Telefone">TELEFONE CELULAR</label><input type="text" name="Telefone" id="Telefone" maxlength="15" required placeholder="(11) 99999-9999"></div>
                 <div id="Mensagem_telefone"></div>
 
-                <div>
-                    <label for="">POSSUI CNH?</label>
-                    <button type="button" id="temCnh">SIM</button>
-                    <button type="button" id="naoTemCnh">NÃO</button>
+                <label for="">POSSUI CNH?</label>
+                <div id="divBtnCnh" class="linha">
+                    <div class="campo"><button type="button" id="temCnh">SIM</button></div>
+                    <div class="campo"><button type="button" id="naoTemCnh">NÃO</button></div>
                 </div>
-                <div id="divCnh" hidden><label for="Cnh" id="labelCnh">CNH</label><input type="text" name="Cnh" id="Cnh" maxlength="9"></div>
-                <div id="Mensagem_cnh"></div>
+
+                <div id="divCnh" hidden><label for="Cnh" id="labelCnh">CNH</label><input type="text" name="Cnh" id="Cnh" maxlength="9" placeholder="999999999"></div>
+                <div id="Mensagem_cnh" class="Mensagem"></div>
+                <p id="legenda">Seus dados serão usados exclusivamente para contato da nossa equipe de venda.</p>
                 <input type="button" id="enviarDialog" class="btn" value="📊ENVIAR SIMULAÇÃO">
             </form>
         </dialog>
