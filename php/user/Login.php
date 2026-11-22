@@ -32,6 +32,7 @@ if(isset($_SESSION['erro_cadastro'])){
     <link rel="stylesheet" href="../../css/principal.css">
     <link rel="stylesheet" href="../../css/login.css">
     <link rel="stylesheet" href="../../css/dialog.css">
+    <link rel="stylesheet" href="../../css/temporario.css">
     
 
 </head>
@@ -77,7 +78,7 @@ if(isset($_SESSION['erro_cadastro'])){
         <input type="email" name="Email" id="Email2" maxlength="255" required>
 
         <label for="senha">Senha</label>
-        <div><input type="password" name="Senha" id="Senha" maxlength="20" required><button type="button" id="mostrarSenha">👁</button></div>
+        <div class="campo-senha"><input type="password" name="Senha" id="Senha" maxlength="20" required><button type="button" id="mostrarSenha">👁</button></div>
         <div style="color: red;"><?php if (isset($_SESSION['erro_login'])){echo htmlspecialchars($_SESSION['erro_login'], ENT_QUOTES, 'UTF-8');unset($_SESSION['erro_login']);} ?></div>
 
         <button type="submit" class="btn">ENTRAR</button>

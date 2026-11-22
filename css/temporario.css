@@ -1,0 +1,53 @@
+.campo-senha {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.campo-senha input {
+    width: 100%;
+    padding-right: 45px;
+    box-sizing: border-box;
+}
+
+.campo-senha #mostrarSenha, .campo-senha #mostrarConfirmarSenha {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+    min-width: 0;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 1;
+    background-color: none;
+    color: black;
+}
+
+.campo-senha #mostrarSenha:hover,
+.campo-senha #mostrarSenha:focus,
+.campo-senha #mostrarSenha:active,
+.campo-senha #mostrarConfirmarSenha:hover,
+.campo-senha #mostrarConfirmarSenha:focus,
+.campo-senha #mostrarConfirmarSenha:active {
+    background-color: transparent !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    outline: none;
+}
+
+#login #abrirDialog{
+    background: transparent;
+    font-size: 20px;
+    line-height: 1;
+    background-color: none;
+    color: black;
+}
+#login #abrirDialog:hover{
+   text-decoration: underline;
+}

@@ -13,6 +13,7 @@ $email = $_GET['email'] ?? '';
     <link rel="stylesheet" href="../../css/principal.css">
     <link rel="stylesheet" href="../../css/cadastro.css">
     <link rel="stylesheet" href="../../css/dialog.css">
+    <link rel="stylesheet" href="../../css/temporario.css">
     
 </head>
 <body>
@@ -56,10 +57,10 @@ $email = $_GET['email'] ?? '';
          <div ><h1 id="teste"></h1></div>
 
         <label for="senha">Senha</label>
-        <div><input type="password" name="Senha" id="Senha" maxlength="20" required><button type="button" data-target="Senha" id="mostrarSenha">👁</button></div>
+        <div class="campo-senha"><input type="password" name="Senha" id="Senha" maxlength="20" required><button type="button" data-target="Senha" id="mostrarSenha">👁</button></div>
         
         <label for="confirmar-senha">Confirmar Senha</label>
-        <div><input type="password" name="Confirmar_Senha" id="Confirmar-senha" maxlength="20" required><button type="button" data-target="senha" id="mostrarConfirmarSenha">👁</button></div>
+        <div class="campo-senha"><input type="password" name="Confirmar_Senha" id="Confirmar-senha" maxlength="20" required><button type="button" data-target="senha" id="mostrarConfirmarSenha">👁</button></div>
         <div id="Mensagem_senha"></div>
         <div style="color: red;"><?php if (isset($_SESSION['erro_cadastro'])){echo htmlspecialchars($_SESSION['erro_cadastro'], ENT_QUOTES, 'UTF-8');unset($_SESSION['erro_cadastro']);} ?></div>
 
