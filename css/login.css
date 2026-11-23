@@ -60,9 +60,11 @@
     background-color: rgb(208, 0, 0);
 }
 
-#login label {
+#login label{
     color: rgb(0, 0, 0);
     font-size: 3vh;
+    display: block;   
+    text-align: left;
 }
 
 #login a{
