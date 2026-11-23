@@ -45,7 +45,7 @@ require_once "../salvar/Conexao.php";
 
     <br><br><br><br><br><br><br>
     <div class="catalogo">
-        <a href="catalogo.php">⬅VOLTAR AO CATÁLOGO</a>
+        <a onclick="history.back()">⬅VOLTAR AO CATÁLOGO</a>
         <?php
         $row = null;
         $fotos = [];

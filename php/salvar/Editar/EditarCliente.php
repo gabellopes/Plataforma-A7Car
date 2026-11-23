@@ -53,7 +53,7 @@
         <div id="Mensagem_cnh"></div>
         <div style="color: red;"><?php if (isset($_SESSION['erro_cadastro'])){echo htmlspecialchars($_SESSION['erro_cadastro'], ENT_QUOTES, 'UTF-8');unset($_SESSION['erro_cadastro']);} ?></div>
         <input type="button" class="btn" id="Cadastrar" value="Salvar" onclick="return confirm('Tem certeza que deseja atualizar este cliente?') ? validarCliente() : true;">
-        <button type="button" class="btn" onclick="window.location.href='../../admin/Clientes.php'">Voltar</button>
+        <button type="button" class="btn" onclick="history.back()">Voltar</button>
         </div>
     </form>
         </div>

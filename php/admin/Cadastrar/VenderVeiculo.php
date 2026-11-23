@@ -56,7 +56,7 @@
         <fieldset><label for="Preco">Valor da venda</label><input type="text" name="Preco" id="Preco" value="<?php echo intval($carro['preco_car']); ?>" required></fieldset>
         <div style="color: red;"><?php if (isset($_SESSION['erro_cadastro'])){echo htmlspecialchars($_SESSION['erro_cadastro'], ENT_QUOTES, 'UTF-8');unset($_SESSION['erro_cadastro']);} ?></div>
         <fieldset><input type="button" id="Cadastrar" value="Salvar" onclick="return confirm('Tem certeza que deseja vender este veiculo?') ? validarVenda() : true;"></fieldset>
-        <fieldset><button type="button" onclick="window.location.href='../../admin/Veiculos.php'">Voltar</button></fieldset>
+        <fieldset><button type="button" onclick="history.back()">Voltar</button></fieldset>
     </form>
     <?php }else{ ?>
         <p>Cliente não encontrado.</p>
