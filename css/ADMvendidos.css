@@ -24,13 +24,19 @@
 #VVElementos hr{
     width: 20vw;
 }
+.VVEItens2{
+    padding:  2vh 1vw 1vh 2vw;
+    display: flex;
+    flex-direction: row;
+    gap: 2vw;
+    border: 1px solid  rgba(128, 128, 128, 0.655);
+    border-radius: 10px;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
 #VVEItens2{
     display: flex;
-    flex-direction: row;
-}
-.VVEItens2{
-    display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
 }
 .btn{
@@ -67,6 +73,42 @@
 #escolha option{
     background-color: rgb(19, 19, 19);
     color: white;
+}
+#btncontatar{
+    border: 4px solid  rgb(223, 25, 25);
+    border-radius: 5px;
+    background-color: rgb(223, 25, 25);
+    color: white;
+    font-family: Barlow-Bold;
+    font-size: 1.3rem;
+    width: fit-content;
+    height: 5vh;
+}
+#VEEItem1{
+    display: flex;
+    flex-direction: column;
+}
+#comprador{
+    display: flex;
+    flex-direction: column;
+}
+span{
+    font-size: 1.2rem;
+}
+.VVEItens2 div{
+    font-size: 1.2rem;
+}
+.card-relatorio h3{
+    font-size: 1.2rem;
+    margin-bottom: 1vh;
+    color: rgb(223, 25, 25);
+    font-family: Barlow-Bold;
+}
+#VVRelatorio{
+    display: flex;
+    flex-direction: row;
+    gap: 5vw;
+    margin-top: 5vh;
 }
 
 

@@ -49,70 +49,9 @@ $nomeMeses = [
                     <p id="verde">R$ <?php echo number_format($total_vendas, 2, ',', '.'); ?></p>
                     <p id="cinza">Total em vendas</p>
                     
-                </div>
-                    
-                    <div id="VVElementos">
-                <?php 
-                    $stmt = $sql->prepare("SELECT * FROM vendas v INNER JOIN carro c ON v.id_car = c.id_car INNER JOIN cliente cl ON v.id_cli = cl.id_cli");
-                    $stmt->execute();
-                    $result = $stmt->get_result();
-
-                    
-                    if ($result->num_rows === 0) {
-                ?>
-                    <div id="VVEItens">
-                        <img src="" alt="">
-                        <p>Nenhum veículo vendido ainda.</p>
-                        <p>Ao aceitar uma proposta ou marcar um veículo como vendido, ele aparecerá aqui.</p>
-                    </div>
-                <?php 
-                    } else {
-                        while ($row = $result->fetch_assoc()) {
-
-                        //Link do whatsapp
-                            $telefone = preg_replace('/[^0-9]/', '', $row['telefone_cli']);
-                            $mensagemWhatsApp = "";
-                            $urlWhatsApp = "https://wa.me/" . $telefone . "?text=" . urlencode($mensagemWhatsApp);
-
-                            if ($row['status_car'] == 1) {
-                                $preco_formatado = number_format($row['preco_car'], 2, ',', '.');
-                                ?>
-                             
-                                <div id='VVEItens2'>
-                                     <td><img src="<?php echo htmlspecialchars($row['foto_car'], ENT_QUOTES, 'UTF-8');?>" alt='Foto do Veículo' width='200' height='150'></td>
-                                    <div>
-                                        <div><?php echo htmlspecialchars($row['marca_car'], ENT_QUOTES, 'UTF-8'); ?></div>
-                                        <div>Vendido</div>
-                                        <div class="VEEItem2">
-                                            <span><?php echo htmlspecialchars($row['modelo_car'], ENT_QUOTES, 'UTF-8'); ?></span>
-                                            <span><?php echo htmlspecialchars($row['ano_car']); ?></span>
-                                        </div>
-                                        <span><img src="" alt=""><?php echo htmlspecialchars($row['quilometragem_car']); ?>km</span>
-                                        <span><img src="" alt=""><?php echo htmlspecialchars($row['cor_car'], ENT_QUOTES, 'UTF-8'); ?></span>
-                                        <span><img src="" alt=""><?php echo htmlspecialchars($row['combustivel_car'], ENT_QUOTES, 'UTF-8'); ?></span>
-
-                                        <div>Valor da venda</div>
-                                        <div>R$ <?php echo htmlspecialchars($row['preco_car']); ?></div>
-                                        <div><img src="" alt=""><?php echo htmlspecialchars($row['data_ven'], ENT_QUOTES, 'UTF-8'); ?></div>
-                                        <hr>
-                                        
-                                        <button onclick="window.open('<?php echo $urlWhatsApp; ?>', '_blank')">CONTATAR</button>
-                                        
-                                        <div>Comprador</div>
-                                        <div><?php echo htmlspecialchars($row['nome_cli'], ENT_QUOTES, 'UTF-8'); ?></div>
-                                        <div><img src="" alt=""><?php echo htmlspecialchars($row['telefone_cli']); ?></div>
-                                    </div>
-                                </div>
-                <?php  
-                            }
-                        }
-                    }
-                ?>
-                </div>
-            </div> <!-- Final dos elementos 1-->
-        </div><!-- Final do SubMain-->
-        <div style="display: flex; gap: 20px;">
-    <!-- Formulário Mensal -->
+                </div> 
+            <div id="VVRelatorio">
+                <!-- Formulário Mensal -->
     <div class="card-relatorio">
         <h3>Relatório Mensal</h3>
         <form action="../salvar/Relatorios/relatorio_vendasMensal.php" method="POST" target="_blank">
@@ -145,6 +84,72 @@ $nomeMeses = [
             <button type="submit" class="btn">Gerar PDF Anual</button>
         </form>
     </div>
+</div>
+                    
+                    <div id="VVElementos">
+                <?php 
+                    $stmt = $sql->prepare("SELECT * FROM vendas v INNER JOIN carro c ON v.id_car = c.id_car INNER JOIN cliente cl ON v.id_cli = cl.id_cli");
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+
+                    
+                    if ($result->num_rows === 0) {
+                ?>
+                    <div id="VVEItens">
+                        <img src="" alt="">
+                        <p>Nenhum veículo vendido ainda.</p>
+                        <p>Ao aceitar uma proposta ou marcar um veículo como vendido, ele aparecerá aqui.</p>
+                    </div>
+                <?php 
+                    } else {
+                        while ($row = $result->fetch_assoc()) {
+
+                        //Link do whatsapp
+                            $telefone = preg_replace('/[^0-9]/', '', $row['telefone_cli']);
+                            $mensagemWhatsApp = "";
+                            $urlWhatsApp = "https://wa.me/" . $telefone . "?text=" . urlencode($mensagemWhatsApp);
+
+                            if ($row['status_car'] == 1) {
+                                $preco_formatado = number_format($row['preco_car'], 2, ',', '.');
+                                ?>
+                             
+                                <div class='VVEItens2'>
+                                     <td><img src="<?php echo htmlspecialchars($row['foto_car'], ENT_QUOTES, 'UTF-8');?>" alt='Foto do Veículo' width='200' height='150' border-radius='10px'></td>
+                                    <div id="VEEItem1">
+                                        <div><?php echo htmlspecialchars($row['marca_car'], ENT_QUOTES, 'UTF-8'); ?></div>
+                                        <div>Vendido</div>
+                                        <div id="VEEItem2">
+                                            <span><?php echo htmlspecialchars($row['modelo_car'], ENT_QUOTES, 'UTF-8'); ?></span>
+                                            <span><?php echo htmlspecialchars($row['ano_car']); ?></span>
+                                        </div>
+                                        <span><img src="" alt=""><?php echo htmlspecialchars($row['quilometragem_car']); ?>km</span>
+                                        <span><img src="" alt=""><?php echo htmlspecialchars($row['cor_car'], ENT_QUOTES, 'UTF-8'); ?></span>
+                                        <span><img src="" alt=""><?php echo htmlspecialchars($row['combustivel_car'], ENT_QUOTES, 'UTF-8'); ?></span>
+                                        </div>
+                                        <div>Valor da venda</div>
+                                        <div>R$ <?php echo htmlspecialchars($row['preco_car']); ?></div>
+                                        <div><img src="" alt=""><?php echo htmlspecialchars($row['data_ven'], ENT_QUOTES, 'UTF-8'); ?></div>
+                                        <div id="comprador">
+                                        
+                                        
+                                        <button onclick="window.open('<?php echo $urlWhatsApp; ?>', '_blank')" id="btncontatar">CONTATAR</button>
+                                        
+                                        <div>Comprador</div>
+                                        <div><?php echo htmlspecialchars($row['nome_cli'], ENT_QUOTES, 'UTF-8'); ?></div>
+                                        <div><img src="" alt=""><?php echo htmlspecialchars($row['telefone_cli']); ?></div>
+                                    </div>
+                                    
+                                </div>
+                <?php  
+                            }
+                        }
+                    }
+                ?>
+                </div>
+            </div> <!-- Final dos elementos 1-->
+        </div><!-- Final do SubMain-->
+        <div style="display: flex; gap: 20px;">
+   
 </div>
     </div><!-- Final da Main-->
 </body>

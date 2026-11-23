@@ -23,6 +23,7 @@ a{
     padding: 0;
     box-sizing: border-box;
     font-weight: normal;
+    font-family: Barlow;
 }
 body{
     margin-top: 0vh;
@@ -95,6 +96,7 @@ th, td {
     padding: 0.5rem;
     color: rgb(228, 228, 228);
     font-family: Barlow-Bold;
+    font-size: 1.2rem;
     max-width: 15vw;
 }
 #MItens{
