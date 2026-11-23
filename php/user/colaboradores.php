@@ -43,7 +43,7 @@ require_once "../salvar/Conexao.php";
         <h1>COLABORADORES</h1>
         
     </div>
-    <div >
+    <div id="colaboradores">
                
 		<?php
                 include_once "../salvar/Conexao.php";
@@ -60,16 +60,16 @@ require_once "../salvar/Conexao.php";
                 $urlWhatsApp = "https://wa.me/" . $telefone . "?text=" . urlencode($mensagemWhatsApp);
 
                 ?>
-            <div>
-                <img src="<?php echo htmlspecialchars($row['foto_col'], ENT_QUOTES, 'UTF-8'); ?>" alt="Foto do Colaborador" style="width: 200px;">
-                <span><?php echo htmlspecialchars($row['nome_col'], ENT_QUOTES, 'UTF-8'); ?></span>
+            <div class="colaborador">
+                <img src="<?php echo htmlspecialchars($row['foto_col'], ENT_QUOTES, 'UTF-8'); ?>" alt="Foto do Colaborador" style="width: 150px; border-radius: 200px; height: 150px; object-fit: cover;">
+                <span id="nome-colaborador"><?php echo htmlspecialchars($row['nome_col'], ENT_QUOTES, 'UTF-8'); ?></span>
                 <span><?php echo htmlspecialchars($row['servico_col'], ENT_QUOTES, 'UTF-8'); ?></span>
                 <span><?php echo htmlspecialchars($row['descricao_col'], ENT_QUOTES, 'UTF-8'); ?></span>
 
-                <div>
+                <div class="contato">
                     <span><?php echo htmlspecialchars($row['telefone_col'], ENT_QUOTES, 'UTF-8'); ?></span>
                     <span><?php echo htmlspecialchars($row['email_col'], ENT_QUOTES, 'UTF-8'); ?></span>
-                    <button onclick="window.open('<?php echo $urlWhatsApp; ?>', '_blank')">💬WHATSAPP</button>
+                    <button onclick="window.open('<?php echo $urlWhatsApp; ?>', '_blank')" id="btnWhatsApp">💬WHATSAPP</button>
                 </div>
             </div>
             <br>

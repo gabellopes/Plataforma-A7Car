@@ -37,37 +37,36 @@ while($row = $result->fetch_assoc()){
 
                         if($resultado->num_rows > 0){
                             echo"
-                        <div>
+                        <div id='carro'>
                         <button class='btn-favoritar' data-id=".$row['id_car'].">❤️</button>
                         ";
                         }else{
                         echo"
-                        <div>
+                        <div id='carro'>
                         <button class='btn-favoritar' data-id=".$row['id_car'].">❤</button>
                         ";
                         }
                     }else{
                         echo"
-                        <div>
-                        <button onclick='window.location.href=\"Login.php\"'>❤</button>
+                        <div id='carro'>
+                        <button class='btn-favoritar' onclick='window.location.href=\"Login.php\"'>❤</button>
                         ";
                     }
 
                     echo "
                    
-                    <img src='" . htmlspecialchars($row['foto_car'], ENT_QUOTES, 'UTF-8') . "' alt='Foto do Veículo' width='200' height='150'>
-                    <div>
-                        <span></span>
-                        <span>Marca: ".htmlspecialchars($row['marca_car'], ENT_QUOTES, 'UTF-8')."</span>
-                        <span>Modelo: ".htmlspecialchars($row['modelo_car'], ENT_QUOTES, 'UTF-8')."</span>
-                        <span><img src='../../img/catalogo/calendario.png' alt='📅'>".htmlspecialchars($row['ano_car'])."</span><span><img src='../../img/catalogo/velocimetro.png' alt='📅'>".htmlspecialchars($row['quilometragem_car'])."</span><span><img src='../../img/catalogo/cor.png' alt='📅'>".htmlspecialchars($row['combustivel_car'], ENT_QUOTES, 'UTF-8')."</span>
-
-                        <hr>
-
-                        <div>
+                    <img src='" . htmlspecialchars($row['foto_car'], ENT_QUOTES, 'UTF-8') . "' alt='Foto do Veículo' id='fotoCarro'>
+                    <div id='infoCarro'>
+                        <span class='titulo-veiculo'>".htmlspecialchars($row['marca_car'], ENT_QUOTES, 'UTF-8')." ".htmlspecialchars($row['modelo_car'], ENT_QUOTES, 'UTF-8')."</span>
+                        <div class='detalhes-veiculo'>
+                            <span><img src='../../img/catalogo/calendario.png' alt=''>".htmlspecialchars($row['ano_car'])."</span>
+                            <span><img src='../../img/catalogo/velocimetro.png' alt=''>".htmlspecialchars($row['quilometragem_car'])."</span>
+                            <span><img src='../../img/catalogo/cor.png' alt=''>".htmlspecialchars($row['combustivel_car'], ENT_QUOTES, 'UTF-8')."</span>
+                        </div>
+                        <div class='preco-veiculo'>
                             <p>Valor</p>
                             <span>R$".number_format(htmlspecialchars($row['preco_car']), 2, ',', '.')."</span>
-                            <button onclick=\"location.href='Veiculo.php?id=".$row['id_car']."'\"><img src='../../img/catalogo/olho.png' alt='📅'>VER</button>
+                            <button onclick=\"location.href='Veiculo.php?id=".$row['id_car']."'\" alt='📅' class='btn-ver'>👁 VER</button>
                         </div>
                     </div>
                     

@@ -59,7 +59,7 @@
                 $caminho = $row['foto_col'];
                     echo "
                     <tr>
-                        <td><img src='" . htmlspecialchars($row['foto_col'], ENT_QUOTES, 'UTF-8') . "' alt='Foto do Colaborador' width='200'></td>
+                        <td><img src='" . htmlspecialchars($row['foto_col'], ENT_QUOTES, 'UTF-8') . "' alt='Foto do Colaborador' width='140' height='120'></td>
                         <td>".htmlspecialchars($row['nome_col'], ENT_QUOTES, 'UTF-8')."</td>
                         <td>".htmlspecialchars($row['servico_col'], ENT_QUOTES, 'UTF-8')."</td>
                         <td>".htmlspecialchars($row['telefone_col'])."</td>

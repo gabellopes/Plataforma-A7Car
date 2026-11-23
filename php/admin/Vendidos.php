@@ -44,14 +44,14 @@ $nomeMeses = [
             <div id="VVT">
                 <div>
                     <h1>VEÍCULOS VENDIDOS</h1>
-                    <p id="cinza">Histórico de todas as vendas realizadas</p>
-                </div>
-                <div id="total">
+                    <p id="cinza">Histórico de todas as vendas realizadas</p> 
+                    <div id="total">
                     <p id="verde">R$ <?php echo number_format($total_vendas, 2, ',', '.'); ?></p>
                     <p id="cinza">Total em vendas</p>
+                    
                 </div>
-                
-                <div id="VVElementos">
+                    
+                    <div id="VVElementos">
                 <?php 
                     $stmt = $sql->prepare("SELECT * FROM vendas v INNER JOIN carro c ON v.id_car = c.id_car INNER JOIN cliente cl ON v.id_cli = cl.id_cli");
                     $stmt->execute();
@@ -117,7 +117,7 @@ $nomeMeses = [
         <h3>Relatório Mensal</h3>
         <form action="../salvar/Relatorios/relatorio_vendasMensal.php" method="POST" target="_blank">
             <label>Selecione o Mês:</label><br>
-            <select name="mes_ano" required style="padding: 5px;">
+            <select name="mes_ano" required style="padding: 5px;"  id="escolha">
                 <option value="">Escolha um período...</option>
                 <?php while($row = $resultMeses->fetch_assoc()): ?>
                     <option value="<?php echo $row['mes'] . '-' . $row['ano']; ?>">
@@ -134,7 +134,7 @@ $nomeMeses = [
         <h3>Relatório Anual</h3>
         <form action="../salvar/Relatorios/relatorio_vendasAnual.php" method="POST" target="_blank">
             <label>Selecione o Ano:</label><br>
-            <select name="ano" required style="padding: 5px;">
+            <select name="ano" required style="padding: 5px;"  id="escolha">
                 <option value="">Escolha um ano...</option>
                 <?php while($row = $resultAnos->fetch_assoc()): ?>
                     <option value="<?php echo $row['ano']; ?>">
