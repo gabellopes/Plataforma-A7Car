@@ -114,8 +114,8 @@ CREATE TABLE IF NOT EXISTS `simulacao` (
   PRIMARY KEY (`id_simu`),
   KEY `id_usu` (`id_usu`),
   KEY `id_car` (`id_car`),
-  CONSTRAINT `simulacao_ibfk_1` FOREIGN KEY (`id_usu`) REFERENCES `usuario` (`id_usu`),
-  CONSTRAINT `simulacao_ibfk_2` FOREIGN KEY (`id_car`) REFERENCES `carro` (`id_car`)
+  CONSTRAINT `simulacao_ibfk_1` FOREIGN KEY (`id_usu`) REFERENCES `usuario` (`id_usu`) ON DELETE CASCADE,
+  CONSTRAINT `simulacao_ibfk_2` FOREIGN KEY (`id_car`) REFERENCES `carro` (`id_car`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Copiando dados para a tabela concessionaria.simulacao: ~0 rows (aproximadamente)
@@ -133,6 +133,38 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   UNIQUE KEY `email_usu` (`email_usu`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+CREATE TABLE IF NOT EXISTS `simulacao` (
+
+`id_simu` int NOT NULL AUTO_INCREMENT,
+
+`data_simu` date NOT NULL,
+
+`telefone_simu` varchar(15) NOT NULL,
+
+`cpf_simu` varchar(14) NOT NULL,
+
+`cnh_simu` varchar(11),
+
+`data_nasci_simu` date NOT NULL,
+
+`nome_comple_simu` varchar(255) NOT NULL,
+
+`id_usu` int NOT NULL,
+
+`id_car` int NOT NULL,
+
+PRIMARY KEY (`id_simu`),
+
+KEY `id_usu` (`id_usu`),
+
+KEY `id_car` (`id_car`),
+
+CONSTRAINT `simulacao_ibfk_1` FOREIGN KEY (`id_usu`) REFERENCES `usuario` (`id_usu`) ON DELETE CASCADE,
+
+CONSTRAINT `simulacao_ibfk_2` FOREIGN KEY (`id_car`) REFERENCES `carro` (`id_car`) ON DELETE CASCADE
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci; 
+
 -- Copiando dados para a tabela concessionaria.usuario: ~3 rows (aproximadamente)
 REPLACE INTO `usuario` (`id_usu`, `nome_usu`, `email_usu`, `telefone_usu`, `senha_usu`, `status_usu`, `role`) VALUES
 	(0, 'admin', 'admin@gmail.com', '(11)98229-9155', '$2y$10$IStkVoe8X6t5PeNkhhj/P.vKMyNWIxlP9YW/KvevCKAUUHQJQtCx2', 1, 1),
@@ -141,7 +173,7 @@ REPLACE INTO `usuario` (`id_usu`, `nome_usu`, `email_usu`, `telefone_usu`, `senh
 -- Copiando estrutura para tabela concessionaria.vendas
 CREATE TABLE IF NOT EXISTS `vendas` (
   `id_ven` int NOT NULL AUTO_INCREMENT,
-  `valor_ven` decimal(10,2) NOT NULL,
+  `valor_ven` decimal(20,2) NOT NULL,
   `data_ven` date NOT NULL,
   `id_cli` int NOT NULL,
   `id_car` int NOT NULL,
