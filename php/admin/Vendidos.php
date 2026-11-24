@@ -44,14 +44,49 @@ $nomeMeses = [
             <div id="VVT">
                 <div>
                     <h1>VEÍCULOS VENDIDOS</h1>
-                    <p id="cinza">Histórico de todas as vendas realizadas</p>
-                </div>
-                <div id="total">
+                    <p id="cinza">Histórico de todas as vendas realizadas</p> 
+                    <div id="total">
                     <p id="verde">R$ <?php echo number_format($total_vendas, 2, ',', '.'); ?></p>
                     <p id="cinza">Total em vendas</p>
-                </div>
-                
-                <div id="VVElementos">
+                    
+                </div> 
+            <div id="VVRelatorio">
+                <!-- Formulário Mensal -->
+    <div class="card-relatorio">
+        <h3>Relatório Mensal</h3>
+        <form action="../salvar/Relatorios/relatorio_vendasMensal.php" method="POST" target="_blank">
+            <label>Selecione o Mês:</label><br>
+            <select name="mes_ano" required style="padding: 5px;"  id="escolha">
+                <option value="">Escolha um período...</option>
+                <?php while($row = $resultMeses->fetch_assoc()): ?>
+                    <option value="<?php echo $row['mes'] . '-' . $row['ano']; ?>">
+                        <?php echo $nomeMeses[$row['mes']] . ' de ' . $row['ano']; ?>
+                    </option>
+                <?php endwhile; ?>
+            </select><br><br>
+            <button type="submit" class="btn">Gerar PDF Mensal</button>
+        </form>
+    </div>
+
+    <!-- Formulário Anual -->
+    <div class="card-relatorio">
+        <h3>Relatório Anual</h3>
+        <form action="../salvar/Relatorios/relatorio_vendasAnual.php" method="POST" target="_blank">
+            <label>Selecione o Ano:</label><br>
+            <select name="ano" required style="padding: 5px;"  id="escolha">
+                <option value="">Escolha um ano...</option>
+                <?php while($row = $resultAnos->fetch_assoc()): ?>
+                    <option value="<?php echo $row['ano']; ?>">
+                        <?php echo $row['ano']; ?>
+                    </option>
+                <?php endwhile; ?>
+            </select><br><br>
+            <button type="submit" class="btn">Gerar PDF Anual</button>
+        </form>
+    </div>
+</div>
+                    
+                    <div id="VVElementos">
                 <?php 
                     $stmt = $sql->prepare("SELECT * FROM vendas v INNER JOIN carro c ON v.id_car = c.id_car INNER JOIN cliente cl ON v.id_cli = cl.id_cli");
                     $stmt->execute();
@@ -78,30 +113,32 @@ $nomeMeses = [
                                 $preco_formatado = number_format($row['preco_car'], 2, ',', '.');
                                 ?>
                              
-                                <div id='VVEItens2'>
-                                     <td><img src="<?php echo htmlspecialchars($row['foto_car'], ENT_QUOTES, 'UTF-8');?>" alt='Foto do Veículo' width='200' height='150'></td>
-                                    <div>
+                                <div class='VVEItens2'>
+                                     <td><img src="<?php echo htmlspecialchars($row['foto_car'], ENT_QUOTES, 'UTF-8');?>" alt='Foto do Veículo' width='200' height='150' border-radius='10px'></td>
+                                    <div id="VEEItem1">
                                         <div><?php echo htmlspecialchars($row['marca_car'], ENT_QUOTES, 'UTF-8'); ?></div>
                                         <div>Vendido</div>
-                                        <div class="VEEItem2">
+                                        <div id="VEEItem2">
                                             <span><?php echo htmlspecialchars($row['modelo_car'], ENT_QUOTES, 'UTF-8'); ?></span>
                                             <span><?php echo htmlspecialchars($row['ano_car']); ?></span>
                                         </div>
                                         <span><img src="" alt=""><?php echo htmlspecialchars($row['quilometragem_car']); ?>km</span>
                                         <span><img src="" alt=""><?php echo htmlspecialchars($row['cor_car'], ENT_QUOTES, 'UTF-8'); ?></span>
                                         <span><img src="" alt=""><?php echo htmlspecialchars($row['combustivel_car'], ENT_QUOTES, 'UTF-8'); ?></span>
-
+                                        </div>
                                         <div>Valor da venda</div>
                                         <div>R$ <?php echo htmlspecialchars($row['preco_car']); ?></div>
                                         <div><img src="" alt=""><?php echo htmlspecialchars($row['data_ven'], ENT_QUOTES, 'UTF-8'); ?></div>
-                                        <hr>
+                                        <div id="comprador">
                                         
-                                        <button onclick="window.open('<?php echo $urlWhatsApp; ?>', '_blank')">CONTATAR</button>
+                                        
+                                        <button onclick="window.open('<?php echo $urlWhatsApp; ?>', '_blank')" id="btncontatar">CONTATAR</button>
                                         
                                         <div>Comprador</div>
                                         <div><?php echo htmlspecialchars($row['nome_cli'], ENT_QUOTES, 'UTF-8'); ?></div>
                                         <div><img src="" alt=""><?php echo htmlspecialchars($row['telefone_cli']); ?></div>
                                     </div>
+                                    
                                 </div>
                 <?php  
                             }
@@ -112,39 +149,7 @@ $nomeMeses = [
             </div> <!-- Final dos elementos 1-->
         </div><!-- Final do SubMain-->
         <div style="display: flex; gap: 20px;">
-    <!-- Formulário Mensal -->
-    <div class="card-relatorio">
-        <h3>Relatório Mensal</h3>
-        <form action="../salvar/Relatorios/relatorio_vendasMensal.php" method="POST" target="_blank">
-            <label>Selecione o Mês:</label><br>
-            <select name="mes_ano" required style="padding: 5px;">
-                <option value="">Escolha um período...</option>
-                <?php while($row = $resultMeses->fetch_assoc()): ?>
-                    <option value="<?php echo $row['mes'] . '-' . $row['ano']; ?>">
-                        <?php echo $nomeMeses[$row['mes']] . ' de ' . $row['ano']; ?>
-                    </option>
-                <?php endwhile; ?>
-            </select><br><br>
-            <button type="submit" class="btn">Gerar PDF Mensal</button>
-        </form>
-    </div>
-
-    <!-- Formulário Anual -->
-    <div class="card-relatorio">
-        <h3>Relatório Anual</h3>
-        <form action="../salvar/Relatorios/relatorio_vendasAnual.php" method="POST" target="_blank">
-            <label>Selecione o Ano:</label><br>
-            <select name="ano" required style="padding: 5px;">
-                <option value="">Escolha um ano...</option>
-                <?php while($row = $resultAnos->fetch_assoc()): ?>
-                    <option value="<?php echo $row['ano']; ?>">
-                        <?php echo $row['ano']; ?>
-                    </option>
-                <?php endwhile; ?>
-            </select><br><br>
-            <button type="submit" class="btn">Gerar PDF Anual</button>
-        </form>
-    </div>
+   
 </div>
     </div><!-- Final da Main-->
 </body>

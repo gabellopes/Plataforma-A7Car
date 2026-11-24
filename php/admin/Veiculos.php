@@ -32,8 +32,8 @@ if(isset($_SESSION['sucesso_cadastro'])){
 ?>
             <div id="meio">
                 <div id="titulo">
-                <h1>VEICULOS</h1>
-                <button class="btn" onclick="location.href='Cadastrar/NovoVeiculo.php'"> + NOVO VEICULO</button>
+                <h1>VEÍCULOS</h1>
+                <button class="btn" onclick="location.href='Cadastrar/NovoVeiculo.php'"> + NOVO VEÍCULO</button>
                 </div>
                 <br>
                 <button onclick="window.open('../salvar/Relatorios/relatorio_estoque.php', '_blank')" class="btn">Gerar Relatório em PDF</button>
@@ -66,7 +66,7 @@ if(isset($_SESSION['sucesso_cadastro'])){
                 if($row['status_car'] === 0){
                     echo "
                     <tr>
-                        <td><img src='" . htmlspecialchars($row['foto_car'], ENT_QUOTES, 'UTF-8') . "' alt='Foto do Veículo' width='200' height='150'></td>
+                        <td><img src='" . htmlspecialchars($row['foto_car'], ENT_QUOTES, 'UTF-8') . "' alt='Foto do Veículo' width='140' height='120' border-radius='10px'></td>
                         <td>".htmlspecialchars($row['marca_car'], ENT_QUOTES, 'UTF-8')."</td>
                         <td>".htmlspecialchars($row['modelo_car'], ENT_QUOTES, 'UTF-8')."</td>
                         <td>".htmlspecialchars($row['ano_car'])."</td>

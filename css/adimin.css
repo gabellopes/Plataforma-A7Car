@@ -6,6 +6,9 @@
     font-family: Barlow-Bold;
     src: url(../fonte/BarlowSemiCondensed-Bold.ttf);
 }
+:root{
+    --menu-width: clamp(14rem, 18vw, 18rem);
+}
 h1{
     font-family: Barlow-Bold;
 }
@@ -20,6 +23,7 @@ a{
     padding: 0;
     box-sizing: border-box;
     font-weight: normal;
+    font-family: Barlow;
 }
 body{
     margin-top: 0vh;
@@ -35,55 +39,96 @@ body{
 .logo{
     height: 7.6vh;
     width: 13vh;
-    margin-left: 0.5vw;
+    margin-left: 0;
 }
 header{
     position: fixed;
     top: 0;
-    left: 0;
-    width: 90vw;
+    left: var(--menu-width);
+    right: 0;
+    width: auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-bottom: 1px solid rgba(128, 128, 128, 0.655);
+    border-bottom: 0.0625rem solid rgba(128, 128, 128, 0.655);
     height: 8vh;
     background-color: black;
-    margin-left: 13vw;
+    margin-left: 0;
 }
 header p{
     font-family: Barlow-Bold;
     font-size: 2rem;
 }
 #Menu{
-    left: 0;
-    width: 13vw;
+    width: var(--menu-width);
+    flex: 0 0 var(--menu-width);
+    position: fixed;
+    top: 0;
+    align-self: flex-start;
     display: flex;
     flex-direction: column;
-    border-right: 1px solid rgba(128, 128, 128, 0.655);
+    align-items: stretch;
+    border-right: 0.0625rem solid rgba(128, 128, 128, 0.655);
     height: 100vh;
+    height: 100dvh;
+    min-height: 100vh;
+    min-height: 100dvh;
     background-color: rgb(12, 12, 12);
-    padding: 0vh 0vw 1vh 0vw;
+    overflow-y: auto;
+}
+.menu-logo{
+    height: 8vh;
+    min-height: 3.5rem;
+    display: flex;
+    align-items: center;
+    padding: 0 0.875rem;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.655);
 }
 table{
+    border-radius: 10px;
     border-spacing: 2vw;
-    background-color:  rgba(128, 128, 128, 0.284);
+    background-color:  rgba(183, 183, 183, 0.089);
     border-collapse: collapse;
-    border: 1px solid rgba(128, 128, 128, 0.655);
+    border: 3px solid rgba(170, 6, 6, 0.655);
 }
 th, td {
     border: 1px solid rgba(128, 128, 128, 0.655);
-    padding: 8px;
-    color: rgb(150, 150, 150);
+    padding: 0.5rem;
+    color: rgb(228, 228, 228);
     font-family: Barlow-Bold;
+    font-size: 1.2rem;
+    max-width: 15vw;
 }
 #MItens{
-    border-top: 1px solid rgba(128, 128, 128, 0.655);
-    width: 13vw;
-    padding: 0.5vh 1vw 0.5vh 1vw;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    width: 100%;
+    padding: 0.75rem 0.625rem;
 }
-#IMGmenu{
-    width: 2vw;
-    height: 4vh;
-    margin-left: 0.5vw;
-    margin-right: 0.5vw;
+#MItens a{
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    min-height: 2.625rem;
+    padding: 0.4375rem 0.625rem;
+    border-radius: 0.375rem;
+    font-size: 1.2re m;
+    line-height: 1;
+    white-space: nowrap;
+}
+#MItens a:hover{
+    background-color: rgba(255, 255, 255, 0.08);
+    color: white;
+}
+#MItens .menu-link-site,
+#MItens .menu-link-logout{
+    padding-left: 3.125rem;
+}
+.menu-icon{
+    width: 1.75rem;
+    height: 1.75rem;
+    flex: 0 0 1.75rem; 
+    object-fit: contain;
 }

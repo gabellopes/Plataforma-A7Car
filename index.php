@@ -63,16 +63,20 @@
 
 
 ?>
-    <div id="cat">
+ <div id="cat">
         <div id="textocat">
             <h3>Destaque</h3>
             <h1>ÚLTIMAS ENTRADAS</h1>
-            <div>                
+        </div>      
+        <button id="btnVer" onclick="window.location.href='php/user/catalogo.php'">VER TODOS</button>
+                
+    <div class="catalogo">
+        <div  id="listaVeiculos">
+
 		<?php
                 //onclick=\"location.href='../salvar/S_Favorito.php?id=".$row['id_car']."&status=".$row['status_car']."'\"
                     
                 while($row = $result->fetch_assoc()){
-                   
                 if($row['status_car'] === 0){
 
                     if(isset($_SESSION['user_id'])){
@@ -83,36 +87,36 @@
 
                         if($resultado->num_rows > 0){
                             echo"
-                        <div>
+                        <div id='carro'>
                         <button class='btn-favoritar' data-id=".$row['id_car'].">❤️</button>
                         ";
                         }else{
                         echo"
-                        <div>
+                        <div id='carro'>
                         <button class='btn-favoritar' data-id=".$row['id_car'].">❤</button>
                         ";
                         }
                     }else{
                         echo"
-                        <div>
-                        <button onclick='window.location.href=\"php/user/Login.php\"'>❤</button>
+                        <div id='carro'>
+                        <button class='btn-favoritar' onclick='window.location.href=\"Login.php\"'>❤</button>
                         ";
                     }
+
                     echo "
                    
-                    <img src='" . htmlspecialchars($row['foto_car'], ENT_QUOTES, 'UTF-8') . "' alt='Foto do Veículo' width='200' height='150'>
-                    <div>
-                        <span></span>
-                        <span>Marca:".htmlspecialchars($row['marca_car'], ENT_QUOTES, 'UTF-8')."</span>
-                        <span>Modelo:".htmlspecialchars($row['modelo_car'], ENT_QUOTES, 'UTF-8')."</span>
-                        <span><img src='img/catalogo/calendario.png' alt='📅'>".htmlspecialchars($row['ano_car'])."</span><span><img src='img/catalogo/velocimetro.png' alt='📅'>".htmlspecialchars($row['quilometragem_car'])."</span><span><img src='img/catalogo/cor.png' alt='📅'>".htmlspecialchars($row['combustivel_car'], ENT_QUOTES, 'UTF-8')."</span>
-
-                        <hr>
-
-                        <div>
+                    <img src='" . htmlspecialchars($row['foto_car'], ENT_QUOTES, 'UTF-8') . "' alt='Foto do Veículo' id='fotoCarro'>
+                    <div id='infoCarro'>
+                        <span class='titulo-veiculo'>".htmlspecialchars($row['marca_car'], ENT_QUOTES, 'UTF-8')." ".htmlspecialchars($row['modelo_car'], ENT_QUOTES, 'UTF-8')."</span>
+                        <div class='detalhes-veiculo'>
+                            <span><img src='img/catalogo/calendario.png' alt=''>".htmlspecialchars($row['ano_car'])."</span>
+                            <span><img src='img/catalogo/velocimetro.png' alt=''>".htmlspecialchars($row['quilometragem_car'])."</span>
+                            <span><img src='img/catalogo/cor.png' alt=''>".htmlspecialchars($row['combustivel_car'], ENT_QUOTES, 'UTF-8')."</span>
+                        </div>
+                        <div class='preco-veiculo'>
                             <p>Valor</p>
                             <span>R$".number_format(htmlspecialchars($row['preco_car']), 2, ',', '.')."</span>
-                            <button onclick=\"location.href='php/user/Veiculo.php?id=".$row['id_car']."'\"><img src='img/catalogo/olho.png' alt='📅'>VER</button>
+                            <button onclick=\"location.href='php/user/Veiculo.php?id=".$row['id_car']."'\" alt='📅' class='btn-ver'>👁 VER</button>
                         </div>
                     </div>
                     
@@ -121,14 +125,8 @@
 
                 
                     ";}}?>
-            </div>
         </div>
-        <div>
-        <button id="btnVender" onclick="window.location.href='php/user/catalogo.php'">VER TODOS</button>
         </div>
-        
-            
-        
     </div>
 <?php }catch(Exception $e){
                
@@ -144,7 +142,7 @@
         <button class="btn" onclick="window.open('<?php echo $urlWhatsApp; ?>', '_blank');">FAZER UMA PROPOSTA</button>
         
         <?php $mensagemWhatsApp = "Olá! Vim pelo site A7Car e gostaria de vender meu carro."; include "php/salvar/Config/linkWhatsapp.php";?>
-        <button id="btnVender" onclick="window.open('<?php echo $urlWhatsApp; ?>', '_blank');">VENDER MEU CARRO</button>
+        <button id="btnVender" onclick="window.open('<?php echo $urlWhatsApp; ?>', '_blank');">VENDER MEU VEÍCULO</button>
 
         
 
@@ -168,7 +166,7 @@
               <h1>CONTATO</h1>
                 <h3>📞 (11) 97332-0504
                     <br>
-                    email
+                    aseven7multimarcas@gmail.com
                     <br>
                     📍 Estr. de Itapecerica, 4660 - Capão Redondo, São Paulo - SP, 05849-440
                 </h3>

@@ -94,71 +94,77 @@ foreach ($vendas as $venda) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="../../css/adimin.css">
+    <link rel="stylesheet" href="../../css/ADMdashboard.css">
     <script src="../../js/assets.js"></script>
 </head>
 <body>
 <?php include __DIR__ . "/_Aside.php"; ?>
     <div id="DM1">
-        <div id="DSM">
+        <div >
             <br><br><br><br><br>
-            <div id="DT"><h1>Dashboard</h1></div>
-                <br>
+            <div id="DT">
+                <h1>Dashboard</h1>
                 <button onclick="window.open('../salvar/Relatorios/relatorio_geral.php', '_blank')" class="btn">Gerar Relatório em PDF</button>
+            </div>
+                <br>
+                
             <?php
             echo"
             <div class='DI'>
                 <br><br><br>
                 <div class='DIE'>
-                    <img src='' alt=''>
+                    <img src='../../img/admin/veiculoCor.png' alt='' class='icon'>
                     <h1>Veículos</h1>
                     <p>".$numcar['COUNT(id_car)']."</p>
                 </div>
                 <div class='DIE'>
-                    <img src='' alt=''>
+                    <img src='../../img/admin/clienteCor.png' alt='' class='icon'>
                     <h1>Clientes</h1>
                     <p>".$numcli['COUNT(id_cli)']."</p>
                 </div>
                 <div class='DIE'>
-                    <img src='' alt=''>
+                    <img src='../../img/admin/colaboradoresCor.png' alt='' class='icon'>
                     <h1>Colaboradores</h1>
                     <p>".$numcol['COUNT(id_col)']."</p>
                 </div>
                  <div class='DIE'>
-                    <img src='' alt=''>
+                    <img src='../../img/admin/vendidosCor.png' alt='' class='icon'>
                     <h1>Vendidos</h1>
                     <p>".$numven['COUNT(id_ven)']."</p>
                 </div>
                  <div class='DIE'>
-                    <img src='' alt=''>
+                    <img src='../../img/admin/simulacaoCor.png' alt='' class='icon'>
                     <h1>Simuações</h1>
                     <p>".$numsimu['COUNT(id_simu)']."</p>
                 </div>
              ";?>   
             </div><!-- final dos elementos-->
 
-             <div id="DM1">
+             <div>
         <div id="DSM">
 
 
 
-<div> 
+
     <h2>📊RELATORIO MENSAL</h2>
+    <div id="relatorio"> 
     <?php 
         if($resultvendas->num_rows > 0){
             foreach ($dadosAgrupados as $ano => $meses) {
                 echo "
                 <div onclick='toggleElemento(this)'>
-                    <div>
-                        <img src='#' alt='📅'>
+                    <div id='ano'>
+                        <img src='../../img/catalogo/calendario.png' alt='📅' class='icon'>
                         <h1>".$ano."</h1>
                     </div>
-                    <div>
-                        <span>".number_format($totaisAnuais[$ano], 2, ',', '.')."</span>
+                    <div id='receita'>
+                        <span id='valor'>".number_format($totaisAnuais[$ano], 2, ',', '.')."</span>
                         <span>RECEITA</span>
                     </div>
                     <div>
                         <span class='seta-icone'>🔼</span>
                     </div>
+                    <hr>
                 </div>
                 ";
 
@@ -167,27 +173,28 @@ foreach ($vendas as $venda) {
                 foreach ($meses as $numMes => $listaVendas) {
                     echo "
                     <div onclick='toggleElemento(this)'>
-                        <div>
-                            <img src='#' alt='📅'>
+                        <div id='ano'>
+                            <img src='../../img/catalogo/calendario.png' alt='📅' class='icon'>
                             <h1>".$mesesExtenso[$numMes]."</h1>
                         </div>
-                        <div>
-                            <span>".number_format($totaisMensais[$ano][$numMes], 2, ',', '.')."</span>
+                        <div id='receita'>
+                            <span id='valor'>".number_format($totaisMensais[$ano][$numMes], 2, ',', '.')."</span>
                             <span>RECEITA</span>
                         </div>
                         <div>
                             <span class='seta-icone'>🔼</span>
                         </div>
+                        <hr>
                     </div>
                     ";
                     
-                    echo "<div class='conteudo-mes' style='display: none;'>";
+                    echo "<div class='conteudo-mes'>";
 
                     echo "<ul>";
                     foreach ($listaVendas as $item) {
                         echo "
                         <li>
-                            <img src='".$item['carro_foto']."' alt='Foto carro' width='200' height='150'>
+                            <img src='".$item['carro_foto']."' alt='Foto carro' >
                             <div>
                                 <span>".$item['carro_marca']." ".$item['carro_modelo']." ".$item['carro_ano']."</span>
                                 <span>".$item['cliente_nome']."</span>
@@ -229,15 +236,9 @@ foreach ($vendas as $venda) {
         </div>
     </div>
 
-    <div>
-        <div>
-            <img src="#" alt="💬">
-            <h1>ATENDIMENTO</h1>
-        </div>
-        <div>
-            <img src="#" alt="💬">
-            <h3>Todas as negociações e venda de veículos são realizadas exclusivamente pelo WhatsApp. Os clientes são direcionados diretamente para o atendimento ao clicar nos botões do site.</h3>
-        </div>
+    <div id="atend"> 
+        <h1>💬 ATENDIMENTO</h1>
+        <h3>Todas as negociações e venda de veículos são realizadas exclusivamente pelo WhatsApp. Os clientes são direcionados diretamente para o atendimento ao clicar nos botões do site.</h3>
     </div>
 
         

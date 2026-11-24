@@ -50,16 +50,13 @@ include_once "../salvar/Config/linkWhatsapp.php";
     
     <h3>📍 ENDEREÇO</h3>
             <h2>Estr. de Itapecerica, 4660 - Capão Redondo, São Paulo - SP, 05849-440</h2>
+            <h2>Rua dos bobos N 0</h2>
             <h3>📞 TELEFONE</h3>
             <h2>(11) 97332-0504</h2>
             <h3>📧 E-MAIL</h3>
-            <h2>Rua dos bobos N 0</h2>
+            <h2>aseven7multimarcas@gmail.com</h2>
             <h3>⏰ HORÁRIO</h3>
             <h2>Seg–Sex: 9h–18h · Sáb: 9h–15h</h2>
-
-
-        <div id="exclusi"></div>
-
 
     </div>
 
@@ -110,7 +107,7 @@ include_once "../salvar/Config/linkWhatsapp.php";
       <h1>CONTATO</h1>
         <h3>📞 (11) 97332-0504
             <br>
-            email
+            aseven7multimarcas@gmail.com
             <br>
             📍 Estr. de Itapecerica, 4660 - Capão Redondo, São Paulo - SP, 05849-440
         </h3>

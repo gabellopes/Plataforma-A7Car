@@ -51,22 +51,22 @@ require_once "../salvar/Conexao.php";
     <div id="titulo">
         <h3>Estoque Completo</h3>
         <h1>CATÁLOGO DE VEÍCULOS</h1>
-        <div><input type="text" id="campoBusca" placeholder="Buscar por Marca ou modelo..." value="<?php echo isset($_GET['busca']) ? htmlspecialchars($_GET['busca'], ENT_QUOTES, 'UTF-8') : ''; ?>"><button id="btnLimparBusca" style="width: 20px" onclick="cancelarBusca()">X</button></div>
+        <div><input type="text" id="campoBusca" placeholder="Buscar por Marca ou modelo..." value="<?php echo isset($_GET['busca']) ? htmlspecialchars($_GET['busca'], ENT_QUOTES, 'UTF-8') : ''; ?>"><button id="btn-cancelar-busca" onclick="cancelarBusca()">X</button></div>
     </div>
-
-
 
 
 
     <div class="catalogo">
-    <div id="listaVeiculos">
-        <?php include "buscarCarro.php"; ?>
-    </div>
-    <button id="btn-carregar-mais" style="<?php echo !$temMaisCarros ? 'display: none;' : ''; ?>">
-        Carregar mais veículos
-    </button>
-</div>
+    <div  id="listaVeiculos">
+        
+        <?php 
+        
+            include "buscarCarro.php";
 
+        
+        ?>
+    </div>
+<button id="btn-carregar-mais">Carregar mais veículos</button>
     </div>
     <footer>
         
@@ -87,7 +87,7 @@ require_once "../salvar/Conexao.php";
       <h1>CONTATO</h1>
         <h3>📞 (11) 97332-0504
             <br>
-            email
+            aseven7multimarcas@gmail.com
             <br>
             📍 Estr. de Itapecerica, 4660 - Capão Redondo, São Paulo - SP, 05849-440
         </h3>

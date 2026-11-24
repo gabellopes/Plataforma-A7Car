@@ -58,7 +58,7 @@
 
         <div style="color: red;"><?php if (isset($_SESSION['erro_cadastro'])){echo htmlspecialchars($_SESSION['erro_cadastro'], ENT_QUOTES, 'UTF-8');unset($_SESSION['erro_cadastro']);} ?></div>
         <input type="button" class="btn" value="Salvar" id="Cadastrar" onclick="return confirm('Tem certeza que deseja atualizar este colaborador?') ? validarColaborador() :  true;">
-        <button type="button" class="btn" onclick="history.back()">Voltar</button>
+        <button type="button" class="btn"onclick="window.location.href='../../admin/Colaboradores.php'">Voltar</button>
         </div>
     </form>
         </div>

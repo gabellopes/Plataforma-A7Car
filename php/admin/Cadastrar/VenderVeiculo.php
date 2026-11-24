@@ -15,6 +15,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vender Veiculo</title>
+    <link rel="stylesheet" href="../../../css/adimin.css">
+    <link rel="stylesheet" href="../../../css/ADMvender.css">
 </head>
 <body>
   
@@ -34,36 +36,47 @@
         $result = $stmt->get_result();
         $carro = $result->fetch_assoc();
      ?>
+     <div id="meio">
        <h1>Registrar Venda - <?php echo htmlspecialchars($carro['marca_car'], ENT_QUOTES, 'UTF-8') . " " . htmlspecialchars($carro['modelo_car'], ENT_QUOTES, 'UTF-8'); ?></h1>
-
-       <div>
-
-       <img id="preview-imagem" src="<?php echo !empty($carro['foto_car']) ? htmlspecialchars($carro['foto_car']) : '#'; ?>" alt="Pré-visualização da imagem" style="max-width: 200px; <?php echo empty($carro['foto_car']) ? 'display: none;' : 'display: block;'; ?> border-radius: 5px; border: 1px solid #ccc;" />
-       <p><?php echo htmlspecialchars($carro['marca_car'])?></p>
-       <h1><?php echo htmlspecialchars( $carro['modelo_car'])?></h1>
-       <p><?php echo htmlspecialchars($carro['preco_car'])?></p>
     
-    </div>
-
+<div class="mei">
+    <div>
+       <div id="foto">
+       <img id="preview-imagem" src="<?php echo !empty($carro['foto_car']) ? htmlspecialchars($carro['foto_car']) : '#'; ?>" alt="Pré-visualização da imagem" style="max-width: 30vw; max-height: 40vh; <?php echo empty($carro['foto_car']) ? 'display: none;' : 'display: block;'; ?> border-radius: 5px; border: 1px solid #ccc;" />
+       </div>
+       <div id="nomeV">
+       <h1><?php echo htmlspecialchars($carro['marca_car'])?></h1>
+       <h1><?php echo htmlspecialchars( $carro['modelo_car'])?></h1>
+       </div>
+       <p><?php echo htmlspecialchars($carro['preco_car'])?></p>
+        
+     </div>
+    
+<div id="cadastro">
     <form method="Post" action="../../salvar/S_VendaVeiculo.php">
         <input type="hidden" name="id_car"  value="<?php echo htmlspecialchars(intval($carro['id_car'])); ?>">
         <?php echo $inputCsrf;?>
-        <fieldset><label for="Cpf">CPF</label><input type="text" name="Cpf" id="Cpf" maxlength="14"  required><button type="button" value="BuscarCpf" name="BuscarCpf" id="BuscarCpf">Buscar</button></fieldset>
+        <label for="Cpf">CPF</label><input type="text" name="Cpf" id="Cpf" maxlength="14"  required><button type="button" value="BuscarCpf" name="BuscarCpf" id="BuscarCpf">Buscar</button>
         <div id="Mensagem_cpf"></div>
-        <fieldset><label for="Nome">Nome do Comprador</label><input type="text" name="Nome" id="Nome"  maxlength="255" required></fieldset>
-        <fieldset><label for="Telefone">Telefone</label><input type="text" name="Telefone" id="Telefone" maxlength="15" required></fieldset>
+        <label for="Nome">Nome do Comprador</label><input type="text" name="Nome" id="Nome"  maxlength="255" required>
+        <label for="Telefone">Telefone</label><input type="text" name="Telefone" id="Telefone" maxlength="15" required>
         <div id="Mensagem_telefone"></div>
-        <fieldset><label for="Preco">Valor da venda</label><input type="text" name="Preco" id="Preco" value="<?php echo intval($carro['preco_car']); ?>" required></fieldset>
+        <label for="Preco">Valor da venda</label><input type="text" name="Preco" id="Preco" value="<?php echo intval($carro['preco_car']); ?>" required>
         <div style="color: red;"><?php if (isset($_SESSION['erro_cadastro'])){echo htmlspecialchars($_SESSION['erro_cadastro'], ENT_QUOTES, 'UTF-8');unset($_SESSION['erro_cadastro']);} ?></div>
-        <fieldset><input type="button" id="Cadastrar" value="Salvar" onclick="return confirm('Tem certeza que deseja vender este veiculo?') ? validarVenda() : true;"></fieldset>
-        <fieldset><button type="button" onclick="history.back()">Voltar</button></fieldset>
+        <div>
+        <input type="button" class="btn" value="Salvar" onclick="return confirm('Tem certeza que deseja vender este veiculo?') ? validarVenda() : true;">
+            <button type="button" onclick="window.location.href='../../admin/Veiculos.php'">Voltar</button>
+        </div>
     </form>
+</div>
+
     <?php }else{ ?>
         <p>Cliente não encontrado.</p>
     <?php } ?>
     <script src="../../../js/mascaras.js"></script>
     <script src="../../../js/validarformulario.js"></script>
     <script src="../../../js/BuscarCpf.js"></script>
-
+</div>
+</div>
 </body>
 </html>

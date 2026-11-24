@@ -136,7 +136,7 @@ require_once "../../auth/authadm.php";
                         </div>
 
                         <input type="button" id="Cadastrar" class="btn" value="Salvar" onclick="return confirm('Tem certeza que deseja salvar as alterações?') ? validarVeiculo() : false;">
-                        <button type="button" class="btn" onclick="history.back()">Voltar</button>
+                        <button type="button" class="btn" onclick="window.location.href='../../admin/Veiculos.php'">Voltar</button>
                     </div>
                 </form>
             </div>
