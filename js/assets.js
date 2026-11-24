@@ -6,7 +6,6 @@ const botaoFecharDialogEmailEnviado = document.getElementById("FecharDialogEmail
 const botaoEnviarDialog = document.getElementById("enviarDialog");
 const botaotemCnh = document.getElementById("temCnh");
 const botaonaoTemCnh = document.getElementById("naoTemCnh");
-const botoesFavorito = document.querySelectorAll('.btn-favoritar');
 const divCnh = document.getElementById("divCnh");
 
 const inputTipoCadastro = document.getElementById("tipoCadastro");
@@ -105,58 +104,54 @@ if (botaoMostrarConfirmarSenha) {
     });
 }
 
-if (botoesFavorito) {
-    botoesFavorito.forEach(botao => {
-        botao.addEventListener('click', (e) => {
-            const veiculoId = e.currentTarget.getAttribute('data-id');
-            const botaoAtual = e.currentTarget;
+document.addEventListener('click', (e) => {
+    const botaoAtual = e.target.closest('.btn-favoritar');
+    if (!botaoAtual) return;
 
-            /*MODIFICAR QUANDO PUBLICAR*/
-            fetch('/Plataforma-A7Car/php/salvar/S_favorito.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: `id_veiculo=${encodeURIComponent(veiculoId)}`
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.sucesso) {
-                    if (botaoAtual.textContent === '❤') {
-                        botaoAtual.textContent = '❤️';
-                    } else {
-                        botaoAtual.textContent = '❤';
-                    }
-                } else {
-                    alert('Erro ao favoritar: ' + data.mensagem);
-                }
-            })
-            .catch(error => {
-                console.error('Erro na requisição:', error);
-            });
-        });
-    });
+    const veiculoId = botaoAtual.getAttribute('data-id');
 
-    function toggleElemento(elemento) {
-        var conteudo = elemento.nextElementSibling;
-        var seta = elemento.querySelector('.seta-icone');
-
-        if (conteudo.style.display === "none" || conteudo.style.display === "") {
-            conteudo.style.display = "block";
-            if (seta) {
-                seta.innerText = "🔽";
+    fetch('/Plataforma-A7Car/php/salvar/S_favorito.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `id_veiculo=${encodeURIComponent(veiculoId)}`
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.sucesso) {
+            if (botaoAtual.textContent === '❤') {
+                botaoAtual.textContent = '❤️';
+            } else {
+                botaoAtual.textContent = '❤';
             }
         } else {
-            conteudo.style.display = "none";
-            if (seta) {
-                seta.innerText = "🔼";
-            }
+            alert('Erro ao favoritar: ' + data.mensagem);
+        }
+    })
+    .catch(error => {
+        console.error('Erro na requisição:', error);
+    });
+});
+
+function toggleElemento(elemento) {
+    var conteudo = elemento.nextElementSibling;
+    var seta = elemento.querySelector('.seta-icone');
+
+    if (conteudo.style.display === "none" || conteudo.style.display === "") {
+        conteudo.style.display = "block";
+        if (seta) {
+            seta.innerText = "🔽";
+        }
+    } else {
+        conteudo.style.display = "none";
+        if (seta) {
+            seta.innerText = "🔼";
         }
     }
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-    // 1. Abertura automática do modal de e-mail/simulação via URL
     const urlParams = new URLSearchParams(window.location.search);
     const dialogEmail = document.getElementById('dialogEmailEnviado');
 
