@@ -8,38 +8,43 @@ try {
         session_start();
     }
 
-    $busca = isset($_GET['busca']) ? $_GET['busca'] : '';$limit = 3;
+    $busca = isset($_GET['busca']) ? $_GET['busca'] : '';
+    $limit = isset($_GET['limit']) ? (int)$_GET['limit'] : 3;
+    if ($limit < 1) {
+        $limit = 3;
+    }
     $offset = isset($_GET['offset']) ? (int)$_GET['offset'] : 0;
-    $limiteQuery =$limit + 1;
+    $limiteQuery = $limit + 1;
 
     if (!empty($busca)) {
-        $stmt =$sql->prepare("SELECT * FROM carro WHERE (marca_car LIKE ? OR modelo_car LIKE ?) AND status_car = 0 LIMIT ? OFFSET ?");
-        $termo = "\%" . $busca . "%";
-        $stmt->bind_param("ssii", $termo,$termo, $limiteQuery,$offset);
+        $stmt = $sql->prepare("SELECT * FROM carro WHERE (marca_car LIKE ? OR modelo_car LIKE ?) AND status_car = 0 LIMIT ? OFFSET ?");
+        $termo = "%" . $busca . "%";
+        $stmt->bind_param("ssii", $termo, $termo, $limiteQuery, $offset);
     } else {
-        $stmt =$sql->prepare("SELECT * FROM carro WHERE status_car = 0 LIMIT ? OFFSET ?");
-        $stmt->bind_param("ii", $limiteQuery,$offset);
+        $stmt = $sql->prepare("SELECT * FROM carro WHERE status_car = 0 LIMIT ? OFFSET ?");
+        $stmt->bind_param("ii", $limiteQuery, $offset);
     }
 
     $stmt->execute();
-    $result =$stmt->get_result();
+    $result = $stmt->get_result();
 
-    if ($result->num_rows === 0 &&$offset === 0) {
+    if ($result->num_rows === 0 && $offset === 0) {
         echo "<p>Nenhum veículo encontrado.</p>";
     }
 
-    $temMaisCarros = ($result->num_rows >$limit);
+    $temMaisCarros = ($result->num_rows > $limit);
 
-    while ($row =$result->fetch_assoc()) {
-        if ($contador >=$limit) {
+    while ($row = $result->fetch_assoc()) {
+        if ($contador >= $limit) {
             break;
         }
 
         if ($row['status_car'] === 0) {
             if (isset($_SESSION['user_id'])) {
-                $verifica =$sql->prepare("SELECT id_fav FROM favorito WHERE id_usu = ? AND id_car = ?");
-                $verifica->bind_param("ii", $_SESSION['user_id'], $row['id_car']);$verifica->execute();
-                $resultado =$verifica->get_result();
+                $verifica = $sql->prepare("SELECT id_fav FROM favorito WHERE id_usu = ? AND id_car = ?");
+                $verifica->bind_param("ii", $_SESSION['user_id'], $row['id_car']);
+                $verifica->execute();
+                $resultado = $verifica->get_result();
 
                 if ($resultado->num_rows > 0) {
                     echo "<div><button class='btn-favoritar' data-id=" . $row['id_car'] . ">❤️</button>";
