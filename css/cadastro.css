@@ -94,8 +94,11 @@
     }
 
     #cadastro label {
-        font-size: 1.2rem;
-    }
+    color: rgb(0, 0, 0);
+    font-size: 3vh;
+    display: block;   
+    text-align: left;
+}
 
     #cadastro input {
         padding: 12px;
