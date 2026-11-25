@@ -1,87 +1,474 @@
-
-#CE{
-    width: fit-content;
-    height: 50vh;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 1vh 0vw 1vh 0vw;
-    font-size: 1.3rem;
-    margin-top: 8vh;
-}
-
-#CE td{
-    width: 6.5vw;
-}
-#meio{
+.meio{
+    background-color: #090909;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    margin-left: 20vw;
-    margin-top: 10vh;
-    width: 80vw;
-}
-.btn{
-    border: 4px solid  rgb(223, 25, 25);
-    background-color: rgb(223, 25, 25);
-    color: white;
-    font-family: Barlow-Bold;
-    font-size: 1.3rem;
-    width: fit-content;
-    padding: 0.35rem 0.75rem;
-    cursor: pointer;
-    position: fixed;
-    z-index: 2;
-}
-#titulo{
-    display: flex;
-    flex-direction: row;
     align-items: center;
+    padding: 3vh 5vw 5vh 5vw;
+    box-sizing: border-box;
+}
+
+.meio > a{
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: fit-content;
+    margin-bottom: 2vh;
+    padding: 0.45rem 0.9rem;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #a3a3a3;
+    font-family: Barlow-Bold;
+    font-size: 1.05rem;
+    letter-spacing: 0.03em;
+    transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.meio > a:hover{
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.09);
+    border-color: rgba(255, 255, 255, 0.18);
+    transform: translateX(-3px);
+}
+
+.meio > div{
+    position: relative;
+    background: linear-gradient(160deg, #161616 0%, #101010 100%);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 1380px;
+    min-height: 70vh;
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.95fr);
+    grid-template-rows: auto auto auto auto auto auto 1fr auto auto;
+    column-gap: 2.5rem;
+    row-gap: 0.85rem;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+.btn-favoritar{
+    position: absolute;
+    top: calc(2rem + 14px);
+    left: calc(2rem + 14px);
+    margin: 0;
+    color: #ffffff;
+    background-color: rgba(15, 15, 15, 0.72);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 20;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-favoritar:hover{
+    background-color: rgb(223, 25, 25);
+    border-color: rgb(223, 25, 25);
+    transform: scale(1.08);
+}
+
+.galeria-veiculo{
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 0;
+    grid-column: 1;
+    grid-row: 1 / 10;
+}
+
+.foto-principal-wrapper{
+    position: relative;
+    width: 100%;
+    height: clamp(320px, 48vh, 520px);
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #0b0b0b;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.foto-principal-wrapper img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.45s ease;
+}
+
+.foto-principal-wrapper:hover img{
+    transform: scale(1.02);
+}
+
+.carrossel-miniaturas{
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin-top: 0.9rem;
     width: 100%;
 }
-#titulo .btn{
-    top: 10vh;
-    right: 2vw;
-}
-#meio > .btn{
-    top: calc(10vh + 3.5rem);
-    right: 2vw;
-}
-#foto{
-    width: 140px;
-    height: 120px;
-    border-radius: 5px;
+
+.miniaturas-track{
+    display: flex;
+    flex: 1;
+    gap: 0.65rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    padding: 0.25rem 0;
 }
 
-@media (max-width: 768px) {
+.miniaturas-track::-webkit-scrollbar{
+    display: none;
+}
 
-    #CE{
+.miniaturas-track img{
+    flex: 0 0 88px;
+    width: 88px;
+    height: 60px;
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    opacity: 0.6;
+    transition: opacity 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.miniaturas-track img:hover{
+    opacity: 0.9;
+    border-color: rgba(255, 255, 255, 0.35);
+}
+
+.miniaturas-track img.ativa{
+    border-color: rgb(223, 25, 25);
+    box-shadow: 0 0 12px rgba(223, 25, 25, 0.35);
+    opacity: 1;
+}
+
+.btn-carrossel{
+    flex: 0 0 36px;
+    width: 36px;
+    height: 60px;
+    background-color: rgba(255, 255, 255, 0.06);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-carrossel:hover{
+    background-color: rgb(223, 25, 25);
+    border-color: rgb(223, 25, 25);
+}
+
+.meio > div > span:nth-of-type(2){
+    grid-column: 2;
+    grid-row: 1;
+    color: #9ca3af;
+    font-family: Barlow-Bold;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    align-self: end;
+}
+
+.meio > div > span:nth-of-type(3){
+    grid-column: 2;
+    grid-row: 2;
+    color: #ffffff;
+    font-family: Barlow-Bold;
+    font-size: clamp(1.9rem, 2.5vw, 2.6rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+}
+
+.meio > div > span:nth-of-type(4){
+    grid-column: 2;
+    grid-row: 3;
+    color: rgb(235, 35, 35);
+    font-family: Barlow-Bold;
+    font-size: clamp(1.75rem, 2.2vw, 2.3rem);
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    margin-bottom: 0.25rem;
+}
+
+.meio > div > div:nth-of-type(2),
+.meio > div > div:nth-of-type(3),
+.meio > div > div:nth-of-type(4){
+    grid-column: 2;
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    background-color: #1b1b1b;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 10px;
+    padding: 0.8rem 1rem;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.meio > div > div:nth-of-type(2):hover,
+.meio > div > div:nth-of-type(3):hover,
+.meio > div > div:nth-of-type(4):hover{
+    background-color: #202020;
+    border-color: rgba(223, 25, 25, 0.35);
+}
+
+.meio > div > div:nth-of-type(2){
+    grid-row: 4;
+}
+
+.meio > div > div:nth-of-type(3){
+    grid-row: 5;
+}
+
+.meio > div > div:nth-of-type(4){
+    grid-row: 6;
+}
+
+.meio > div > div:nth-of-type(2) img,
+.meio > div > div:nth-of-type(3) img,
+.meio > div > div:nth-of-type(4) img{
+    width: 22px;
+    height: 22px;
+    flex: 0 0 22px;
+    object-fit: contain;
+}
+
+.meio > div > div:nth-of-type(2) span,
+.meio > div > div:nth-of-type(3) span,
+.meio > div > div:nth-of-type(4) span{
+    color: #f3f4f6;
+    font-size: 1.15rem;
+}
+
+.meio > div > div:nth-of-type(5){
+    grid-column: 2;
+    grid-row: 7;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    margin-top: 0.4rem;
+    padding-top: 1rem;
+    line-height: 1.65;
+}
+
+.meio > div > div:nth-of-type(5) span{
+    color: #cbd5e1;
+    font-size: 1.05rem;
+}
+
+.meio > div > button:not(.btn-favoritar){
+    grid-column: 2;
+    justify-self: stretch;
+    width: 100%;
+    height: 50px;
+    min-height: 50px;
+    margin: 0;
+    background: linear-gradient(180deg, rgb(232, 32, 32) 0%, rgb(195, 18, 18) 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    font-family: Barlow-Bold;
+    font-size: 1.1rem;
+    letter-spacing: 0.02em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(223, 25, 25, 0.28);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease, background 0.2s ease;
+}
+
+.meio > div > button:not(.btn-favoritar):hover{
+    filter: brightness(1.08);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 26px rgba(223, 25, 25, 0.4);
+}
+
+.meio > div > button:nth-last-child(2){
+    grid-row: 8;
+}
+
+.meio > div > button:last-child{
+    grid-row: 9;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: none;
+}
+
+.meio > div > button:last-child:hover{
+    background: rgba(255, 255, 255, 0.11);
+    border-color: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+@media (max-width: 960px){
+    .meio > div{
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        row-gap: 1rem;
+        padding: 1.5rem;
+    }
+
+    .galeria-veiculo{
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .btn-favoritar{
+        top: calc(1.5rem + 12px);
+        left: calc(1.5rem + 12px);
+    }
+
+    .meio > div > span:nth-of-type(2),
+    .meio > div > span:nth-of-type(3),
+    .meio > div > span:nth-of-type(4),
+    .meio > div > div:nth-of-type(2),
+    .meio > div > div:nth-of-type(3),
+    .meio > div > div:nth-of-type(4),
+    .meio > div > div:nth-of-type(5),
+    .meio > div > button:not(.btn-favoritar){
+        grid-column: 1;
+        grid-row: auto;
+    }
+}
+
+@media (max-width: 768px){
+    body > br{
+        display: none;
+    }
+
+    .meio{
+        padding: 16px 3.5vw 32px;
+    }
+
+    .meio > a{
+        font-size: 0.95rem;
+        margin-bottom: 14px;
+    }
+
+    .meio > div{
+        position: relative;
+        width: 100%;
+        min-height: 0;
+        display: flex;
         flex-direction: column;
-        align-items: center;
-        padding: 1vh 0vw 1vh 0vw;
-        font-size: 1.3rem;
-        margin-top: 8vh;
+        gap: 12px;
+        padding: 14px;
+        border-radius: 14px;
     }
 
-    #meio{
-        margin-left: 2vw;
-        margin-top: 10vh;
-        width: 100vw;
-    }
-    
-    #foto{
-        width: 100px;
-        height: 80px;
-    }
-    #titulo h1{
-        font-size: 1.8rem;
+    .galeria-veiculo{
+        width: 100%;
+        min-width: 0;
     }
 
-    #titulo .btn{
+    .foto-principal-wrapper{
+        width: 100%;
+        height: 250px;
+        border-radius: 10px;
+    }
+
+    .foto-principal-wrapper img{
+        width: 100%;
+        height: 100%;
+    }
+
+    .miniaturas-track img{
+        flex: 0 0 72px;
+        width: 72px;
+        height: 50px;
+    }
+
+    .btn-carrossel{
+        flex: 0 0 32px;
+        width: 32px;
+        height: 50px;
+    }
+
+    .meio > div > span:nth-of-type(2){
+        font-size: 0.9rem;
+        margin-top: 4px;
+    }
+
+    .meio > div > span:nth-of-type(3){
+        font-size: clamp(1.5rem, 6vw, 2rem);
+        overflow-wrap: anywhere;
+    }
+
+    .meio > div > span:nth-of-type(4){
+        font-size: clamp(1.6rem, 6.5vw, 2.1rem);
+        padding-bottom: 10px;
+    }
+
+    .meio > div > div:nth-of-type(2),
+    .meio > div > div:nth-of-type(3),
+    .meio > div > div:nth-of-type(4){
+        padding: 12px 14px;
+        gap: 10px;
+    }
+
+    .meio > div > div:nth-of-type(2) span,
+    .meio > div > div:nth-of-type(3) span,
+    .meio > div > div:nth-of-type(4) span,
+    .meio > div > div:nth-of-type(5) span{
+        font-size: 1rem;
+        overflow-wrap: anywhere;
+    }
+
+    .meio > div > div:nth-of-type(5){
+        margin-top: 2px;
+        padding-top: 12px;
+    }
+
+    .meio > div > button:not(.btn-favoritar){
+        width: 100%;
+        height: 48px;
+        min-height: 48px;
         font-size: 1rem;
     }
-    #meio > .btn{
-        font-size: 1rem;
+
+    .btn-favoritar{
+        top: 24px;
+        left: 24px;
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px){
+    .meio{
+        padding: 12px 12px 28px;
     }
 
+    .meio > div{
+        padding: 12px;
+    }
+
+    .foto-principal-wrapper{
+        height: 215px;
+    }
+
+    .btn-favoritar{
+        top: 22px;
+        left: 22px;
+        width: 38px;
+        height: 38px;
+    }
 }
