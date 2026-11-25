@@ -45,10 +45,13 @@ if (!isset($_SESSION['user_email']) and !isset($_SESSION['user_senha'])) {
         <h3>Minha lista</h3>
         <h1>FAVORITOS</h1>
     </div>
-
-    <div id="listaFavoritos">
-        <?php include "buscarFavoritos.php"; ?>
+    
+    <div class="catalogo">
+        <div id="listaFavoritos">
+            <?php include "buscarFavoritos.php"; ?>
+        </div>
     </div>
+    
     <button id="btn-carregar-mais-fav" style="<?php echo !$temMaisCarros ? 'display: none;' : ''; ?>">Carregar mais veículos</button>
 
     <footer>
@@ -67,11 +70,11 @@ if (!isset($_SESSION['user_email']) and !isset($_SESSION['user_senha'])) {
             </div>
             <div>
                 <h1>CONTATO</h1>
-                <h3>numero telefone
+                <h3>📞 (11) 97332-0504
                     <br>
-                    email
+                    aseven7multimarcas@gmail.com
                     <br>
-                    endereço
+                    📍 Estr. de Itapecerica, 4660 - Capão Redondo, São Paulo - SP, 05849-440
                 </h3>
             </div>
             <div id="divadm">

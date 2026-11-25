@@ -38,9 +38,15 @@
     top: 10vh;
     right: 2vw;
 }
+
 #meio > .btn{
     top: calc(10vh + 3.5rem);
     right: 2vw;
+}
+#foto{
+    width: 100px;
+    height: 100px;
+    border-radius: 500px;
 }
 
 @media (max-width: 768px) {
@@ -61,7 +67,7 @@
     
     #foto{
         width: 100px;
-        height: 80px;
+        height: 100px;
     }
     #titulo h1{
         font-size: 1.8rem;

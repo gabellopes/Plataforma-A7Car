@@ -42,24 +42,24 @@ try {
         }
 
         echo "
-        <div>
+        <div id='carro'>
             <button class='btn-favoritar' data-id=" . $row['id_car'] . ">❤️</button>
-            <img src='" . htmlspecialchars($row['foto_car'], ENT_QUOTES, 'UTF-8') . "' alt='Foto do Veículo' width='200' height='150'>
-            <span></span>
-            <span>" . htmlspecialchars($row['marca_car'], ENT_QUOTES, 'UTF-8') . "</span>
-            <span>" . htmlspecialchars($row['modelo_car'], ENT_QUOTES, 'UTF-8') . "</span>
-            <span>" . htmlspecialchars($row['ano_car']) . "</span><span>" . htmlspecialchars($row['quilometragem_car']) . "</span><span>" . htmlspecialchars($row['combustivel_car'], ENT_QUOTES, 'UTF-8') . "</span>
-
-            <hr>
-
-            <div>
-                <p>Valor</p>
-                <span>R$" . htmlspecialchars($row['preco_car']) . "</span>
-                <button onclick=\"location.href='Veiculo.php?id=" . $row['id_car'] . "'\">👁VER</button>
+            <img src='" . htmlspecialchars($row['foto_car'], ENT_QUOTES, 'UTF-8') . "' alt='Foto do Veículo' id='fotoCarro'>
+                    <div id='infoCarro'>
+                        <span class='titulo-veiculo'>".htmlspecialchars($row['marca_car'], ENT_QUOTES, 'UTF-8')." ".htmlspecialchars($row['modelo_car'], ENT_QUOTES, 'UTF-8')."</span>
+                        <div class='detalhes-veiculo'>
+                            <span><img src='../../img/catalogo/calendario.png' alt=''>".htmlspecialchars($row['ano_car'])."</span>
+                            <span><img src='../../img/catalogo/velocimetro.png' alt=''>".htmlspecialchars($row['quilometragem_car'])."</span>
+                            <span><img src='../../img/catalogo/gasolina.png' alt=''>".htmlspecialchars($row['combustivel_car'], ENT_QUOTES, 'UTF-8')."</span>
+                        </div>
+                        <div class='preco-veiculo'>
+                            <p>Valor</p>
+                            <span>R$".number_format(htmlspecialchars($row['preco_car']), 2, ',', '.')."</span>
+                            <button onclick=\"location.href='Veiculo.php?id=".$row['id_car']."'\" alt='📅' class='btn-ver'>👁 VER</button>
+                        </div>
+                    </div>
             </div>
-        </div>
-        <br>
-        ";
+            <br>";
 
         $contador++;
     }

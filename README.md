@@ -1,6 +1,6 @@
 # Plataforma-A7Car
 link do protótipo:
-https://place-pic-60929211.figma.site/
+https://place-gitpic-60929211.figma.site/
 
 ALTER BD
 tabela carro

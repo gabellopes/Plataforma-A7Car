@@ -33,10 +33,10 @@
             <div id="meio">
                 <div id="titulo">
                 <h1>CLIENTE</h1>
-                <button class="btn" onclick="window.location.href='Cadastrar/NovoCliente.php'"> + NOVO CLIENTE</button>
+                <button class="btn" onclick="window.location.href='Cadastrar/NovoCliente.php'"> <img src="../../img/admin/novo.png" alt="">  NOVO CLIENTE</button>
                 </div>
                 <br>
-                <button onclick="window.open('../salvar/Relatorios/relatorio_cliente.php', '_blank')" class="btn">Gerar Relatório em PDF</button>
+                <button onclick="window.open('../salvar/Relatorios/relatorio_cliente.php', '_blank')" class="btn"><img src="../../img/admin/pdf.png" alt=""> GERAR RELATORIO</button>
 
             <div id="CE">
                 <table>
@@ -66,10 +66,10 @@
                         <td>".htmlspecialchars($row['email_cli'], ENT_QUOTES, 'UTF-8')."</td>
                         <td>".htmlspecialchars($row['cnh_cli'])."</td>
                         <td>
-                            <button onclick=\"location.href='../salvar/Editar/EditarCliente.php?id=".htmlspecialchars($row['id_cli'])."'\">⚙</button>
+                            <button onclick=\"location.href='../salvar/Editar/EditarCliente.php?id=".htmlspecialchars($row['id_cli'])."'\"><img src='../../img/admin/edit.png' alt='editar' class='icone-tabela'></button>
                         </td>
                         <td>
-                            <button onclick=\"return confirm('Tem certeza que deseja excluir este cliente?') ? location.href='../salvar/Excluir/ExcluirCliente.php?id=".$row['id_cli']."' : false;\">🧨</button>
+                            <button onclick=\"return confirm('Tem certeza que deseja excluir este cliente?') ? location.href='../salvar/Excluir/ExcluirCliente.php?id=".$row['id_cli']."' : false;\"><img src='../../img/admin/lixeira.png' alt='editar' class='icone-tabela'></button>
                         </td>
                     </tr>";
                 }

@@ -64,7 +64,7 @@ $nomeMeses = [
                     </option>
                 <?php endwhile; ?>
             </select><br><br>
-            <button type="submit" class="btn">Gerar PDF Mensal</button>
+            <button type="submit" class="btn"><img src="../../img/admin/pdf.png" alt=""> GERAR RELATORIO MENSAL</button>
         </form>
     </div>
 
@@ -81,7 +81,7 @@ $nomeMeses = [
                     </option>
                 <?php endwhile; ?>
             </select><br><br>
-            <button type="submit" class="btn">Gerar PDF Anual</button>
+            <button type="submit" class="btn"><img src="../../img/admin/pdf.png" alt=""> GERAR RELATORIO ANUAL</button>
         </form>
     </div>
 </div>
@@ -117,7 +117,6 @@ $nomeMeses = [
                                      <td><img src="<?php echo htmlspecialchars($row['foto_car'], ENT_QUOTES, 'UTF-8');?>" alt='Foto do Veículo' width='200' height='150' border-radius='10px'></td>
                                     <div id="VEEItem1">
                                         <div><?php echo htmlspecialchars($row['marca_car'], ENT_QUOTES, 'UTF-8'); ?></div>
-                                        <div>Vendido</div>
                                         <div id="VEEItem2">
                                             <span><?php echo htmlspecialchars($row['modelo_car'], ENT_QUOTES, 'UTF-8'); ?></span>
                                             <span><?php echo htmlspecialchars($row['ano_car']); ?></span>

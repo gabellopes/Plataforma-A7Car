@@ -90,6 +90,7 @@ table{
     background-color:  rgba(183, 183, 183, 0.089);
     border-collapse: collapse;
     border: 3px solid rgba(170, 6, 6, 0.655);
+    width: 75vw;
 }
 th, td {
     border: 1px solid rgba(128, 128, 128, 0.655);
@@ -98,10 +99,16 @@ th, td {
     font-family: Barlow-Bold;
     font-size: 1.2rem;
     max-width: 15vw;
+    border-left: none;
+    border-right: none;
+}
+tr:first-child{
+    background-color: rgb(150, 4, 4);
 }
 #MItens{
     display: flex;
     flex-direction: column;
+    flex: 1;
     gap: 0.25rem;
     width: 100%;
     padding: 0.75rem 0.625rem;
@@ -126,6 +133,19 @@ th, td {
 #MItens .menu-link-logout{
     padding-left: 3.125rem;
 }
+#MItens .menu-link-logout{
+    background-color: red;
+}
+
+#MItens #link-baixo{
+    margin-top: auto;
+}
+
+#MItens hr{
+    border: none;
+    border-top: 1px solid rgba(128, 128, 128, 0.655); /* 3px é a espessura */
+
+}
 .menu-icon{
     width: 1.75rem;
     height: 1.75rem;
@@ -137,7 +157,11 @@ th, td {
     :root {
         --menu-width: 100%;
     }
-
+    
+    header p{
+        font-family: Barlow-Bold;
+        font-size: 1.5rem;
+    }
     body {
         padding-bottom: 5rem;
     }
@@ -184,6 +208,7 @@ th, td {
     #MItens .menu-link-site,
     #MItens .menu-link-logout {
         padding-left: 0.5rem;
+        margin-top: 0;
     }
 
     .menu-icon {
@@ -206,7 +231,6 @@ th, td {
         max-height: none;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
-        /* Flip the scrollport; the table below is flipped back. */
         transform: scaleY(-1);
     }
 
@@ -226,4 +250,10 @@ th, td {
         padding: 0.45rem;
         font-size: 1rem;
     }
+    
+}
+
+
+#titulo h1{
+    font-size: 2vw;
 }

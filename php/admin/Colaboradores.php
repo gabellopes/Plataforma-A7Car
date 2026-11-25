@@ -34,10 +34,10 @@
         <div id="meio">
             <div id="titulo">
                 <h1>COLABORADORES</h1>
-                <button class="btn" onclick="window.location.href='Cadastrar/NovoColaborador.php'"> + NOVO COLABORADOR</button>
+                <button class="btn" onclick="window.location.href='Cadastrar/NovoColaborador.php'"> <img src="../../img/admin/novo.png" alt="">  NOVO COLABORADOR</button>
             </div>
             <br>
-            <button onclick="window.open('../salvar/Relatorios/relatorio_colaborador.php', '_blank')" class="btn">Gerar Relatório em PDF</button>
+            <button onclick="window.open('../salvar/Relatorios/relatorio_colaborador.php', '_blank')" class="btn"><img src="../../img/admin/pdf.png" alt=""> GERAR RELATORIO</button>
             <div id="CE">
                 <table>
                 <tr>
@@ -65,10 +65,10 @@
                         <td>".htmlspecialchars($row['telefone_col'])."</td>
                         <td>".htmlspecialchars($row['email_col'], ENT_QUOTES, 'UTF-8')."</td>
                         <td>
-                            <button onclick=\"location.href='../salvar/Editar/EditarColaborador.php?id=".$row['id_col']."'\">⚙</button>
+                            <button onclick=\"location.href='../salvar/Editar/EditarColaborador.php?id=".$row['id_col']."'\"><img src='../../img/admin/edit.png' alt='editar' class='icone-tabela'></button>
                         </td>
                         <td>
-                            <button onclick=\"return confirm('Tem certeza que deseja excluir este colaborador?') ? location.href='../salvar/Excluir/ExcluirColaborador.php?id=".$row['id_col']."&caminho=".$caminho."' : false;\">🧨</button>
+                            <button onclick=\"return confirm('Tem certeza que deseja excluir este colaborador?') ? location.href='../salvar/Excluir/ExcluirColaborador.php?id=".$row['id_col']."&caminho=".$caminho."' : false;\"><img src='../../img/admin/lixeira.png' alt='editar' class='icone-tabela'></button>
                         </td>
                     </tr>";
                 }

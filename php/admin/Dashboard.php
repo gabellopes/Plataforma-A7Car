@@ -101,10 +101,9 @@ foreach ($vendas as $venda) {
 <?php include __DIR__ . "/_Aside.php"; ?>
     <div id="DM1">
         <div >
-            <br><br><br><br><br>
             <div id="DT">
                 <h1>Dashboard</h1>
-                <button onclick="window.open('../salvar/Relatorios/relatorio_geral.php', '_blank')" class="btn">Gerar Relatório em PDF</button>
+                <button onclick="window.open('../salvar/Relatorios/relatorio_geral.php', '_blank')" class="btn"><img src="../../img/admin/pdf.png" alt=""> GERAR RELATORIO</button>
             </div>
                 <br>
                 
@@ -112,31 +111,33 @@ foreach ($vendas as $venda) {
             echo"
             <div class='DI'>
                 <br><br><br>
-                <div class='DIE'>
-                    <img src='../../img/admin/veiculoCor.png' alt='' class='icon'>
-                    <h1>Veículos</h1>
-                    <p>".$numcar['COUNT(id_car)']."</p>
-                </div>
-                <div class='DIE'>
-                    <img src='../../img/admin/clienteCor.png' alt='' class='icon'>
-                    <h1>Clientes</h1>
-                    <p>".$numcli['COUNT(id_cli)']."</p>
-                </div>
-                <div class='DIE'>
-                    <img src='../../img/admin/colaboradoresCor.png' alt='' class='icon'>
-                    <h1>Colaboradores</h1>
-                    <p>".$numcol['COUNT(id_col)']."</p>
-                </div>
-                 <div class='DIE'>
-                    <img src='../../img/admin/vendidosCor.png' alt='' class='icon'>
-                    <h1>Vendidos</h1>
-                    <p>".$numven['COUNT(id_ven)']."</p>
-                </div>
-                 <div class='DIE'>
-                    <img src='../../img/admin/simulacaoCor.png' alt='' class='icon'>
-                    <h1>Simuações</h1>
-                    <p>".$numsimu['COUNT(id_simu)']."</p>
-                </div>
+                <ul class='lista-dashboard'>
+                    <li class='DIE'id='DI-veiculo'>
+                        <img src='../../img/admin/veiculoCor.png' alt='' class='icon'>
+                        <h1>Veículos</h1>
+                        <p>".$numcar['COUNT(id_car)']."</p>
+                    </li>
+                    <li class='DIE' id='DI-cliente'>
+                        <img src='../../img/admin/clienteCor.png' alt='' class='icon'>
+                        <h1>Clientes</h1>
+                        <p>".$numcli['COUNT(id_cli)']."</p>
+                    </li>
+                    <li class='DIE' id='DI-colaborador'>
+                        <img src='../../img/admin/colaboradoresCor.png' alt='' class='icon'>
+                        <h1>Colaboradores</h1>
+                        <p>".$numcol['COUNT(id_col)']."</p>
+                    </li>
+                    <li class='DIE' id='DI-vendido'>
+                        <img src='../../img/admin/vendidosCor.png' alt='' class='icon'>
+                        <h1>Vendidos</h1>
+                        <p>".$numven['COUNT(id_ven)']."</p>
+                    </li>
+                    <li class='DIE' id='DI-simulacao'>
+                        <img src='../../img/admin/simulacaoCor.png' alt='' class='icon'>
+                        <h1>Simulações</h1>
+                        <p>".$numsimu['COUNT(id_simu)']."</p>
+                    </li>
+                </ul>
              ";?>   
             </div><!-- final dos elementos-->
 
@@ -145,8 +146,7 @@ foreach ($vendas as $venda) {
 
 
 
-
-    <h2>📊RELATORIO MENSAL</h2>
+    <h2 id="relatorio-titulo"><img src="../../img/admin/grafico.png" alt=""> RELATORIO</h2>
     <div id="relatorio"> 
     <?php 
         if($resultvendas->num_rows > 0){
@@ -214,7 +214,7 @@ foreach ($vendas as $venda) {
                 echo "</div>";
             }
         }else{
-            echo "<img src='#' alt='↗'> <h3>Nenhuma venda registrada ainda.</h3>";
+            echo "<h3>↗ Nenhuma venda registrada ainda.</h3>";
         }
     ?>
 </div>   

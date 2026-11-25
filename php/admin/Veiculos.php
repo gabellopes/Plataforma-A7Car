@@ -31,12 +31,13 @@ if(isset($_SESSION['sucesso_cadastro'])){
 
 ?>
             <div id="meio">
+                <div></div>
                 <div id="titulo">
+                    <button class="btn" onclick="location.href='Cadastrar/NovoVeiculo.php'"> <img src="../../img/admin/novo.png" alt=""> NOVO VEÍCULO</button>
                 <h1>VEÍCULOS</h1>
-                <button class="btn" onclick="location.href='Cadastrar/NovoVeiculo.php'"> + NOVO VEÍCULO</button>
+                
                 </div>
-                <br>
-                <button onclick="window.open('../salvar/Relatorios/relatorio_estoque.php', '_blank')" class="btn">Gerar Relatório em PDF</button>
+                <button onclick="window.open('../salvar/Relatorios/relatorio_estoque.php', '_blank')" class="btn"><img src="../../img/admin/pdf.png" alt=""> GERAR RELATORIO</button>
             <div id="CE">
                 <table>
                 <tr>
@@ -75,13 +76,13 @@ if(isset($_SESSION['sucesso_cadastro'])){
                         <td>R$".number_format(htmlspecialchars($row['preco_car']), 2, ',', '.')."</td>
                         <td>".htmlspecialchars($row['data_car'], ENT_QUOTES, 'UTF-8')."</td>
                         <td>
-                            <button onclick=\"location.href='../salvar/Editar/EditarVeiculo.php?id=".$row['id_car']."'\">⚙</button>
+                            <button onclick=\"location.href='../salvar/Editar/EditarVeiculo.php?id=".$row['id_car']."'\"><img src='../../img/admin/edit.png' alt='editar' class='icone-tabela'></button>
                         </td>
                                                 <td>
-                            <button onclick=\"location.href='Cadastrar/VenderVeiculo.php?id=".$row['id_car']."'\">🟩</button>
+                            <button onclick=\"location.href='Cadastrar/VenderVeiculo.php?id=".$row['id_car']."'\"><img src='../../img/admin/checkCinza.png' alt='editar' class='icone-tabela'></button>
                         </td>
                         <td>
-                        <button onclick=\"return confirm('Tem certeza que deseja excluir este veículo?') ? location.href='../salvar/Excluir/ExcluirVeiculo.php?id=".$row['id_car']."&caminho=".$caminho."' : false;\">🧨</button>
+                        <button onclick=\"return confirm('Tem certeza que deseja excluir este veículo?') ? location.href='../salvar/Excluir/ExcluirVeiculo.php?id=".$row['id_car']."&caminho=".$caminho."' : false;\"><img src='../../img/admin/lixeira.png' alt='editar' class='icone-tabela'></button>
                         </td>
                     </tr>";}
                      

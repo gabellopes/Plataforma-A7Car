@@ -122,8 +122,8 @@ span img{
     border: none;
     font-family: Barlow-Bold;
     font-size: 1.2rem;
-    border-radius: 32px;
-    width: fit-content;
+    border-radius: 10px;
+    width: 2vw;
     height: 4vh;
     cursor: pointer;
     margin-left: 0.5vw;
@@ -222,7 +222,9 @@ span img{
 }
 
 @media (max-width: 768px) {
-
+    #btn-cancelar-busca {
+     width: 7vw;
+}
     #titulo {
         margin-top: 0;
         height: auto;

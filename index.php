@@ -111,7 +111,7 @@
                         <div class='detalhes-veiculo'>
                             <span><img src='img/catalogo/calendario.png' alt=''>".htmlspecialchars($row['ano_car'])."</span>
                             <span><img src='img/catalogo/velocimetro.png' alt=''>".htmlspecialchars($row['quilometragem_car'])."</span>
-                            <span><img src='img/catalogo/cor.png' alt=''>".htmlspecialchars($row['combustivel_car'], ENT_QUOTES, 'UTF-8')."</span>
+                            <span><img src='img/catalogo/gasolina.png' alt=''>".htmlspecialchars($row['combustivel_car'], ENT_QUOTES, 'UTF-8')."</span>
                         </div>
                         <div class='preco-veiculo'>
                             <p>Valor</p>

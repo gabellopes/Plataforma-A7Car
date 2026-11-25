@@ -59,7 +59,7 @@
     align-items: center;
     text-align: center;
 }
-#listaVeiculos{
+#listaVeiculos, #listaFavoritos{
     display: flex;
     flex-direction: row;
     justify-content: left;
@@ -145,7 +145,7 @@ span img{
     cursor: pointer;
     margin-left: 0.5vw;
 }
-#btn-carregar-mais {
+#btn-carregar-mais-fav {
     background-color: rgb(223, 25, 25);
     color: white;
     border: none;
@@ -156,6 +156,22 @@ span img{
     height: 5vh;
     cursor: pointer;
     margin-top: 2vh;
+}
+
+#btn-carregar-mais-fav {
+    background-color: rgb(223, 25, 25);
+    color: white;
+    border: none;
+    font-family: Barlow-Bold;
+    font-size: 1.2rem;
+    border-radius: 32px;
+    width: fit-content;
+    height: 4vh;
+    cursor: pointer;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    margin-left: 42vw;
+    flex-wrap: nowrap;
 }
 #infoCarro {
     display: flex;
@@ -257,7 +273,7 @@ span img{
         width: 100%;
         padding: 15px;
     }
-    #listaVeiculos{
+    #listaVeiculos, #listaFavoritos{
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;

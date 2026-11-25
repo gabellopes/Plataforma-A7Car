@@ -84,7 +84,7 @@ if (botaoMostrarSenha) {
     botaoMostrarSenha.addEventListener('click', () => {
         if (Senha.type === 'password') {
             Senha.type = 'text';
-            botaoMostrarSenha.textContent = '🙈';
+            botaoMostrarSenha.textContent = '✖';
         } else {
             Senha.type = 'password';
             botaoMostrarSenha.textContent = '👁';
@@ -96,7 +96,7 @@ if (botaoMostrarConfirmarSenha) {
     botaoMostrarConfirmarSenha.addEventListener('click', () => {
         if (ConfirmarSenha.type === 'password') {
             ConfirmarSenha.type = 'text';
-            botaoMostrarConfirmarSenha.textContent = '🙈';
+            botaoMostrarConfirmarSenha.textContent = '✖';
         } else {
             ConfirmarSenha.type = 'password';
             botaoMostrarConfirmarSenha.textContent = '👁';

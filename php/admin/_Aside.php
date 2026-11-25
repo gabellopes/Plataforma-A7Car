@@ -14,7 +14,13 @@
         <a href="Colaboradores.php"><img class="menu-icon" src="../../img/admin/colaboradores.png" alt="">COLABORADORES</a>
         <a href="Vendidos.php"><img class="menu-icon" src="../../img/admin/vendidos.png" alt="">VENDIDOS</a>
         <a href="Simulacoes.php"><img class="menu-icon" src="../../img/admin/simulacao.png" alt="">SIMULAÇÕES</a>
-        <a href="../user/catalogo.php" class="menu-link-site">VER SITE</a>
-        <a href="../salvar/Sair.php" class="menu-link-logout">SAIR</a>
+        <hr id="link-baixo">
+        <a href="../user/catalogo.php" class="menu-link-site"><img class="menu-icon" src="../../img/admin/verSite.png" alt="">VER SITE</a>
+        <hr>
+        <a href="../user/catalogo.php" class="menu-link-site"><img class="menu-icon" src="../../img/admin/ajuda.png" alt="">MANUAL</a>
+        <hr>
+        <a href="../salvar/Sair.php" class="menu-link-logout"><img src="../../img/admin/logOut.png" alt=""> SAIR</a>
+
+        
     </nav>
 </aside>

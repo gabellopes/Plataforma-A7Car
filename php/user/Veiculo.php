@@ -136,7 +136,7 @@ require_once "../salvar/Conexao.php";
                 <div><img src="../../img/catalogo/velocimetro.png"
                         alt="📅"><span><?php echo htmlspecialchars($row['quilometragem_car'], ENT_QUOTES, 'UTF-8'); ?></span>
                 </div>
-                <div><img src="../../img/catalogo/cor.png"
+                <div><img src="../../img/catalogo/gasolina.png"
                         alt="📅"><span><?php echo htmlspecialchars($row['combustivel_car'], ENT_QUOTES, 'UTF-8'); ?></span>
                 </div>
                 <div><span><?php echo htmlspecialchars($row['descricao_car'], ENT_QUOTES, 'UTF-8'); ?></span></div>
@@ -145,13 +145,13 @@ require_once "../salvar/Conexao.php";
                 $mensagemWhatsApp = "Olá! Tenho interesse no " . $row['marca_car'] . " " . $row['modelo_car'] . " " . $row['ano_car'] . " (R$ " . number_format((float) $row['preco_car'], 2, ',', '.') . "). Gostaria de mais informações sobre este veículo!";
                 include_once "../salvar/Config/linkWhatsapp.php";
                 ?>
-                <button onclick="window.open('<?php echo $urlWhatsApp; ?>', '_blank');">💬NEGOCIAR VIA WHATSAPP</button>
+                <button onclick="window.open('<?php echo $urlWhatsApp; ?>', '_blank');"><img src='../../img/catalogo/mensagem.png'>NEGOCIAR VIA WHATSAPP</button>
 
                 <?php
                 if (!isset($_SESSION['user_email'])) {
-                    echo "<button onclick='window.location.href=\"Login.php\"'>✈FAZER SIMULAÇÃO</button>";
+                    echo "<button onclick='window.location.href=\"Login.php\"'><img src='../../img/catalogo/grafico.png'>FAZER SIMULAÇÃO</button>";
                 } else {
-                    echo "<button id='abrirDialog'>✈FAZER SIMULAÇÃO</button>";
+                    echo "<button id='abrirDialog'><img src='../../img/catalogo/grafico.png'>FAZER SIMULAÇÃO</button>";
                 }
                 ?>
             </div><!-- Fim da div do carro -->
