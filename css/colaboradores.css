@@ -35,9 +35,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-align: center;
     gap: 1vh;
-    width: auto;
-    max-width: 25vw;
+    width: 25vw;
     height: auto;
     min-height: 55vh;
     border-radius: 10px;
@@ -80,6 +80,20 @@
     #titulo h1 {
         font-size: 2.2rem;
     }
+        #colaboradores{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        margin-left: 0;
+        gap: 20px;
+    }
+
+    .colaborador{
+        width: min(85vw, 420px);
+    }
 
 }
 
@@ -91,6 +105,20 @@
 
     #titulo h3 {
         font-size: 1rem;
+    }
+    #colaboradores{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        margin-left: 0;
+        gap: 20px;
+    }
+
+    .colaborador{
+        width: min(85vw, 420px);
     }
 
 }

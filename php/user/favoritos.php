@@ -17,7 +17,7 @@ $result = $stmt->get_result();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catalogo</title>
+    <title>Favoritos</title>
     <link rel="stylesheet" href="../../css/principal.css">
     <link rel="stylesheet" href="../../css/favoritos.css">
 </head>

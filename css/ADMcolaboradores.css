@@ -42,3 +42,36 @@
     top: calc(10vh + 3.5rem);
     right: 2vw;
 }
+
+@media (max-width: 768px) {
+
+    #CE{
+        flex-direction: column;
+        align-items: center;
+        padding: 1vh 0vw 1vh 0vw;
+        font-size: 1.3rem;
+        margin-top: 8vh;
+    }
+
+    #meio{
+        margin-left: 2vw;
+        margin-top: 10vh;
+        width: 100vw;
+    }
+    
+    #foto{
+        width: 100px;
+        height: 80px;
+    }
+    #titulo h1{
+        font-size: 1.8rem;
+    }
+
+    #titulo .btn{
+        font-size: 1rem;
+    }
+    #meio > .btn{
+        font-size: 1rem;
+    }
+
+}

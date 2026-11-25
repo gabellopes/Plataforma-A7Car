@@ -82,3 +82,72 @@ form{
     gap: 2vw;
 }
 
+@media (max-width: 768px){
+    #meio{
+        height: auto;
+        min-height: 0;
+        padding: 1.25rem 1rem;
+        text-align: center;
+    }
+
+    #meio h1{
+        font-size: clamp(1.6rem, 6vw, 2.4rem);
+        line-height: 1.15;
+        overflow-wrap: anywhere;
+    }
+
+    .mei{
+        height: auto;
+        min-height: 75vh;
+        padding: 1rem;
+    }
+
+    #cadastro{
+        width: min(100%, 520px);
+        padding: 1.25rem;
+        flex-direction: column;
+    }
+
+    #cadastro form{
+        width: 100%;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    #cadastro form > div,
+    #cadastro form > div > div{
+        width: 100%;
+        min-width: 0;
+    }
+
+    #cadastro label{
+        display: block;
+        font-size: 1rem;
+    }
+
+    #cadastro input{
+        width: 100%;
+        min-width: 0;
+        padding: 0.75rem;
+        font-size: 1rem;
+    }
+
+    #cadastro button,
+    #cadastro .btn{
+        width: auto;
+        min-height: 44px;
+        padding: 0.6rem 0.9rem;
+        font-size: 1rem;
+    }
+
+    #cadastro .btn:hover{
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px){
+    #cadastro{
+        padding: 1rem;
+    }
+}
+

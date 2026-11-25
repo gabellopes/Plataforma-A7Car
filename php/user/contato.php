@@ -73,7 +73,7 @@ include_once "../salvar/Config/linkWhatsapp.php";
         <Select id="Atendimento">
             <option value="fazer uma proposta">Fazer uma proposta</option>
             <option value="fazer uma simulacao">Solicitar uma simulação</option>
-            <option value="vender meu carro">Vender meu carro</option>
+            <option value="vender meu carro">Vender meu Veículo</option>
         </Select>
 
       <br>

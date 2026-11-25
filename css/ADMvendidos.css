@@ -114,6 +114,128 @@ span{
     margin-top: 5vh;
 }
 
+@media (max-width: 768px){
+    #VVM{
+        width: 100%;
+        min-width: 0;
+        margin-left: 0;
+        padding: 1rem;
+    }
+
+    #VVT{
+        width: 100%;
+        min-width: 0;
+    }
+
+    #VVT > div{
+        width: 100%;
+        min-width: 0;
+    }
+
+    #VVT h1{
+        font-size: clamp(1.4rem, 4vw, 2rem);
+        line-height: 1.15;
+        overflow-wrap: anywhere;
+    }
+
+    #total{
+        margin-left: 0;
+    }
+
+    #verde{
+        font-size: 1.5rem;
+        overflow-wrap: anywhere;
+    }
+
+    #VVRelatorio{
+        width: 100%;
+        gap: 0.75rem;
+        margin-top: 1.5rem;
+    }
+
+    .card-relatorio{
+        flex: 1 1 0;
+        min-width: 0;
+    }
+
+    #escolha{
+        width: 100%;
+        min-width: 0;
+        margin-left: 0;
+        padding-right: 1.75rem;
+    }
+
+    .card-relatorio .btn{
+        max-width: 100%;
+        padding: 0.5rem;
+        font-size: 0.9rem;
+        white-space: normal;
+    }
+
+    .VVEItens2{
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 0.5rem;
+        padding: 0.75rem;
+    }
+
+    .VVEItens2 > td{
+        display: block;
+        flex: 0 0 72px;
+    }
+
+    .VVEItens2 > td img{
+        display: block;
+        width: 100%;
+        height: auto;
+        max-height: 60px;
+        object-fit: cover;
+    }
+
+    .VVEItens2 > #VEEItem1{
+        flex: 1 1 110px;
+        min-width: 0;
+    }
+
+    .VVEItens2 > #comprador{
+        flex: 1 1 100px;
+        min-width: 0;
+    }
+
+    .VVEItens2 > div{
+        flex: 1 1 70px;
+        min-width: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .VVEItens2 div,
+    .VVEItens2 span{
+        font-size: 0.95rem;
+    }
+
+    #btncontatar{
+        min-height: 40px;
+        height: auto;
+        padding: 0.4rem 0.6rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px){
+    #VVM{
+        padding: 0.6rem;
+    }
+
+    #VVRelatorio{
+        gap: 0.5rem;
+    }
+
+    .VVEItens2{
+        gap: 0.4rem;
+        padding: 0.6rem;
+    }
+}
+
 
 
 

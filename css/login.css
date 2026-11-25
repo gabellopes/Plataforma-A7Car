@@ -63,6 +63,8 @@
 #login label {
     color: rgb(0, 0, 0);
     font-size: 3vh;
+    display: block;   
+    text-align: left;
 }
 
 #login a{
@@ -73,14 +75,14 @@
 
 @media (max-width: 768px) {
 
-    #titulo {
+    #meio {
         margin-top: 0;
         height: auto;
         min-height: 130px;
         padding: 25px 20px;
     }
 
-    #titulo h1 {
+    #meio h1 {
         font-size: 2.3rem;
     }
 
@@ -118,7 +120,7 @@
 
 @media (max-width: 480px) {
 
-    #titulo h1 {
+    #meio h1 {
         font-size: 2rem;
     }
 

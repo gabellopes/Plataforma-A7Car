@@ -188,7 +188,7 @@ foreach ($vendas as $venda) {
                     </div>
                     ";
                     
-                    echo "<div class='conteudo-mes'>";
+                    echo "<div class='conteudo-mes' style='display: none;'>";
 
                     echo "<ul>";
                     foreach ($listaVendas as $item) {

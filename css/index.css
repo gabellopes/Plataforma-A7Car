@@ -173,7 +173,7 @@ input {
     background-color: rgba(51, 51, 51, 0.425);
     border: none;
     border-radius: 32px;
-    width: 2vw;
+    width: fit-content;
     height: 4vh;
     cursor: pointer;
     position: absolute;
@@ -348,7 +348,12 @@ span img{
         height: auto;
         padding: 25px 15px;
         flex-direction: column;
+        align-items: stretch;
         gap: 15px;
+    }
+
+    #textocat {
+        width: 100%;
     }
 
     #textocat h1 {
@@ -358,6 +363,56 @@ span img{
 
     #textocat h3 {
         margin: 0 0 10px 0;
+    }
+
+    #cat #btnVer {
+        align-self: flex-end;
+        margin: 0;
+        min-height: 44px;
+        padding: 8px 14px;
+        font-size: 1rem;
+    }
+
+    #cat .catalogo {
+        width: 100%;
+    }
+
+    #cat #listaVeiculos {
+        width: 100%;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+        padding: 0;
+        gap: 16px;
+    }
+
+    #cat #carro {
+        width: min(90vw, 420px);
+        height: auto;
+        min-height: 0;
+        margin: 0;
+    }
+
+    #cat #fotoCarro {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+    }
+
+    #cat #infoCarro {
+        flex: initial;
+        min-height: auto;
+    }
+
+    #cat #infoCarro .titulo-veiculo {
+        display: block;
+        width: 100%;
+        min-width: 0;
+        white-space: normal;
+        overflow: visible;
+        overflow-wrap: anywhere;
+        text-overflow: clip;
     }
 
     #cat #btnVender {
@@ -403,6 +458,14 @@ span img{
 
     #textocat h1 {
         font-size: 1.7rem;
+    }
+
+    #cat {
+        padding: 20px 12px;
+    }
+
+    #cat #btnVer {
+        font-size: 0.95rem;
     }
 
     #atend h1 {

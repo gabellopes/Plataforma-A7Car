@@ -99,7 +99,7 @@
                     }else{
                         echo"
                         <div id='carro'>
-                        <button class='btn-favoritar' onclick='window.location.href=\"Login.php\"'>❤</button>
+                        <button class='btn-favoritar' onclick='window.location.href=\"php/user/Login.php\"'>❤</button>
                         ";
                     }
 

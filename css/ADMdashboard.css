@@ -143,11 +143,111 @@ hr{
     gap: 1vh;
     padding: 2vh 1vw 2vh 1vw;
 }
-@media (max-width: 700px){
+
+@media (max-width: 768px){
+
+    #DM1{
+        margin-left: 1vw;
+    }
+
+    #atend h3{
+        font-size: 1rem;
+    }
+
+    #DSM{
+        width: 100%;
+        padding: 24px 12px;
+    }
+
+    #DSM > h2{
+        font-size: 1.2rem;
+    }
+
+    #relatorio{
+        width: 100%;
+        min-width: 0;
+        margin: 0;
+        padding: 12px;
+    }
+
+    #relatorio > div[onclick],
+    .conteudo-ano > div[onclick]{
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto auto;
+        align-items: center;
+        gap: 8px;
+    }
+
+    #relatorio #ano{
+        min-width: 0;
+        gap: 8px;
+        padding: 8px 0;
+    }
+
+    #relatorio #ano h1{
+        font-size: 1.1rem;
+        overflow-wrap: anywhere;
+    }
+
+    #relatorio #receita{
+        align-items: flex-end;
+        gap: 0;
+        margin-left: 0;
+        text-align: right;
+    }
+
+    #relatorio #valor{
+        font-size: 1rem;
+        white-space: nowrap;
+    }
+
+    #relatorio .seta-icone{
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+    }
+
+    #relatorio hr{
+        grid-column: 1 / -1;
+        width: 100%;
+    }
+
+    #relatorio .conteudo-mes{
+        padding: 0;
+    }
+
+    #DT{
+        width: 100%;
+        flex-direction: row;
+        justify-content: flex-start;
+        text-align: left;
+        align-items: flex-start;
+        gap: 26vw;
+    }
+
+    #DT button{
+        position: static;
+        max-width: 100%;
+        margin: 0;
+        font-size: 1rem;
+        white-space: normal;
+    }
+
+    .DIE{
+        min-width: fit-content;
+    }
+
+    .DIE h1,
+    .DIE p{
+        font-size: 1rem;
+    }
+
     .conteudo-mes li{
         align-items: flex-start;
         flex-wrap: wrap;
     }
+
     .conteudo-mes li > div:last-of-type{
         flex: 1 1 calc(100% - 6rem);
         align-items: flex-start;

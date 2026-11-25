@@ -80,7 +80,7 @@ input {
     background-color: rgba(51, 51, 51, 0.425);
     border: none;
     border-radius: 32px;
-    width: 2vw;
+    width: fit-content;
     height: 4vh;
     cursor: pointer;
     position: absolute;
@@ -123,10 +123,11 @@ span img{
     font-family: Barlow-Bold;
     font-size: 1.2rem;
     border-radius: 32px;
-    width: 2vw;
+    width: fit-content;
     height: 4vh;
     cursor: pointer;
     margin-left: 0.5vw;
+    flex-wrap: nowrap;
 }
 #btn-carregar-mais {
     background-color: rgb(223, 25, 25);
@@ -135,12 +136,13 @@ span img{
     font-family: Barlow-Bold;
     font-size: 1.2rem;
     border-radius: 32px;
-    width: 15vw;
+    width: fit-content;
     height: 4vh;
     cursor: pointer;
     margin-top: 2vh;
     margin-bottom: 2vh;
     margin-left: 42vw;
+    flex-wrap: nowrap;
 }
 #infoCarro {
     display: flex;
@@ -242,6 +244,43 @@ span img{
     .catalogo {
         width: 100%;
         padding: 15px;
+    }
+    #listaVeiculos{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+        width: 100%;
+        padding: 1vh 0;
+    }
+
+    #carro {
+        width: min(90vw, 420px);
+        height: auto;
+        min-height: 0;
+        margin: 4vh 0 0;
+    }
+
+    #fotoCarro {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+    }
+
+    #infoCarro {
+        flex: initial;
+        min-height: auto;
+    }
+
+    #infoCarro .titulo-veiculo {
+        display: block;
+        width: 100%;
+        min-width: 0;
+        white-space: normal;
+        overflow: visible;
+        overflow-wrap: anywhere;
+        text-overflow: clip;
     }
 
 }

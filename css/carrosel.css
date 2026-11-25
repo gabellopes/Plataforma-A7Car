@@ -69,3 +69,36 @@
 .btn-carrossel:hover {
     background: rgba(0, 123, 255, 0.8);
 }
+
+@media (max-width: 768px) {
+    .foto-principal-wrapper {
+        width: 100%;
+        height: clamp(220px, 42vh, 420px);
+    }
+
+    .foto-principal-wrapper img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .carrossel-miniaturas {
+        gap: 8px;
+        margin-top: 12px;
+    }
+
+    .miniaturas-track {
+        min-width: 0;
+        gap: 8px;
+        padding: 8px 0;
+    }
+
+    .miniaturas-track img {
+        flex: 0 0 64px;
+        height: 64px;
+    }
+
+    .btn-carrossel {
+        flex: 0 0 40px;
+        height: 48px;
+    }
+}

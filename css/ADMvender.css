@@ -91,4 +91,104 @@ form{
     gap: 1vh;
 }
 
+@media (max-width: 768px){
+    #meio{
+        min-height: 0;
+        padding: 1rem;
+    }
+
+    #meio > h1{
+        max-width: 100%;
+        font-size: clamp(1.75rem, 7vw, 2.5rem);
+        line-height: 1.15;
+        margin: 0 auto;
+        text-align: center;
+        white-space: normal;
+        word-break: normal;
+        overflow-wrap: break-word;
+    }
+
+    .mei{
+        width: 100%;
+        height: auto;
+        min-height: 80vh;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 1vw;
+        padding: 1rem 0;
+    }
+
+    .mei > div:first-child{
+        width: 45%;
+        min-width: 0;
+        text-align: center;
+    }
+
+    #foto{
+        width: 100%;
+        justify-content: center;
+        padding: 0 0 0.5rem;
+    }
+
+    #preview-imagem{
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        max-height: 30vh;
+        object-fit: contain;
+    }
+
+    #nomeV{
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.25rem;
+    }
+
+    #nomeV h1{
+        font-size: clamp(1rem, 3.8vw, 1.5rem);
+        line-height: 1.1;
+        overflow-wrap: anywhere;
+    }
+
+    .mei > div:first-child > p{
+        font-size: clamp(0.85rem, 3vw, 1.1rem);
+        overflow-wrap: anywhere;
+    }
+
+    #cadastro{
+        width: 53%;
+        min-width: 0;
+        padding: 0.75rem;
+    }
+
+    #cadastro form{
+        width: 100%;
+        min-width: 0;
+        padding: 0.5rem 0;
+    }
+
+    #cadastro input{
+        width: 100%;
+        min-width: 0;
+        margin: 0.35rem 0;
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px){
+    .mei{
+        gap: 0.5rem;
+    }
+
+    .mei > div:first-child{
+        width: 42%;
+    }
+
+    #cadastro{
+        width: 56%;
+        padding: 0.6rem;
+    }
+}
 

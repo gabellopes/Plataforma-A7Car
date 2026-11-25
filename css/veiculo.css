@@ -177,52 +177,83 @@
 }
 
 @media (max-width: 768px){
-    .meio{
-        padding: 0vh 3vw 4vh 3vw;
+    body > br{
+        display: none;
     }
+
+    .meio{
+        padding: 16px 3vw 32px;
+    }
+
     .meio > div{
-        width: 94vw;
+        width: 100%;
+        min-height: 0;
         display: flex;
         flex-direction: column;
-        gap: 0;
-        padding: 2vh 3vw;
+        gap: 14px;
+        padding: 16px;
     }
+
     .galeria-veiculo{
-        width: 88vw;
+        width: 100%;
+        min-width: 0;
     }
-    .foto-principal-wrapper{
-        width: 88vw;
-        height: 32vh;
+
+    .meio > div > span:nth-of-type(2){
+        font-size: 1.1rem;
     }
-    .foto-principal-wrapper img{
-        width: 88vw;
-        height: 32vh;
+
+    .meio > div > span:nth-of-type(3){
+        font-size: clamp(1.4rem, 5vw, 2rem);
+        overflow-wrap: anywhere;
     }
-    .miniaturas-track img{
-        flex-basis: 18vw;
-        height: 8vh;
+
+    .meio > div > span:nth-of-type(4){
+        font-size: clamp(1.6rem, 6vw, 2.2rem);
     }
-    .btn-carrossel{
-        flex-basis: 8vw;
-        height: 7vh;
-    }
+
     .meio > div > div:nth-of-type(2) img,
     .meio > div > div:nth-of-type(3) img,
     .meio > div > div:nth-of-type(4) img{
-        width: 6vw;
-        height: 4vh;
+        flex: 0 0 24px;
+        width: 24px;
+        height: 24px;
     }
+
+    .meio > div > div:nth-of-type(2) span,
+    .meio > div > div:nth-of-type(3) span,
+    .meio > div > div:nth-of-type(4) span,
+    .meio > div > div:nth-of-type(5) span{
+        font-size: 1rem;
+        overflow-wrap: anywhere;
+    }
+
     .meio > div > div:nth-of-type(5){
-        border-top: 1px solid rgba(128, 128, 128, 0.655);
+        line-height: 1.5;
+        padding-top: 12px;
     }
+
     .meio > div > button:not(.btn-favoritar){
-        width: 88vw;
-        height: 5vh;
-        margin-top: 1vh;
-        margin-bottom: 1vh;
+        width: 100%;
+        min-height: 48px;
+        margin: 0;
+        padding: 10px 12px;
+        font-size: 1rem;
     }
+
     .btn-favoritar{
         width: 10vw;
         height: 5vh;
+    }
+}
+
+@media (max-width: 480px){
+    .meio{
+        padding-right: 12px;
+        padding-left: 12px;
+    }
+
+    .meio > div{
+        padding: 12px;
     }
 }
