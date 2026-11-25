@@ -55,8 +55,7 @@ try {
             $resImg = $stmtBuscaImg->get_result();
 
             if ($rowImg = $resImg->fetch_assoc()) {
-                /*MODIFICAR QUANDO PUBLICAR*/
-                $caminhoFisico = "../../../.." . $rowImg['caminho_img'];
+                $caminhoFisico = "../../.." . $rowImg['caminho_img'];
 
                 if (!empty($rowImg['caminho_img']) && file_exists($caminhoFisico)) {
                     unlink($caminhoFisico);

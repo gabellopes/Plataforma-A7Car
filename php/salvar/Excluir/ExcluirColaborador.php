@@ -11,11 +11,10 @@ include __DIR__ . "../../Conexao.php";
 
 $id = trim($_GET['id'] ?? '');
 $caminho = trim($_GET['caminho']); 
-$caminhoRelativo = "../../../..$caminho";
+$caminhoRelativo = "../../..$caminho";
 
 
 
-/*MODIFICAR QUANDO PUBLICAR*/
 if(file_exists($caminhoRelativo)){
     try{ 
     $stmt = $sql->prepare("DELETE FROM colaborador WHERE id_col = ?");

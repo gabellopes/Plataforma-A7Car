@@ -25,8 +25,7 @@ $Descricao = trim($_POST['Descricao'] ?? '');
 $Imagem = $_FILES['Imagem'];
 $id = trim($_POST['id'] ?? '');
 
-/*MODIFICAR QUANDO PUBLICAR*/
-$caminho = "../../../.." . $_POST['foto_col'];
+$caminho = "../../.." . $_POST['foto_col'];
 
 if (empty($Nome) || empty($Email) || empty($Telefone) || empty($Servico) || empty($Descricao)) {
     $_SESSION['erro_cadastro'] = 'Preencha todos os campos.';

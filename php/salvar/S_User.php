@@ -24,8 +24,7 @@ $emailAssunto = 'Confirmação de Cadastro';
 $emailTitulo = 'Bem-vindo ao nosso sistema!';
 $emailTextoLink = 'Clique aqui para confirmar seu cadastro';
 
-/*MODIFICAR QUANDO PUBLICAR*/
-$emaiLink = 'http://localhost/Plataforma-A7Car/php/salvar/Atualizar/ValidarUsuario.php?email=' . urlencode($email); 
+$emaiLink = 'https://a7car.freehosting.dev//php/salvar/Atualizar/ValidarUsuario.php?email=' . urlencode($email); 
 
 if (empty($Nome) || empty($Email) || empty($Telefone) || empty($Senha) || empty($Confirmar_Senha)) {
     $_SESSION['erro_cadastro'] = 'Preencha todos os campos.';

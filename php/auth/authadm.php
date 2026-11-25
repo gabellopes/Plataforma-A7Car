@@ -6,8 +6,7 @@ if (session_status() === PHP_SESSION_NONE) {
 $tempoInatividade = 1800; 
 
 if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] !== 1) {
-    /*MODIFICAR QUANDO PUBLICAR*/
-    header('Location: /Plataforma-A7car/php/user/Login.php?erro=acesso_negado');
+    header('Location: /php/user/Login.php?erro=acesso_negado');
     exit;
 }
 
@@ -15,8 +14,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] !== 1) {
 if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > $tempoInatividade)) {
     session_unset();
     session_destroy();
-    /*MODIFICAR QUANDO PUBLICAR*/
-    header('Location: /Plataforma-A7car/php/user/Login.php?erro=sessao_expirada');
+    header('Location: /php/user/Login.php?erro=sessao_expirada');
     exit;
 }
 

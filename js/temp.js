@@ -28,11 +28,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (spanMensagem_email_enviado) {
                 spanMensagem_email_enviado.textContent = emailEsqueceuSenha;
             }
-            /*MODIFICAR QUANDO PUBLICAR*/
-            const response = await fetch('/Plataforma-A7Car/php/salvar/temp.php', {
+            const response = await fetch('/php/salvar/temp.php', {
                 method: 'POST', 
                 headers: { 'Content-Type': 'application/json; charset=utf-8' }, 
-                body: JSON.stringify({ email: emailEsqueceuSenha, modoDev: true })
+                body: JSON.stringify({ email: emailEsqueceuSenha, modoDev: false })
             });
 
             if (!response.ok) {

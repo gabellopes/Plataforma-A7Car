@@ -30,8 +30,7 @@ if ($emailExiste) {
         $id = pegarid("id_usu", "usuario", "email_usu", $email);
         $nome = pegarid("nome_usu", "usuario", "email_usu", $email);
         $token = bin2hex(random_bytes(32));
-        /*MODIFICAR QUANDO PUBLICAR*/
-        $link = "http://localhost/Plataforma-A7Car/php/user/RedefinirSenha.php?token=" . $token; 
+        $link = "https://a7car.freehosting.dev//php/user/RedefinirSenha.php?token=" . $token; 
         $expira = date('Y-m-d H:i:s', strtotime('+1 hour'));
         $usado = 0; 
 

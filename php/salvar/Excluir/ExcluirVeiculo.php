@@ -49,8 +49,7 @@ try {
     $stmtDel->execute();
 
     foreach ($caminhosParaExcluir as $caminhoImg) {
-        /*MODIFICAR QUANDO PUBLICAR*/
-        $caminhoRelativo = "../../../.." . $caminhoImg;
+        $caminhoRelativo = "../../.." . $caminhoImg;
 
         if (file_exists($caminhoRelativo) && is_file($caminhoRelativo)) {
             unlink($caminhoRelativo);

@@ -89,7 +89,6 @@ function verificarImagem($imagem, $pasta, $link, $caminho){
         exit;
     }
 
-/*MODIFICAR QUANDO PUBLICAR*/
-    return '/Plataforma-A7car/img/uploads/' . $pasta . '/' . $nomeNovo;
+    return '/img/uploads/' . $pasta . '/' . $nomeNovo;
 }
 ?>
