@@ -83,8 +83,6 @@ if(isset($_SESSION['erro_cadastro'])){
         <div style="color: red;"><?php if (isset($_SESSION['erro_login'])){echo htmlspecialchars($_SESSION['erro_login'], ENT_QUOTES, 'UTF-8');unset($_SESSION['erro_login']);} ?></div>
 
         <button type="submit" class="btn">ENTRAR</button>
-        <input type="button" value="User" onclick="PreencherUserLo()">
-        <input type="button" value="Admin" onclick="PreencherAdmin()">
     </form>
     <button id="abrirDialog">Esqueci minha senha</button>
     <a href="Cadastro.php">Não tem cadastro? Cadastrar</a>
@@ -120,22 +118,7 @@ if(isset($_SESSION['erro_cadastro'])){
                     
     </dialog>
 
-    <script>
-        const Email2 = document.getElementById("Email2");
-        function PreencherUserLo(){
 
-        Email2.value = "usuario@gmail.com";
-        Senha.value = "Usuario123!";
-        }
-
-        function PreencherAdmin(){
-
-        Email2.value = "admin@gmail.com";
-        Senha.value = "Admin123!";
-        }
-
-    
-    </script>
     
 <script src="../../js/mascaras.js"></script>
 <script src="../../js/validarformulario.js"></script>

@@ -159,9 +159,10 @@
             </div>
             <div class="nav">
                 <h1>NAVEGAÇÃO</h1>
-                <a href="">CATÁLOGO</a>
-                <a href="">COLABORADORES</a>
-                <a href="">CONTATO</a>
+                <a href="php/user/catalogo.php">CATÁLOGO</a>
+                <a href="php/user/colaboradores.php">COLABORADORES</a>
+                <a href="php/user/contato.php">CONTATO</a>
+                <a href="pdf/Manual Oficial.pdf" target="_blank" rel="noopener noreferrer" class="menu-link-site">MANUAL DE INSTRUÇÕES<img class="menu-icon" src="img/admin/ajuda.png" alt="?" style="width: 15px;"></a>
             </div>
             <div>
               <h1>CONTATO</h1>

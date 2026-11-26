@@ -105,22 +105,22 @@ if($result->num_rows > 0){
                             header($link1);
             }
 }else{
-            $_SESSION['erro_cadastro'] = "Link Expirado⏰";
+            $_SESSION['erro_cadastro'] = "Link Expirado";
             $_SESSION['erro'] = true;
             header("Location: ../../user/Login.php");
        }
     }else{
-        $_SESSION['erro_cadastro'] = "Este link já foi Usado👀";
+        $_SESSION['erro_cadastro'] = "Este link já foi Usado";
         $_SESSION['erro'] = true;
         header("Location: ../../user/Login.php");
     }
 }else{
-    $_SESSION['erro_cadastro'] = "Link Invalido😢🚗";
+    $_SESSION['erro_cadastro'] = "Link Invalido";
     $_SESSION['erro'] = true;
     header("Location: ../../user/Login.php");
     }
 }catch(Exception $e){
-    $_SESSION['erro_cadastro'] = "⛔Erro no sistema, tente novamente mais tarde. 🚧🚚";
+    $_SESSION['erro_cadastro'] = "Erro no sistema, tente novamente mais tarde. ";
     $_SESSION['erro'] = true;
     header("Location: ../../user/Login.php");
 }

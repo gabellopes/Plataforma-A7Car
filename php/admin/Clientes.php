@@ -34,11 +34,11 @@
             <div id="meio">
                 <div id="titulo">
                 <h1>CLIENTE</h1>
+            </div>
+                <div id="botoes">
                 <button class="btn" onclick="window.location.href='Cadastrar/NovoCliente.php'"> <img src="../../img/admin/novo.png" alt="">  NOVO CLIENTE</button>
-                </div>
-                <br>
                 <button onclick="window.open('../salvar/Relatorios/relatorio_cliente.php', '_blank')" class="btn"><img src="../../img/admin/pdf.png" alt=""> GERAR RELATORIO</button>
-
+                </div>
             <div id="CE">
                 <table>
                 <tr>

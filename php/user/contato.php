@@ -51,7 +51,6 @@ include_once "../salvar/Config/linkWhatsapp.php";
     
     <h3>📍 ENDEREÇO</h3>
             <h2>Estr. de Itapecerica, 4660 - Capão Redondo, São Paulo - SP, 05849-440</h2>
-            <h2>Rua dos bobos N 0</h2>
             <h3>📞 TELEFONE</h3>
             <h2>(11) 97332-0504</h2>
             <h3>📧 E-MAIL</h3>
@@ -103,7 +102,7 @@ include_once "../salvar/Config/linkWhatsapp.php";
         <a href="catalogo.php">CATÁLOGO</a>
         <a href="colaboradores.php">COLABORADORES</a>
         <a href="contato.php">CONTATO</a>
-        <a href="../../pdf/3DSA_AP_GRUPO6.pdf" target="_blank" rel="noopener noreferrer" class="menu-link-site">MANUAL DE INSTRUÇÕES<img class="menu-icon" src="../../img/admin/ajuda.png" alt="?" style="width: 15px;"></a>
+        <a href="../../pdf/Manual Oficial.pdf" target="_blank" rel="noopener noreferrer" class="menu-link-site">MANUAL DE INSTRUÇÕES<img class="menu-icon" src="../../img/admin/ajuda.png" alt="?" style="width: 15px;"></a>
     </div>
     <div>
       <h1>CONTATO</h1>

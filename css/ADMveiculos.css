@@ -30,22 +30,20 @@
     width: fit-content;
     padding: 0.35rem 0.75rem;
     cursor: pointer;
-    position: fixed;
     z-index: 2;
 }
+#botoes{
+    display: flex;
+    flex-direction: row;
+    gap: 2vw;
+    margin-left: 45vw;
+}
 #titulo{
+    padding: 2vh 0vw 1vh 0vw;
     display: flex;
     flex-direction: row;
     align-items: center;
     width: 100%;
-}
-#titulo .btn{
-    top: 10vh;
-    right: 2vw;
-}
-#meio > .btn{
-    top: calc(10vh + 3.5rem);
-    right: 2vw;
 }
 #foto{
     width: 140px;
@@ -76,12 +74,17 @@
     #titulo h1{
         font-size: 1.8rem;
     }
+    #titulo{
+        justify-content: center;
+    }
 
-    #titulo .btn{
+   .btn{
         font-size: 1rem;
     }
-    #meio > .btn{
-        font-size: 1rem;
+    #botoes{
+        flex-direction: column;
+        justify-content: center;
+        margin-left: 0;
     }
 
 }

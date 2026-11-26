@@ -27,9 +27,8 @@ try {
     if ($result->num_rows === 0 && $offset === 0) {
         echo "
         <div>
-            <img src='#' alt='ftcoracao'>🖤🚗
             <h1>Você ainda não tem favoritos</h1>
-            <a href='catalogo.php'>EXPLORAR CATÁLOGO🚘</a>
+            <a href='catalogo.php'>EXPLORAR CATÁLOGO</a>
         </div>
         ";
     }

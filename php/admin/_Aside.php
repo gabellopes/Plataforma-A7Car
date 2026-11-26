@@ -17,7 +17,7 @@
         <hr id="link-baixo">
         <a href="../user/catalogo.php" class="menu-link-site"><img class="menu-icon" src="../../img/admin/verSite.png" alt="">VER SITE</a>
         <hr>
-                <a href="../../pdf/3DSA_AP_GRUPO6.pdf" target="_blank" rel="noopener noreferrer" class="menu-link-site"><img class="menu-icon" src="../../img/admin/ajuda.png" alt="">MANUAL</a>
+        <a href="../../pdf/Manual Oficial.pdf" target="_blank" rel="noopener noreferrer" class="menu-link-site"><img class="menu-icon" src="../../img/admin/ajuda.png" alt="">MANUAL</a>
         <hr>
         <a href="../salvar/Sair.php" class="menu-link-logout"><img src="../../img/admin/logOut.png" alt=""> SAIR</a>
 

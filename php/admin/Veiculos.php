@@ -33,12 +33,13 @@ if(isset($_SESSION['sucesso_cadastro'])){
 ?>
             <div id="meio">
                 <div></div>
-                <div id="titulo">
-                    <button class="btn" onclick="location.href='Cadastrar/NovoVeiculo.php'"> <img src="../../img/admin/novo.png" alt=""> NOVO VEÍCULO</button>
+                <div id="titulo">    
                 <h1>VEÍCULOS</h1>
-                
                 </div>
+                <div id=botoes>
+                <button class="btn" onclick="location.href='Cadastrar/NovoVeiculo.php'"> <img src="../../img/admin/novo.png" alt=""> NOVO VEÍCULO</button>
                 <button onclick="window.open('../salvar/Relatorios/relatorio_estoque.php', '_blank')" class="btn"><img src="../../img/admin/pdf.png" alt=""> GERAR RELATORIO</button>
+            </div>
             <div id="CE">
                 <table>
                 <tr>

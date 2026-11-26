@@ -35,10 +35,11 @@
         <div id="meio">
             <div id="titulo">
                 <h1>COLABORADORES</h1>
-                <button class="btn" onclick="window.location.href='Cadastrar/NovoColaborador.php'"> <img src="../../img/admin/novo.png" alt="">  NOVO COLABORADOR</button>
-            </div>
-            <br>
+               </div> 
+               <div id="botoes">
+            <button class="btn" onclick="window.location.href='Cadastrar/NovoColaborador.php'"> <img src="../../img/admin/novo.png" alt="">  NOVO COLABORADOR</button>
             <button onclick="window.open('../salvar/Relatorios/relatorio_colaborador.php', '_blank')" class="btn"><img src="../../img/admin/pdf.png" alt=""> GERAR RELATORIO</button>
+            </div>
             <div id="CE">
                 <table>
                 <tr>

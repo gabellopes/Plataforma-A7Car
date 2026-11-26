@@ -19,11 +19,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80vh;
+    height: fit-content;
     margin: 0;
 }
 
 #cadastro {
+    margin-top: 5vh;
     background-color: #ffffff;
     padding: 3vh 2vw;
     border-radius: 1vh;

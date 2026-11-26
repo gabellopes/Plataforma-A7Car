@@ -95,16 +95,16 @@ if($result->num_rows > 0){
 
 <?php
        }else{
-            echo "<h1>Link Expirado⏰</h1>";
+            echo "<h1>Link Expirado</h1>";
        }
     }else{
-         echo "<h1>Este link já foi Usado👀</h1>";
+         echo "<h1>Este link já foi Usado</h1>";
     }
 }else{
-    echo "<h1>Link Invalido😢🚗</h1>";
+    echo "<h1>Link Invalido</h1>";
     }
 }catch(Exception $e){
-    echo "<h1>⛔Erro no sistema, tente novamente mais tarde. 🚧🚚</h1>";
+    echo "<h1>Erro no sistema, tente novamente mais tarde.</h1>";
 }
 ?>
 
