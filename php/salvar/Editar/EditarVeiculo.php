@@ -11,6 +11,7 @@ require_once "../../auth/authadm.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Veículo</title>
+    <link rel="icon" type="image/svg" href="../../../img/favicon/a7seven_sem_fundo.svg">
     <link rel="stylesheet" href="../../../css/ADMnovoV.css">
     <link rel="stylesheet" href="../../../css/principal.css">
     <link rel="stylesheet" href="../../../css/admcarrosel.css">
@@ -88,7 +89,7 @@ require_once "../../auth/authadm.php";
                             <option value="Elétrico">Elétrico</option>
                         </select>
                         
-                        <label for="Descricao">Descrição</label>
+                        <br><br><label for="Descricao">Descrição</label>
                         <input type="text" name="Descricao" id="Descricao" value="<?php echo htmlspecialchars($carro['descricao_car'], ENT_QUOTES, 'UTF-8'); ?>" maxlength="255" required>
                         
                         <div>

@@ -15,6 +15,7 @@ if (!isset($_SESSION['user_email']) and !isset($_SESSION['user_senha'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Favoritos</title>
+    <link rel="icon" type="image/svg" href="../../img/favicon/a7seven_sem_fundo.svg">
     <link rel="stylesheet" href="../../css/principal.css">
     <link rel="stylesheet" href="../../css/favoritos.css">
 </head>
@@ -67,6 +68,7 @@ if (!isset($_SESSION['user_email']) and !isset($_SESSION['user_senha'])) {
                 <a href="catalogo.php">CATÁLOGO</a>
                 <a href="colaboradores.php">COLABORADORES</a>
                 <a href="contato.php">CONTATO</a>
+                <a href="../../pdf/3DSA_AP_GRUPO6.pdf" target="_blank" rel="noopener noreferrer" class="menu-link-site">MANUAL DE INSTRUÇÕES<img class="menu-icon" src="../../img/admin/ajuda.png" alt="?" style="width: 15px;"></a>
             </div>
             <div>
                 <h1>CONTATO</h1>

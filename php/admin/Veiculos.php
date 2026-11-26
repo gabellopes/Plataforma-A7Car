@@ -11,6 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Veiculos</title>
+    <link rel="icon" type="image/svg" href="../../img/favicon/a7seven_sem_fundo.svg">
     <link rel="stylesheet" href="../../css/adimin.css">
     <link rel="stylesheet" href="../../css/ADMveiculos.css">
 </head>

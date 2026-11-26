@@ -32,6 +32,7 @@ $dataAtual =  time();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redefinir Senha</title>
+    <link rel="icon" type="image/svg" href="../../img/favicon/a7seven_sem_fundo.svg">
     <link rel="stylesheet" href="../../css/principal.css">
     <link rel="stylesheet" href="../../css/cadastro.css">
     

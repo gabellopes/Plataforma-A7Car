@@ -10,6 +10,7 @@ $email = $_GET['email'] ?? '';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="icon" type="image/svg" href="../../img/favicon/a7seven_sem_fundo.svg">
     <link rel="stylesheet" href="../../css/principal.css">
     <link rel="stylesheet" href="../../css/cadastro.css">
     <link rel="stylesheet" href="../../css/dialog.css">
@@ -79,7 +80,7 @@ $email = $_GET['email'] ?? '';
                     <h1>E-mail Enviado</h1>
                     <hr>
                     
-                    <img src="#" alt="✉">
+                    <p>✉</p>
                     <p>Link enviado!</p>
                     <p>Enviamos um e-mail para <span id="Mensagem_email_enviado" style="color: red;"><?php echo htmlspecialchars($email, ENT_QUOTES, 'UTF-8'); ?></span> com  as instruções para validar sua conta</p>
 

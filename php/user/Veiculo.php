@@ -9,6 +9,7 @@ require_once "../salvar/Conexao.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo</title>
+    <link rel="icon" type="image/svg" href="../../img/favicon/a7seven_sem_fundo.svg">
     <link rel="stylesheet" href="../../css/principal.css">
     <link rel="stylesheet" href="../../css/veiculo.css">
     <link rel="stylesheet" href="../../css/carrosel.css">
@@ -98,7 +99,7 @@ require_once "../salvar/Conexao.php";
                         echo "<button class='btn-favoritar' data-id='" . (int) $row['id_car'] . "'>❤</button>";
                     }
                 } else {
-                    echo "<button onclick='window.location.href=\"Login.php\"'>❤</button>";
+                    echo "<button class='btn-favoritar' onclick='window.location.href=\"Login.php\"'>❤</button>";
                 }
                 ?>
 
@@ -217,14 +218,14 @@ require_once "../salvar/Conexao.php";
             </dialog>
 
             <dialog id="dialogEmailEnviado">
-                <button id="FecharDialogEmailEnviado">🏃‍♂️💨</button>
+                <button id="FecharDialogEmailEnviado">X</button>
 
                 <h1>SIMULAÇÃO -
                     <?php echo htmlspecialchars($row['marca_car'], ENT_QUOTES, 'UTF-8') . " " . htmlspecialchars($row['modelo_car'], ENT_QUOTES, 'UTF-8') . " " . htmlspecialchars($row['ano_car'], ENT_QUOTES, 'UTF-8'); ?>
                 </h1>
                 <hr>
 
-                <img src="#" alt="✔">
+                <p>✔</p>
                 <p>Simulação enviada</p>
                 <p>Nossa equipe entrará em contato em breve</p>
 
@@ -251,6 +252,7 @@ require_once "../salvar/Conexao.php";
                 <a href="catalogo.php">CATÁLOGO</a>
                 <a href="colaboradores.php">COLABORADORES</a>
                 <a href="contato.php">CONTATO</a>
+                <a href="../../pdf/3DSA_AP_GRUPO6.pdf" target="_blank" rel="noopener noreferrer" class="menu-link-site">MANUAL DE INSTRUÇÕES<img class="menu-icon" src="../../img/admin/ajuda.png" alt="?" style="width: 15px;"></a>
             </div>
             <div>
                 <h1>CONTATO</h1>
